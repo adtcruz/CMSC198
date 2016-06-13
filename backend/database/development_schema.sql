@@ -52,7 +52,7 @@ CREATE TABLE job(
 	jobID INT NOT NULL AUTO_INCREMENT,
 	startDate TIMESTAMP,
 	finishDate TIMESTAMP NULL,
-	jobStatus VARCHAR(10) 'PENDING',
+	jobStatus VARCHAR(10) DEFAULT 'PENDING',
 	assignedTechnician INT NULL,
 	FOREIGN KEY(assignedTechnician) REFERENCES technician(technicianID),
 	PRIMARY KEY(jobID)
