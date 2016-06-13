@@ -5,7 +5,8 @@ if(!defined('INVOKED')) die();
 $server = "localhost";
 $username = "cmsc198user";
 $password = "ZNBhSKChnoTds";
+$dbname = "cmsc198db";
 
-$connection = new mysqli($server,$username,$password);
+$connection = new mysqli($server,$username,$password,$dbname);
 
 ?>

@@ -15,6 +15,6 @@ if ($APPENV === 'development'){
 }
 elseif ($APPENV === 'production'){
 	//use the production environment script
-	include dirname(getcwd(), 1).'/backend/environment/production.php'; //Production script
+	include dirname(getcwd(), 1).'/backend/environment/production.php';
 }
 ?>

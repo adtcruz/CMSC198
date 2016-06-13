@@ -1,4 +1,10 @@
 <?php
+if($_POST["username"]){
+	header('Content-type:application/json;charset=utf-8');
+	echo json_encode(array('username' => $_POST["username"]));
+}
+else die();
+
 //defines INVOKED so the included scripts can be executed
 define('INVOKED',true);
 
