@@ -44,13 +44,13 @@ if(!array_key_exists("username",$_SESSION)){
 	echo "</script>";
 }
 else{
-echo "<script type='text/javascript'>\n";
-echo "function logout(){\n";
-echo "$.get('".base_url()."logout/',function(data){;\n";
-echo "window.location.href = '".base_url()."';\n";
-echo "});\n";
-echo "}\n";
-echo "</script>";
+	echo "<script type='text/javascript'>\n";
+	echo "function logout(){\n";
+	echo "$.get('".base_url()."logout/',function(data){;\n";
+	echo "window.location.href = '".base_url()."';\n";
+	echo "});\n";
+	echo "}\n";
+	echo "</script>";
 }
 ?>	
 	</body>
