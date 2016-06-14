@@ -27,7 +27,7 @@ class Login extends CI_Controller {
 		
 		$this->load->database();
 		
-		$query = $this->db->query("SELECT username, givenName, lastName FROM technician WHERE username='".$_POST["username"]."'");
+		$query = $this->db->query("SELECT username FROM technician WHERE username='".$_POST["username"]."'");
 		$rows = $query->result_array();
 		
 		//if username was found in technician table
