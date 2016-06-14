@@ -4,8 +4,9 @@
 	<head>
 		<title>ITCBS</title>
 		<meta charset="utf-8" lang="en-gb"/>
-		<link rel = "stylesheet" type = "text/css" href = "<?php echo base_url();?>assets/css/materialize.min.css">
-		<link rel = "stylesheet" type = "text/css" href = "<?php echo base_url();?>assets/css/material-design-icons.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/materialize.min.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/material-design-icons.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/webAppMain.css"/>
 	</head>
 	<body>
 <?php
@@ -14,7 +15,7 @@ if(!array_key_exists("username",$_SESSION)) include "assets/pages/loginPage.html
 else {
 	echo "<h3 class='center-align'>Logged in!</h3>\n";
 	echo "<div class='center-align'>\n";
-	echo "<a class='navbuttons waves-effect waves-teal btn blue' onclick='logout();'>Log-out</a>\n";
+	echo "<a class='waves-effect waves-teal btn blue' onclick='logout();'>Log-out</a>\n";
 	echo "</div>\n";
 }
 ?>
@@ -22,7 +23,12 @@ else {
 		<script type = "text/javascript" src = "<?php echo base_url();?>assets/js/materialize.min.js"></script>
 <?php
 if(!array_key_exists("username",$_SESSION)){
-	echo "<script type='text/javascript'>\n"; 
+	echo "<script type='text/javascript'>\n";
+	echo "$(document).ready(\n";
+	echo "function(){\n";
+	echo "if(!($('body').hasClass('red')&&$('body').hasClass('darken-1'))){\n";
+	echo "$('body').addClass('red');\n$('body').addClass('darken-1')\n}\n";
+	echo "});\n";
 	echo "function logIn(){\n";
 	echo "$.post('".base_url()."login/',{ 'username':usernameInput.value , 'password':passwordInput.value }, function(data){\n";
 	echo "if(data==='Logged-on'){\n";
