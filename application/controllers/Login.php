@@ -73,7 +73,7 @@ class Login extends CI_Controller {
 				//queries the database if the username and password entered is correct
 				$query = $this->db->query(
 					"SELECT username, givenName, lastName, designation, officeId FROM client WHERE username='".
-					$_POST["username"]."' AND password=SHA1('".$_POST["password"]."')";
+					$_POST["username"]."' AND password=SHA1('".$_POST["password"]."')"
 				);
 				//sets rows from the db query result array
 				$rows = $query->result_array();
