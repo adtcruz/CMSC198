@@ -1,14 +1,4 @@
 <?php
-<<<<<<< HEAD
-session_start();
-if(!array_key_exists("username", $_SESSION)){
-	include 'frontend/views/landingPage.html';
-}
-else {
-	include 'frontend/views/home.html';
-}
-?>
-=======
 /**
  * CodeIgniter
  *
@@ -323,4 +313,4 @@ switch (ENVIRONMENT)
  * And away we go...
  */
 require_once BASEPATH.'core/CodeIgniter.php';
->>>>>>> 6bde3901def7bef7d8765a3c491a8009ca9c9a43
+?>
