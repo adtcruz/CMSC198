@@ -1,0 +1,54 @@
+<html>
+<head>
+	<title>[INSERT TITLE HERE]</title>
+	<meta charset="utf-8" lang="en-gb"/>
+	<link type="text/css" rel="stylesheet" href="frontend/css/materialize.min.css" type="stylesheet"/>
+	<link type="text/css" rel="stylesheet" href="frontend/css/material-design-icons.css" type="stylesheet"/>
+</head>
+<body class="grey darken-4">
+	<div class="grey darken-4">
+		<div class="white container">
+			<br/>
+			<div class="row center-align">
+				<h3>[INSERT WEBAPP TITLE/NAME HERE]</h3>
+			</div>
+			<div class="row center-align">
+				<div class="col s1 m3 l3">&nbsp;</div>
+				<form class="col white black-text s10 m6 l6">
+					<div class="row input-field">
+						<i class="material-icons prefix">account_circle</i>
+						<input id="usernameInput" name="usernameInput" type="text"/>
+						<label for="usernameInput">Username</label>
+					</div>
+					<div class="row input-field">
+						<i class="material-icons prefix">vpn_key</i>
+						<input id="passwordInput" name="passwordInput" type="password"/>
+						<label for="passwordInput">Password</label>
+					</div>
+				</form>
+				<div class="col s1 m3 l3">&nbsp;</div>
+			</div>
+			<div class="row center-align">
+				<a class="waves-effect waves-light btn blue" onclick="logIn();">Log-In&nbsp;<i class="material-icons tiny">lock_open</i></a>
+			</div>
+			<br/>
+		</div>
+	</div>
+	<script type="text/javascript" src="frontend/js/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="frontend/js/materialize.min.js"></script>
+    <script type="text/javascript">
+    function logIn(){
+		$.post("/CMSC198/login/",{ "username":usernameInput.value , "password":passwordInput.value }, function(data){
+			if(data==="Valid"){
+				window.location.href = "/CMSC198/";
+			}
+			else if(data==="Invalid password"){
+			}
+			else if(data==="Invalid"){
+				Materialize.toast("Invalid password!",3000);
+			}
+		});
+	}
+    </script>
+</body>
+</html>
