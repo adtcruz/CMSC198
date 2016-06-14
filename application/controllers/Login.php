@@ -20,23 +20,31 @@ class Login extends CI_Controller {
 	 */
 	public function index()
 	{
+		//to check if is accessed through POST
 		if(!array_key_exists("username",$_POST)){
-			echo "no post";
-			return;
+			exit('Can not be accessed by any other method');
 		}
 		
+		//loads CodeIgniter database module
 		$this->load->database();
 		
+		//queries the database if such a username entered exists
 		$query = $this->db->query("SELECT username FROM technician WHERE username='".$_POST["username"]."'");
+		//sets rows from the db query result array 
 		$rows = $query->result_array();
 		
-		//if username was found in technician table
+		//if there's a single row in the results array, it means username was found in technician table
 		if(count($rows) == 1){
+		
+			//queries the database to check if the username and password entered is correct
 			$query = $this->db->query(
 				"SELECT username, givenName, lastName FROM technician WHERE username='".
 				$_POST["username"]."' AND password=SHA1('".$_POST["password"]."')"
 			);
+			//sets rows from the db query result array
 			$rows = $query->result_array();
+			
+			//if there's a single row in the results array, it means the user entered the correct password
 			if(count($rows) == 1){
 				session_start();
 				$_SESSION["type"] = "technician";
@@ -46,7 +54,10 @@ class Login extends CI_Controller {
 				echo "Logged-on";
 				return;
 			}
+			
+			//otherwise, the user did not enter the right password
 			else {
+				//send a message that the user did not enter the right password
 				echo "Invalid password";
 				return;
 			}
