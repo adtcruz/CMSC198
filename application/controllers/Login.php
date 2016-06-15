@@ -55,7 +55,7 @@ class Login extends CI_Controller {
 			//otherwise, the user did not enter the right password
 			else {
 				//send a message that the user did not enter the right password
-				echo "Invalid password";
+				echo "Invalid";
 				return;
 			}
 		}
@@ -91,14 +91,14 @@ class Login extends CI_Controller {
 				//otherwise, the user did not enter the right password
 				else {
 					//send a message that the user did not enter the right password
-					echo "Invalid password";
+					echo "Invalid";
 					return;
 				}
 			}
 			
-			//else, it's an invalid credentials
+			//else, it's an invalid credential
 			else {
-				echo "Invalid credentials";
+				echo "Invalid";
 				return;
 			}
 		}
