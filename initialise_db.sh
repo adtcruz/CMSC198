@@ -1,1 +1,0 @@
-mysql -uroot < backend/database/development_schema.sql

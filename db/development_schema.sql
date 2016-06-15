@@ -1,6 +1,6 @@
 -- DB user
 DROP USER IF EXISTS 'cmsc198user';
-CREATE USER 'cmsc198user'@'localhost' IDENTIFIED BY 'ZNBhSKChnoTds';
+CREATE USER 'cmsc198user' IDENTIFIED BY 'ZNBhSKChnoTds';
 
 -- APPLICATION DATABASE
 DROP DATABASE IF EXISTS cmsc198db;
@@ -16,9 +16,20 @@ USE cmsc198db;
 DROP TABLE IF EXISTS office;
 CREATE TABLE office(
 	officeID INT NOT NULL AUTO_INCREMENT,
+	officeAbbr VARCHAR(128) NOT NULL,
 	officeName VARCHAR(128) NOT NULL,
 	officeEmail VARCHAR(128) NOT NULL,
 	telephoneNumber INT NOT NULL,
+	faxNumber INT NOT NULL,
+	voip INT NOT NULL,
+	parentUnit INT NOT NULL,
+	officeType VARCHAR(128) NOT NULL,
+	favorite INT NOT NULL DEFAULT '0',
+	priority INT NOT NULL DEFAULT '5',
+	dateCreated DATE DEFAULT NULL,
+	createdBy INT DEFAULT NULL,
+	active INT NOT NULL DEFAULT '1',
+	head VARCHAR(128) NOT NULL,
 	PRIMARY KEY(officeID)
 );
 
