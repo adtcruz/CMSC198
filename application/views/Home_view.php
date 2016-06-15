@@ -23,32 +23,18 @@ else {
 		<script type = "text/javascript" src = "<?php echo base_url();?>assets/js/materialize.min.js"></script>
 <?php
 if(!array_key_exists("username",$_SESSION)){
+	echo "<script type=\"text/javascript\" src=\"".base_url()."assets/js/login.controller.js\"></script>\n";
 	echo "<script type='text/javascript'>\n";
-	echo "$(document).ready(\n";
-	echo "function(){\n";
-	echo "if(!($('body').hasClass('red')&&$('body').hasClass('darken-1'))){\n";
-	echo "$('body').addClass('red');\n$('body').addClass('darken-1')\n}\n";
-	echo "});\n";
 	echo "function logIn(){\n";
-	echo "$.post('".base_url()."login/',{ 'username':usernameInput.value , 'password':passwordInput.value }, function(data){\n";
-	echo "if(data==='Logged-on'){\n";
-	echo "window.location.href = '".base_url()."';\n";
-	echo "}\n";
-	echo "else if(data==='Invalid password'){\n";
-	echo "}\n";
-	echo "else if(data==='Invalid credentials'){\n";
-	echo "Materialize.toast('Invalid password!',3000);\n";
-	echo "}\n";
-	echo "});\n";
+	echo "\tlogInControl('".base_url()."');\n";
 	echo "}\n";
 	echo "</script>";
 }
 else{
+	echo "<script type=\"text/javascript\" src=\"".base_url()."assets/js/logout.controller.js\"></script>\n";
 	echo "<script type='text/javascript'>\n";
 	echo "function logout(){\n";
-	echo "$.get('".base_url()."logout/',function(data){;\n";
-	echo "window.location.href = '".base_url()."';\n";
-	echo "});\n";
+	echo "logOutControl('".base_url()."');\n";
 	echo "}\n";
 	echo "</script>";
 }
