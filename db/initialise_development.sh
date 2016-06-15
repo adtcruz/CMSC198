@@ -1,3 +1,3 @@
 mysql -u root < development_schema.sql
-mysql -u cmsc198user -p ZNBhSKChnoTds < office_data.sql
-mysql -u cmsc198user -p ZNBhSKChnoTds < sample_users.sql
+mysql -ucmsc198user -pZNBhSKChnoTds < office_data.sql
+mysql -ucmsc198user -pZNBhSKChnoTds < sample_users.sql
