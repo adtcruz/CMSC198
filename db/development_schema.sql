@@ -43,6 +43,9 @@ CREATE TABLE client(
     lastName VARCHAR(64) NOT NULL,
     designation VARCHAR(20) NOT NULL,
     officeId INT NOT NULL,
+    dateCreated DATE DEFAULT NULL,
+	createdBy INT DEFAULT NULL,
+	active INT NOT NULL DEFAULT '1',
     FOREIGN KEY(officeId) REFERENCES office(officeID),
     PRIMARY KEY(clientID)
 );
@@ -55,6 +58,9 @@ CREATE TABLE technician(
     password VARCHAR(256) NOT NULL,
     givenName VARCHAR(64) NOT NULL,
     lastName VARCHAR(64) NOT NULL,
+    dateCreated DATE DEFAULT NULL,
+	createdBy INT DEFAULT NULL,
+	active INT NOT NULL DEFAULT '1',
     PRIMARY KEY(technicianID)
 );
 
@@ -65,7 +71,12 @@ CREATE TABLE job(
 	startDate TIMESTAMP,
 	finishDate TIMESTAMP NULL,
 	jobStatus VARCHAR(10) DEFAULT 'PENDING',
+	clientID INT NOT NULL,
 	assignedTechnician INT NULL,
+	dateCreated DATE DEFAULT NULL,
+	createdBy INT DEFAULT NULL,
+	active INT NOT NULL DEFAULT '1',
+	FOREIGN KEY(clientID) REFERENCES client(clientID),
 	FOREIGN KEY(assignedTechnician) REFERENCES technician(technicianID),
 	PRIMARY KEY(jobID)
 );
@@ -78,6 +89,9 @@ CREATE TABLE materials(
 	materialDescription VARCHAR(256) NOT NULL,
 	materialCost INT NOT NULL,
 	jobId INT NOT NULL,
+	dateCreated DATE DEFAULT NULL,
+	createdBy INT DEFAULT NULL,
+	active INT NOT NULL DEFAULT '1',
 	FOREIGN KEY(jobId) REFERENCES job(jobID), 
 	PRIMARY KEY(materialID)
 );
