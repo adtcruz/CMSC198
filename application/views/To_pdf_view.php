@@ -10,9 +10,10 @@
 				<table border = "1" width = "100%">
 						<tr>
 							<td rowspan = "5">
+								<?php echo img ('assets/images/logo.jpg') ?>
 							</td>
 							<td>
-								UPLB ITC
+								UPLB Information Technology Center
 							</td>
 							<td>
 								(Accomplish in Duplicate)
@@ -20,7 +21,7 @@
 						</tr>
 						<tr>
 							<td>
-								UPLB
+								University of the Philippines Los Banos
 							</td>
 							<td>
 								Job Request No.
@@ -36,7 +37,7 @@
 						</tr>
 						<tr>
 							<td>
-								Tel
+								Telephone
 							</td>
 							<td>
 								Time Finished
@@ -63,7 +64,7 @@
 						</tr>
 						<tr>
 							<td>
-								Printed Name:
+								Printed Name: <?php session_start (); echo $_SESSION['username']; ?>
 							</td>
 							<td>
 								Designation:

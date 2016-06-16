@@ -9,7 +9,7 @@ class To_pdf_controller extends CI_Controller {
         $html = $this->load->view ("To_pdf_view", $data, true);
 
         //this the the PDF filename that user will get to download
-        $pdfFilePath = "output_pdf_name.pdf";
+        $pdfFilePath = "JobRequestForm.pdf";
  
         //load mPDF library
         $this->load->library('m_pdf');
