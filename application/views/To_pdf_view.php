@@ -10,10 +10,10 @@
 				<table border = "1" width = "100%">
 						<tr>
 							<td rowspan = "5">
-								<?php echo img ('assets/images/logo.jpg') ?>
+								<?php echo img ('assets/images/logo.jpg'); ?>
 							</td>
 							<td>
-								UPLB Information Technology Center
+								<b> UPLB Information Technology Center </b>
 							</td>
 							<td>
 								(Accomplish in Duplicate)
