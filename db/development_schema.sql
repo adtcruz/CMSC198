@@ -50,18 +50,19 @@ CREATE TABLE client(
     PRIMARY KEY(clientID)
 );
 
--- 'TECHNICIAN' Table
-DROP TABLE IF EXISTS technician;
-CREATE TABLE technician(
-	technicianID INT NOT NULL AUTO_INCREMENT,
+-- 'ADMIN' Table
+DROP TABLE IF EXISTS adminAcc;
+CREATE TABLE adminAcc(
+	adminID INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(32) NOT NULL UNIQUE,
     password VARCHAR(256) NOT NULL,
     givenName VARCHAR(64) NOT NULL,
     lastName VARCHAR(64) NOT NULL,
+    isTechnician INT NOT NULL,
     dateCreated DATE DEFAULT NULL,
 	createdBy INT DEFAULT NULL,
 	active INT NOT NULL DEFAULT '1',
-    PRIMARY KEY(technicianID)
+    PRIMARY KEY(adminID)
 );
 
 -- 'JOB' Table
@@ -72,12 +73,12 @@ CREATE TABLE job(
 	finishDate TIMESTAMP NULL,
 	jobStatus VARCHAR(10) DEFAULT 'PENDING',
 	clientID INT NOT NULL,
-	assignedTechnician INT NULL,
+	adminID INT NULL,
 	dateCreated DATE DEFAULT NULL,
 	createdBy INT DEFAULT NULL,
 	active INT NOT NULL DEFAULT '1',
 	FOREIGN KEY(clientID) REFERENCES client(clientID),
-	FOREIGN KEY(assignedTechnician) REFERENCES technician(technicianID),
+	FOREIGN KEY(adminID) REFERENCES adminAcc(adminID),
 	PRIMARY KEY(jobID)
 );
 
