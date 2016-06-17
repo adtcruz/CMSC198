@@ -2,10 +2,9 @@
 /*
 This will make full use of CodeIgniter's table class.
 */	
-	session_start ();
 	/* start header table render */
 	$cell = array (
-		'data' => '<img src = "assets/images/logo.jpg">', 'rowspan' => "5"
+		'data' => '<img src = "assets/images/logo.jpg" width = "100" height = "100">', 'rowspan' => "5"
 		); // similar to <td rowspan = 5> <img> </td>
 	$this->table->add_row ($cell, '<b> UPLB Information Technology Center', '(Accomplish in Duplicate)');
 	$this->table->add_row ('University of the Philippines Los Banos', 'Job Request No.');
@@ -28,7 +27,7 @@ This will make full use of CodeIgniter's table class.
 		); // <td colspan = "2"> text </td>
 
 	$this->table->set_heading ($cell); //<<th> data </th>
-	$this->table->add_row ('Printed Name: '.$_SESSION['username'].'', 'Designation');
+	$this->table->add_row ('Printed Name: '.$givenName.' '.$lastName.'', 'Designation: '.$designation.'');
 	$this->table->add_row ('Office/Unit:', 'Tel.No.:');
 
 	$cell = array (
@@ -65,9 +64,7 @@ This will make full use of CodeIgniter's table class.
 	/* start bill of materials table render */
 	$this->table->set_template (
 		array (
-			'table_open' => '<table border = "1" width = "100%">',
-			'cell_start' => '<th>',
-			'cell_end' => '</th>'
+			'table_open' => '<table border = "1" width = "100%">'
 			)
 		);
 	$cell = array (
@@ -85,9 +82,7 @@ This will make full use of CodeIgniter's table class.
 	/* start recommended materials table render */
 	$this->table->set_template (
 		array (
-			'table_open' => '<table border = "1" width = "100%">',
-			'cell_start' => '<th>',
-			'cell_end' => '</th>'
+			'table_open' => '<table border = "1" width = "100%">'
 			)
 		);
 	$cell = array (
@@ -99,5 +94,4 @@ This will make full use of CodeIgniter's table class.
 	echo $this->table->generate ();
 	$this->table->clear ();
 	/* end recommended materials table render */
-
 ?>
