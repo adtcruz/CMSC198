@@ -49,6 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+$route['filejobrequest'] = 'FileJobRequest';
 $route['topdf_jrf'] = 'JobRequestForm_controller';
 $route['login'] = 'Login';
 $route['default_controller'] = 'Home_controller';

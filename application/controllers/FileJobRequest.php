@@ -11,15 +11,6 @@ class FileJobRequest extends CI_Controller
 			exit('Can not be accessed by any other method');
 		}
 		
-		
-		//putting this just for testing this API
-		if(!array_key_exists("username",$_POST)){
-			exit('Can not be accessed by any other method');
-		}
-		$username = $_POST["username"];
-		
-		
-		/*
 		//start session to access SESSION variables
 		session_start();
 		
@@ -29,7 +20,6 @@ class FileJobRequest extends CI_Controller
 			exit('username not defined in SESSION');
 		}
 		$username = $_SESSION["username"];
-		*/
 		
 		//loads codeigniter database library
 		$this->load->database();
@@ -56,7 +46,8 @@ class FileJobRequest extends CI_Controller
 		
 		//lookup the user ID of the currently logged-on user from the client table  
 		$query = $this->db->query(
-			"SELECT clientID FROM client WHERE username='".$username."'");
+			"SELECT clientID FROM client WHERE username='".$username."'"
+		);
 		//sets rows from the db query result array 
 		$rows = $query->result_array();
 		
@@ -64,11 +55,52 @@ class FileJobRequest extends CI_Controller
 		//we can retrieve the clientID
 		if(count($rows) == 1){
 			$createdBy = $rows[0]["clientID"];
-			
+			$this->db->query(
+				"INSERT INTO job (startDate, clientID, createdBy, createdByType, dateCreated)".
+				"VALUES (NULL,".$clientID.",".$createdBy.",'client', CURDATE())"
+			);
 		}
-		//otherwise, the username was not found
+		//otherwise, the username was not found in client table
+		//so we have to look it up from the admin table
 		else {
+			//lookup the user ID of the currently logged-on user from the client table  
+			$query = $this->db->query(
+				"SELECT adminID FROM adminAcc WHERE username='".$username."'"
+			);
+			//sets rows from the db query result array 
+			$rows = $query->result_array();
 			
+			//we can retrieve the adminID
+			if(count($rows) == 1){
+				$createdBy = $rows[0]["adminID"];
+				$this->db->query(
+					"INSERT INTO job (startDate, clientID, createdBy, createdByType, dateCreated)".
+					"VALUES (NULL,".$clientID.",".$createdBy.",'admin', CURDATE())"
+				);
+			}
+			//otherwise, the username was not found in admin table
+			//so we have to look it up from the superadmin table
+			else {
+				//lookup the user ID of the currently logged-on user from the client table  
+				$query = $this->db->query(
+					"SELECT superAdminID FROM superAdmin WHERE username='".$username."'"
+				);
+				//sets rows from the db query result array 
+				$rows = $query->result_array();
+			
+				//we can retrieve the superAdminID
+				if(count($rows) == 1){
+					$createdBy = $rows[0]["superAdminID"];
+					$this->db->query(
+						"INSERT INTO job (startDate, clientID, createdBy, createdByType, dateCreated)".
+						"VALUES (NULL,".$clientID.",".$createdBy.",'superadmin', CURDATE())"
+					);
+				}
+				else {
+					echo "Username not found";
+					die();
+				}
+			}
 		}
 	}
 }
