@@ -83,12 +83,12 @@ CREATE TABLE superAdmin(
 DROP TABLE IF EXISTS job;
 CREATE TABLE job(
 	jobID INT NOT NULL AUTO_INCREMENT,
-	startDate TIMESTAMP,
-	finishDate TIMESTAMP NULL,
+	startDate DATE NULL,
+	finishDate DATE NULL,
 	jobStatus VARCHAR(10) DEFAULT 'PENDING',
 	clientID INT NOT NULL,
 	adminID INT NULL,
-	dateCreated DATE DEFAULT NULL,
+	dateCreated DATE NOT NULL,
 	createdBy INT DEFAULT NULL,
 	active INT NOT NULL DEFAULT '1',
 	FOREIGN KEY(clientID) REFERENCES client(clientID),
