@@ -3429,9 +3429,16 @@ input[type=range] + .thumb {
 }
 
 .container {
-  margin: 0 auto;
+  margin-top: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
   max-width: 1280px;
-  width: 90%;
+  width: 100%;
+  background-color: #e1f5fe;
+  padding-top: 25px;
+  padding-left:  25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
 }
 
 @media only screen and (min-width: 601px) {
@@ -4090,7 +4097,6 @@ nav {
   width: 100%;
   height: 56px;
   line-height: 56px;
-  padding-left: 20px;
 }
 
 nav a {
@@ -4109,7 +4115,6 @@ nav i.material-icons {
 nav .nav-wrapper {
   position: relative;
   height: 100%;
-  
 }
 
 @media only screen and (min-width: 993px) {
@@ -4847,6 +4852,7 @@ small {
 
 .btn, .btn-large,
 .btn-flat {
+  margin-right:10px;
   border: none;
   border-radius: 2px;
   display: inline-block;
@@ -5375,7 +5381,7 @@ a.waves-effect .waves-ripple {
 
 .side-nav .collapsible-body li a,
 .side-nav.fixed .collapsible-body li a {
-  padding: 0 37.5px 0 45px;
+  padding: 0 37.5px 0 px;
 }
 
 .collapsible.popout {
@@ -6661,7 +6667,7 @@ input[type=range]:focus::-ms-fill-upper {
   border-left: 2px solid #ea4a4f;
 }
 
-.side-nav {
+.side-nav{
   position: fixed;
   width: 240px;
   left: 0;
@@ -6673,7 +6679,7 @@ input[type=range]:focus::-ms-fill-upper {
   height: calc(100% + 60px);
   height: -moz-calc(100%);
   padding-bottom: 60px;
-  background-color: #fff;
+  background-color: #29b6f6;
   z-index: 999;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
@@ -6701,6 +6707,7 @@ input[type=range]:focus::-ms-fill-upper {
 .side-nav li {
   float: none;
   line-height: 64px;
+
 }
 
 .side-nav li.active {
@@ -6708,7 +6715,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .side-nav a {
-  color: #444;
+  color: #e1f5fe;
   display: block;
   font-size: 1rem;
   height: 64px;
@@ -8186,26 +8193,25 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 
 
 .loginPanel{
-  width: 40%;
-  margin-left: 30%;
-  margin-right: 30%;
-  margin-top: 10%;
-  border: 1px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  background-color: #e1f5fe;
-  
+	width: 40%;
+	margin-left: 30%;
+	margin-right: 30%;
+	margin-top: 15%;
+	border: 1px;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	background-color: #ffffff;
+	
 }
 
 
 
-body{
-  background-color: #ffffff;
+.body{
+	background-color: #ffffff;
 }
 .loginBody{
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 25px;
-  padding-bottom:25px;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 25px;
+	padding-bottom:25px;
 }
-
 
