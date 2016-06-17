@@ -1,0 +1,37 @@
+all sidebar
+add view schedule
+	details to follow 
+
+client sidebar
+from view list of job requests -> my job requests
+
+client main view
+show status of last job request filed
+	main
+		may sariling area with full details
+
+show table of other jobs that are not yet finished
+	list form. after main
+	show start date, job status, assigned techs
+
+show latest completed job requests
+	mga 3-5. list form
+	show start date, complete date, assigned techs
+
+admin sidebar
+from view list of job requests -> view job requests
+add view taken job requests
+	for technician
+
+admin main view
+
+show table of other jobs that are not yet finished
+	list form. after main
+	show start date, job status, assigned techs
+
+
+superadmin sidebar
+create account
+from view list of job requests -> view job requests
+
+
