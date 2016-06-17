@@ -13,6 +13,10 @@ class Login extends CI_Controller {
 	 */
 	public function index()
 	{
+		/*
+		$this->load->helper('url');
+		$this->load->view('Login_view');
+		*/
 		//to check if is accessed through POST, since this API should only be accessed through AJAX
 		if(!array_key_exists("username",$_POST)){
 			exit('Can not be accessed by any other method');
@@ -22,7 +26,7 @@ class Login extends CI_Controller {
 		$this->load->database();
 		
 		//queries the database if such a username entered exists in the technician table
-		$query = $this->db->query("SELECT username FROM technician WHERE username='".$_POST["username"]."'");
+		$query = $this->db->query("SELECT username FROM adminAcc WHERE username='".$_POST["username"]."'");
 		//sets rows from the db query result array 
 		$rows = $query->result_array();
 		
@@ -31,7 +35,7 @@ class Login extends CI_Controller {
 		
 			//queries the database to check if the username and password entered is correct
 			$query = $this->db->query(
-				"SELECT username, givenName, lastName FROM technician WHERE username='".
+				"SELECT username, givenName, lastName FROM adminAcc WHERE username='".
 				$_POST["username"]."' AND password=SHA1('".$_POST["password"]."')"
 			);
 			//sets rows from the db query result array
