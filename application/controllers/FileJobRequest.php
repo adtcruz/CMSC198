@@ -59,6 +59,7 @@ class FileJobRequest extends CI_Controller
 				"INSERT INTO job (startDate, clientID, createdBy, createdByType, dateCreated)".
 				"VALUES (NULL,".$clientID.",".$createdBy.",'client', CURDATE())"
 			);
+			echo "Submitted";
 		}
 		//otherwise, the username was not found in client table
 		//so we have to look it up from the admin table
@@ -77,6 +78,7 @@ class FileJobRequest extends CI_Controller
 					"INSERT INTO job (startDate, clientID, createdBy, createdByType, dateCreated)".
 					"VALUES (NULL,".$clientID.",".$createdBy.",'admin', CURDATE())"
 				);
+				echo "Submitted";
 			}
 			//otherwise, the username was not found in admin table
 			//so we have to look it up from the superadmin table
@@ -95,6 +97,7 @@ class FileJobRequest extends CI_Controller
 						"INSERT INTO job (startDate, clientID, createdBy, createdByType, dateCreated)".
 						"VALUES (NULL,".$clientID.",".$createdBy.",'superadmin', CURDATE())"
 					);
+					echo "Submitted";
 				}
 				else {
 					echo "Username not found";
