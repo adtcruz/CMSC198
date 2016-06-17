@@ -90,6 +90,7 @@ CREATE TABLE job(
 	adminID INT NULL,
 	dateCreated DATE NOT NULL,
 	createdBy INT DEFAULT NULL,
+	createdByType VARCHAR(10) NOT NULL,
 	active INT NOT NULL DEFAULT '1',
 	FOREIGN KEY(clientID) REFERENCES client(clientID),
 	FOREIGN KEY(adminID) REFERENCES adminAcc(adminID),
