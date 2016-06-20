@@ -7,7 +7,7 @@
 			<div class="white col s10 m6 l6 z-depth-5">
 				<br/>
 				<div class="row center-align">
-					<h3>ITCBS</h3>
+					<h3>ITC Billing System</h3>
 				</div>
 				<div class="row center-align">
 					<div class="col s1 m1 l1">&nbsp;</div>
@@ -26,7 +26,7 @@
 					<div class="col s1 m1 l1">&nbsp;</div>
 				</div>
 				<div class="row center-align">
-					<a class="waves-effect waves-light btn blue" onclick="logIn('<?php echo base_url();?>');">Log-In&nbsp;<i class="material-icons tiny">lock_open</i></a>
+					<a class="waves-effect waves-light btn blue" onclick="logIn('<?php echo base_url();?>');">Log-In&nbsp;<i class="material-icons right">lock_open</i></a>
 				</div>
 				<br/>
 			</div>
