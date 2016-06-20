@@ -49,6 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+$route['file_job'] = 'File_JR_controller';
 $route['topdf_bfp'] = 'BillForPayment_controller';
 $route['filejobrequest'] = 'FileJobRequest';
 $route['landing'] = 'Landing_controller';
