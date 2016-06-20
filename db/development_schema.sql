@@ -7,7 +7,7 @@ DROP DATABASE IF EXISTS cmsc198db;
 CREATE DATABASE cmsc198db;
 
 -- GRANTS ALL PRIVILEGE ON APPLICATION DATABASE TO DB USER
-GRANT ALL ON cmsc198db.* TO 'cmsc198user'@'localhost';
+GRANT ALL ON cmsc198db.* TO 'cmsc198user';
 FLUSH PRIVILEGES;
 
 USE cmsc198db;
@@ -43,30 +43,58 @@ CREATE TABLE client(
     lastName VARCHAR(64) NOT NULL,
     designation VARCHAR(20) NOT NULL,
     officeId INT NOT NULL,
+    dateCreated DATE DEFAULT NULL,
+	createdBy INT DEFAULT NULL,
+	active INT NOT NULL DEFAULT '1',
     FOREIGN KEY(officeId) REFERENCES office(officeID),
     PRIMARY KEY(clientID)
 );
 
--- 'TECHNICIAN' Table
-DROP TABLE IF EXISTS technician;
-CREATE TABLE technician(
-	technicianID INT NOT NULL AUTO_INCREMENT,
+-- 'ADMINACC' Table
+DROP TABLE IF EXISTS adminAcc;
+CREATE TABLE adminAcc(
+	adminID INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(32) NOT NULL UNIQUE,
     password VARCHAR(256) NOT NULL,
     givenName VARCHAR(64) NOT NULL,
     lastName VARCHAR(64) NOT NULL,
-    PRIMARY KEY(technicianID)
+    isTechnician INT NOT NULL,
+    dateCreated DATE DEFAULT NULL,
+	createdBy INT DEFAULT NULL,
+	active INT NOT NULL DEFAULT '1',
+    PRIMARY KEY(adminID)
+);
+
+-- 'SUPERADMIN' Table
+DROP TABLE IF EXISTS superAdmin;
+CREATE TABLE superAdmin(
+	superAdminID INT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(32) NOT NULL UNIQUE,
+    password VARCHAR(256) NOT NULL,
+    givenName VARCHAR(64) NOT NULL,
+    lastName VARCHAR(64) NOT NULL,
+    dateCreated DATE DEFAULT NULL,
+	createdBy INT DEFAULT NULL,
+	active INT NOT NULL DEFAULT '1',
+    PRIMARY KEY(superAdminID)
 );
 
 -- 'JOB' Table
 DROP TABLE IF EXISTS job;
 CREATE TABLE job(
 	jobID INT NOT NULL AUTO_INCREMENT,
-	startDate TIMESTAMP,
-	finishDate TIMESTAMP NULL,
+	jobDescription VARCHAR(1024) NOT NULL,
+	startDate DATE NULL,
+	finishDate DATE NULL,
 	jobStatus VARCHAR(10) DEFAULT 'PENDING',
-	assignedTechnician INT NULL,
-	FOREIGN KEY(assignedTechnician) REFERENCES technician(technicianID),
+	clientID INT NOT NULL,
+	adminID INT NULL,
+	dateCreated DATE NOT NULL,
+	createdBy INT DEFAULT NULL,
+	createdByType VARCHAR(10) NOT NULL,
+	active INT NOT NULL DEFAULT '1',
+	FOREIGN KEY(clientID) REFERENCES client(clientID),
+	FOREIGN KEY(adminID) REFERENCES adminAcc(adminID),
 	PRIMARY KEY(jobID)
 );
 
@@ -76,8 +104,13 @@ CREATE TABLE materials(
 	materialID INT NOT NULL AUTO_INCREMENT,
 	materialName VARCHAR(32) NOT NULL,
 	materialDescription VARCHAR(256) NOT NULL,
-	materialCost INT NOT NULL,
+	materialCost DOUBLE NOT NULL,
+	materialUnit DOUBLE NOT NULL,
+	materialUnitMeasurement VARCHAR(64) NOT NULL,
 	jobId INT NOT NULL,
+	dateCreated DATE DEFAULT NULL,
+	createdBy INT DEFAULT NULL,
+	active INT NOT NULL DEFAULT '1',
 	FOREIGN KEY(jobId) REFERENCES job(jobID), 
 	PRIMARY KEY(materialID)
 );

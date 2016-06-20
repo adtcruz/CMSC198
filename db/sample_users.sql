@@ -2,10 +2,10 @@
 USE cmsc198db;
 
 -- insert sample technicians
-INSERT INTO technician (username, password, givenName, lastName) VALUES
-('user1',SHA1('useruser'),'User','User1'),
-('user2',SHA1('useruser'),'User','User2'),
-('user3',SHA1('useruser'),'User','User3');
+INSERT INTO adminAcc (username, password, givenName, lastName, isTechnician, active) VALUES
+('user1',SHA1('useruser'),'User','User1',0,1),
+('user2',SHA1('useruser'),'User','User2',1,1),
+('user3',SHA1('useruser'),'User','User3',1,0);
 
 -- insert sample clients
 INSERT INTO client (username, password, givenName, lastName, designation, officeId) VALUES
