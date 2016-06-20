@@ -1,45 +1,31 @@
-<div class="section">
-	<div class="row">
-		<!-- SIDENAV CONTAINER-->
-		<div class="col s3">
-			<div class="side-nav fixed light-blue lighten-1">
-				<div id="logo-container" class="center-align">
-					<p>
-						<h3>ITCBS</h3>
-						<h6>Welcome, <?php echo $_SESSION["givenName"]." ".$_SESSION["lastName"];?>!</h6>
-					</p>
+<?php
+	$arguments = "'".base_url()."','".$_SESSION["username"]."','".$_SESSION["type"]."'";
+?>
+
+<div class="row">
+	<?php $this->load->view('Sidenav');?>
+	<div id="navarea" class="col s3 m3 l3 section"><br/><br/></div>
+	<div id="mainc" class="col s9 m9 l9 section">
+		<div class="row">
+			<div class="col s1 m1 l1">&nbsp;</div>
+			<form autocomplete="off" class="col s10 m10 l10">
+				<br/>
+				<h3>File a Job Request</h3>
+				<br/>
+				<div class="input-field">
+					<i class="material-icons large prefix">label_outline</i>
+					<textarea id="problemsEncountered" name="problemsEncountered"class="materialize-textarea"></textarea>
+					<label for="problemsEncountered">Problems encountered</label>
 				</div>
-				<ul>
-					<li><a href="<?php echo base_url();?>">HOME</a></li>
-					<?php
-					if($_SESSION["type"] === "client") $this->load->view('Client_menu');
-					if($_SESSION["type"] === "technician") $this->load->view('Admin_menu');
-					if($_SESSION["type"] === "admin") $this->load->view('Admin_menu');
-					?>
-					<li><a  class="waves-effect waves-light btn light-blue darken-4 center-align white-text" onclick="logOut('<?php echo base_url();?>');">LOG OUT</a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="col s3">&nbsp;</div>
-		<!-- MAIN CONTENT CONTAINER-->
-		<div class="col s6 z-depth-4">
-			<div class="row">
-				<div class="container">
-				<form autocomplete="off">
-					<div class="row">
-						<div class="input-field">
-							<textarea id="problemsEncountered" class="materialize-textarea"></textarea>
-							<label for="problemsEncountered">Problems encountered</label>
-						</div>
-						<div class="mdl-textfield mdl-js-textfield" align="right">
-							<button class="btn waves-effect waves-light red">Submit
-								<i class="material-icons right">send</i>
-							</button>
-						</div>
-					</div>
-				</form>
+				<div class="mdl-textfield mdl-js-textfield" align="right">
+					<a class="btn waves-effect waves-light red" onclick="fileJobRequest(<?php echo $arguments;?>);">
+						Submit<i class="material-icons right">send</i>
+					</a>
 				</div>
-			</div>
+				<br/>
+				<br/>
+			</form>
+			<div class="col s1 m1 l1">&nbsp;</div>
 		</div>
 	</div>
 </div>
