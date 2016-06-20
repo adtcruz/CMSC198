@@ -11,15 +11,12 @@ class FileJobRequest extends CI_Controller
 			exit('Can not be accessed by any other method');
 		}
 		
-		//start session to access SESSION variables
-		session_start();
-		
 		//check if username is defined in session
 		//this shall be used to determine the value of the createdBy field of the job request
-		if(!array_key_exists("username",$_SESSION)){
-			exit('username not defined in SESSION');
+		if(!array_key_exists("username",$_POST)){
+			exit('Username not defined');
 		}
-		$username = $_SESSION["username"];
+		$username = $_POST["username"];
 		
 		//loads codeigniter database library
 		$this->load->database();
