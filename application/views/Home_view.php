@@ -13,9 +13,9 @@
 session_start();
 if(!array_key_exists("username",$_SESSION)) include "assets/pages/loginPage.html";
 else {
-	echo "<h3 class='center-align'>Logged in!</h3>\n";
-	echo "<div class='center-align'>\n";
-	echo "<a class='waves-effect waves-teal btn blue' onclick='logout();'>Log-out</a>\n";
+	echo "<h3 class=\"center-align\">Logged in!</h3>\n";
+	echo "<div class=\"center-align\">\n";
+	echo "<a class=\"waves-effect waves-teal btn blue\" onclick=\"logOut('".base_url()."');\">Log-out</a>\n";
 	echo "</div>\n";
 }
 ?>
@@ -32,11 +32,6 @@ if(!array_key_exists("username",$_SESSION)){
 }
 else{
 	echo "<script type=\"text/javascript\" src=\"".base_url()."assets/js/logout.controller.js\"></script>\n";
-	echo "<script type='text/javascript'>\n";
-	echo "function logout(){\n";
-	echo "logOutControl('".base_url()."');\n";
-	echo "}\n";
-	echo "</script>";
 }
 ?>	
 	</body>
