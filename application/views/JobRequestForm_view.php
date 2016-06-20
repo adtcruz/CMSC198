@@ -4,13 +4,15 @@ This will make full use of CodeIgniter's table class.
 */	
 	/* start header table render */
 	$cell = array (
-		'data' => '<img src = "assets/images/logo.jpg" width = "100" height = "100">', 'rowspan' => "5"
+		'data' => '<img src = "assets/images/itc_logo.jpg" width = "100" height = "100">', 
+		'rowspan' => "5"
 		); // similar to <td rowspan = 5> <img> </td>
+	
 	$this->table->add_row ($cell, '<b> UPLB Information Technology Center', '(Accomplish in Duplicate)');
 	$this->table->add_row ('University of the Philippines Los Banos', 'Job Request No.');
 	$this->table->add_row ('Job Request Form', 'Date: '.date ('M d, Y')); // outputs current date in Month Date Year
-	$this->table->add_row ('Telephone', 'Time Finished');
-	$this->table->add_row ('Email', 'Time Started');
+	$this->table->add_row ('Tel.No.: (049) 501-4591, 536-2886 VoIP: #100', 'Time Finished');
+	$this->table->add_row ('Email: itc@uplb.edu.ph', 'Time Started');
 	echo $this->table->generate (); // generates the table
 	$this->table->clear(); // clears the previously entered table data
 	/* end header table render */
