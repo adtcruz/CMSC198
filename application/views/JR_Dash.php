@@ -12,6 +12,11 @@
 				<br/>
 				<h3>File a Job Request</h3>
 				<br/>
+				<?php
+				if(($_SESSION["type"]==="technician")||($_SESSION["type"]==="admin")||($_SESSION["type"]==="superadmin")){
+					//add here loading of offices, usernames, etc
+				}
+				?>
 				<div class="input-field">
 					<i class="material-icons large prefix">label_outline</i>
 					<textarea id="problemsEncountered" name="problemsEncountered"class="materialize-textarea"></textarea>
