@@ -10,8 +10,8 @@
 					<h3>ITCBS</h3>
 				</div>
 				<div class="row center-align">
-					<div autocomplete="off" class="col s1 m1 l1">&nbsp;</div>
-					<form class="white black-text col s10 m10 l10">
+					<div class="col s1 m1 l1">&nbsp;</div>
+					<form autocomplete="off" class="white black-text col s10 m10 l10">
 						<div class="row input-field">
 							<i class="material-icons prefix">account_circle</i>
 							<input id="usernameInput" name="usernameInput" type="text" onkeyup="logInFormOnChange();" onchange="logInFormOnChange();"/>
