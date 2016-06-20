@@ -1,20 +1,20 @@
 $(document).ready(
 	function(){
-		if(!($('body').hasClass('red')&&$('body').hasClass('darken-1'))){
-			$('body').addClass('red');
-			$('body').addClass('darken-1');
+		if(!($('body').hasClass('light-blue')&&$('body').hasClass('lighten-1'))){
+			$('body').addClass('light-blue');
+			$('body').addClass('lighten-1');
 		}
 	}
 );
 
-function logInControl(url){
+function logIn(url){
 	uname = usernameInput.value;
 	pword = passwordInput.value;
 	if (uname === "") return;
 	if (pword === "") return;
 	$.post(url+'login',{username:uname,password:pword}, function(data){
 		if(data === "Logged-on"){
-			window.location.href = url+'landing';	 
+			window.location.href = url;	 
 		}
 		else if (data === "Invalid"){
 			if(!($("#usernameInput").hasClass("invalid")&&$("#passwordInput").hasClass("invalid"))){
