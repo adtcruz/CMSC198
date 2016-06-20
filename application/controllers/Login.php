@@ -13,10 +13,6 @@ class Login extends CI_Controller {
 	 */
 	public function index()
 	{
-		/*
-		$this->load->helper('url');
-		$this->load->view('Login_view');
-		*/
 		//to check if is accessed through POST, since this API should only be accessed through AJAX
 		if(!array_key_exists("username",$_POST)){
 			exit('Can not be accessed by any other method');
