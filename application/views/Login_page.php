@@ -1,0 +1,37 @@
+<div class="light-blue lighten-1">
+	<br/>
+	<div class="container">
+		<br/>
+		<div class="row">
+			<div class="col s1 m3 l3">&nbsp;</div>
+			<div class="white col s10 m6 l6 z-depth-5">
+				<br/>
+				<div class="row center-align">
+					<h3>ITCBS</h3>
+				</div>
+				<div class="row center-align">
+					<div autocomplete="off" class="col s1 m1 l1">&nbsp;</div>
+					<form class="white black-text col s10 m10 l10">
+						<div class="row input-field">
+							<i class="material-icons prefix">account_circle</i>
+							<input id="usernameInput" name="usernameInput" type="text" onkeyup="logInFormOnChange();" onchange="logInFormOnChange();"/>
+							<label id="usernameInputLabel" for="usernameInput" data-error="Invalid credentials. Please check your credentials and try again.">Username</label>
+						</div>
+						<div class="row input-field">
+							<i class="material-icons prefix">vpn_key</i>
+							<input id="passwordInput" name="passwordInput" type="password" onkeyup="logInFormOnChange();" onchange="logInFormOnChange();"/>
+							<label id="passwordInputLabel" for="passwordInput" data-error="Invalid credentials. Please check your credentials and try again.">Password</label>
+						</div>
+					</form>
+					<div class="col s1 m1 l1">&nbsp;</div>
+				</div>
+				<div class="row center-align">
+					<a class="waves-effect waves-light btn blue" onclick="logIn('<?php echo base_url();?>');">Log-In&nbsp;<i class="material-icons tiny">lock_open</i></a>
+				</div>
+				<br/>
+			</div>
+			<div class="col s1 m3 l3">&nbsp;</div>
+		</div>
+		<br/>
+	</div>
+</div>
