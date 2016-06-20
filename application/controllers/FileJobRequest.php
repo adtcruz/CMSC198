@@ -57,7 +57,7 @@ class FileJobRequest extends CI_Controller
 			$createdBy = $rows[0]["clientID"];
 			$this->db->query(
 				"INSERT INTO job (jobDescription, startDate, clientID, createdBy, createdByType, dateCreated)".
-				"VALUES (".$_POST["jobDescription"]."NULL,".$clientID.",".$createdBy.",'client', CURDATE())"
+				"VALUES ('".$_POST["jobDescription"]."',NULL,".$clientID.",".$createdBy.",'client', CURDATE())"
 			);
 			echo "Submitted";
 		}
@@ -76,7 +76,7 @@ class FileJobRequest extends CI_Controller
 				$createdBy = $rows[0]["adminID"];
 				$this->db->query(
 					"INSERT INTO job (jobDescription, startDate, clientID, createdBy, createdByType, dateCreated)".
-					"VALUES (".$_POST["jobDescription"]."NULL,".$clientID.",".$createdBy.",'admin', CURDATE())"
+					"VALUES ('".$_POST["jobDescription"]."',NULL,".$clientID.",".$createdBy.",'admin', CURDATE())"
 				);
 				echo "Submitted";
 			}
@@ -95,7 +95,7 @@ class FileJobRequest extends CI_Controller
 					$createdBy = $rows[0]["superAdminID"];
 					$this->db->query(
 						"INSERT INTO job (jobDescription, startDate, clientID, createdBy, createdByType, dateCreated)".
-						"VALUES (".$_POST["jobDescription"]."NULL,".$clientID.",".$createdBy.",'superadmin', CURDATE())"
+						"VALUES ('".$_POST["jobDescription"]."',NULL,".$clientID.",".$createdBy.",'superadmin', CURDATE())"
 					);
 					echo "Submitted";
 				}
