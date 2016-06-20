@@ -23,7 +23,7 @@ class Login extends CI_Controller {
 		
 		//queries the database if such a username entered exists in the technician table
 		$query = $this->db->query("SELECT username FROM adminAcc WHERE username='".$_POST["username"]."'");
-		//sets rows from the db query result array 
+		//sets rows from the db query result array
 		$rows = $query->result_array();
 		
 		//if there's a single row in the results array, it means username was found in technician table
@@ -58,7 +58,7 @@ class Login extends CI_Controller {
 		else {
 			//queries the database if such a username entered exists in the client tables
 			$query = $this->db->query("SELECT username FROM client WHERE username='".$_POST["username"]."'");
-			//sets rows from the db query result array 
+			//sets rows from the db query result array
 			$rows = $query->result_array();
 			
 			//if there's a single row in the results array, it means the username was found in the client table
