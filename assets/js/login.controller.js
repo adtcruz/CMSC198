@@ -14,7 +14,7 @@ function logInControl(url){
 	if (pword === "") return;
 	$.post(url+'login',{username:uname,password:pword}, function(data){
 		if(data === "Logged-on"){
-			window.location.href = url;	 
+			window.location.href = url+'landing';	 
 		}
 		else if (data === "Invalid"){
 			if(!($("#usernameInput").hasClass("invalid")&&$("#passwordInput").hasClass("invalid"))){
