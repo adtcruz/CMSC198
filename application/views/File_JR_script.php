@@ -1,1 +1,1 @@
-<script type="text/javascript" src="<?php base_url();?>assets/js/newJobRequest.controller.js"></script>
+<script type="text/javascript" src="<?php base_url();?>assets/js/fileJobRequest.controller.js"></script>
