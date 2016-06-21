@@ -34,30 +34,82 @@
           <!-- Container -->
           <div class="container">
             <div class="section">
-              <!-- Search bar -->
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <i class="material-icons prefix">search</i>
-                      <input id="icon_prefix" type="text" class="validate">
-                      <label for="icon_prefix">Search Job Requests</label>
-                    </div>
-                    <div class="input-field col s6">
-                      <div class="mdl-textfield mdl-js-textfield" align="left" >
-                        <button class="btn waves-effect waves-light red" type="submit" name="action">Search
-                        </button>
-                     </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-             
-            </div>
-            <br><br>
+              <!--Table: List of Jobs (Admin)-->
+              <table>
+                <thead>
+                  <tr>
+                      <th data-field="id">
+                          <h4><i class="small left material-icons">view_list</i> List of Job Requests</h4>
+                      </th>
+                      <th data-field="name">
+                        <form class="col s12">
+                         
+                            <div class="input-field col s6">
+                              <input id="icon_prefix" type="text" class="validate">
+                              <label for="icon_prefix">Search Job Requests</label>
+                            </div>
+                            <div class="input-field col s6 right-align">
+                              <div class="mdl-textfield mdl-js-textfield" align="left" >
+                                <button class="btn waves-effect waves-light red" type="submit" name="action">
+                                  <i class="material-icons left">search</i>
+                                  Search
+                                </button>
+                             </div>
+                            </div>
+                        
+                        </form>
+                      </th>
+                  </tr>
+                </thead>            
+              </table>
 
-            <div class="section">
-              <!--Tables here... -->
+
+
+              
+              <table class="bordered centered">
+                <thead>
+                  <tr>
+                      <th data-field="id">Job ID</th>
+                      <th data-field="name">Start Date</th>
+                      <th data-field="price">Finish Date</th>
+                      <th data-field="id">Job Status</th>
+                      <th data-field="id">Date Created</th>
+                      <th data-field="name">Created by</th>
+                      <th data-field="name">Get Job</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                    <td><a class="waves-effect waves-light btn"><i class="material-icons left">add</i>Get</a></td>
+                  </tr>
+                  <tr>
+                    <td>Alan</td>
+                    <td>Jellybean</td>
+                    <td>$3.76</td>
+                    <td>Alan</td>
+                    <td>Jellybean</td>
+                    <td>$3.76</td>
+                    <td><a class="waves-effect waves-light btn"><i class="material-icons left">add</i>Get</a></td>
+                  </tr>
+                  <tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                    <td><a class="waves-effect waves-light btn"><i class="material-icons left">add</i>Get</a></td>
+
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
