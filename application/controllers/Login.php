@@ -3,17 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/login
-	 *	- or -
-	 * 		http://example.com/index.php/login/index
-	 */
 	public function index()
 	{
-		//to check if is accessed through POST, since this API should only be accessed through AJAX
+		
+		//to check if is accessed through POST
+		//accessed via (base url)/login
+		//keys in POST should be:
+		//username - from username field
+		//password - from password field, without SHA1 encryption, as it's this script that takes care of that
+		
 		if(!array_key_exists("username",$_POST)){
 			exit('Can not be accessed by any other method');
 		}
