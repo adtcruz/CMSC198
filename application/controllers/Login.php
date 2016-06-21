@@ -73,7 +73,7 @@ class Login extends CI_Controller {
 				//if there's a single row in the results array, it means the user entered the correct password
 				if(count($rows) == 1){
 					session_start();
-					if($rows[0]['isTechnician']===1) $_SESSION["type"] = "technician";
+					if($rows[0]['isTechnician']==1) $_SESSION["type"] = "technician";
 					else $_SESSION["type"] = "admin";
 					$_SESSION["username"] = $_POST["username"];
 					$_SESSION["givenName"] = $rows[0]['givenName'];
