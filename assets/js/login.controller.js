@@ -8,7 +8,7 @@ $(document).ready(
 );
 
 //php passes the base url via onclick value/function call in the document
-//javascript function handling the login 
+//javascript function handling the login
 function logIn(url){
 	//gets the username from the username input
 	uname = usernameInput.value;
