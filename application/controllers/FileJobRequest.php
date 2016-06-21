@@ -42,6 +42,9 @@ class FileJobRequest extends CI_Controller
 			
 				//if the user in session is either a technician or admin
 				else if(($_SESSION["type"] === "technician")||($_SESSION["type"] === "admin")||($_SESSION["type"] === "superadmin")){
+				
+					//loads codeigniter database library
+					$this->load->database();
 					
 					//since techinicians, admins, and superadmins can't file job requests
 					//and they can only file job requests on behalf of a client,
@@ -50,8 +53,7 @@ class FileJobRequest extends CI_Controller
 						
 						//lookup the user ID from the client table  
 						$query = $this->db->query(
-							"SELECT clientID FROM client WHERE username='".
-							$_POST["clientUsername"]."'" 
+							"SELECT clientID FROM client WHERE username='".$_POST["clientUsername"]."'" 
 						);
 						//sets rows from the db query result array 
 						$rows = $query->result_array();
