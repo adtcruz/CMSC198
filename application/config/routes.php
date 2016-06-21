@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['file_job'] = 'File_JR_controller';
 $route['topdf_bfp'] = 'BillForPayment_controller';
-$route['filejobrequest'] = 'FileJobRequest';
+$route['submit_request'] = 'FileJobRequest';
 $route['landing'] = 'Landing_controller';
 $route['topdf_jrf'] = 'JobRequestForm_controller';
 $route['login'] = 'Login';
