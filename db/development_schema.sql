@@ -107,10 +107,36 @@ CREATE TABLE materials(
 	materialCost DOUBLE NOT NULL,
 	materialUnit DOUBLE NOT NULL,
 	materialUnitMeasurement VARCHAR(64) NOT NULL,
-	jobId INT NOT NULL,
 	dateCreated DATE DEFAULT NULL,
 	createdBy INT DEFAULT NULL,
+	createdByType VARCHAR(10) NOT NULL,
 	active INT NOT NULL DEFAULT '1',
-	FOREIGN KEY(jobId) REFERENCES job(jobID), 
 	PRIMARY KEY(materialID)
+);
+
+-- 'MATERIALS_USED' Table
+DROP TABLE IF EXISTS materials_used;
+CREATE TABLE materials_used (
+	materialID INT NOT NULL,
+	jobID INT NOT NULL,
+	createdBy INT DEFAULT NULL,
+	createdByType VARCHAR(10) NOT NULL,
+	active INT NOT NULL DEFAULT '1',
+	FOREIGN KEY(materialID) REFERENCES materials(materialID),
+	FOREIGN KEY(jobID) REFERENCES job(jobID)
+);
+
+-- 'SCHEDULE' Table
+DROP TABLE IF EXISTS schedule;
+CREATE TABLE schedule (
+	scheduleID INT NOT NULL AUTO_INCREMENT,
+	priority INT NOT NULL DEFAULT '1',
+	jobID INT NOT NULL,
+	dateScheduled DATE,
+	dateCreated DATE DEFAULT NULL,
+	createdBy INT DEFAULT NULL,
+	createdByType VARCHAR(10) NOT NULL,
+	active INT NOT NULL DEFAULT '1',
+	PRIMARY KEY(scheduleID),
+	FOREIGN KEY(jobID) REFERENCES job(jobID)
 );
