@@ -20,10 +20,10 @@
         <div class="side-nav fixed">
           <a id="logo-container" href="#" class="brand-logo"><h5>ITC Billing System</h></a>
           <ul id="logo-container" class="brand-logo">
-            <li><a href="admin_page.html"><i class="large material-icons">insert_chart</i>Home</a></li>
-            <li  class="active"><a href="admin_page_viewJR.html"><i class="large material-icons">insert_chart</i>View Job Request</a></li>
-            <li><a href="admin_page_assignJR.html"><i class="large material-icons">insert_chart</i>Assign Job Request</a></li>
-            <li><a href="admin_page_generateBill.html"><i class="large material-icons">insert_chart</i>Generate Bill</a></li>
+            <li><a href="admin_page.html">Home</a></li>
+            <li  class="active"><a href="admin_page_viewJR.html">View Job Request</a></li>
+            <li><a href="admin_page_assignJR.html">Assign Job Request</a></li>
+            <li><a href="admin_page_generateBill.html">Generate Bill</a></li>
           </ul>
         </div>
        
@@ -36,6 +36,7 @@
           <div class="container">
             <div class="section">
               <!-- Search bar -->
+              <!--
               <div class="row">
                 <form class="col s12">
                   <div class="row">
@@ -52,13 +53,83 @@
                     </div>
                   </div>
                 </form>
-              </div>
-             
+              </div> 
             </div>
-            <br><br>
+          -->
 
             <div class="section">
-              <!--Tables here... -->
+              <!--Table: List of Jobs (Admin)-->
+              <table>
+                <thead>
+                  <tr>
+                      <th data-field="id"><h4><i class="small left material-icons">view_list</i> List of Job Requests</h4></th>
+                      <th data-field="name">
+                        <form class="col s12">
+                         
+                            <div class="input-field col s6">
+                              <input id="icon_prefix" type="text" class="validate">
+                              <label for="icon_prefix">Search Job Requests</label>
+                            </div>
+                            <div class="input-field col s6 right-align">
+                              <div class="mdl-textfield mdl-js-textfield" align="left" >
+                                <button class="btn waves-effect waves-light red" type="submit" name="action">Search
+                                </button>
+                             </div>
+                            </div>
+                        
+                        </form>
+                      </th>
+                  </tr>
+                </thead>            
+              </table>
+
+
+
+              
+              <table class="bordered centered">
+                <thead>
+                  <tr>
+                      <th data-field="id">Job ID</th>
+                      <th data-field="name">Start Date</th>
+                      <th data-field="price">Finish Date</th>
+                      <th data-field="id">Job Status</th>
+                      <th data-field="id">Date Created</th>
+                      <th data-field="name">Created by</th>
+                      <th data-field="name">Assign Job</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                    <td><a class="waves-effect waves-light btn"><i class="material-icons left">add</i>Assign</a></td>
+                  </tr>
+                  <tr>
+                    <td>Alan</td>
+                    <td>Jellybean</td>
+                    <td>$3.76</td>
+                    <td>Alan</td>
+                    <td>Jellybean</td>
+                    <td>$3.76</td>
+                    <td><a class="waves-effect waves-light btn"><i class="material-icons left">add</i>Assign</a></td>
+                  </tr>
+                  <tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                    <td><a class="waves-effect waves-light btn"><i class="material-icons left">add</i>Assign</a></td>
+
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
