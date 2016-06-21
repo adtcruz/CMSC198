@@ -9,18 +9,16 @@ class View_jobs_controller extends CI_Controller
 		session_start();
 		if(array_key_exists("type",$_SESSION)){
 			$tabl = "";
+			
+			$this->table->set_template(array('table_open' =>'<table class="bordered centered highlight responsive-table col s10 m10 l10">'));
+			
 			if($_SESSION["type"] === "client"){
 				
 				//loads Code Igniter database module
 				$this->load->database();
 				
 				//table heading
-				$tabl = ("<thead><tr><th data-field=\"jobDescription\">Description</th>".
-						"<th data-field=\"startDate\">Start Date</th>".
-						"<th data-field=\"finishDate\">Finish Date</th>".
-						"<th data-field=\"jobStatus\">Status</th>".
-						"<th data-field=\"technicianAssigned\">Assigned Techinician</th>".
-						"<th data-field=\"dateFiled\">Date Filed</th></tr></thead><tbody>");
+				$this->table->set_heading("Description","Start Date","Finish Date","Status","Techinician","Date Filed");
 				
 				//queries the database for the client ID of the user in session
 				$query = $this->db->query("SELECT clientID FROM client WHERE username='".$_SESSION["username"]."'");
@@ -42,62 +40,47 @@ class View_jobs_controller extends CI_Controller
 				
 				for ($i = 0; $i < $nRows1; $i++){
 					
-					//start of table row
-					$tabl = $tabl."<tr>";
-					
-					//job description column entry
-					$tabl = $tabl."<td>".$rows1[$i]["jobDescription"]."</td>";
-					
+					$startDate = "";
 					//start date column entry
 					if($rows1[$i]["startDate"] !== NULL){
-						$tabl = $tabl."<td>".date("F d, Y", strtotime($rows1[$i]["startDate"]))."</td>";
-					}
-					else{
-						$tabl = $tabl."<td></td>";
+						$startDate = date("F d, Y", strtotime($rows1[$i]["startDate"]));
 					}
 					
+					$finishDate = "";
 					//finish date column entry
 					if($rows1[$i]["startDate"] !== NULL){
-						$tabl = $tabl."<td>".date("F d, Y", strtotime($rows1[$i]["finishDate"]))."</td>";
-					}
-					else{
-						$tabl = $tabl."<td></td>";
+						$finishDate = date("F d, Y", strtotime($rows1[$i]["finishDate"]));
 					}
 					
+					$jobStatus = "";
 					//job status column entry
 					if($rows1[$i]["jobStatus"] === "PENDING"){
-						$tabl = $tabl."<td><span class=\"blue-text\">".$rows1[$i]["jobStatus"]."</span></td>";
+						$jobStatus = "<span class=\"blue-text\">".$rows1[$i]["jobStatus"]."</span>";
 					}
 					else if($rows1[$i]["jobStatus"] === "PROCESSING"){
-						$tabl = $tabl."<td><span class=\"yellow-text\">".$rows1[$i]["jobStatus"]."</span></td>";
+						$jobStatus = "<span class=\"yellow-text\">".$rows1[$i]["jobStatus"]."</span>";
 					}
 					else if($rows1[$i]["jobStatus"] === "CANCELED"){
-						$tabl = $tabl."<td><span class=\"red-text\">".$rows1[$i]["jobStatus"]."</span></td>";
+						$jobStatus = "<span class=\"red-text\">".$rows1[$i]["jobStatus"]."</span>";
 					}
 					else if($rows1[$i]["jobStatus"] === "PROCESSED"){
-						$tabl = $tabl."<td><span class=\"green-text\">".$rows1[$i]["jobStatus"]."</span></td>";
+						$jobStatus = "<span class=\"green-text\">".$rows1[$i]["jobStatus"]."</span>";
 					}
 					
+					$technicianName = "";
 					//assigned technician column entry
 					if($rows1[$i]["adminID"] !== NULL){
 						$query2 = $this->db->query("SELECT givenName, lastName FROM adminAcc WHERE adminID=".$rows1[$i]["adminID"]);
 						$rows2 = $query1->result_array();
 					
-						$tabl = $tabl.$rows2[0]["givenName"]." ".$rows2[0]["lastName"]."</td><td>";
-					}
-					else {
-						$tabl = $tabl."<td></td>";
+						$technicianName = $tabl.$rows2[0]["givenName"]." ".$rows2[0]["lastName"];
 					}
 					
 					//date filed column entry
-					$tabl = $tabl."<td>".date("F d, Y", strtotime($rows1[$i]["dateCreated"]))."</td>";
+					$dateFiled = date("F d, Y", strtotime($rows1[$i]["dateCreated"]));	
 					
-					//end of table row
-					$tabl = $tabl."</tr>";
-					
+					$this->table->add_row($rows1[$i]["jobDescription"],$startDate,$finishDate,$jobStatus,$technicianName,$dateFiled);
 				}
-				
-				$tabl = $tabl . "</tbody>";
 				
 			}
 			
@@ -106,103 +89,81 @@ class View_jobs_controller extends CI_Controller
 				//loads Code Igniter database module
 				$this->load->database();
 				
-				//table heading
-				$tabl = ("<thead><tr><th data-field=\"jobDescription\">Description</th>".
-						"<th data-field=\"client\">Client</th>".
-						"<th data-field=\"startDate\">Start Date</th>".
-						"<th data-field=\"finishDate\">Finish Date</th>".
-						"<th data-field=\"jobStatus\">Status</th>".
-						"<th data-field=\"technicianAssigned\">Assigned Techinician</th>".
-						"<th data-field=\"dateFiled\">Date Filed</th>".
-						"<th data-field=\"filedBy\">Filed By</th>".
-						"</tr></thead><tbody>");
+				$this->table->set_heading('Description','Client','Start Date','Finish Date','Status','Technician','Date Filed','Filed By');
 				
 				$query1 = $this->db->query("SELECT jobDescription, startDate, finishDate, jobStatus, clientID, adminID, dateCreated, createdByType FROM job ORDER BY dateCreated DESC, jobID DESC");
 				$rows1 = $query1->result_array();
 				$nRows1 = count($rows1);
 				
 				for ($i = 0; $i < $nRows1; $i++){
-					//start of table row
-					$tabl = $tabl."<tr>";
-				
-					//job description column entry
-					$tabl = $tabl."<td>".$rows1[$i]["jobDescription"]."</td>";
-				
-					//client column entry
-				
+					
 					$query2 = $this->db->query("SELECT givenName, lastName FROM client WHERE clientID=".$rows1[$i]["clientID"]."");
 					$rows2 = $query2->result_array();
-				
-					$tabl = $tabl."<td>".$rows2[0]["givenName"]." ".$rows2[0]["lastName"]."</td>";
-				
-					//start date column entry
+					
+					$clientName = $rows2[0]["givenName"]." ".$rows2[0]["lastName"];
+					
+					$startDate = "";	
 					if($rows1[$i]["startDate"] !== NULL){
-						$tabl = $tabl."<td>".date("F d, Y", strtotime($rows1[$i]["startDate"]))."</td>";
-					}
-					else{
-						$tabl = $tabl."<td></td>";
-					}
-				
-					//finish date column entry
-					if($rows1[$i]["startDate"] !== NULL){
-						$tabl = $tabl."<td>".date("F d, Y", strtotime($rows1[$i]["finishDate"]))."</td>";
-					}
-					else{
-						$tabl = $tabl."<td></td>";
-					}
-				
-					//job status column entry
-					if($rows1[$i]["jobStatus"] === "PENDING"){
-						$tabl = $tabl."<td><span class=\"blue-text\">".$rows1[$i]["jobStatus"]."</span></td>";
-					}
-					else if($rows1[$i]["jobStatus"] === "PROCESSING"){
-						$tabl = $tabl."<td><span class=\"yellow-text\">".$rows1[$i]["jobStatus"]."</span></td>";
-					}
-					else if($rows1[$i]["jobStatus"] === "CANCELED"){
-						$tabl = $tabl."<td><span class=\"red-text\">".$rows1[$i]["jobStatus"]."</span></td>";
-					}
-					else if($rows1[$i]["jobStatus"] === "PROCESSED"){
-						$tabl = $tabl."<td><span class=\"green-text\">".$rows1[$i]["jobStatus"]."</span></td>";
+						$startDate = date("F d, Y", strtotime($rows1[$i]["startDate"]));
 					}
 					
-					//assigned technician column entry
+					$finishDate = "";
+					if($rows1[$i]["startDate"] !== NULL){
+						$finishDate = date("F d, Y", strtotime($rows1[$i]["finishDate"]));
+					}
+					
+					$jobStatus = "";
+					if($rows1[$i]["jobStatus"] === "PENDING"){
+						$jobStatus = "<span class=\"blue-text\">".$rows1[$i]["jobStatus"]."</span>";
+					}
+					else if($rows1[$i]["jobStatus"] === "PROCESSING"){
+						$jobStatus = "<span class=\"yellow-text\">".$rows1[$i]["jobStatus"]."</span>";
+					}
+					else if($rows1[$i]["jobStatus"] === "CANCELED"){
+						$jobStatus = "<span class=\"red-text\">".$rows1[$i]["jobStatus"]."</span>";
+					}
+					else if($rows1[$i]["jobStatus"] === "PROCESSED"){
+						$jobStatus = "<td><span class=\"green-text\">".$rows1[$i]["jobStatus"]."</span><";
+					}
+					
+					$technicianName = "";
 					if($rows1[$i]["adminID"] !== NULL){
 						$query2 = $this->db->query("SELECT givenName, lastName FROM adminAcc WHERE adminID=".$rows1[$i]["adminID"]);
 						$rows2 = $query1->result_array();
 					
-						$tabl = $tabl.$rows2[0]["givenName"]." ".$rows2[0]["lastName"]."</td><td>";
-					}
-					else {
-						$tabl = $tabl."<td></td>";
+						$technicianName = $rows2[0]["givenName"]." ".$rows2[0]["lastName"];
 					}
 					
-					//date filed column entry
-					$tabl = $tabl."<td>".date("F d, Y", strtotime($rows1[$i]["dateCreated"]))."</td>";
+					$dateFiled = date("F d, Y", strtotime($rows1[$i]["dateCreated"]));
 					
-					//filed by column entry
+					$filedBy = "";
+					
 					if ($rows1[$i]["createdByType"] === "client"){
 						$query2 = $this->db->query("SELECT givenName, lastName FROM client WHERE clientID=".$rows1[$i]["clientID"]."");
 						$rows2 = $query2->result_array();
 				
-						$tabl = $tabl."<td>".$rows2[0]["givenName"]." ".$rows2[0]["lastName"]."</td>";
+						$filedBy = $rows2[0]["givenName"]." ".$rows2[0]["lastName"];
 					}
 					else if (($rows1[$i]["createdByType"] === "technician")||($rows1[$i]["createdByType"] === "admin")){
 						$query2 = $this->db->query("SELECT givenName, lastName FROM adminAcc WHERE adminID=".$rows1[$i]["createdBy"]."");
 						$rows2 = $query2->result_array();
 				
-						$tabl = $tabl."<td>".$rows2[0]["givenName"]." ".$rows2[0]["lastName"]."</td>";
+						$filedBy = $rows2[0]["givenName"]." ".$rows2[0]["lastName"];
 					}
 					else if ($rows1[$i]["createdByType"] === "superadmin"){
 						$query2 = $this->db->query("SELECT givenName, lastName FROM superAdmin WHERE superAdminID=".$rows1[$i]["createdBy"]."");
 						$rows2 = $query2->result_array();
 				
-						$tabl = $tabl."<td>".$rows2[0]["givenName"]." ".$rows2[0]["lastName"]."</td>";
+						$filedBy = $rows2[0]["givenName"]." ".$rows2[0]["lastName"];
 					}
+					
+					$this->table->add_row($rows1[$i]["jobDescription"],$clientName,$startDate,$finishDate,$jobStatus,$technicianName,$dateFiled,$filedBy);
+					
 				}
-				
 			}
 			
-			$this->load->view('View_jobs_view', array('tableC' => $tabl));
+			$tabl = $this->table->generate();
+			$this->load->view('View_jobs_view', array('table' => $tabl));
 		}
 		else {
 			die("You are not logged-in");
