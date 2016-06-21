@@ -10,7 +10,7 @@ class View_jobs_controller extends CI_Controller
 		if(array_key_exists("type",$_SESSION)){
 			$tabl = "";
 			
-			$this->table->set_template(array('table_open' =>'<table class="bordered centered highlight responsive-table col s10 m10 l10">'));
+			$this->table->set_template(array('table_open' =>'<table class="bordered centered highlight responsive-table">'));
 			
 			if($_SESSION["type"] === "client"){
 				
@@ -18,7 +18,7 @@ class View_jobs_controller extends CI_Controller
 				$this->load->database();
 				
 				//table heading
-				$this->table->set_heading("Description","Start Date","Finish Date","Status","Techinician","Date Filed");
+				$this->table->set_heading("Description","Start Date","Finish Date","Status","Techinician","Date Filed","Actions");
 				
 				//queries the database for the client ID of the user in session
 				$query = $this->db->query("SELECT clientID FROM client WHERE username='".$_SESSION["username"]."'");
@@ -53,9 +53,12 @@ class View_jobs_controller extends CI_Controller
 					}
 					
 					$jobStatus = "";
+					$actions = "";
 					//job status column entry
 					if($rows1[$i]["jobStatus"] === "PENDING"){
 						$jobStatus = "<span class=\"blue-text\">".$rows1[$i]["jobStatus"]."</span>";
+						$actions = "<a class=\"btn-floating btn waves-effect waves-light cyan\"><i class=\"material-icons\">mode_edit</i></a>";
+						$actions = $actions . "&nbsp;&nbsp;&nbsp;&nbsp;" . "<a class=\"btn-floating btn waves-effect waves-light red\"><i class=\"material-icons\">not_interested</i></a>";
 					}
 					else if($rows1[$i]["jobStatus"] === "PROCESSING"){
 						$jobStatus = "<span class=\"yellow-text\">".$rows1[$i]["jobStatus"]."</span>";
@@ -79,7 +82,7 @@ class View_jobs_controller extends CI_Controller
 					//date filed column entry
 					$dateFiled = date("F d, Y", strtotime($rows1[$i]["dateCreated"]));	
 					
-					$this->table->add_row($rows1[$i]["jobDescription"],$startDate,$finishDate,$jobStatus,$technicianName,$dateFiled);
+					$this->table->add_row($rows1[$i]["jobDescription"],$startDate,$finishDate,$jobStatus,$technicianName,$dateFiled,$actions);
 				}
 				
 			}
@@ -89,7 +92,7 @@ class View_jobs_controller extends CI_Controller
 				//loads Code Igniter database module
 				$this->load->database();
 				
-				$this->table->set_heading('Description','Client','Start Date','Finish Date','Status','Technician','Date Filed','Filed By');
+				$this->table->set_heading('Description','Client','Start Date','Finish Date','Status','Technician','Date Filed','Filed By','Actions');
 				
 				$query1 = $this->db->query("SELECT jobDescription, startDate, finishDate, jobStatus, clientID, adminID, dateCreated, createdByType FROM job ORDER BY dateCreated DESC, jobID DESC");
 				$rows1 = $query1->result_array();
@@ -113,8 +116,12 @@ class View_jobs_controller extends CI_Controller
 					}
 					
 					$jobStatus = "";
+					$actions = "";
 					if($rows1[$i]["jobStatus"] === "PENDING"){
 						$jobStatus = "<span class=\"blue-text\">".$rows1[$i]["jobStatus"]."</span>";
+						$actions = "<a class=\"btn-floating btn waves-effect waves-light green\"><i class=\"material-icons\">thumb_up</i></a>";
+						$actions = $actions . "&nbsp;&nbsp;<a class=\"btn-floating btn waves-effect waves-light cyan\"><i class=\"material-icons\">mode_edit</i></a>";
+						$actions = $actions . "&nbsp;&nbsp;<a class=\"btn-floating btn waves-effect waves-light red\"><i class=\"material-icons\">not_interested</i></a>";
 					}
 					else if($rows1[$i]["jobStatus"] === "PROCESSING"){
 						$jobStatus = "<span class=\"yellow-text\">".$rows1[$i]["jobStatus"]."</span>";
@@ -157,7 +164,7 @@ class View_jobs_controller extends CI_Controller
 						$filedBy = $rows2[0]["givenName"]." ".$rows2[0]["lastName"];
 					}
 					
-					$this->table->add_row($rows1[$i]["jobDescription"],$clientName,$startDate,$finishDate,$jobStatus,$technicianName,$dateFiled,$filedBy);
+					$this->table->add_row($rows1[$i]["jobDescription"],$clientName,$startDate,$finishDate,$jobStatus,$technicianName,$dateFiled,$filedBy,$actions);
 					
 				}
 			}
