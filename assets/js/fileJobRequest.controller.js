@@ -7,21 +7,23 @@ $('document').ready(
 	}
 );
 
-function fileJobRequest(url,username,type){
+function fileJobRequest(url){
 	jobDesc = problemsEncountered.value;
 	if (jobDesc==="") return;
-	if(type==="client"){
-		$.post(
-			url+'FileJobRequest',
-			{username:username,clientUsername:username,jobDescription:jobDesc},
-			function(data){
-				if (data==="Submitted"){
+	$.get(url+"get_user_type", function(data){
+		if(data==="client"){
+			$.post(url+"submit_request",{jobDescription:jobDesc},function(data){
+				if(data==="Submitted"){
 					problemsEncountered.value = "";
-					Materialize.toast("Job Request posted.", 3000);
+					Materialize.toast("Job Request filed", 3000);
 				}
-			}
-		);
-	}
-	if(type==="technician"){
-	}
+			});
+		}
+		else if(data === "technician"){
+		}
+		else if(data === "admin"){
+		}
+		else if(data === "superadmin"){
+		}
+	});
 }
