@@ -14,7 +14,7 @@
 				<br/>
 				<?php
 				if(($_SESSION["type"]==="technician")||($_SESSION["type"]==="admin")||($_SESSION["type"]==="superadmin")){
-					//add here loading of offices, usernames, etc
+					$this->load->view('Office_selector');
 				}
 				?>
 				<div class="input-field">
