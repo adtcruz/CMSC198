@@ -61,7 +61,7 @@ class View_jobs_controller extends CI_Controller
 						$actions = $actions . "&nbsp;&nbsp;&nbsp;&nbsp;" . "<a class=\"btn-floating btn waves-effect waves-light red\" onclick=\"confirmCancel(".$rows1[$i]["jobID"].");\"><i class=\"material-icons\">not_interested</i></a>";
 					}
 					else if($rows1[$i]["jobStatus"] === "PROCESSING"){
-						$jobStatus = "<span class=\"yellow-text\">".$rows1[$i]["jobStatus"]."</span>";
+						$jobStatus = "<span class=\"orange-text\">".$rows1[$i]["jobStatus"]."</span>";
 					}
 					else if($rows1[$i]["jobStatus"] === "CANCELED"){
 						$jobStatus = "<span class=\"red-text\">".$rows1[$i]["jobStatus"]."</span>";
@@ -74,7 +74,7 @@ class View_jobs_controller extends CI_Controller
 					//assigned technician column entry
 					if($rows1[$i]["adminID"] !== NULL){
 						$query2 = $this->db->query("SELECT givenName, lastName FROM adminAcc WHERE adminID=".$rows1[$i]["adminID"]);
-						$rows2 = $query1->result_array();
+						$rows2 = $query2->result_array();
 					
 						$technicianName = $tabl.$rows2[0]["givenName"]." ".$rows2[0]["lastName"];
 					}
@@ -124,19 +124,19 @@ class View_jobs_controller extends CI_Controller
 						$actions = $actions . "&nbsp;&nbsp;<a class=\"btn-floating btn waves-effect waves-light red\" onclick=\"confirmCancel(".$rows1[$i]["jobID"].");\"><i class=\"material-icons\">not_interested</i></a>";
 					}
 					else if($rows1[$i]["jobStatus"] === "PROCESSING"){
-						$jobStatus = "<span class=\"yellow-text\">".$rows1[$i]["jobStatus"]."</span>";
+						$jobStatus = "<span class=\"orange-text\">".$rows1[$i]["jobStatus"]."</span>";
 					}
 					else if($rows1[$i]["jobStatus"] === "CANCELED"){
 						$jobStatus = "<span class=\"red-text\">".$rows1[$i]["jobStatus"]."</span>";
 					}
 					else if($rows1[$i]["jobStatus"] === "PROCESSED"){
-						$jobStatus = "<td><span class=\"green-text\">".$rows1[$i]["jobStatus"]."</span><";
+						$jobStatus = "<span class=\"green-text\">".$rows1[$i]["jobStatus"]."</span>";
 					}
 					
 					$technicianName = "";
 					if($rows1[$i]["adminID"] !== NULL){
 						$query2 = $this->db->query("SELECT givenName, lastName FROM adminAcc WHERE adminID=".$rows1[$i]["adminID"]);
-						$rows2 = $query1->result_array();
+						$rows2 = $query2->result_array();
 					
 						$technicianName = $rows2[0]["givenName"]." ".$rows2[0]["lastName"];
 					}
