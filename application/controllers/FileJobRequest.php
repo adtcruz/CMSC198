@@ -5,6 +5,12 @@ class FileJobRequest extends CI_Controller
 {
 	public function index ()
 	{
+		//accessed via (base url)/login
+		//keys in POST should be:
+		//jobDescription - jod description or problems encountered
+		//if the user in session is either an admin, superadmin, or technician
+		//clientUsername - username of the client 
+		
 		//loads session to access session variables
 		session_start();
 		
