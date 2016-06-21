@@ -9,11 +9,7 @@
 			<h3 class="center-align"><?php if($_SESSION["type"]==="client") echo "My ";?>Job Requests</h3>
 			<br/>
 			<br/>
-			<!--<div class="col s1 m1 l1">&nbsp;</div>-->
-			<?php
-				echo $table;
-			?>
-			<!--<div class="col s1 m1 l1">&nbsp;</div>-->
+			<?php echo $table;?>
 		</div>
 	</div>
 </div>
