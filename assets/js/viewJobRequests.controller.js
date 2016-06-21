@@ -6,3 +6,18 @@ $('document').ready(
 		$("#viewJRItem").addClass("white-text");
 	}
 );
+
+job_ID = 0;
+
+function confirmCancel(jobID){
+	$("#cancelModal").openModal();
+	job_ID = jobID;
+}
+
+function cancelJob(url){
+	console.log(job_ID);
+	$("#cancelModal").closeModal();
+}
+
+
+

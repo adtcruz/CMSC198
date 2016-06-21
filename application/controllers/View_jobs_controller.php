@@ -30,7 +30,7 @@ class View_jobs_controller extends CI_Controller
 				
 				//queries the DB
 				$query1 = $this->db->query(
-					"SELECT jobDescription, startDate, finishDate, jobStatus, adminID, dateCreated FROM job WHERE clientID=".$clientID." ORDER BY jobID DESC"
+					"SELECT jobID, jobDescription, startDate, finishDate, jobStatus, adminID, dateCreated FROM job WHERE clientID=".$clientID." ORDER BY jobID DESC"
 				);
 				
 				//gets the results in easy-to-use array form
@@ -58,7 +58,7 @@ class View_jobs_controller extends CI_Controller
 					if($rows1[$i]["jobStatus"] === "PENDING"){
 						$jobStatus = "<span class=\"blue-text\">".$rows1[$i]["jobStatus"]."</span>";
 						$actions = "<a class=\"btn-floating btn waves-effect waves-light cyan\"><i class=\"material-icons\">mode_edit</i></a>";
-						$actions = $actions . "&nbsp;&nbsp;&nbsp;&nbsp;" . "<a class=\"btn-floating btn waves-effect waves-light red\"><i class=\"material-icons\">not_interested</i></a>";
+						$actions = $actions . "&nbsp;&nbsp;&nbsp;&nbsp;" . "<a class=\"btn-floating btn waves-effect waves-light red\" onclick=\"confirmCancel(".$rows1[$i]["jobID"].");\"><i class=\"material-icons\">not_interested</i></a>";
 					}
 					else if($rows1[$i]["jobStatus"] === "PROCESSING"){
 						$jobStatus = "<span class=\"yellow-text\">".$rows1[$i]["jobStatus"]."</span>";
@@ -94,7 +94,7 @@ class View_jobs_controller extends CI_Controller
 				
 				$this->table->set_heading('Description','Client','Start Date','Finish Date','Status','Technician','Date Filed','Filed By','Actions');
 				
-				$query1 = $this->db->query("SELECT jobDescription, startDate, finishDate, jobStatus, clientID, adminID, dateCreated, createdByType FROM job ORDER BY dateCreated DESC, jobID DESC");
+				$query1 = $this->db->query("SELECT jobID, jobDescription, startDate, finishDate, jobStatus, clientID, adminID, dateCreated, createdByType FROM job ORDER BY dateCreated DESC, jobID DESC");
 				$rows1 = $query1->result_array();
 				$nRows1 = count($rows1);
 				
@@ -119,9 +119,9 @@ class View_jobs_controller extends CI_Controller
 					$actions = "";
 					if($rows1[$i]["jobStatus"] === "PENDING"){
 						$jobStatus = "<span class=\"blue-text\">".$rows1[$i]["jobStatus"]."</span>";
-						$actions = "<a class=\"btn-floating btn waves-effect waves-light green\"><i class=\"material-icons\">thumb_up</i></a>";
-						$actions = $actions . "&nbsp;&nbsp;<a class=\"btn-floating btn waves-effect waves-light cyan\"><i class=\"material-icons\">mode_edit</i></a>";
-						$actions = $actions . "&nbsp;&nbsp;<a class=\"btn-floating btn waves-effect waves-light red\"><i class=\"material-icons\">not_interested</i></a>";
+						if($_SESSION["type"]==="technician") $actions = "<a class=\"btn-floating btn waves-effect waves-light green\"><i class=\"material-icons\">thumb_up</i></a>&nbsp;&nbsp;";
+						$actions = $actions . "<a class=\"btn-floating btn waves-effect waves-light cyan\"><i class=\"material-icons\">mode_edit</i></a>";
+						$actions = $actions . "&nbsp;&nbsp;<a class=\"btn-floating btn waves-effect waves-light red\" onclick=\"confirmCancel(".$rows1[$i]["jobID"].");\"><i class=\"material-icons\">not_interested</i></a>";
 					}
 					else if($rows1[$i]["jobStatus"] === "PROCESSING"){
 						$jobStatus = "<span class=\"yellow-text\">".$rows1[$i]["jobStatus"]."</span>";
