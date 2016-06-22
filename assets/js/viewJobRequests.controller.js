@@ -10,14 +10,18 @@ $('document').ready(
 job_ID = 0;
 
 function confirmCancel(jobID){
-	$("#cancelModal").openModal();
+	$("#cancelModal").openModal({dismissible:false});
 	job_ID = jobID;
 }
 
 function cancelJob(url){
-	console.log(job_ID);
 	$("#cancelModal").closeModal();
+	$.post(url+"cancel_job",{jobID:job_ID},function(data){
+		if(data==="Job canceled"){
+			$("#jobCanceledModal").openModal({dismissible:false});
+		}
+	});
 }
-
-
-
+function reloadPage(url){
+	window.location.href = url+"view_jobs";
+}
