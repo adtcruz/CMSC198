@@ -7,6 +7,7 @@ class BillForPayment_controller extends CI_Controller
 	{
 		parent::__construct ();
 		session_start ();
+
 	}
 
 	// index function
@@ -33,6 +34,7 @@ class BillForPayment_controller extends CI_Controller
 			
 			// output the pdf then download
 			$this->m_pdf->pdf->Output(); // add $pdfFilePath and "D" as parameters download automatically*/
+
 		}
 	}
 }

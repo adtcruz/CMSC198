@@ -7,7 +7,7 @@
 		</p>
 	</div>
 	<ul class="center-align">
-		<li id="homeButton"><a id="homeItem" class="black-text" href="<?php echo base_url();?>">HOME</a></li>
+		<li id="homeButton"><a id="homeItem" class="black-text" href="<?php echo base_url();?>"><i class="material-icons">store</i> HOME</a></li>
 		<?php
 		if($_SESSION["type"] === "client") $this->load->view('Client_menu');
 		if($_SESSION["type"] === "technician") $this->load->view('Admin_menu');
