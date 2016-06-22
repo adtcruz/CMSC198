@@ -1,0 +1,9 @@
+$('document').ready(
+	function(){
+		$("#genBillButton").addClass("light-blue");
+		$("#genBillButton").addClass("darken-4");
+		$("#gnrtBlItem").removeClass("black-text");
+		$("#gnrtBlItem").addClass("white-text");
+		$('select').material_select();
+	}
+);
