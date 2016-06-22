@@ -8,6 +8,8 @@ $('document').ready(
 	}
 );
 
+//php passes the base url via onchange value/function call in the document
+//javascript function handling the login
 function getUsers(url){
 	officeID = $("#office-selector").val();
 	if (officeID===""){
@@ -22,22 +24,61 @@ function getUsers(url){
 	});
 }
 
+//php passes the base url via onclick value/function call in the document
+//javascript function handling the login
 function fileJobRequest(url){
+
+	//gets the jobDescription/problemsEncountered field value
 	jobDesc = problemsEncountered.value;
+	//do not proceed to AJAX if the jobDescription is blank or empty
 	if (jobDesc==="") return;
+	
+	//jQuery GET communication
+	//communicates to the API
+	//first argument is the API URL
+	//second argument is an anonymous function that handles the event
+	//this gets the user type
 	$.get(url+"get_user_type", function(data){
+	
+		//if the user is a client
 		if(data==="client"){
+		
+			//jQuery post communication
+			//communicates to the API
+			//first argument is the API URL
+			//second argument is the JSON format of the key-value pairs to be sent
+			//third argument is an anonymous function that handles the event 
 			$.post(url+"submit_request",{jobDescription:jobDesc},function(data){
+			
+				//if the data received is "Submitted"
+				//reset the jobDescription/problemsEncountered field
+				//tell the user that their job request was filed
+				//utilises Materialize CSS's toast
 				if(data==="Submitted"){
 					problemsEncountered.value = "";
 					Materialize.toast("Job Request filed", 3000);
 				}
 			});
 		}
-		else if(data === "technician"){
+		
+		//if the user in session is either an admin, superadmin, or technician
+		else if((data === "technician")||(data === "admin")||(data === "superadmin")){
+			//gets the client username from the clients selector value
 			clientUname = $("#clients-selector").val();
+			//if it's a blank value, do not proceed to AJAX
 			if(clientUname === "") return;
+			
+			//jQuery post communication
+			//communicates to the API
+			//first argument is the API URL
+			//second argument is the JSON format of the key-value pairs to be sent
+			//third argument is an anonymous function that handles the event
 			$.post(url+"submit_request",{jobDescription:jobDesc,clientUsername:clientUname},function(data){
+				
+				//if the data received is "Submitted"
+				//reset the input fields
+				//tell the user that their job request was filed
+				//utilises Materialize CSS's toast
 				if(data==="Submitted"){
 					problemsEncountered.value = "";
 					$("#office-selector").val("");
@@ -46,10 +87,6 @@ function fileJobRequest(url){
 					Materialize.toast("Job Request filed", 3000);
 				}
 			});
-		}
-		else if(data === "admin"){
-		}
-		else if(data === "superadmin"){
 		}
 	});
 }

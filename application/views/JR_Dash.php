@@ -1,7 +1,3 @@
-<?php
-	$arguments = "'".base_url()."','".$_SESSION["username"]."','".$_SESSION["type"]."'";
-?>
-
 <div class="row">
 	<?php $this->load->view('Sidenav');?>
 	<div id="navarea" class="col s3 m3 l3 section"><br/><br/></div>
@@ -24,7 +20,7 @@
 					<label for="problemsEncountered">Problems encountered</label>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield" align="right">
-					<a class="btn waves-effect waves-light red" onclick="fileJobRequest(<?php echo $arguments;?>);">
+					<a class="btn waves-effect waves-light red" onclick="fileJobRequest('<?php echo base_url();?>');">
 						Submit<i class="material-icons right">send</i>
 					</a>
 				</div>
