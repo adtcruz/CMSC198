@@ -33,4 +33,5 @@
 			<a class="waves-effect waves-light btn btn-large blue darken-4" onclick="reloadPage('<?php echo base_url();?>');">OK</a>
 		</div>
 	</div>
+	<?php if(($_SESSION["type"]=="admin")||($_SESSION["type"]=="superadmin")) $this->load->view('Assign_technician_modal'); ?>
 </div>

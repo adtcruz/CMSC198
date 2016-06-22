@@ -22,6 +22,21 @@ function cancelJob(url){
 		}
 	});
 }
+
 function reloadPage(url){
 	window.location.href = url+"view_jobs";
+}
+
+function openAssignModal(url,jobID){
+	$("#assignTechnicians").openModal({dismissible:false});
+	job_ID = jobID;
+	$.get(url+"get_technicians/",function(data){
+		$("#technicianSelect").html(data);
+		$("#technicianSelect").material_select();
+	});
+}
+
+function closeAssignModal(){
+	$("#technicianSelect").html("");
+	$("#assignTechnicians").closeModal();
 }
