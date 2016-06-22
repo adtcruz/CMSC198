@@ -120,8 +120,6 @@ class View_jobs_controller extends CI_Controller
 					if($rows1[$i]["jobStatus"] === "PENDING"){
 						$jobStatus = "<span class=\"blue-text\">".$rows1[$i]["jobStatus"]."</span>";
 						if($_SESSION["type"]==="technician") $actions = "<a class=\"btn-floating btn waves-effect waves-light green\"><i class=\"material-icons\">thumb_up</i></a>&nbsp;&nbsp;";
-						$actions = $actions . "<a class=\"btn-floating btn waves-effect waves-light cyan\"><i class=\"material-icons\">mode_edit</i></a>";
-						$actions = $actions . "&nbsp;&nbsp;<a class=\"btn-floating btn waves-effect waves-light red\" onclick=\"confirmCancel(".$rows1[$i]["jobID"].");\"><i class=\"material-icons\">not_interested</i></a>";
 					}
 					else if($rows1[$i]["jobStatus"] === "PROCESSING"){
 						$jobStatus = "<span class=\"orange-text\">".$rows1[$i]["jobStatus"]."</span>";
@@ -156,6 +154,14 @@ class View_jobs_controller extends CI_Controller
 						$rows2 = $query2->result_array();
 				
 						$filedBy = $rows2[0]["givenName"]." ".$rows2[0]["lastName"];
+						
+						$query2 = $this->db->query("SELECT adminID FROM adminAcc WHERE username='".$_SESSION["username"]."'");
+						$rows2 = $query2->result_array();
+						
+						if($rows1[$i]["createdBy"] == $rows2[0]["adminID"]){
+							$actions = $actions . "<a class=\"btn-floating btn waves-effect waves-light cyan\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
+							$actions = $actions . "<a class=\"btn-floating btn waves-effect waves-light red\" onclick=\"confirmCancel(".$rows1[$i]["jobID"].");\"><i class=\"material-icons\">not_interested</i></a>";
+						}
 					}
 					else if ($rows1[$i]["createdByType"] === "superadmin"){
 						$query2 = $this->db->query("SELECT givenName, lastName FROM superAdmin WHERE superAdminID=".$rows1[$i]["createdBy"]."");
