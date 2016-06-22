@@ -50,8 +50,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['new_request'] = 'File_JR_controller';
+$route['schedule'] = 'Schedule_controller';
 $route['view_jobs'] = 'View_jobs_controller';
 $route['topdf_bfp'] = 'BillForPayment_controller';
+$route['generate_bill'] = 'GenerateBill_controller';
 $route['submit_request'] = 'FileJobRequest';
 $route['topdf_jrf'] = 'JobRequestForm_controller';
 $route['login'] = 'Login';
