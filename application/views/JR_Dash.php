@@ -29,5 +29,14 @@
 			</form>
 			<div class="col s1 m1 l1">&nbsp;</div>
 		</div>
+		<div id="submittedMessage" class="modal">
+			<div class="row">
+				<br/>
+				<h5 class="center-align">Job Request filed.</h5>
+			</div>
+			<div class="row center-align">
+				<a class="waves-effect waves-light btn btn-large blue darken-4" onclick="$('#submittedMessage').closeModal();">OK</a>
+			</div>
+		</div>
 	</div>
 </div>
