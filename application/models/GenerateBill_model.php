@@ -12,7 +12,7 @@ class GenerateBill_model extends CI_Model
 
 	public function getData ()
 	{
-		$query = $this->db->query ('SELECT job.jobID, client.givenName, client.lastName FROM client, job WHERE job.jobStatus=\'PROCESSED\'');
+		$query = $this->db->query ('SELECT job.jobID, client.givenName, client.lastName FROM client, job WHERE job.jobStatus=\'PROCESSED\' AND job.clientID = client.clientID');
 		$db_data['generateBill_array'] = $query->result_array ();
 		return $db_data;
 	}

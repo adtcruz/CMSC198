@@ -15,7 +15,7 @@
 							'table_open' => '<table class="bordered">'
 						);
 					$this->table->set_template ($template);
-					$this->table->set_heading ('Job ID', 'Client Name');
+					$this->table->set_heading ('Job ID', 'Client Name', 'Generate Bill');
 					
 					$button = array(
 							'data' => '<a href="topdf_bfp" class="waves-effect waves-light btn"><i class="material-icons left">credit_card</i>Generate</a>'
