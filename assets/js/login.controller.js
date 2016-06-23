@@ -2,7 +2,7 @@ $(document).ready(
 	function(){
 		if(!($('body').hasClass('grey')&&$('body').hasClass('darken-4'))){
 			$('body').addClass('grey');
-			$('body').addClass('darken-3');
+			$('body').addClass('darken-4');
 		}
 	}
 );

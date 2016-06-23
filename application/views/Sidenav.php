@@ -1,5 +1,5 @@
 <!-- SIDENAV -->
-<div class="col s3 m3 l3 side-nav fixed grey darken-3 white-text">
+<div class="col s3 m3 l3 side-nav fixed grey darken-4 white-text">
 	<div id="logo-container" class="center-align">
 		<p>
 			<h3>ITC Billing System</h3>
@@ -7,7 +7,7 @@
 		</p>
 	</div>
 	<ul class="center-align">
-		<li id="homeButton"><a id="homeItem" class="white-text" href="<?php echo base_url();?>"><i class="material-icons">store</i> HOME</a></li>
+		<li id="homeButton"><a id="homeItem" class="waves-effect waves-light white-text" href="<?php echo base_url();?>"><i class="material-icons prefix">store</i>HOME</a></li>
 		<?php
 		if($_SESSION["type"] === "client") $this->load->view('Client_menu');
 		if($_SESSION["type"] === "technician") $this->load->view('Admin_menu');
