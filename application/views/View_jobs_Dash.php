@@ -12,6 +12,25 @@
 			<?php echo $table;?>
 		</div>
 	</div>
+	<div id="editJobModal" class="modal">
+		<div class="row">
+			<br/>
+			<h5 class="center-align">Edit Job Request</h5>
+			<div class="col s1 m1 l1">&nbsp;</div>
+			<div class="input-field col s10 m10 l10">
+				<i class="material-icons large prefix">assignment_late</i>
+				<textarea id="problemsEncountered" name="problemsEncountered"class="materialize-textarea"></textarea>
+				<label for="problemsEncountered">Problems encountered</label>
+			</div>
+			<div class="col s1 m1 l1">&nbsp;</div>
+			<div class="col s12 m12 l12 center-align">
+				<a class="waves-effect waves-light btn btn-large red darken-4">Edit</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="waves-effect waves-light btn btn-large blue" onclick="$('#editJobModal').closeModal();">Cancel</a>
+			</div>
+		</div>
+
+	</div>
 	<div id="cancelModal" class="modal">
 		<div class="modal-content">
 			<div class="row">
