@@ -6,7 +6,7 @@
 			<div class="col s1 m1 l1">&nbsp;</div>
 			<form autocomplete="off" class="col s10 m10 l10">
 				<br/>
-				<h3>File a Job Request</h3>
+				<h3 class="center-align">File a Job Request</h3>
 				<br/>
 				<?php
 				if(($_SESSION["type"]==="technician")||($_SESSION["type"]==="admin")||($_SESSION["type"]==="superadmin")){

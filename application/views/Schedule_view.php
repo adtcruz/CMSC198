@@ -7,7 +7,7 @@
 			<div class="col s1 m1 l1" background>&nbsp;</div>
 			<form autocomplete="off" class="col s10 m10 l10">
 				<br/>
-				<h3>Schedule</h3>
+				<h3 class="center-align">Schedule</h3>
 				<br/>
 					<?php
 					$this->load->library ('table');
