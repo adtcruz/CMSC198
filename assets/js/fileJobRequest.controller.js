@@ -1,9 +1,6 @@
 $('document').ready(
 	function(){
-		$("#fileJRButton").addClass("light-blue");
-		$("#fileJRButton").addClass("darken-4");
-		$("#fileJRItem").removeClass("black-text");
-		$("#fileJRItem").addClass("white-text");
+		$("#fileJRButton").addClass("black");
 		$('select').material_select();
 	}
 );

@@ -1,5 +1,5 @@
 <!-- SIDENAV -->
-<div class="col s3 m3 l3 side-nav fixed light-blue lighten-1">
+<div class="col s3 m3 l3 side-nav fixed grey darken-3 white-text">
 	<div id="logo-container" class="center-align">
 		<p>
 			<h3>ITC Billing System</h3>
@@ -7,12 +7,12 @@
 		</p>
 	</div>
 	<ul class="center-align">
-		<li id="homeButton"><a id="homeItem" class="black-text" href="<?php echo base_url();?>"><i class="material-icons">store</i> HOME</a></li>
+		<li id="homeButton"><a id="homeItem" class="white-text" href="<?php echo base_url();?>"><i class="material-icons">store</i> HOME</a></li>
 		<?php
 		if($_SESSION["type"] === "client") $this->load->view('Client_menu');
 		if($_SESSION["type"] === "technician") $this->load->view('Admin_menu');
 		if($_SESSION["type"] === "admin") $this->load->view('Admin_menu');
 		?>
-		<li><a class="waves-effect waves-light btn light-blue darken-4 center-align white-text" onclick="logOut('<?php echo base_url();?>');">LOG OUT</a></li>
+		<li><a class="waves-effect waves-light btn red darken-4 center-align white-text" onclick="logOut('<?php echo base_url();?>');">LOG OUT</a></li>
 	</ul>
 </div>

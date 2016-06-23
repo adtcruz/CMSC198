@@ -1,9 +1,6 @@
 $('document').ready(
 	function(){
-		$("#genBillButton").addClass("light-blue");
-		$("#genBillButton").addClass("darken-4");
-		$("#gnrtBlItem").removeClass("black-text");
-		$("#gnrtBlItem").addClass("white-text");
+		$("#genBillButton").addClass("black");
 		$('select').material_select();
 	}
 );

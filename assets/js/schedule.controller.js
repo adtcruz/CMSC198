@@ -1,9 +1,6 @@
 $('document').ready(
 	function(){
-		$("#viewSchedButton").addClass("light-blue");
-		$("#viewSchedButton").addClass("darken-4");
-		$("#viewSchedItem").removeClass("black-text");
-		$("#viewSchedItem").addClass("white-text");
+		$("#viewSchedButton").addClass("black");
 		$('select').material_select();
 	}
 );

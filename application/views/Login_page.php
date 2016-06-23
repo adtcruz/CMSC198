@@ -1,4 +1,4 @@
-<div class="light-blue lighten-1">
+<div class="grey darken-3">
 	<br/>
 	<div class="container">
 		<br/>
@@ -26,7 +26,7 @@
 					<div class="col s1 m1 l1">&nbsp;</div>
 				</div>
 				<div class="row center-align">
-					<a class="waves-effect waves-light btn blue" onclick="logIn('<?php echo base_url();?>');">Log-In&nbsp;<i class="material-icons right">lock_open</i></a>
+					<a class="waves-effect waves-light btn green darken-4" onclick="logIn('<?php echo base_url();?>');">Log-In&nbsp;<i class="material-icons right">lock_open</i></a>
 				</div>
 				<br/>
 			</div>
