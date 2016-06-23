@@ -5,29 +5,51 @@ class Add_to_schedule_controller extends CI_Controller
 {
 	public function index ()
 	{
+		//access this from jQuery POST
+		//POST fields should be
+		//jobID -- jobID of the job to be added to schedule
+		//scheduleDate -- the date of the schedule
+
 		session_start();
+
+		//checks if the type array key exists in SESSION
+		//if it exists, it means that there is a user in session
 		if(array_key_exists("type",$_SESSION)){
+
+			//checks if the user in session is either a technician, admin, or super admin
 			if(($_SESSION["type"]==="technician")||($_SESSION["type"]==="admin")||($_SESSION["type"]==="superadmin")){
 
-				//checks if jobID array key exists in post
-			  if(array_key_exists("jobID",$_POST)){
+				//checks if scheduleDate array key exists in POST
+				if(array_key_exists("scheduleDate",$_POST)){
+					//checks if jobID array key exists in POST
+				  if(array_key_exists("jobID",$_POST)){
 
-					//loads Code Igniter database module
-					$this->load->database();
+						//loads Code Igniter database module
+						$this->load->database();
 
-					if(($_SESSION["type"]==="technician")||($_SESSION["type"]==="admin")) $adminID = $this->db->query("SELECT adminID FROM adminAcc WHERE username='".$_SESSION["username"]."'")->result_array()[0]["adminID"];
-					if($_SESSION["type"]==="superadmin") $adminID = $this->db->query("SELECT superAdminID FROM superAdmin WHERE username='".$_SESSION["username"]."'")->result_array()[0]["superAdminID"];
+						//checks if the
+						if($_POST["scheduleDate"] < $this->db->query("SELECT curdate()")->result_array()[0]["curdate()"]){
+							echo "Invalid date";
+						}
 
-					//inserts job to schedule
-					$this->db->query("INSERT INTO schedule(jobID,dateCreated,createdBy,createdByType) VALUES (".$_POST["jobID"].",CURDATE(),".$adminID.",'admin')");
+						$createdBy = 0;
+						if(($_SESSION["type"]==="technician")||($_SESSION["type"]==="admin")) $createdBy = $this->db->query("SELECT adminID FROM adminAcc WHERE username='".$_SESSION["username"]."'")->result_array()[0]["adminID"];
+						if($_SESSION["type"]==="superadmin") $createdBy = $this->db->query("SELECT superAdminID FROM superAdmin WHERE username='".$_SESSION["username"]."'")->result_array()[0]["superAdminID"];
 
-					if(count($this->db->query("SELECT jobID, adminID FROM job WHERE adminID=".$_POST["technicianID"]." AND jobID=".$_POST["jobID"]."")->result_array())==1){
-						echo "Added";
-					}
-					else{
-						echo "Can not add";
-					}
-        }
+						//inserts job to schedule
+						$this->db->query("INSERT INTO schedule(jobID,dateScheduled,dateCreated,createdBy,createdByType) VALUES (".$_POST["jobID"].",".$_POST["scheduleDate"].",CURDATE(),".$createdBy.",'".$_SESSION["type"]."')");
+						//sets jobStatus to PROCESSING and the startDate from scheduleDate
+						$this->db->query("UPDATE job SET jobStatus='PROCESSING', startDate='".$_POST["scheduleDate"]."', finishDate=NULL WHERE jobID=".$_POST["jobID"]."");
+
+						if(count($this->db->query("SELECT jobID FROM schedule WHERE jobID=".$_POST["jobID"]."")->result_array())==1){
+							echo "Added";
+						}
+
+						else{
+							echo "Can not add";
+						}
+	        }
+			}
 			}
 		}
 		else {
