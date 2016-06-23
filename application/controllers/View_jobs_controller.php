@@ -18,7 +18,7 @@ class View_jobs_controller extends CI_Controller
 				$this->load->database();
 
 				//table heading
-				$this->table->set_heading("Description","Start Date","Finish Date","Status","Techinician","Date Filed","Actions");
+				$this->table->set_heading("Description","Start Date","Finish Date","Status","Date Filed","Actions");
 
 				//queries the database for the client ID of the user in session
 				$query = $this->db->query("SELECT clientID FROM client WHERE username='".$_SESSION["username"]."'");
@@ -70,19 +70,10 @@ class View_jobs_controller extends CI_Controller
 						$jobStatus = "<span class=\"green-text\">".$rows1[$i]["jobStatus"]."</span>";
 					}
 
-					$technicianName = "";
-					//assigned technician column entry
-					if($rows1[$i]["adminID"] !== NULL){
-						$query2 = $this->db->query("SELECT givenName, lastName FROM adminAcc WHERE adminID=".$rows1[$i]["adminID"]);
-						$rows2 = $query2->result_array();
-
-						$technicianName = $tabl.$rows2[0]["givenName"]." ".$rows2[0]["lastName"];
-					}
-
 					//date filed column entry
 					$dateFiled = date("F d, Y", strtotime($rows1[$i]["dateCreated"]));
 
-					$this->table->add_row($rows1[$i]["jobDescription"],$startDate,$finishDate,$jobStatus,$technicianName,$dateFiled,$actions);
+					$this->table->add_row($rows1[$i]["jobDescription"],$startDate,$finishDate,$jobStatus,$dateFiled,$actions);
 				}
 
 			}
@@ -92,7 +83,7 @@ class View_jobs_controller extends CI_Controller
 				//loads Code Igniter database module
 				$this->load->database();
 
-				$this->table->set_heading('Description','Client','Start Date','Finish Date','Status','Technician','Date Filed','Filed By','Actions');
+				$this->table->set_heading('Description','Client','Start Date','Finish Date','Status','Date Filed','Filed By','Actions');
 
 				$query1 = $this->db->query("SELECT jobID, jobDescription, startDate, finishDate, jobStatus, clientID, adminID, dateCreated, createdBy, createdByType FROM job ORDER BY dateCreated DESC, jobID DESC");
 				$rows1 = $query1->result_array();
@@ -131,14 +122,6 @@ class View_jobs_controller extends CI_Controller
 						$jobStatus = "<span class=\"green-text\">".$rows1[$i]["jobStatus"]."</span>";
 					}
 
-					$technicianName = "";
-					if($rows1[$i]["adminID"] !== NULL){
-						$query2 = $this->db->query("SELECT givenName, lastName FROM adminAcc WHERE adminID=".$rows1[$i]["adminID"]);
-						$rows2 = $query2->result_array();
-
-						$technicianName = $rows2[0]["givenName"]." ".$rows2[0]["lastName"];
-					}
-
 					$dateFiled = date("F d, Y", strtotime($rows1[$i]["dateCreated"]));
 
 					$filedBy = "";
@@ -170,7 +153,7 @@ class View_jobs_controller extends CI_Controller
 						$filedBy = $rows2[0]["givenName"]." ".$rows2[0]["lastName"];
 					}
 
-					$this->table->add_row($rows1[$i]["jobDescription"],$clientName,$startDate,$finishDate,$jobStatus,$technicianName,$dateFiled,$filedBy,$actions);
+					$this->table->add_row($rows1[$i]["jobDescription"],$clientName,$startDate,$finishDate,$jobStatus,$dateFiled,$filedBy,$actions);
 
 				}
 			}
