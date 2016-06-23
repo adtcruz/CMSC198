@@ -4,4 +4,4 @@ mysql -ucmsc198user -pZNBhSKChnoTds < sample_users.sql
 mysql -ucmsc198user -pZNBhSKChnoTds < sample_jobs.sql
 mysql -ucmsc198user -pZNBhSKChnoTds < sample_materials.sql
 #mysql -ucmsc198user -pZNBhSKChnoTds < sample_finished_job.sql
-mysql -ucmsc198user -pZNBhSKChnoTds < sample_schedule.sql
+#mysql -ucmsc198user -pZNBhSKChnoTds < sample_schedule.sql
