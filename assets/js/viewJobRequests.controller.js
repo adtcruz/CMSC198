@@ -5,6 +5,8 @@ $('document').ready(
 );
 
 job_ID = 0;
+new_job_description = "";
+old_job_description = "";
 
 function confirmCancel(jobID){
 	$("#cancelModal").openModal({dismissible:false});
@@ -46,4 +48,18 @@ function assignTechnician(url){
 			$("#technicianAssignedModal").openModal({dismissible:false});
 		}
 	});
+}
+
+function openEditModal(jobID){
+	job_ID = jobID;
+	$("#editJobModal").openModal({dismissible:false});
+}
+
+function confirmEditJob(){
+	$("#editJobModal").closeModal();
+	$("#confirmEditModal").openModal({dismissible:false});
+}
+
+function editJob(url){
+	$("#confirmEditModal").closeModal();
 }

@@ -24,12 +24,24 @@
 			</div>
 			<div class="col s1 m1 l1">&nbsp;</div>
 			<div class="col s12 m12 l12 center-align">
-				<a class="waves-effect waves-light btn btn-large red darken-4">Edit</a>
+				<a class="waves-effect waves-light btn btn-large red darken-4" onclick="confirmEditJob();">Edit</a>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a class="waves-effect waves-light btn btn-large blue" onclick="$('#editJobModal').closeModal();">Cancel</a>
 			</div>
 		</div>
 
+	</div>
+	<div id="confirmEditModal" class="modal">
+		<div class="modal-content">
+			<div class="row">
+				<h5 class="center-align">Are you sure you want to edit this Job Request?</h5>
+			</div>
+			<div class="row center-align">
+				<a class="waves-effect waves-light btn btn-large red darken-4" onclick="editJob('<php echo base_url();?>')">Yes</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="waves-effect waves-light btn btn-large blue" onclick="$('#confirmEditModal').closeModal();">No</a>
+			</div>
+		</div>
 	</div>
 	<div id="cancelModal" class="modal">
 		<div class="modal-content">
