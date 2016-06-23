@@ -26,17 +26,31 @@ function reloadPage(url){
 	window.location.href = url+"view_jobs";
 }
 
-function openAddToSched(jobID){
-	$("#addToScheduleModal").openModal({dismissible:false});
+function openAddToSched(url,jobID){
+	$('.tooltipped').tooltip('remove');
+	$.get(url+"get_add_to_schedule_form",function(data){
+		$("#mainAppArea").html(data);
+		$('.datepicker').pickadate({
+			selectMonths: true, // Creates a dropdown to control month
+			selectYears: 30, // Creates a dropdown of 30 years to control year
+			format: 'yyyy-mm-dd'
+		});
+	});
 	job_ID = jobID;
 }
 
 function addToSchedule(url){
-	technician_ID = $("#technicianSelect").val();
-	$.post(url+"assign_technician",{technicianID:technician_ID,jobID:job_ID},function(data){
-		if(data==="Assigned"){
+	schedule_date = $("#scheduleDate").val();
+	$.post(url+"add_to_schedule",{jobID:job_ID,scheduleDate:schedule_date},function(data){
+		if(data==="Added"){
 			$("#addToScheduleModal").closeModal();
 			$("#addedToScheduleModal").openModal({dismissible:false});
+		}
+		if(data==="Invalid date"){
+
+		}
+		if(data==="Can not add"){
+
 		}
 	});
 }
