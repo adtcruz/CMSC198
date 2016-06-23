@@ -64,7 +64,7 @@ class Cancel_job_controller extends CI_Controller
       }
     }
 
-    //clients can only cancel jobs that are assigned to them
+    //clients can only cancel jobs that are filed under their name
     if($_SESSION["type"] == "client"){
 
       //queries the database for the user's clientID
@@ -74,7 +74,7 @@ class Cancel_job_controller extends CI_Controller
       //saves the user's client ID
       $clientID = $rows[0]["clientID"];
 
-      $this->db->query("UPDATE job SET jobStatus='CANCELED' WHERE jobID=".$_POST["jobID"]." AND clientID=".$clientID."");
+      $this->db->query("UPDATE job SET jobStatus='CANCELED' WHERE jobID=".$_POST["jobID"]." AND clientID=".$clientID." AND jobStatus='PENDING'");
 
       if($this->db->query("SELECT jobStatus FROM job WHERE jobID=".$_POST["jobID"]."")->result_array()[0]["jobStatus"] == "CANCELED"){
         echo "Job canceled";
