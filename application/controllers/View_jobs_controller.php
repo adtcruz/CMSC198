@@ -57,8 +57,8 @@ class View_jobs_controller extends CI_Controller
 					//job status column entry
 					if($rows1[$i]["jobStatus"] === "PENDING"){
 						$jobStatus = "<span class=\"blue-text\">".$rows1[$i]["jobStatus"]."</span>";
-						$actions = "<a class=\"btn-floating btn waves-effect waves-light cyan\"><i class=\"material-icons\">mode_edit</i></a>";
-						$actions = $actions . "&nbsp;&nbsp;&nbsp;&nbsp;" . "<a class=\"btn-floating btn waves-effect waves-light red\" onclick=\"confirmCancel(".$rows1[$i]["jobID"].");\"><i class=\"material-icons\">not_interested</i></a>";
+						$actions = "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Request\"><i class=\"material-icons\">mode_edit</i></a>";
+						$actions = $actions . "&nbsp;&nbsp;&nbsp;&nbsp;" . "<a class=\"btn-floating btn tooltipped waves-effect waves-light red\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Cancel Job Request\" onclick=\"confirmCancel(".$rows1[$i]["jobID"].");\"><i class=\"material-icons\">not_interested</i></a>";
 					}
 					else if($rows1[$i]["jobStatus"] === "PROCESSING"){
 						$jobStatus = "<span class=\"orange-text\">".$rows1[$i]["jobStatus"]."</span>";
@@ -119,7 +119,7 @@ class View_jobs_controller extends CI_Controller
 					$actions = "";
 					if($rows1[$i]["jobStatus"] === "PENDING"){
 						$jobStatus = "<span class=\"blue-text\">".$rows1[$i]["jobStatus"]."</span>";
-						if(($_SESSION["type"]==="admin")||($_SESSION["type"]==="superadmin")) $actions = "<a class=\"btn-floating btn waves-effect waves-light green\" onclick=\"openAssignModal('".base_url()."',".$rows1[$i]["jobID"].");\"><i class=\"material-icons\">assignment_ind</i></a>&nbsp;&nbsp;";
+						if(($_SESSION["type"]==="admin")||($_SESSION["type"]==="superadmin")) $actions = "<a class=\"btn-floating btn tooltipped waves-effect waves-light green\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Assign job to a Technician\" onclick=\"openAssignModal('".base_url()."',".$rows1[$i]["jobID"].");\"><i class=\"material-icons\">assignment_ind</i></a>&nbsp;&nbsp;";
 					}
 					else if($rows1[$i]["jobStatus"] === "PROCESSING"){
 						$jobStatus = "<span class=\"orange-text\">".$rows1[$i]["jobStatus"]."</span>";
@@ -158,9 +158,9 @@ class View_jobs_controller extends CI_Controller
 						$query2 = $this->db->query("SELECT adminID FROM adminAcc WHERE username='".$_SESSION["username"]."'");
 						$rows2 = $query2->result_array();
 
-						if($rows1[$i]["createdBy"] == $rows2[0]["adminID"]){
-							$actions = $actions . "<a class=\"btn-floating btn waves-effect waves-light cyan\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
-							$actions = $actions . "<a class=\"btn-floating btn waves-effect waves-light red\" onclick=\"confirmCancel(".$rows1[$i]["jobID"].");\"><i class=\"material-icons\">not_interested</i></a>";
+						if(($rows1[$i]["createdBy"] == $rows2[0]["adminID"])&&((!$rows1[$i]["jobStatus"] === "CANCELED")||(!$rows1[$i]["jobStatus"] === "PROCESSED"))){
+							$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Request\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
+							$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light red\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Cancel Job Request\" onclick=\"confirmCancel(".$rows1[$i]["jobID"].");\"><i class=\"material-icons\">not_interested</i></a>";
 						}
 					}
 					else if ($rows1[$i]["createdByType"] === "superadmin"){
