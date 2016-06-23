@@ -15,7 +15,7 @@
 				}
 				?>
 				<div class="input-field">
-					<i class="material-icons large prefix">label_outline</i>
+					<i class="material-icons large prefix">assignment_late</i>
 					<textarea id="problemsEncountered" name="problemsEncountered"class="materialize-textarea"></textarea>
 					<label for="problemsEncountered">Problems encountered</label>
 				</div>
