@@ -15,13 +15,13 @@
 							'table_open' => '<table class="bordered">'
 						);
 					$this->table->set_template ($template);
-					$this->table->set_heading ('Priority', 'Date Created', 'Job Description', 'Submitted By');
-					
+					$this->table->set_heading ('Priority', 'Date Scheduled', 'Job Description', 'Client Name', 'Location');
+
 					foreach ($schedule_array as $row)
 					{
-						$this->table->add_row ($row['priority'], $row['dateCreated'], $row['jobDescription'], $row['givenName'].' '.$row['lastName']);
+						$this->table->add_row ($row['priority'], $row['dateCreated'], $row['jobDescription'], $row['givenName'].' '.$row['lastName'], $row['officeName']);
 					}
-					
+
 					echo $this->table->generate ();
 				?>
 				<br/>
