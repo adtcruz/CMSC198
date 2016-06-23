@@ -26,26 +26,17 @@ function reloadPage(url){
 	window.location.href = url+"view_jobs";
 }
 
-function openAssignModal(url,jobID){
-	$("#assignTechnicians").openModal({dismissible:false});
+function openAddToSched(jobID){
+	$("#addToScheduleModal").openModal({dismissible:false});
 	job_ID = jobID;
-	$.get(url+"get_technicians/",function(data){
-		$("#technicianSelect").html(data);
-		$("#technicianSelect").material_select();
-	});
 }
 
-function closeAssignModal(){
-	$("#technicianSelect").html("");
-	$("#assignTechnicians").closeModal();
-}
-
-function assignTechnician(url){
+function addToSchedule(url){
 	technician_ID = $("#technicianSelect").val();
 	$.post(url+"assign_technician",{technicianID:technician_ID,jobID:job_ID},function(data){
 		if(data==="Assigned"){
-			$("#assignTechnicians").closeModal();
-			$("#technicianAssignedModal").openModal({dismissible:false});
+			$("#addToScheduleModal").closeModal();
+			$("#addedToScheduleModal").openModal({dismissible:false});
 		}
 	});
 }

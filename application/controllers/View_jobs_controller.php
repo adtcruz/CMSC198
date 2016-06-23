@@ -119,7 +119,7 @@ class View_jobs_controller extends CI_Controller
 					$actions = "";
 					if($rows1[$i]["jobStatus"] === "PENDING"){
 						$jobStatus = "<span class=\"blue-text\">".$rows1[$i]["jobStatus"]."</span>";
-						if(($_SESSION["type"]==="admin")||($_SESSION["type"]==="superadmin")) $actions = "<a class=\"btn-floating btn tooltipped waves-effect waves-light green\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Assign job to a Technician\" onclick=\"openAssignModal('".base_url()."',".$rows1[$i]["jobID"].");\"><i class=\"material-icons\">assignment_ind</i></a>&nbsp;&nbsp;";
+						if(($_SESSION["type"]==="admin")||($_SESSION["type"]==="superadmin")) $actions = "<a class=\"btn-floating btn tooltipped waves-effect waves-light green\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Add job to schedule\" onclick=\"openAddToSched(".$rows1[$i]["jobID"].");\"><i class=\"material-icons\">assignment_ind</i></a>&nbsp;&nbsp;";
 					}
 					else if($rows1[$i]["jobStatus"] === "PROCESSING"){
 						$jobStatus = "<span class=\"orange-text\">".$rows1[$i]["jobStatus"]."</span>";

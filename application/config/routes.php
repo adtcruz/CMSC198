@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['assign_technician'] = 'Assign_technician_controller';
+$route['add_to_schedule'] = 'Add_to_schedule_controller';
 $route['cancel_job'] = 'Cancel_job_controller';
 $route['new_request'] = 'File_JR_controller';
 $route['schedule'] = 'Schedule_controller';
