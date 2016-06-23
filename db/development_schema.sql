@@ -129,7 +129,6 @@ CREATE TABLE schedule (
 	scheduleID INT NOT NULL AUTO_INCREMENT,
 	priority INT NOT NULL DEFAULT '1',
 	jobID INT NOT NULL,
-	dateScheduled DATE,
 	dateCreated DATE DEFAULT NULL,
 	createdBy INT DEFAULT NULL,
 	createdByType VARCHAR(10) NOT NULL,
