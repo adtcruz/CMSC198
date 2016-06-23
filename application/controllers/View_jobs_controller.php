@@ -48,7 +48,7 @@ class View_jobs_controller extends CI_Controller
 
 					$finishDate = "";
 					//finish date column entry
-					if($rows1[$i]["startDate"] !== NULL){
+					if($rows1[$i]["finishDate"] !== NULL){
 						$finishDate = date("F d, Y", strtotime($rows1[$i]["finishDate"]));
 					}
 
@@ -111,7 +111,7 @@ class View_jobs_controller extends CI_Controller
 					}
 
 					$finishDate = "";
-					if($rows1[$i]["startDate"] !== NULL){
+					if($rows1[$i]["finishDate"] !== NULL){
 						$finishDate = date("F d, Y", strtotime($rows1[$i]["finishDate"]));
 					}
 
@@ -119,7 +119,7 @@ class View_jobs_controller extends CI_Controller
 					$actions = "";
 					if($rows1[$i]["jobStatus"] === "PENDING"){
 						$jobStatus = "<span class=\"blue-text\">".$rows1[$i]["jobStatus"]."</span>";
-						if(($_SESSION["type"]==="admin")||($_SESSION["type"]==="superadmin")) $actions = "<a class=\"btn-floating btn tooltipped waves-effect waves-light green\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Add job to schedule\" onclick=\"openAddToSched(".$rows1[$i]["jobID"].");\"><i class=\"material-icons\">assignment_ind</i></a>&nbsp;&nbsp;";
+						if(($_SESSION["type"]==="technician")||($_SESSION["type"]==="admin")||($_SESSION["type"]==="superadmin")) $actions = "<a class=\"btn-floating btn tooltipped waves-effect waves-light green\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Add job to schedule\" onclick=\"openAddToSched('".base_url()."',".$rows1[$i]["jobID"].");\"><i class=\"material-icons\">assignment</i></a>&nbsp;&nbsp;";
 					}
 					else if($rows1[$i]["jobStatus"] === "PROCESSING"){
 						$jobStatus = "<span class=\"orange-text\">".$rows1[$i]["jobStatus"]."</span>";
