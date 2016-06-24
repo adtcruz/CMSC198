@@ -38,6 +38,12 @@ class View_jobs_controller extends CI_Controller
 
 				$nRows1 = count($rows1);
 
+				if($nRows1 == 0){
+					$tabl = "<h5 class=\"center-align\">Sorry, there are no job requests at the moment.</h5>";
+					$this->load->view('View_jobs_view', array('table' => $tabl));
+					return;
+				}
+
 				for ($i = 0; $i < $nRows1; $i++){
 
 					$startDate = "";
@@ -88,6 +94,12 @@ class View_jobs_controller extends CI_Controller
 				$query1 = $this->db->query("SELECT jobID, jobDescription, startDate, finishDate, jobStatus, clientID, adminID, dateCreated, createdBy, createdByType FROM job ORDER BY dateCreated DESC, jobID DESC");
 				$rows1 = $query1->result_array();
 				$nRows1 = count($rows1);
+
+				if($nRows1 == 0){
+					$tabl = "<h5 class=\"center-align\">Sorry, there are no job requests at the moment.</h5>";
+					$this->load->view('View_jobs_view', array('table' => $tabl));
+					return;
+				}
 
 				for ($i = 0; $i < $nRows1; $i++){
 
