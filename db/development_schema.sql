@@ -137,3 +137,11 @@ CREATE TABLE schedule (
 	PRIMARY KEY(scheduleID),
 	FOREIGN KEY(jobID) REFERENCES job(jobID)
 );
+
+-- 'USERLOGS' table
+DROP TABLE IF EXISTS userLogs;
+CREATE TABLE user_logs(
+	logID INT NOT NULL AUTO_INCREMENT,
+	logText VARCHAR(128) NOT NULL,
+	logTimestamp TIMESTAMP NOT NULL
+);
