@@ -33,6 +33,8 @@ class Cancel_job_controller extends CI_Controller
       $this->db->query("UPDATE job SET jobStatus='CANCELED' WHERE jobID=".$_POST["jobID"]."");
 
       if($this->db->query("SELECT jobStatus FROM job WHERE jobID=".$_POST["jobID"]."")->result_array()[0]["jobStatus"] == "CANCELED"){
+				//log this action into USERLOGS
+				$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES('".$_SESSION["username"]." canceled jodID #".$_POST["jobID"]."',CURRENT_TIMESTAMP)");
         echo "Job canceled";
         return;
       }
@@ -55,6 +57,8 @@ class Cancel_job_controller extends CI_Controller
       $this->db->query("UPDATE job SET jobStatus='CANCELED' WHERE jobID=".$_POST["jobID"]." AND createdBy=".$adminID."");
 
       if($this->db->query("SELECT jobStatus FROM job WHERE jobID=".$_POST["jobID"]."")->result_array()[0]["jobStatus"] == "CANCELED"){
+				//log this action into USERLOGS
+				$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES('".$_SESSION["username"]." canceled jodID #".$_POST["jobID"]."',CURRENT_TIMESTAMP)");
         echo "Job canceled";
         return;
       }
@@ -77,6 +81,8 @@ class Cancel_job_controller extends CI_Controller
       $this->db->query("UPDATE job SET jobStatus='CANCELED' WHERE jobID=".$_POST["jobID"]." AND clientID=".$clientID." AND jobStatus='PENDING'");
 
       if($this->db->query("SELECT jobStatus FROM job WHERE jobID=".$_POST["jobID"]."")->result_array()[0]["jobStatus"] == "CANCELED"){
+				//log this action into USERLOGS
+				$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES('".$_SESSION["username"]." canceled jodID #".$_POST["jobID"]."',CURRENT_TIMESTAMP)");
         echo "Job canceled";
         return;
       }
