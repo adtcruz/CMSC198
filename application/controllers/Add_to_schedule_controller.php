@@ -30,6 +30,7 @@ class Add_to_schedule_controller extends CI_Controller
 						//checks if the
 						if($_POST["scheduleDate"] < $this->db->query("SELECT curdate()")->result_array()[0]["curdate()"]){
 							echo "Invalid date";
+							return;
 						}
 
 						$createdBy = 0;
