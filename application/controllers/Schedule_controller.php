@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-	
+
 class Schedule_controller extends CI_Controller
 {
 	public function __construct ()
@@ -18,8 +18,8 @@ class Schedule_controller extends CI_Controller
 	public function index ()
 	{
 		$db_data = $this->sm->getData ();
-	
-		$this->load->view ('Sched_view', $db_data);
+
+		$this->load->view ('Schedule_view', $db_data);
 	}
 }
 
