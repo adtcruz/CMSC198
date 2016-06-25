@@ -13,6 +13,7 @@
 		if($_SESSION["type"] === "technician") $this->load->view('Admin_menu');
 		if($_SESSION["type"] === "admin") $this->load->view('Admin_menu');
 		?>
+		<li id="myAccountButton"><a id="myAccountItem" class="waves-effect waves-light white-text" href="<?php echo base_url();?>my_account">My Account</a></li>
 		<li><a class="waves-effect waves-light btn red darken-4 center-align white-text" onclick="logOut('<?php echo base_url();?>');">LOG OUT</a></li>
 	</ul>
 </div>
