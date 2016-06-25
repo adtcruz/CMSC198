@@ -51,12 +51,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['add_to_schedule'] = 'Add_to_schedule_controller';
 $route['cancel_job'] = 'Cancel_job_controller';
-$route['new_request'] = 'File_JR_controller';
-$route['schedule'] = 'Schedule_controller';
-$route['view_jobs'] = 'View_jobs_controller';
+$route['new_request'] = 'New_job_request_controller';
+$route['submit_request'] = 'Submit_job_request_controller';
+$route['view_jobs'] = 'View_job_requests_controller';
+$route['vew_schedule'] = 'View_schedule_controller';
 $route['topdf_bfp'] = 'BillForPayment_controller';
 $route['generate_bill'] = 'GenerateBill_controller';
-$route['submit_request'] = 'FileJobRequest';
 $route['topdf_jrf'] = 'JobRequestForm_controller';
 $route['login'] = 'Login';
 $route['default_controller'] = 'Home_controller';
