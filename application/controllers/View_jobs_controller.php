@@ -154,7 +154,7 @@ class View_jobs_controller extends CI_Controller
 						$rows2 = $query2->result_array();
 
 						if(($rows1[$i]["createdBy"] == $rows2[0]["adminID"])&&($rows1[$i]["jobStatus"] == "PENDING")){
-							$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Request\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
+							$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Request\" onclick=\"openEditModal(".$rows1[$i]["jobID"].")\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
 							$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light red\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Cancel Job Request\" onclick=\"confirmCancel(".$rows1[$i]["jobID"].");\"><i class=\"material-icons\">not_interested</i></a>";
 						}
 					}
