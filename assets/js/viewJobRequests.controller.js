@@ -52,9 +52,10 @@ function openAddToSched(url,jobID){
 		$("#mainAppArea").html(data);
 		$('.datepicker').pickadate({
 			selectMonths: true, // Creates a dropdown to control month
-			selectYears: 30, // Creates a dropdown of 30 years to control year
+			selectYears: 1, // Creates a dropdown of 30 years to control year
 			format: 'yyyy-mm-dd'
 		});
+		$("#jobPrioritySelect").material_select();
 	});
 	job_ID = jobID; //sets the job_ID from the jobID of the selected job
 }
