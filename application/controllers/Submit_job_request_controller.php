@@ -5,7 +5,7 @@ class Submit_job_request_controller extends CI_Controller
 {
 	public function index ()
 	{
-		//accessed via (base url)/login
+		//accessed via (base url)/submit_request
 		//keys in POST should be:
 		//jobDescription - jod description or problems encountered
 		//if the user in session is either an admin, superadmin, or technician
