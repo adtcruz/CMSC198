@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class View_jobs_controller extends CI_Controller
+class View_job_requests_controller extends CI_Controller
 {
 	public function index ()
 	{

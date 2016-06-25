@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class FileJobRequest extends CI_Controller
+class Submit_job_request_controller extends CI_Controller
 {
 	public function index ()
 	{

@@ -1,6 +1,6 @@
 <?php
 
-class Schedule_model extends CI_Model
+class View_schedule_model extends CI_Model
 {
 	// constructor
 	public function __construct ()
