@@ -16,6 +16,11 @@
 					$this->table->set_template ($template);
 					$this->table->set_heading ('Job ID', 'Client Name', 'Generate Bill');
 
+					if(count($generateBill_array) == 0){
+						echo "<h5 class=\"center-align\">Sorry, there are no finished jobs at the moment.</h5>";
+						return;
+					}
+
 					$button = array(
 							'data' => '<a href="topdf_bfp" class="waves-effect waves-light btn"><i class="material-icons left">credit_card</i>Generate</a>'
 						);
