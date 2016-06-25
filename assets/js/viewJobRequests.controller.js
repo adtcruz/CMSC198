@@ -62,13 +62,15 @@ function openAddToSched(url,jobID){
 
 function addToSchedule(url){
 	schedule_date = $("#scheduleDate").val();
-	$.post(url+"add_to_schedule",{jobID:job_ID,scheduleDate:schedule_date},function(data){
+	job_priority = $("#jobPrioritySelect").val();
+	if(job_priority===null) return;
+	$.post(url+"add_to_schedule",{jobID:job_ID,scheduleDate:schedule_date,jobPriority:job_priority},function(data){
 		if(data==="Added"){
 			$("#addToScheduleModal").closeModal();
 			$("#addedToScheduleModal").openModal({dismissible:false});
 		}
 		if(data==="Invalid date"){
-
+			return;
 		}
 		if(data==="Can not add"){
 
