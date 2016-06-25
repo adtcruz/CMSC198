@@ -23,10 +23,10 @@
 
 					foreach ($schedule_array as $row)
 					{
-						if($row['priority']==1) $priorty = "Normal";
-						if($row['priority']==2) $priorty = "Urgent";
-						if($row['priority']==3) $priorty = "Very Urgent";
-						$this->table->add_row ($priorty, $row['dateCreated'], $row['jobDescription'], $row['givenName'].' '.$row['lastName'], $row['officeName'],"");
+						if($row['priority']==1) $priority = "Normal";
+						if($row['priority']==2) $priority = "Urgent";
+						if($row['priority']==3) $priority = "Very Urgent";
+						$this->table->add_row ($priority, $row['dateCreated'], $row['jobDescription'], $row['givenName'].' '.$row['lastName'], $row['officeName'],"");
 					}
 
 					echo $this->table->generate ();
