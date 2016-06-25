@@ -130,7 +130,7 @@ CREATE TABLE materials_used (
 DROP TABLE IF EXISTS schedule;
 CREATE TABLE schedule (
 	scheduleID INT NOT NULL AUTO_INCREMENT,
-	priority INT NOT NULL DEFAULT '1',
+	priority INT NOT NULL,
 	jobID INT NOT NULL,
 	dateScheduled DATE NOT NULL,
 	dateCreated DATE DEFAULT NULL,
