@@ -49,17 +49,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+
+//routes for POST API
+$route['login'] = 'Login_controller';
+$route['logout'] = 'Logout_controller';
 $route['add_to_schedule'] = 'Add_to_schedule_controller';
 $route['cancel_job'] = 'Cancel_job_controller';
-$route['new_request'] = 'New_job_request_controller';
 $route['submit_request'] = 'Submit_job_request_controller';
+
+//routes for page loads
+$route['new_request'] = 'New_job_request_controller';
 $route['view_jobs'] = 'View_job_requests_controller';
 $route['view_schedule'] = 'View_schedule_controller';
 $route['my_account'] = 'My_account_controller';
 $route['topdf_bfp'] = 'BillForPayment_controller';
 $route['generate_bill'] = 'GenerateBill_controller';
 $route['topdf_jrf'] = 'JobRequestForm_controller';
-$route['login'] = 'Login';
 $route['default_controller'] = 'Home_controller';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
