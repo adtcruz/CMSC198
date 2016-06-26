@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Add_to_schedule_controller extends CI_Controller
+class Schedule_job_controller extends CI_Controller
 {
 	public function index ()
 	{
