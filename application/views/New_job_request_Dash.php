@@ -10,8 +10,8 @@
 				<br/>
 				<?php
 				if(($_SESSION["type"]==="technician")||($_SESSION["type"]==="admin")||($_SESSION["type"]==="superadmin")){
-					$this->load->view('Office_selector');
-					$this->load->view('Clients_selector');
+					$this->load->view('New_job_request_office_selector');
+					$this->load->view('New_job_request_clients_selector');
 				}
 				?>
 				<div class="input-field">
