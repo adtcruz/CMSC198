@@ -51,7 +51,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 //routes for API
-$route['add_to_schedule'] = 'Add_to_schedule_controller';
 $route['cancel_job'] = 'Cancel_job_controller';
 $route['get_office_users'] = 'Get_office_users_controller';
 $route['get_schedule_job_form'] = 'Get_schedule_job_form_controller';
@@ -59,6 +58,7 @@ $route['get_technicians'] = 'Get_technicians_controller';
 $route['get_user_type'] = 'Get_user_type_controller';
 $route['login'] = 'Login_controller';
 $route['logout'] = 'Logout_controller';
+$route['schedule_job'] = 'Schedule_job_controller';
 $route['submit_request'] = 'Submit_job_request_controller';
 
 //routes for page loads
