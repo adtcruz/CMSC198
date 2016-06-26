@@ -25,8 +25,8 @@ class View_job_requests_controller extends CI_Controller
 				$nRows1 = count($rows1);
 
 				if($nRows1 == 0){
-					$tabl = "<h5 class=\"center-align\">Sorry, there are no job requests at the moment.</h5>";
-					$this->load->view('View_jobs_view', array('table' => $tabl));
+					$tabl = "<h5 class=\"center-align\">Sorry, there are no job requests filed under your name at the moment.</h5>";
+					$this->load->view('View_job_requests_view', array('table' => $tabl));
 					return;
 				}
 
@@ -61,7 +61,7 @@ class View_job_requests_controller extends CI_Controller
 
 				if($nRows1 == 0){
 					$tabl = "<h5 class=\"center-align\">Sorry, there are no job requests at the moment.</h5>";
-					$this->load->view('View_jobs_view', array('table' => $tabl));
+					$this->load->view('View_job_requests_view', array('table' => $tabl));
 					return;
 				}
 
