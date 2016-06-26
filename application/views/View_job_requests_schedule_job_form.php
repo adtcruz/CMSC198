@@ -1,7 +1,7 @@
 <div>
   <div class="row">
     <br/>
-    <h5 class="center-align">Add the selected job to schedule on the following date?</h5>
+    <h5 class="center-align">Schedule the selected job on the following date?</h5>
     <br/>
     <div class="col s4 m4 l4">&nbsp;</div>
     <div class="col s4 m4 l4">
