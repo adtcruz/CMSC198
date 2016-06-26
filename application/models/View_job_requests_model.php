@@ -58,7 +58,7 @@ class View_job_requests_model extends CI_Model
 		);
 		$rows = $query->result_array();
 
-		$clientName = $rows[0]["givenName"]." ".$rows[0]["lastName"];
+		return $rows[0]["givenName"]." ".$rows[0]["lastName"];
 	}
 
 	public function getFiledBy($currentRow)
