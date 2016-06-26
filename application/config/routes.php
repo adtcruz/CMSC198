@@ -50,10 +50,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-//routes for POST API
+//routes for API
 $route['login'] = 'Login_controller';
 $route['logout'] = 'Logout_controller';
 $route['add_to_schedule'] = 'Add_to_schedule_controller';
+$route['get_office_users'] = 'Get_office_users_controller';
+$route['get_technicians'] = 'Get_technicians_controller';
 $route['cancel_job'] = 'Cancel_job_controller';
 $route['submit_request'] = 'Submit_job_request_controller';
 
