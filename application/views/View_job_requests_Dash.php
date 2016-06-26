@@ -64,5 +64,5 @@
 			<a class="waves-effect waves-light btn btn-large blue darken-4" onclick="reloadPage('<?php echo base_url();?>');">OK</a>
 		</div>
 	</div>
-	<?php if(($_SESSION["type"]=="admin")||($_SESSION["type"]=="superadmin")) $this->load->view('Add_to_schedule_modal'); ?>
+	<?php if(($_SESSION["type"]=="technician")||($_SESSION["type"]=="admin")||($_SESSION["type"]=="superadmin")) $this->load->view('View_job_requests_schedule_job_modal'); ?>
 </div>

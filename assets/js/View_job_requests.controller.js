@@ -46,9 +46,9 @@ function reloadPage(url){
 //triggered when the "add to schedule" button is clicked
 //rewrites the main app area containing the Job Requests main label and table
 //with a form asking the user for the date of the schedule
-function openAddToSched(url,jobID){
+function openScheduleJob(url,jobID){
 	$('.tooltipped').tooltip('remove');
-	$.get(url+"get_add_to_schedule_form",function(data){
+	$.get(url+"get_schedule_job_form",function(data){
 		$("#mainAppArea").html(data);
 		$('.datepicker').pickadate({
 			selectMonths: true, // Creates a dropdown to control month
@@ -60,14 +60,13 @@ function openAddToSched(url,jobID){
 	job_ID = jobID; //sets the job_ID from the jobID of the selected job
 }
 
-function addToSchedule(url){
+function scheduleJob(url){
 	schedule_date = $("#scheduleDate").val();
 	job_priority = $("#jobPrioritySelect").val();
 	if(job_priority===null) return;
-	$.post(url+"add_to_schedule",{jobID:job_ID,scheduleDate:schedule_date,jobPriority:job_priority},function(data){
+	$.post(url+"schedule_job",{jobID:job_ID,scheduleDate:schedule_date,jobPriority:job_priority},function(data){
 		if(data==="Added"){
-			$("#addToScheduleModal").closeModal();
-			$("#addedToScheduleModal").openModal({dismissible:false});
+			$("#jobScheduledModal").openModal({dismissible:false});
 		}
 		if(data==="Invalid date"){
 			return;
