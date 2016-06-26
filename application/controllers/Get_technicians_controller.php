@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Get_technicians extends CI_Controller
+class Get_technicians_controller extends CI_Controller
 {
 	public function index ()
 	{
 		session_start();
 		if(array_key_exists("type",$_SESSION)){
-			if(($_SESSION["type"]==="admin")||($_SESSION["type"]==="superadmin")){
+			if(($_SESSION["type"]==="technician")||($_SESSION["type"]==="admin")||($_SESSION["type"]==="superadmin")){
 
 				//loads Code Igniter database module
 				$this->load->database();
