@@ -12,8 +12,10 @@ class Manage_application_controller extends CI_Controller
 				$this->load->model('Manage_application_model','mapm');
 
 				$logList = $this->mapm->getTopFiveLogEntries();
+				$nAdmin = $this->mapm->getNumberOfAdminAccounts();
+				$nTechn = $this->mapm->getNumberOfTechnicianAccounts();
 
-				$this->load->view('Manage_application_view',array('logList'=>$logList));
+				$this->load->view('Manage_application_view',array('logList'=>$logList, 'nAdmin' => $nAdmin, 'nTechn' => $nTechn));
 			}
 			if(($_SESSION["type"]==="admin")||($_SESSION["type"]==="technician")){
 				$this->load->view('Manage_application_view');

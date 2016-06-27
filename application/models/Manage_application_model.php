@@ -8,6 +8,7 @@ class Manage_application_model extends CI_Model
 		parent::__construct ();
 		$this->load->database();
 	}
+
   public function getTopFiveLogEntries(){
 		$query = $this->db->query(
 			"SELECT logText FROM userLogs ORDER BY logTimestamp DESC LIMIT 5"
@@ -22,6 +23,18 @@ class Manage_application_model extends CI_Model
 		}
 		else $logList = "<li>Sorry, there are no recent log entries</li>";
 		return $logList;
+	}
+
+	public function getNumberOfAdminAccounts(){
+		$query = $this->db->query("SELECT COUNT(adminID) FROM adminAcc WHERE isTechnician=0");
+		$row = $query->row_array();
+		return $row["COUNT(adminID)"];
+	}
+
+	public function getNumberOfTechnicianAccounts(){
+		$query = $this->db->query("SELECT COUNT(adminID) FROM adminAcc WHERE isTechnician=1");
+		$row = $query->row_array();
+		return $row["COUNT(adminID)"];
 	}
 }
 ?>
