@@ -7,7 +7,9 @@ class View_user_logs_controller extends CI_Controller
 	{
 		session_start();
 		if(array_key_exists("type",$_SESSION)){
-			$this->load->view('View_user_logs_view');
+			if($_SESSION["type"]==="superadmin"){
+				$this->load->view('View_user_logs_view');
+			}
 		}
 	}
 }
