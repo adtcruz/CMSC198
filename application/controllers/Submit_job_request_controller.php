@@ -23,13 +23,9 @@ class Submit_job_request_controller extends CI_Controller
 				//if the user in session is a client, post the job request under his name
 				if($_SESSION["type"] === "client"){
 
-					//loads codeigniter database library
-					$this->load->database();
+					$this->load->model('Submit_job_request_model','sjrm');
 
-					//lookup the user ID of the currently logged-on user from the client table
-					$query = $this->db->query(
-						"SELECT clientID FROM client WHERE username='".$_SESSION["username"]."'"
-					);
+					$query = $this->sjrm->getClientQueryRows($_SESSION["username"]);
 					//sets rows from the db query result array
 					$rows = $query->result_array();
 
@@ -37,12 +33,9 @@ class Submit_job_request_controller extends CI_Controller
 					//we can retrieve the clientID
 					if(count($rows) == 1){
 						$clientID = $rows[0]["clientID"];
-						$this->db->query(
-							"INSERT INTO job (jobDescription, startDate, clientID, createdBy, createdByType, dateCreated)".
-							"VALUES ('".$_POST["jobDescription"]."',NULL,".$clientID.",".$clientID.",'client', CURDATE())"
-						);
-						//log this action
-						$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES('".$_SESSION["username"]." filed a job request',CURRENT_TIMESTAMP)");
+
+						$query = $this->sjrm->submitJobRequest($_POST["jobDescription"],$_SESSION["username"],$clientID,$clientID,"client","");
+
 						echo "Submitted";
 					}
 
@@ -51,8 +44,7 @@ class Submit_job_request_controller extends CI_Controller
 				//if the user in session is either a technician or admin
 				else if(($_SESSION["type"] === "technician")||($_SESSION["type"] === "admin")||($_SESSION["type"] === "superadmin")){
 
-					//loads codeigniter database library
-					$this->load->database();
+					$this->load->model('Submit_job_request_model','sjrm');
 
 					//since techinicians, admins, and superadmins can't file job requests
 					//and they can only file job requests on behalf of a client,
@@ -60,9 +52,7 @@ class Submit_job_request_controller extends CI_Controller
 					if(array_key_exists("clientUsername",$_POST)){
 
 						//lookup the user ID from the client table
-						$query = $this->db->query(
-							"SELECT clientID FROM client WHERE username='".$_POST["clientUsername"]."'"
-						);
+						$query = $this->sjrm->getClientQueryRows($_POST["clientUsername"]);
 						//sets rows from the db query result array
 						$rows = $query->result_array();
 
@@ -83,44 +73,16 @@ class Submit_job_request_controller extends CI_Controller
 
 						//if the user in session is either a technician or an admin
 						if(($_SESSION["type"] === "technician")||($_SESSION["type"] === "admin")){
-							//queries the DB for the admin ID of the user in session
-							$query = $this->db->query(
-								"SELECT adminID FROM adminAcc WHERE username='".
-								$_SESSION["username"]."'"
-							);
-							//sets rows from the db query result array
-							$rows = $query->result_array();
-
-							//if there's a single row in the results array, it means the username exists and
-							//we can retrieve the adminID and set it as createdBy
-							if(count($rows) == 1){
-								$createdBy = $rows[0]["adminID"];
-							}
+							$createdBy = $this->sjrm->getAdminID($_SESSION["username"]);
 						}
 
 						//if the user in session is a superadmin
 						else {
-							//queries the DB for the superadmin ID of the user in session
-							$query = $this->db->query(
-								"SELECT superAdminID FROM superAdmin WHERE username='".
-								$_SESSION["username"]."'"
-							);
-							//sets rows from the db query result array
-							$rows = $query->result_array();
-
-							//if there's a single row in the results array, it means the username exists and
-							//we can retrieve the superAdminID and set it as createdBy
-							if(count($rows) == 1){
-								$createdBy = $rows[0]["superAdminID"];
-							}
+							$createdBy = $this->sjrm->getSuperAdminID($_SESSION["username"]);
 						}
-						//files a new job request in behalf of the client
-						$this->db->query(
-							"INSERT INTO job (jobDescription, startDate, clientID, createdBy, createdByType, dateCreated)".
-							"VALUES ('".$_POST["jobDescription"]."',NULL,".$clientID.",".$createdBy.",'".$_SESSION["type"]."', CURDATE())"
-						);
-						//log this action
-						$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES('".$_SESSION["username"]." filed a job request in behalf of ".$_POST["clientUsername"]."',CURRENT_TIMESTAMP)");
+
+						$query = $this->sjrm->submitJobRequest($_POST["jobDescription"],$_SESSION["username"],$clientID,$createdBy,$_SESSION["type"]," in behalf of ".$_POST["clientUsername"]."");
+
 						echo "Submitted";
 
 					}
@@ -130,14 +92,12 @@ class Submit_job_request_controller extends CI_Controller
 						die("clientUsername is not defined!");
 					}
 				}
-
 			}
 
 			//terminate script if jobDescription is not defined or if the script is accessed by any other method than post
 			else {
 				die("Can not be accessed by any other method than post or job description is not defined!");
 			}
-
 		}
 
 		//else, there's no user currently logged-in in session
