@@ -8,5 +8,10 @@
 		<br/>
 		<h3 class="center-align">User Logs</h3>
 		<br/>
+		<div class="row">
+			<div class="col s1 m1 l1">&nbsp;</div>
+			<?php echo $logsTable;?>
+			<div class="col s1 m1 l1">&nbsp;</div>
+		</div>
 	</div>
 </div>
