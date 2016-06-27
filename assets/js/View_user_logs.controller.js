@@ -41,6 +41,7 @@ function getUsersLogs(url){
 			"</div><div class=\"col s1 m1 l1\">&nbsp;</div>"
 		);
 	});
+	$("#usernameInput").val("");
 	$("#enterUsernameModal").closeModal();
 }
 
