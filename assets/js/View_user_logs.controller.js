@@ -1,5 +1,5 @@
 $('document').ready(
 	function(){
-		$("#viewULButton").addClass("black");
+		$("#mngeApButton").addClass("black");
 	}
 );
