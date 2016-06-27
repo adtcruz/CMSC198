@@ -8,6 +8,7 @@ class Manage_application_controller extends CI_Controller
 		session_start();
 		if(array_key_exists("type",$_SESSION)){
 			if($_SESSION["type"]==="superadmin"){
+
 				$this->load->model('Manage_application_model','mapm');
 
 				$logList = $this->mapm->getTopFiveLogEntries();
