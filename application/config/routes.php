@@ -55,6 +55,7 @@ $route['cancel_job'] = 'Cancel_job_controller';
 $route['get_office_users'] = 'Get_office_users_controller';
 $route['get_schedule_job_form'] = 'Get_schedule_job_form_controller';
 $route['get_technicians'] = 'Get_technicians_controller';
+$route['get_logs'] = 'Get_logs_controller';
 $route['get_user_type'] = 'Get_user_type_controller';
 $route['login'] = 'Login_controller';
 $route['logout'] = 'Logout_controller';
