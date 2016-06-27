@@ -2,7 +2,7 @@
   <div class="col s12 m6 l6">
     <div class="card grey lighten-2">
       <div class="card-content black-text">
-        <span class="card-title center-align">User Logs</span>
+        <span class="card-title">User Logs</span>
         <br/><span>Latest log entries:</span>
         <ul>
           <?php echo $logList;?>
