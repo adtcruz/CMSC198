@@ -83,7 +83,7 @@ class View_user_logs_model extends CI_Model
 
 	public function getUserEntries($username){
 		$query = $this->db->query(
-			"SELECT logText, logTimestamp FROM userLogs WHERE logText LIKE '".$username."%' OR logText LIKE '%filed%' OR logText LIKE '%canceled%' ORDER BY logTimestamp DESC"
+			"SELECT logText, logTimestamp FROM userLogs WHERE logText LIKE '".$username."%' ORDER BY logTimestamp DESC"
 		);
 
 		$row = $query->result_array();
@@ -101,18 +101,14 @@ class View_user_logs_model extends CI_Model
 			return $this->getUserEntries($username);
 		}
 
-		$query = $this->db->query(
-			"SELECT username FROM adminAcc WHERE username='".$username."'"
-		);
+		$query = $this->db->query("SELECT username FROM adminAcc WHERE username='".$username."'");
 
 		//username was found and it's either an admin or technician
 		if(count($query->result_array())==1){
 			return $this->getUserEntries($username);
 		}
 
-		$query = $this->db->query(
-			"SELECT username FROM client WHERE username='".$username."'"
-		);
+		$query = $this->db->query("SELECT username FROM client WHERE username='".$username."'");
 
 		//username was found and it's either an admin or technician
 		if(count($query->result_array())==1){
