@@ -44,7 +44,7 @@ class Schedule_job_controller extends CI_Controller
 							//sets jobStatus to PROCESSING and the startDate from scheduleDate
 							$this->db->query("UPDATE job SET jobStatus='PROCESSING', startDate='".$_POST["scheduleDate"]."', finishDate=NULL WHERE jobID=".$_POST["jobID"]."");
 							//log these actions into USERLOGS
-							$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES('".$_SESSION["username"]." added jodID #".$_POST["jobID"]." to schedule on ".date("F d, Y", strtotime($_POST["scheduleDate"]))."',CURRENT_TIMESTAMP)");
+							$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES('".$_SESSION["username"]." added jobID #".$_POST["jobID"]." to schedule on ".date("F d, Y", strtotime($_POST["scheduleDate"]))."',CURRENT_TIMESTAMP)");
 
 							if(count($this->db->query("SELECT jobID FROM schedule WHERE jobID=".$_POST["jobID"]."")->result_array())==1){
 								echo "Added";
