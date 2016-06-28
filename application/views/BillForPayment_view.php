@@ -1,7 +1,6 @@
 <?php
 // restrict direct access
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-	
 	$template = array (
 			'table_open' => '<table width = "800">'
 		);
@@ -30,7 +29,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	$this->table->set_template ($template);
 	$this->table->set_empty ('&nbsp;');
 	$this->table->add_row ('');
-	$this->table->add_row (array ('data' => 'Bill No.', 'align' => 'right'));
+	$this->table->add_row (array ('data' => 'Bill No. '.$jobID, 'align' => 'right'));
 	$this->table->add_row (array ('data' => 'Date: '.date ('M d, Y').'', 'align' => 'right'));
 	echo $this->table->generate ();
 	$this->table->clear ();
@@ -41,9 +40,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	$this->table->set_template ($template);
 	$this->table->set_empty ('&nbsp;');
 	$this->table->add_row ('');
-	$this->table->add_row (array ('data' => 'Job Requestee', 'align' => 'left'));
-	$this->table->add_row (array ('data' => 'Job Requestee Unit', 'align' => 'left'));
-	$this->table->add_row (array ('data' => 'Job Requestee Location', 'align' => 'left'));
+
+	$this->table->add_row (array ('data' => ''.$givenName.' '.$lastName.'', 'align' => 'left'));
+	$this->table->add_row (array ('data' => ''.$officeAbbr.'', 'align' => 'left'));
+	$this->table->add_row (array ('data' => ''.$officeName.'', 'align' => 'left'));
 	$this->table->add_row ('');
 	echo $this->table->generate ();
 	$this->table->clear ();
@@ -53,6 +53,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		);
 	$this->table->set_template ($template);
 	$this->table->add_row (array ('data' => 'Job Request No.', 'align' => 'center'), array ('data' => 'Description', 'align' => 'center'), array ('data' => 'Amount', 'align' => 'center'));
+	$this->table->add_row (array ('data' => ''.$jobID.'', 'align' => 'center'), array ('data' => '<b>'.$jobDescription.'</b>', 'align' => 'center'), 	array ('data' => 'PHP '.$totalCost.'', 'align' => 'center'));
 	$this->table->add_row (array ('data' => '<b>Total Amount Due</b>', 'colspan' => '2', 'align' => 'right'), array('data' => 'PHP'));
 	echo $this->table->generate ();
 	$this->table->clear ();
@@ -66,7 +67,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	$this->table->add_row ('');
 	$this->table->add_row ('');
 	$this->table->add_row ('');
-	$this->table->add_row ('<b>ROZANO S. MANIAOL</b>');
+
+	$this->table->add_row ('<b>'.$head.'</b>');
 	$this->table->add_row ('Director');
 	echo $this->table->generate ();
 ?>
