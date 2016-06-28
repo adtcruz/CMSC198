@@ -72,7 +72,7 @@
         <br/>
       </div>
       <div class="card-action center-align">
-        <a class="blue-text" href="#">Manage Admin and Technician accounts</a>
+        <a class="blue-text" href="#">Manage Accounts</a>
       </div>
     </div>
   </div>
