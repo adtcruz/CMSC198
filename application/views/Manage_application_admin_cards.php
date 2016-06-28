@@ -2,7 +2,7 @@
   <div class="col s12 m6 l6">
     <div class="card grey lighten-2">
       <div class="card-content black-text">
-        <span class="card-title">User Logs</span>
+        <span class="card-title"><i class="material-icons">speaker_notes</i> User Logs</span>
         <br/><span>Latest log entries:</span>
         <ul>
           <?php echo $logList;?>
@@ -16,7 +16,7 @@
   <div class="col s12 m6 l6">
     <div class="card grey lighten-2">
       <div class="card-content black-text">
-        <span class="card-title center-align">Admin and Technician Accounts</span>
+        <span class="card-title center-align"><i class="material-icons">person_pin</i> Admin and Technician Accounts</span>
         <br/><br/><span>Currently:</span>
         <ul>
           <li>
