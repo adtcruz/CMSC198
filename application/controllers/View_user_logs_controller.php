@@ -20,6 +20,12 @@ class View_user_logs_controller extends CI_Controller
 
 			}
 		}
+
+		else{
+
+			$this->load->view('Login_view');
+		}
+
 	}
 }
 ?>

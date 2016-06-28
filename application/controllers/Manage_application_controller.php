@@ -21,6 +21,11 @@ class Manage_application_controller extends CI_Controller
 				$this->load->view('Manage_application_view');
 			}
 		}
+
+		else{
+
+			$this->load->view('Login_view');
+		}
 	}
 }
 ?>

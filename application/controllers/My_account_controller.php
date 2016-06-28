@@ -5,7 +5,18 @@ class My_account_controller extends CI_Controller
 {
 	public function index ()
 	{
-		$this->load->view('My_account_view');
+
+		session_start();
+
+		if(array_key_exists("type",$_SESSION)){
+
+			$this->load->view('My_account_view');
+		}
+
+		else{
+
+			$this->load->view('Login_view');
+		}
 	}
 }
 ?>

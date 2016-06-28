@@ -58,8 +58,10 @@ class Schedule_job_controller extends CI_Controller
 				}
 			}
 		}
+
 		else {
-			die("You are not logged-in");
+
+			$this->load->view('Login_view');
 		}
 	}
 }

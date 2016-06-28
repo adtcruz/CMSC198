@@ -9,10 +9,11 @@ class View_schedule_controller extends CI_Controller
 		if(array_key_exists("type",$_SESSION)){
 			$this->load->model ('View_schedule_model', 'sm');
 		}
-		else {
-			die("You are not logged-in");
-		}
 
+		else{
+
+			$this->load->view('Login_view');
+		}
 	}
 
 	public function index ()
