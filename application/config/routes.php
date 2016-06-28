@@ -61,11 +61,13 @@ $route['login'] = 'Login_controller';
 $route['logout'] = 'Logout_controller';
 $route['schedule_job'] = 'Schedule_job_controller';
 $route['submit_request'] = 'Submit_job_request_controller';
+$route['create_client'] = 'Create_client_controller';
 
 //routes for page loads
 $route['job_requests'] = 'Job_requests_controller';
 $route['manage_application'] = 'Manage_application_controller';
 $route['view_schedule'] = 'View_schedule_controller';
+$route['add_client'] = 'Add_client_controller';
 $route['view_logs'] = 'View_user_logs_controller';
 $route['my_account'] = 'My_account_controller';
 $route['topdf_bfp'] = 'BillForPayment_controller';

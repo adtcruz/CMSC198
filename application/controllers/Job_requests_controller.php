@@ -18,15 +18,13 @@ class Job_requests_controller extends CI_Controller
 
 			$this->table->set_template(array('table_open' =>'<table class="bordered centered highlight responsive-table">'));
 
-			$this->load->model('View_job_requests_model','vjrm');
-
 			if($_SESSION["type"] === "client"){
 
 				//gets the client ID
-				$clientID = $this->vjrm->getUserID();
+				$clientID = $this->jrm->getUserID();
 
 				//queries the DB
-				$rows1 = $this->vjrm->getJobRequestsArray(" WHERE clientID=".$clientID." ");
+				$rows1 = $this->jrm->getJobRequestsArray(" WHERE clientID=".$clientID." ");
 
 				$nRows1 = count($rows1);
 
@@ -41,16 +39,16 @@ class Job_requests_controller extends CI_Controller
 
 				for ($i = 0; $i < $nRows1; $i++){
 
-					$startDate = $this->vjrm->processDate($rows1[$i]["startDate"]);
+					$startDate = $this->jrm->processDate($rows1[$i]["startDate"]);
 
-					$finishDate = $this->vjrm->processDate($rows1[$i]["finishDate"]);
+					$finishDate = $this->jrm->processDate($rows1[$i]["finishDate"]);
 
-					$jobStatus = $this->vjrm->processJobStatus($rows1[$i]["jobStatus"]);
+					$jobStatus = $this->jrm->processJobStatus($rows1[$i]["jobStatus"]);
 
-					$actions = $this->vjrm->getJobActions($rows1[$i],$clientID);
+					$actions = $this->jrm->getJobActions($rows1[$i],$clientID);
 
 					//date filed column entry
-					$dateFiled = $this->vjrm->processDate($rows1[$i]["dateCreated"]);
+					$dateFiled = $this->jrm->processDate($rows1[$i]["dateCreated"]);
 
 					$this->table->add_row($rows1[$i]["jobDescription"],$startDate,$finishDate,$jobStatus,$dateFiled,$actions);
 				}
@@ -62,7 +60,7 @@ class Job_requests_controller extends CI_Controller
 				//loads Code Igniter database module
 				$this->load->database();
 
-				$rows1 = $this->vjrm->getJobRequestsArray(" ");
+				$rows1 = $this->jrm->getJobRequestsArray(" ");
 				$nRows1 = count($rows1);
 
 				if($nRows1 == 0){
@@ -75,22 +73,22 @@ class Job_requests_controller extends CI_Controller
 
 				for ($i = 0; $i < $nRows1; $i++){
 
-					$userID = $this->vjrm->getUserID();
+					$userID = $this->jrm->getUserID();
 
-					$clientName = $this->vjrm->getClientName($rows1[$i]["clientID"]);
+					$clientName = $this->jrm->getClientName($rows1[$i]["clientID"]);
 
-					$startDate = $this->vjrm->processDate($rows1[$i]["startDate"]);
+					$startDate = $this->jrm->processDate($rows1[$i]["startDate"]);
 
-					$finishDate = $this->vjrm->processDate($rows1[$i]["finishDate"]);
+					$finishDate = $this->jrm->processDate($rows1[$i]["finishDate"]);
 
-					$jobStatus = $this->vjrm->processJobStatus($rows1[$i]["jobStatus"]);
+					$jobStatus = $this->jrm->processJobStatus($rows1[$i]["jobStatus"]);
 
-					$actions = $this->vjrm->getJobActions($rows1[$i],$userID);
+					$actions = $this->jrm->getJobActions($rows1[$i],$userID);
 
 					//date filed column entry
-					$dateFiled = $this->vjrm->processDate($rows1[$i]["dateCreated"]);
+					$dateFiled = $this->jrm->processDate($rows1[$i]["dateCreated"]);
 
-					$filedBy = $this->vjrm->getFiledBy($rows1[$i]);
+					$filedBy = $this->jrm->getFiledBy($rows1[$i]);
 
 					$this->table->add_row($rows1[$i]["jobDescription"],$clientName,$startDate,$finishDate,$jobStatus,$dateFiled,$filedBy,$actions);
 
@@ -101,7 +99,7 @@ class Job_requests_controller extends CI_Controller
       $options = $this->jrm->getOffices($_SESSION["type"]);
 			$this->load->view('Job_requests_view', array('table' => $tabl, 'options' => $options));
 		}
-    
+
     else{
 
 			$this->load->view('Login_view');

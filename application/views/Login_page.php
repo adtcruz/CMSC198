@@ -11,7 +11,7 @@
 				</div>
 				<div class="row center-align">
 					<div class="col s1 m1 l1">&nbsp;</div>
-					<form autocomplete="off" class="white black-text col s10 m10 l10">
+					<div autocomplete="off" class="white black-text col s10 m10 l10">
 						<div class="row input-field">
 							<i class="material-icons prefix">account_circle</i>
 							<input id="usernameInput" name="usernameInput" type="text" onkeyup="logInFormOnChange();" onchange="logInFormOnChange();"/>
@@ -22,7 +22,7 @@
 							<input id="passwordInput" name="passwordInput" type="password" onkeyup="logInFormOnChange();" onchange="logInFormOnChange();"/>
 							<label id="passwordInputLabel" for="passwordInput" data-error="Invalid credentials. Please check your credentials and try again.">Password</label>
 						</div>
-					</form>
+					</div>
 					<div class="col s1 m1 l1">&nbsp;</div>
 				</div>
 				<div class="row center-align">
