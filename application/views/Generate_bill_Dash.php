@@ -20,17 +20,16 @@
 						echo "<h5 class=\"center-align\">Sorry, there are no finished jobs at the moment.</h5>";
 						return;
 					}
-
-					$button = array(
-							'data' => '<a href="topdf_bfp" class="waves-effect waves-light btn"><i class="material-icons left">credit_card</i>Generate</a>'
-						);
+                    $this->load->helper ('form');
 
 					foreach ($generateBill_array as $row)
 					{
-						$this->table->add_row ($row['jobID'], $row['givenName'].' '.$row['lastName'], $button);
-
+						$this->table->add_row ($row['jobID'], $row['givenName'].' '.$row['lastName'],
+                        array(
+    							'data' => '<a href="topdf_bfp/'.$row['jobID'].'" target = "_blank" class="waves-effect waves-light btn"><i class="material-icons left">credit_card</i>Generate</a>'
+    						));
+                        // the href location serves as the argument of the controller function. the target attribute allows this view to be loaded onto another tab
 					}
-
 					echo $this->table->generate ();
 				?>
 				<br/>
