@@ -8,6 +8,6 @@
 		<br/>
 		<h3 class="center-align">Manage Application</h3>
 		<br/>
-		<?php if($_SESSION["type"]==="superadmin") $this->load->view('Manage_application_admin_cards'); ?>
+		<?php if($_SESSION["type"]==="superadmin") $this->load->view('Manage_application_superadmin_cards'); ?>
 	</div>
 </div>
