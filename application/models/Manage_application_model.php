@@ -36,5 +36,17 @@ class Manage_application_model extends CI_Model
 		$row = $query->row_array();
 		return $row["COUNT(adminID)"];
 	}
+
+	public function getNumberOfClientAccounts(){
+		$query = $this->db->query("SELECT COUNT(clientID) FROM client");
+		$row = $query->row_array();
+		return $row["COUNT(clientID)"];
+	}
+
+	public function getNumberOfSuperadminAccounts(){
+		$query = $this->db->query("SELECT COUNT(superAdminID) FROM superAdmin");
+		$row = $query->row_array();
+		return $row["COUNT(superAdminID)"];
+	}
 }
 ?>
