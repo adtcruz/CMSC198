@@ -1,6 +1,6 @@
 <?php
 
-class GenerateBill_model extends CI_Model
+class Generate_bill_model extends CI_Model
 {
 	// constructor
 	public function __construct ()
