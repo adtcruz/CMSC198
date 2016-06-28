@@ -40,7 +40,7 @@ function cancelJob(url){
 
 //reloads the page
 function reloadPage(url){
-	window.location.href = url+"jobs";
+	window.location.href = url+"job_requests";
 }
 
 //triggered when the "add to schedule" button is clicked
