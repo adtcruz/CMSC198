@@ -25,7 +25,7 @@
       <div id="newJobRequestForm">
         <div class="row">
     			<div class="col s1 m1 l1">&nbsp;</div>
-    			<form autocomplete="off" class="col s10 m10 l10">
+    			<div autocomplete="off" class="col s10 m10 l10">
     				<br/>
     				<h3 class="center-align">File a Job Request</h3>
     				<br/>
@@ -40,14 +40,14 @@
     					<textarea id="problemsEncountered" name="problemsEncountered" class="materialize-textarea"></textarea>
     					<label for="problemsEncountered">Problems encountered</label>
     				</div>
-    				<div class="mdl-textfield mdl-js-textfield" align="right">
+    				<div class="input-field" align="right">
     					<a class="btn waves-effect waves-light red" onclick="fileJobRequest('<?php echo base_url();?>');">
     						Submit<i class="material-icons right">send</i>
     					</a>
     				</div>
     				<br/>
     				<br/>
-    			</form>
+    			</div>
     			<div class="col s1 m1 l1">&nbsp;</div>
     		</div>
       </div>
