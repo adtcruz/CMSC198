@@ -10,7 +10,7 @@ class Generate_bill_controller extends CI_Controller
 			$this->load->model ('Generate_bill_model', 'gbm');
 		}
 		else {
-			die("You are not logged-in");
+			$this->load->view('Login_view');
 		}
 
 	}
