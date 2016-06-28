@@ -40,10 +40,15 @@ class Create_client_controller extends CI_Controller
 					'designation' => $_POST["designation"],
 					'officeId' => $_POST["officeId"]
 				);
-        $this->db->query("INSERT INTO client(username,password,givenName,lastName,designation,officeId) VALUES ('".$_POST["username"]."',SHA1('".$_POST["password"]."'),'".$_POST["givenName"]."','".$_POST["lastName"]."','".$_POST["designation"]."',".$_POST["officeId"].")");
+
         $count = $this->db->query("SELECT COUNT(clientID) FROM client WHERE username='".$_POST["username"]."'")->row_array()["COUNT(clientID)"];
-        if ($count == 1) echo "Created new client";
-        else echo "Error in creation";
+        if ($count == 1) echo "Account already exists";
+        else {
+          $this->db->query("INSERT INTO client(username,password,givenName,lastName,designation,officeId) VALUES ('".$_POST["username"]."',SHA1('".$_POST["password"]."'),'".$_POST["givenName"]."','".$_POST["lastName"]."','".$_POST["designation"]."',".$_POST["officeId"].")");
+          $count = $this->db->query("SELECT COUNT(clientID) FROM client WHERE username='".$_POST["username"]."'")->row_array()["COUNT(clientID)"];
+          if ($count == 1) echo "Created new client";
+          else "Error creating client";
+        }
       }
     }
   }
