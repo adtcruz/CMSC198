@@ -78,9 +78,12 @@ function scheduleJob(url){
 	});
 }
 
-function openEditModal(jobID){
+function openEditModal(url,jobID){
 	job_ID = jobID;
 	$("#editJobModal").openModal({dismissible:false});
+	$.post(url+"get_job_description",{jobID:jobID},function(data){
+		$("#problemsEncounteredNew").val(data);
+	});
 }
 
 function confirmEditJob(){

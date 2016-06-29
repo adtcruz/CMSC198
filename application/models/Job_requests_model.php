@@ -135,7 +135,7 @@ class Job_requests_model extends CI_Model
 			//superadmins may schedule, edit, or cancel job requests
 			if($_SESSION["type"]==="superadmin"){
 				$actions = "<a class=\"btn-floating btn tooltipped waves-effect waves-light green\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Schedule job\" onclick=\"openScheduleJob('".base_url()."',".$jobID.");\"><i class=\"material-icons\">assignment</i></a>&nbsp;&nbsp;";
-				$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Request\" onclick=\"openEditModal(".$jobID.");\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
+				$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Request Details\" onclick=\"openEditModal('".base_url()."',".$jobID.");\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
 				return $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light red\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Cancel Job Request\" onclick=\"confirmCancel(".$jobID.");\"><i class=\"material-icons\">not_interested</i></a>";
 			}
 
@@ -147,7 +147,7 @@ class Job_requests_model extends CI_Model
 			//users can only edit or cancel job requests that they filed
 			if($_SESSION["type"]===$createdByType){
 				if($userID == $createdBy){
-					$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Request\" onclick=\"openEditModal(".$jobID.");\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
+					$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Request Details\" onclick=\"openEditModal('".base_url()."',".$jobID.");\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
 					$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light red\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Cancel Job Request\" onclick=\"confirmCancel(".$jobID.");\"><i class=\"material-icons\">not_interested</i></a>";
 				}
 			}
