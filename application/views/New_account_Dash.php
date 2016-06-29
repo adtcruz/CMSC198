@@ -17,36 +17,36 @@
             <div class="row">
               <div class="input-field col s6 m6 l6">
                 <i class="material-icons prefix">contacts</i>
-                <input type="text" id="givenName" name="givenName"/>
-                <label for="givenName">Given Name</label>
+                <input type="text" id="clientGivenName" name="clientGivenName" onkeyup="clientGivenNameChange();" onchange="clientGivenNameChange();"/>
+                <label id="clientGivenNameLabel" for="clientGivenName">Given Name</label>
               </div>
               <div class="input-field col s6">
-                <input type="text" id="lastName" name="lastName"/>
-                <label for="lastName">Last Name</label>
+                <input type="text" id="clientLastName" name="clientLastName" onkeyup="clientLastNameChange();" onchange="clientLastNameChange();"/>
+                <label id="clientLastNameLabel" for="clientLastName">Last Name</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s4 m4 l4">
                 <i class="material-icons prefix">perm_identity</i>
-                <input type="text" id="username" name="username"/>
-                <label for="username">Username</label>
+                <input type="text" id="clientUsername" name="clientUsername" onkeyup="clientUsernameChange();" onchange="clientUsernameChange();"/>
+                <label id="clientUsernameLabel" for="clientUsername">Username</label>
               </div>
               <div class="input-field col s4 m4 l4">
                 <i class="material-icons prefix">vpn_key</i>
-                <input type="password" id="password" name="password"/>
-                <label for="password">Password</label>
+                <input type="password" id="clientPassword" name="clientPassword" onkeyup="clientPasswordChange();" onchange="clientPasswordChange();"/>
+                <label id="clientPasswordLabel" for="clientPassword">Password</label>
               </div>
               <div class="input-field col s4 m4 l4">
                 <i class="material-icons prefix">done_all</i>
-                <input type="password" id="confirmPassword" name="confirmPassword"/>
-                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="clientConfirmPassword" name="clientConfirmPassword" disabled="disabled" onkeyup="clientConfirmPasswordChange();" onchange="clientConfirmPasswordChange();"/>
+                <label id="clientConfirmPasswordLabel" for="clientConfirmPassword">Confirm Password</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s6">
                 <i class="material-icons prefix">supervisor_account</i>
-                <input type="text" id="designation" name="designation"/>
-                <label for="designation">Designation</label>
+                <input type="text" id="designation" name="designation" onkeyup="designationChange();" onchange="designationChange();"/>
+                <label id="designationLabel" for="designation">Designation</label>
               </div>
               <div class="input-field col s6">
                 <i class="material-icons prefix">business</i>
@@ -57,13 +57,13 @@
             </div>
           </div>
           <div class="input-field" align="right">
-              <button id="submitButton" class="btn waves-effect waves-light red" onclick="addClient('<?php echo base_url();?>')">Create client<i class="material-icons right">send</i>
+              <button id="submitButton" class="btn waves-effect waves-light green darken-4" onclick="addClient('<?php echo base_url();?>')">Create Account<i class="material-icons right">done</i>
               </button>
           </div>
         </div>
         <div class="col s1 m1 l1">&nbsp;</div>
       </div>
-			<!-- Add add admin technician accounts here later -->
+			<?php if($_SESSION["type"]==="superadmin") $this->load->view('New_account_superadmin_forms');?>
 		</div>
 	</div>
 </div>
