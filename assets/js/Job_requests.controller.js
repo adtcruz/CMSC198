@@ -3,6 +3,7 @@ $('document').ready(
 		//adds black background colour to the view job requests / my job requests button
 		//this adds a "selected" effect
 		$("#viewJRButton").addClass("black");
+		$('ul.tabs').tabs();
 	}
 );
 

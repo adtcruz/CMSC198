@@ -16,9 +16,22 @@
   <div class="col s12 m6 l6">
     <div class="card grey lighten-2">
       <div class="card-content black-text">
-        <span class="card-title center-align"><i class="material-icons">person_pin</i> Admin and Technician Accounts</span>
-        <br/><br/><span>Currently:</span>
+        <span class="card-title center-align"><i class="material-icons">person_pin</i> User Accounts</span>
+        <br/><span>Currently:</span>
         <ul>
+          <li>
+            <?php
+            if ($nClint==0){
+              echo "No Client Accounts";
+            }
+            if ($nClint==1){
+              echo "1 Client Account";
+            }
+            else{
+              echo $nClint . " Client Accounts";
+            }
+            ?>
+          </li>
           <li>
             <?php
             if ($nAdmin==0){
@@ -45,11 +58,21 @@
             }
             ?>
           </li>
+          <li>
+            <?php
+            if ($nSadmn==1){
+              echo "1 Superadmin Account";
+            }
+            else{
+              echo $nSadmn . " Superadmin Accounts";
+            }
+            ?>
+          </li>
         </ul>
-        <br/><br/>
+        <br/>
       </div>
       <div class="card-action center-align">
-        <a class="blue-text" href="#">Manage Admin and Technician accounts</a>
+        <a class="blue-text" href="#">Manage Accounts</a>
       </div>
     </div>
   </div>
