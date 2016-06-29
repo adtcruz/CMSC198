@@ -65,7 +65,7 @@ class Create_account_controller extends CI_Controller
             if ($count == 1) die("Account already exists");
             else {
               $this->db->query("INSERT INTO superAdmin(username,password,givenName,lastName) VALUES ('".$_POST["username"]."',SHA1('".$_POST["password"]."'),'".$_POST["givenName"]."','".$_POST["lastName"]."')");
-              $count = $this->db->query("SELECT COUNT(superAdminID) FROM adminAcc WHERE username='".$_POST["username"]."'")->row_array()["COUNT(superAdminID)"];
+              $count = $this->db->query("SELECT COUNT(superAdminID) FROM superAdmin WHERE username='".$_POST["username"]."'")->row_array()["COUNT(superAdminID)"];
               if ($count == 1) echo "Created new superadmin";
               else echo "Error creating superadmin";
             }
