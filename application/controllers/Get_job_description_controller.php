@@ -57,7 +57,6 @@ class Get_job_description_controller extends CI_Controller
 						echo $this->db->query("SELECT jobDescription FROM job WHERE jobID=".$_POST["jobID"]."")->result_array()[0]["jobDescription"];
 					}
 				}
-
 			}
 		}
   }
