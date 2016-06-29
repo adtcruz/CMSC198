@@ -156,6 +156,7 @@ function addAdmin(url){
 				//reset forms
 				$("#adminUsername").val("");
 				$("#adminPassword").val("");
+				$("#adminConfirmPassword").val("");
 				$("#adminGivenName").val("");
 				$("#adminLastName").val("");
 			}
@@ -349,6 +350,7 @@ function addClient(url){
 				//reset forms
 				$("#clientUsername").val("");
 				$("#clientPassword").val("");
+				$("#clientConfirmPassword").val("");
 				$("#clientGivenName").val("");
 				$("#clientLastName").val("");
 				$("#designation").val("");
@@ -520,6 +522,7 @@ function addSuper(url){
 				//reset forms
 				$("#superadminUsername").val("");
 				$("#superadminPassword").val("");
+				$("#superadminConfirmPassword").val("");
 				$("#superadminGivenName").val("");
 				$("#superadminLastName").val("");
 			}
@@ -686,11 +689,12 @@ function addTechnician(url){
 			lastName:lastName
 		},
 		function(data){
-			if(data==="Created new techn"){
+			if(data==="Created new technician"){
 				Materialize.toast("Added!",3000);
 				//reset forms
 				$("#technUsername").val("");
 				$("#technPassword").val("");
+				$("#technConfirmPassword").val("");
 				$("#technGivenName").val("");
 				$("#technLastName").val("");
 			}
