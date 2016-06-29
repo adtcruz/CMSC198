@@ -79,10 +79,19 @@
 				<h5 class="center-align">Are you sure you want to edit this Job Request?</h5>
 			</div>
 			<div class="row center-align">
-				<a class="waves-effect waves-light btn btn-large red darken-4" onclick="editJob('<php echo base_url();?>')">Yes</a>
+				<a class="waves-effect waves-light btn btn-large red darken-4" onclick="editJob('<?php echo base_url();?>')">Yes</a>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a class="waves-effect waves-light btn btn-large blue" onclick="$('#confirmEditModal').closeModal();">No</a>
 			</div>
+		</div>
+	</div>
+	<div id="jobEditedModal" class="modal">
+		<div class="row">
+			<br/>
+			<h5 class="center-align">Job description updated.</h5>
+		</div>
+		<div class="row center-align">
+			<a class="waves-effect waves-light btn btn-large blue darken-4" onclick="reloadPage('<?php echo base_url();?>');">OK</a>
 		</div>
 	</div>
 	<div id="cancelModal" class="modal">
