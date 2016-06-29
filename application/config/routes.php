@@ -67,6 +67,7 @@ $route['submit_request'] = 'Submit_job_request_controller';
 $route['new_account'] = 'New_account_controller';
 $route['job_requests'] = 'Job_requests_controller';
 $route['manage_application'] = 'Manage_application_controller';
+$route['manage_accounts'] = 'Manage_accounts_controller';
 $route['view_schedule'] = 'View_schedule_controller';
 $route['add_client'] = 'Add_client_controller';
 $route['view_logs'] = 'View_user_logs_controller';
