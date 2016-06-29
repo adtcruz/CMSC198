@@ -25,7 +25,7 @@
         <div class="input-field col s4 m4 l4">
           <i class="material-icons prefix">vpn_key</i>
           <input type="password" id="adminPassword" name="adminPassword" onkeyup="adminPasswordChange();" onchange="adminPasswordChange();"/>
-          <label id="adminPassword" for="adminPassword">Password</label>
+          <label id="adminPasswordLabel" for="adminPassword">Password</label>
         </div>
         <div class="input-field col s4 m4 l4">
           <i class="material-icons prefix">done_all</i>
