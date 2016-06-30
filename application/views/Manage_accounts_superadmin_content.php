@@ -2,10 +2,11 @@
   <div class="col s12">
     <ul class="tabs">
       <li class="tab"><a class="active" href="#allAccounts">All Accounts</a></li>
-      <li class="tab"><a href="#clientAccounts">Client Accounts</a></li>
-      <li class="tab"><a href="#adminAccounts">Admin Accounts</a></li>
-      <li class="tab"><a href="#technicianAccounts">Technician Accounts</a></li>
-      <li class="tab"><a href="#superadminAccounts">Superadmin Accounts</a></li>
+      <li class="tab"><a href="#clientAccounts">Clients</a></li>
+      <li class="tab"><a href="#adminAccounts">Admins</a></li>
+      <li class="tab"><a href="#technicianAccounts">Technicians</a></li>
+      <li class="tab"><a href="#superadminAccounts">Superadmins</a></li>
+      <li class="tab"><a href="#" onclick="window.location.href = '<?php echo base_url();?>new_account'"><i class="tiny material-icons">add</i> Create account</a></li>
     </ul>
   </div>
   <div id="allUsers" class="row">

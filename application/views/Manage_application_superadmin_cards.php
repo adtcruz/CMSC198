@@ -72,7 +72,7 @@
         <br/>
       </div>
       <div class="card-action center-align">
-        <a class="blue-text" href="#">Manage Accounts</a>
+        <a class="blue-text" href="<?php echo base_url();?>manage_accounts">Manage Accounts</a>
       </div>
     </div>
   </div>
