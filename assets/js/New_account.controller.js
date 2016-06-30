@@ -141,6 +141,17 @@ function addAdmin(url){
 
 	if(err) return;
 
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z0-9_]*$/).test(username))){
+		$("#adminUsernameLabel").attr("data-error","Invalid characters detected");
+		$("#adminUsernameLabel").html(
+			"Username&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		$("#adminUsername").addClass("invalid");
+		return;
+	}
+
 	$.post(
 		url+"create_account",
 		{
@@ -333,6 +344,17 @@ function addClient(url){
 
 	if(err) return;
 
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z0-9_]*$/).test(username))){
+		$("#clientUsernameLabel").attr("data-error","Invalid characters detected");
+		$("#clientUsernameLabel").html(
+			"Username&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		$("#clientUsername").addClass("invalid");
+		return;
+	}
+
 	$.post(
 		url+"create_account",
 		{
@@ -507,6 +529,17 @@ function addSuper(url){
 
 	if(err) return;
 
+	if (username===""){
+		$("#superadminUsernameLabel").attr("data-error","Invalid characters detected!");
+		$("#superadminUsernameLabel").html(
+			"Username&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		$("#superadminUsername").addClass("invalid");
+		err = true;
+	}
+
 	$.post(
 		url+"create_account",
 		{
@@ -678,6 +711,17 @@ function addTechnician(url){
 	}
 
 	if(err) return;
+
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z0-9_]*$/).test(username))){
+		$("#technUsernameLabel").attr("data-error","Invalid characters detected!");
+		$("#technUsernameLabel").html(
+			"Username&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		$("#technUsername").addClass("invalid");
+		return;
+	}
 
 	$.post(
 		url+"create_account",
