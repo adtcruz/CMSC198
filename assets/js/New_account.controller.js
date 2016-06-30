@@ -254,7 +254,7 @@ function designationChange(){
 
 	$("#designationLabel").removeAttr("data-error");
 
-	$("#designationLabel").html("Username");
+	$("#designationLabel").html("Designation");
 
 	if($("#designation").hasClass("invalid")) $("#designation").removeClass("invalid");
 }
