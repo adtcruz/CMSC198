@@ -66,4 +66,13 @@
 			<?php if($_SESSION["type"]==="superadmin") $this->load->view('New_account_superadmin_forms');?>
 		</div>
 	</div>
+	<div id="accountCreatedModal" class="modal">
+		<div class="row">
+	    <br/>
+	    <h5 class="center-align">Account created!</h5>
+	  </div>
+	  <div class="row center-align">
+	    <a class="waves-effect waves-light btn btn-large blue darken-4" onclick="$('#accountCreatedModal').closeModal();">OK</a>
+	  </div>
+	</div>
 </div>

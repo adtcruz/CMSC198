@@ -163,7 +163,7 @@ function addAdmin(url){
 		},
 		function(data){
 			if(data==="Created new admin"){
-				Materialize.toast("Added!",3000);
+				$("#accountCreatedModal").openModal({dismissible:false});
 				//reset forms
 				$("#adminUsername").val("");
 				$("#adminPassword").val("");
@@ -368,7 +368,7 @@ function addClient(url){
 		},
 		function(data){
 			if(data==="Created new client"){
-				Materialize.toast("Added!",3000);
+				$("#accountCreatedModal").openModal({dismissible:false});
 				//reset forms
 				$("#clientUsername").val("");
 				$("#clientPassword").val("");
@@ -551,7 +551,7 @@ function addSuper(url){
 		},
 		function(data){
 			if(data==="Created new superadmin"){
-				Materialize.toast("Added!",3000);
+				$("#accountCreatedModal").openModal({dismissible:false});
 				//reset forms
 				$("#superadminUsername").val("");
 				$("#superadminPassword").val("");
@@ -734,7 +734,7 @@ function addTechnician(url){
 		},
 		function(data){
 			if(data==="Created new technician"){
-				Materialize.toast("Added!",3000);
+				$("#accountCreatedModal").openModal({dismissible:false});
 				//reset forms
 				$("#technUsername").val("");
 				$("#technPassword").val("");
