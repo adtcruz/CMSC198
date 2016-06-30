@@ -33,8 +33,28 @@ function updateProfile(url){
 		if(!($("#user_givenName").hasClass("invalid"))) $("#user_givenName").addClass("invalid");
 	}
 
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test($("#user_givenName").val()))){
+		$("#user_givenNameLabel").attr("data-error","Invalid characters detected");
+		$("#user_givenNameLabel").html(
+			"Given Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		if(!($("#user_givenName").hasClass("invalid"))) $("#user_givenName").addClass("invalid");
+	}
+
 	if($("#user_lastName").val()===""){
 		$("#user_lastNameLabel").attr("data-error","Last Name can not be blank!");
+		$("#user_lastNameLabel").html(
+			"Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		if(!($("#user_lastName").hasClass("invalid"))) $("#user_lastName").addClass("invalid");
+	}
+
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test($("#user_lastName").val()))){
+		$("#user_lastNameLabel").attr("data-error","Invalid characters detected");
 		$("#user_lastNameLabel").html(
 			"Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
 			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
