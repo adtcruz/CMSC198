@@ -18,9 +18,9 @@ class View_schedule_controller extends CI_Controller
 
 	public function index ()
 	{
-		$db_data = $this->sm->getData ();
+		$table = $this->sm->processScheduleTable();
 
-		$this->load->view ('View_schedule_view', $db_data);
+		$this->load->view ('View_schedule_view', array('table'=>$table));
 	}
 }
 
