@@ -141,7 +141,7 @@ class Job_requests_model extends CI_Model
 
 			//admins and technicians can schedule job requests
 			if(($_SESSION["type"]==="admin")||($_SESSION["type"]==="technician")){
-				$actions = "<a class=\"btn-floating btn tooltipped waves-effect waves-light green\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Schedule job\" onclick=\"openScheduleJob('".base_url()."',".$jobID.");\"><i class=\"material-icons\">assignment</i></a>&nbsp;&nbsp;";
+				$actions = "<a class=\"btn-floating btn tooltipped waves-effect waves-light green\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Schedule job\" onclick=\"openScheduleJob('".base_url()."',".$jobID.");\"><i class=\"material-icons\">query_builder</i></a>&nbsp;&nbsp;";
 			}
 
 			//users can only edit or cancel job requests that they filed
