@@ -64,6 +64,7 @@ $route['login'] = 'Login_controller';
 $route['logout'] = 'Logout_controller';
 $route['schedule_job'] = 'Schedule_job_controller';
 $route['submit_request'] = 'Submit_job_request_controller';
+$route['update_job_request'] = 'Update_job_request_controller';
 
 //routes for page loads
 $route['new_account'] = 'New_account_controller';
