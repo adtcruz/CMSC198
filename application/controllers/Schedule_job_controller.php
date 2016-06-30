@@ -40,7 +40,7 @@ class Schedule_job_controller extends CI_Controller
 							if($_SESSION["type"]==="superadmin") $createdBy = $this->db->query("SELECT superAdminID FROM superAdmin WHERE username='".$_SESSION["username"]."'")->result_array()[0]["superAdminID"];
 
 							//inserts job to schedule
-							$this->db->query("INSERT INTO schedule(priority,jobID,dateScheduled,dateCreated,createdBy,createdByType) VALUES (".$_POST["jobPriority"].",".$_POST["jobID"].",".$_POST["scheduleDate"].",CURDATE(),".$createdBy.",'".$_SESSION["type"]."')");
+							$this->db->query("INSERT INTO schedule(priority,jobID,dateScheduled,dateCreated,createdBy,createdByType) VALUES (".$_POST["jobPriority"].",".$_POST["jobID"].",'".$_POST["scheduleDate"]."',CURDATE(),".$createdBy.",'".$_SESSION["type"]."')");
 							//sets jobStatus to PROCESSING and the startDate from scheduleDate
 							$this->db->query("UPDATE job SET jobStatus='PROCESSING', startDate='".$_POST["scheduleDate"]."', finishDate=NULL WHERE jobID=".$_POST["jobID"]."");
 							//log these actions into USERLOGS

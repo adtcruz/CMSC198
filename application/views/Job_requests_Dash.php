@@ -71,7 +71,6 @@
 				<a class="waves-effect waves-light btn btn-large blue" onclick="$('#editJobModal').closeModal();">Cancel</a>
 			</div>
 		</div>
-
 	</div>
 	<div id="confirmEditModal" class="modal">
 		<div class="modal-content">
@@ -115,9 +114,7 @@
 			<a class="waves-effect waves-light btn btn-large blue darken-4" onclick="reloadPage('<?php echo base_url();?>');">OK</a>
 		</div>
 	</div>
-	<?php if(($_SESSION["type"]=="technician")||($_SESSION["type"]=="admin")||($_SESSION["type"]=="superadmin")) $this->load->view('Job_requests_schedule_job_modal'); ?>
-  <!-- New Job Request modals -->
-  <div id="submittedMessage" class="modal">
+	<div id="submittedMessage" class="modal">
     <div class="row">
       <br/>
       <h5 class="center-align">Job Request filed.</h5>
@@ -126,4 +123,7 @@
       <a class="waves-effect waves-light btn btn-large blue darken-4" onclick="reloadPage('<?php echo base_url();?>')">OK</a>
     </div>
   </div>
+	<!-- schedule job modals -->
+	<?php if(($_SESSION["type"]=="technician")||($_SESSION["type"]=="admin")||($_SESSION["type"]=="superadmin")) $this->load->view('Job_requests_schedule_job_modal'); ?>
+	<!-- update job request modals -->
 </div>
