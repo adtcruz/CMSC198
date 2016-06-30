@@ -121,7 +121,10 @@ function getUsers(url){
 		return;
 	}
 	$.post(url+"get_office_users",{officeID:officeID},function(data){
-		if(data==="No clients") data = "<option value=\"\" disabled=\"disabled\" selected=\"selected\">No clients under the selected office!</option>";
+		if(data==="No clients"){
+			data = "<option value=\"\" disabled=\"disabled\" selected=\"selected\">No clients under the selected office!</option>";
+			$("#clients-selector").attr("disabled","disabled");
+		}
 		else $("#clients-selector").removeAttr("disabled");
 		$("#clients-selector").html(data);
 		$("#clients-selector").material_select();
