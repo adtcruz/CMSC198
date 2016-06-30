@@ -66,6 +66,7 @@ $route['logout'] = 'Logout_controller';
 $route['schedule_job'] = 'Schedule_job_controller';
 $route['submit_request'] = 'Submit_job_request_controller';
 $route['update_job_request'] = 'Update_job_request_controller';
+$route['update_password'] = 'Update_password_controller';
 $route['update_profile'] = 'Update_profile_controller';
 
 //routes for page loads
