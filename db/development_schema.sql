@@ -98,6 +98,18 @@ CREATE TABLE job(
 	PRIMARY KEY(jobID)
 );
 
+-- 'WORK' Table
+DROP TABLE IF EXISTS work;
+CREATE TABLE work(
+	workID INT NOT NULL AUTO_INCREMENT,
+	workDescription VARCHAR(1024) NOT NULL,
+	jobID INT NOT NULL,
+	dateCreated DATE NOT NULL,
+	active INT NOT NULL DEFAULT '1',
+	FOREIGN KEY(jobID) REFERENCES job(jobID),
+	PRIMARY KEY(workID)
+);
+
 -- 'MATERIALS' Table
 DROP TABLE IF EXISTS materials;
 CREATE TABLE materials(

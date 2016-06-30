@@ -83,16 +83,33 @@ function openEditModal(url,jobID){
 	$("#editJobModal").openModal({dismissible:false});
 	$.post(url+"get_job_description",{jobID:jobID},function(data){
 		$("#problemsEncounteredNew").val(data);
+		old_job_description = data;
 	});
 }
 
 function confirmEditJob(){
 	$("#editJobModal").closeModal();
+	if(old_job_description===$("#problemsEncounteredNew").val()) return;
+	if($("#problemsEncounteredNew").val()==="") return;
 	$("#confirmEditModal").openModal({dismissible:false});
 }
 
 function editJob(url){
-	$("#confirmEditModal").closeModal();
+	$.post(
+		url+"edit_job",
+		{jobID:job_ID,jobDescription:$("#problemsEncounteredNew").val()},
+		function(data){
+				if (data==="Job description updated"){
+					$("#confirmEditModal").closeModal();
+					$("#jobEditedModal").openModal({dismissible:false});
+				}
+				else {
+					$("#confirmEditModal").closeModal();
+					Materialize.toast("Can't edit",3000);
+				}
+		}
+	);
+
 }
 
 //php passes the base url via onchange value/function call in the document
