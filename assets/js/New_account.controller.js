@@ -141,6 +141,28 @@ function addAdmin(url){
 
 	if(err) return;
 
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test(givenName))){
+		$("#adminGivenNameLabel").attr("data-error","Invalid characters detected");
+		$("#adminGivenNameLabel").html(
+			"Given Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		if(!($("#adminGivenName").hasClass("invalid"))) $("#adminGivenName").addClass("invalid");
+		err = true;
+	}
+
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test(lastName))){
+		$("#adminLastNameLabel").attr("data-error","Invalid characters detected");
+		$("#adminLastNameLabel").html(
+			"Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		if(!($("#adminLastName").hasClass("invalid"))) $("#adminLastName").addClass("invalid");
+		err = true;
+	}
+
 	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z0-9_]*$/).test(username))){
 		$("#adminUsernameLabel").attr("data-error","Invalid characters detected");
 		$("#adminUsernameLabel").html(
@@ -148,9 +170,11 @@ function addAdmin(url){
 			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
 			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 		);
-		$("#adminUsername").addClass("invalid");
-		return;
+		if(!($("#adminUsername").hasClass("invalid"))) $("#adminUsername").addClass("invalid");
+		err = true;
 	}
+
+	if(err) return;
 
 	$.post(
 		url+"create_account",
@@ -344,6 +368,28 @@ function addClient(url){
 
 	if(err) return;
 
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test(givenName))){
+		$("#clientGivenNameLabel").attr("data-error","Invalid characters detected");
+		$("#clientGivenNameLabel").html(
+			"Given Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		if(!($("#clientGivenName").hasClass("invalid"))) $("#clientGivenName").addClass("invalid");
+		err = true;
+	}
+
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test(lastName))){
+		$("#clientLastNameLabel").attr("data-error","Invalid characters detected");
+		$("#clientLastNameLabel").html(
+			"Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		if(!($("#clientLastName").hasClass("invalid"))) $("#clientLastName").addClass("invalid");
+		err = true;
+	}
+
 	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z0-9_]*$/).test(username))){
 		$("#clientUsernameLabel").attr("data-error","Invalid characters detected");
 		$("#clientUsernameLabel").html(
@@ -351,9 +397,22 @@ function addClient(url){
 			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
 			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 		);
-		$("#clientUsername").addClass("invalid");
-		return;
+		if(!($("#clientUsername").hasClass("invalid"))) $("#clientUsername").addClass("invalid");
+		err = true;
 	}
+
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z0-9_\s\-]*$/).test(designation))){
+		$("#designationLabel").attr("data-error","Invalid characters detected");
+		$("#designationLabel").html(
+			"Username&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		if(!($("#designation").hasClass("invalid"))) $("#designation").addClass("invalid");
+		err = true;
+	}
+
+	if(err) return;
 
 	$.post(
 		url+"create_account",
@@ -529,16 +588,40 @@ function addSuper(url){
 
 	if(err) return;
 
-	if (username===""){
-		$("#superadminUsernameLabel").attr("data-error","Invalid characters detected!");
-		$("#superadminUsernameLabel").html(
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test(givenName))){
+		$("#superadminGivenNameLabel").attr("data-error","Invalid characters detected");
+		$("#superadminGivenNameLabel").html(
+			"Given Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		if(!($("#superadminGivenName").hasClass("invalid"))) $("#superadminGivenName").addClass("invalid");
+		err = true;
+	}
+
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test(lastName))){
+		$("#superadminLastNameLabel").attr("data-error","Invalid characters detected");
+		$("#superadminLastNameLabel").html(
+			"Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		if(!($("#superadminLastName").hasClass("invalid"))) $("#superadminLastName").addClass("invalid");
+		err = true;
+	}
+
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z0-9_]*$/).test(username))){
+		$("#clientUsernameLabel").attr("data-error","Invalid characters detected");
+		$("#clientUsernameLabel").html(
 			"Username&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
 			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
 			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 		);
-		$("#superadminUsername").addClass("invalid");
+		if(!($("#superadminUsername").hasClass("invalid"))) $("#superadminUsername").addClass("invalid");
 		err = true;
 	}
+
+	if(err) return;
 
 	$.post(
 		url+"create_account",
@@ -712,16 +795,40 @@ function addTechnician(url){
 
 	if(err) return;
 
+	iif(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test(givenName))){
+		$("#technGivenNameLabel").attr("data-error","Invalid characters detected");
+		$("#technGivenNameLabel").html(
+			"Given Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		if(!($("#technGivenName").hasClass("invalid"))) $("#technGivenName").addClass("invalid");
+		err = true;
+	}
+
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test(lastName))){
+		$("#technLastNameLabel").attr("data-error","Invalid characters detected");
+		$("#technLastNameLabel").html(
+			"Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		if(!($("#technLastName").hasClass("invalid"))) $("#technLastName").addClass("invalid");
+		err = true;
+	}
+
 	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z0-9_]*$/).test(username))){
-		$("#technUsernameLabel").attr("data-error","Invalid characters detected!");
+		$("#technUsernameLabel").attr("data-error","Invalid characters detected");
 		$("#technUsernameLabel").html(
 			"Username&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
 			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
 			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 		);
-		$("#technUsername").addClass("invalid");
-		return;
+		if(!($("#technUsername").hasClass("invalid"))) $("#technUsername").addClass("invalid");
+		err = true;
 	}
+
+	if(err) return;
 
 	$.post(
 		url+"create_account",
@@ -753,5 +860,4 @@ function addTechnician(url){
 			}
 		}
 	);
-
 }
