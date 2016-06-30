@@ -25,7 +25,7 @@
 					if($row['priority']==1) $priority = "Normal";
 					if($row['priority']==2) $priority = "Urgent";
 					if($row['priority']==3) $priority = "Very Urgent";
-					$this->table->add_row ($priority, $row['dateCreated'], $row['jobDescription'], $row['givenName'].' '.$row['lastName'], $row['officeName'],"");
+					$this->table->add_row ($priority, $row['dateScheduled'], $row['jobDescription'], $row['givenName'].' '.$row['lastName'], $row['officeName'],"");
 				}
 
 				echo $this->table->generate ();
