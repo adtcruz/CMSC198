@@ -1,10 +1,10 @@
 job_ID = "";
 
-function updateJob(url,jobID){
+function getUpdateJobContents(url,jobID){
   job_ID = jobID;
   $('.tooltipped').tooltip('remove');
   $.post(
-    url+"update_job_request",
+    url+"get_update_job_request_contents",
     {jobID:job_ID},
     function (data){
       $("#mainAppArea").html(data);
@@ -12,14 +12,15 @@ function updateJob(url,jobID){
   );
 }
 
-function updateThisJob(url){
-  if($("#jobDoneCheckbox").val()==="on"){
-    $.post(
-      url+"update_job_request",
-      {isDone:"yes",jobID:job_ID},
-      function (data){
-        if(data==="Marked as done") Materialize.toast("Marked as done", 3000);
+function markThisJobDone(url){
+  $.post(
+    url+"update_job_request",
+    {isDone:"yes",jobID:job_ID},
+    function (data){
+      if(data==="Marked as done"){
+        $("#confirmMarkingAsDoneModal").closeModal();
+        $("#jobMarkedAsDoneModal").openModal({dismissible:false});
       }
-    );
-  }
+    }
+  );
 }
