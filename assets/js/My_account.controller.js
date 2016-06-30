@@ -63,8 +63,24 @@ function updateProfile(url){
 		if(!($("#user_lastName").hasClass("invalid"))) $("#user_lastName").addClass("invalid");
 	}
 
-	if((user_givenName_old===$("#user_givenName").val())||
-		(user_lastName_old = $("#user_lastName").val())){
+	if((user_givenName_old!==$("#user_givenName").val())||
+		(user_lastName_old!==$("#user_lastName").val())){
+		$.post(
+			url+"update_profile",
+			{
+				givenName:$("#user_givenName").val(),
+				lastName:$("#user_lastName").val()
+			},
+			function(data){
+				if(data==="Profile updated"){
 
+					$("#profileUpdatedModal").openModal({dismissible:false});
+					user_givenName_old = $("#user_givenName").val();
+					user_lastName_old = $("#user_lastName").val();
+					$("#sidebar_givenName").html($("#user_givenName").val());
+					$("#sidebar_lastName").html($("#user_lastName").val());
+				}
+			}
+		);
 	}
 }

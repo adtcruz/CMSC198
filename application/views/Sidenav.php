@@ -3,7 +3,7 @@
 	<div id="logo-container" class="center-align">
 		<p>
 			<h3>ITC Billing System</h3>
-			<h6>Welcome, <?php echo $_SESSION["givenName"]." ".$_SESSION["lastName"];?>!</h6>
+			<h6>Welcome, <span id="sidebar_givenName"><?php echo $_SESSION["givenName"]."</span> <span id=\"sidebar_lastName\">".$_SESSION["lastName"];?></span>!</h6>
 		</p>
 	</div>
 	<ul class="center-align">
