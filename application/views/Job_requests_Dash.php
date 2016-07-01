@@ -57,12 +57,11 @@
   <div id="editJobModal" class="modal">
 		<div class="row">
 			<br/>
-			<h5 class="center-align">Edit Job Request</h5>
+			<h5 class="center-align">Edit Job Description</h5>
 			<div class="col s1 m1 l1">&nbsp;</div>
 			<div class="input-field col s10 m10 l10">
 				<i class="material-icons large prefix">assignment_late</i>
 				<textarea id="problemsEncounteredNew" name="problemsEncounteredNew"class="materialize-textarea"></textarea>
-				<label for="problemsEncounteredNew">Problems encountered</label>
 			</div>
 			<div class="col s1 m1 l1">&nbsp;</div>
 			<div class="col s12 m12 l12 center-align">
@@ -75,7 +74,7 @@
 	<div id="confirmEditModal" class="modal">
 		<div class="modal-content">
 			<div class="row">
-				<h5 class="center-align">Are you sure you want to edit this Job Request?</h5>
+				<h5 class="center-align">Are you sure you want to edit the Job Description?</h5>
 			</div>
 			<div class="row center-align">
 				<a class="waves-effect waves-light btn btn-large red darken-4" onclick="editJob('<?php echo base_url();?>')">Yes</a>

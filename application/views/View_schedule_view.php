@@ -10,7 +10,7 @@ $this->load->view('Common_scripts');
 
 $this->load->view('View_schedule_script');
 
-if (($_SESSION["type"]==="technician")||($_SESSION["type"]==="superadmin")) $this->load->view('Update_job_request_script');
+if (($_SESSION["type"]==="technician")||($_SESSION["type"]==="superadmin")) $this->load->view('Job_request_content_script');
 
 $this->load->view('Logout_script');
 

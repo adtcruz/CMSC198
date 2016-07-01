@@ -135,7 +135,7 @@ class Job_requests_model extends CI_Model
 			//superadmins may schedule, edit, or cancel job requests
 			if($_SESSION["type"]==="superadmin"){
 				$actions = "<a class=\"btn-floating btn tooltipped waves-effect waves-light green\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Schedule job\" onclick=\"openScheduleJob('".base_url()."',".$jobID.");\"><i class=\"material-icons\">query_builder</i></a>&nbsp;&nbsp;";
-				$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Request Details\" onclick=\"openEditModal('".base_url()."',".$jobID.");\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
+				$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Description\" onclick=\"openEditModal('".base_url()."',".$jobID.");\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
 				return $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light red\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Cancel Job Request\" onclick=\"confirmCancel(".$jobID.");\"><i class=\"material-icons\">not_interested</i></a>";
 			}
 
@@ -147,7 +147,7 @@ class Job_requests_model extends CI_Model
 			//users can only edit or cancel job requests that they filed
 			if($_SESSION["type"]===$createdByType){
 				if($userID == $createdBy){
-					$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Request Details\" onclick=\"openEditModal('".base_url()."',".$jobID.");\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
+					$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Description\" onclick=\"openEditModal('".base_url()."',".$jobID.");\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
 					$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light red\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Cancel Job Request\" onclick=\"confirmCancel(".$jobID.");\"><i class=\"material-icons\">not_interested</i></a>";
 				}
 			}
@@ -160,14 +160,14 @@ class Job_requests_model extends CI_Model
 			//superadmins may edit or cancel job requests that are processing
 			//they may also update job requests (i.e. add work done and materials used)
 			if($_SESSION["type"]==="superadmin"){
-				$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light yellow darken-3\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Update Job Request\" onclick=\"getUpdateJobContents('".base_url()."',".$jobID.");\"><i class=\"material-icons\">assignment</i></a>&nbsp;&nbsp;";
-				$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Request Details\" onclick=\"openEditModal('".base_url()."',".$jobID.");\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
+				$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light yellow darken-3\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"View Job Request\" onclick=\"getJobRequestContents('".base_url()."',".$jobID.");\"><i class=\"material-icons\">assignment</i></a>&nbsp;&nbsp;";
+				$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Description\" onclick=\"openEditModal('".base_url()."',".$jobID.");\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
 				return $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light red\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Cancel Job Request\" onclick=\"confirmCancel(".$jobID.");\"><i class=\"material-icons\">not_interested</i></a>";
 			}
 
 			//technicians may update job requests (i.e. add work done and materials used)
 			if ($_SESSION["type"]==="technician"){
-				return "<a class=\"btn-floating btn tooltipped waves-effect waves-light yellow darken-3\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Update Job Request\" onclick=\"getUpdateJobContents('".base_url()."',".$jobID.");\"><i class=\"material-icons\">assignment</i></a>&nbsp;&nbsp;";
+				return "<a class=\"btn-floating btn tooltipped waves-effect waves-light yellow darken-3\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"View Job Request\" onclick=\"getJobRequestContents('".base_url()."',".$jobID.");\"><i class=\"material-icons\">assignment</i></a>&nbsp;&nbsp;";
 			}
 		}
 		//no actions can be made if job request was already processed or cancelled
