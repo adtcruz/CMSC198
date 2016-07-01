@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Get_update_job_request_contents_controller extends CI_Controller
+class Get_job_request_contents_controller extends CI_Controller
 {
   public function index(){
 
@@ -17,7 +17,7 @@ class Get_update_job_request_contents_controller extends CI_Controller
 
         $priority = $this->db->query("SELECT priority FROM schedule WHERE jobID=".$_POST["jobID"]."")->result_array()[0]["priority"];
 
-        $this->load->view('Update_job_request_content', array('jobDesc'=>$jobDesc, 'priority'=>$priority));
+        $this->load->view('Job_request_content', array('jobDesc'=>$jobDesc, 'priority'=>$priority));
       }
     }
   }
