@@ -24,6 +24,10 @@
 		<div class="center-align">
 			<a class="waves-effect waves-light btn btn-large red darken-4 center-align white-text" onclick="$('#confirmMarkingAsDoneModal').openModal({dismissible:false});">Mark this Job Request as Done</a>
 		</div>
+		<br/><br/>
+		<div class="center-align">
+			<a class="waves-effect waves-light btn btn-large blue darken-4 center-align white-text" onclick="reloadPage('<?php echo base_url();?>')">Go back</a>
+		</div>
 	</div>
 	<div class="col s1 m1 l1">&nbsp;</div>
 </div>
