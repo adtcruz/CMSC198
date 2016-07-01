@@ -31,7 +31,8 @@ class View_schedule_model extends CI_Model
 			if($row['priority']==1) $priority = "Normal";
 			if($row['priority']==2) $priority = "Urgent";
 			if($row['priority']==3) $priority = "Very Urgent";
-			$action = "<a class=\"btn-floating btn tooltipped waves-effect waves-light yellow darken-3\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Update Job Request\" onclick=\"getUpdateJobContents('".base_url()."',".$row['jobID'].");\"><i class=\"material-icons\">assignment</i></a>&nbsp;&nbsp;";
+			if(($_SESSION["type"]==="technician")||($_SESSION["type"]==="superadmin")) $action = "<a class=\"btn-floating btn tooltipped waves-effect waves-light yellow darken-3\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Update Job Request\" onclick=\"getUpdateJobContents('".base_url()."',".$row['jobID'].");\"><i class=\"material-icons\">assignment</i></a>&nbsp;&nbsp;";
+			else $action = "";
 			$this->table->add_row ($priority, $row['dateScheduled'], $row['jobDescription'], $row['givenName'].' '.$row['lastName'], $row['officeName'],$action);
 		}
 
