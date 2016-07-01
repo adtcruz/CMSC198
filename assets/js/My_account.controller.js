@@ -9,6 +9,12 @@ $('document').ready(
 	}
 );
 
+function oldPasswordOnChange(){
+	$("#oldPasswordLabel").attr("data-error","Given Name can not be blank!");
+	$("#oldPasswordLabel").html("Given Name: ");
+	if($("#oldPassword").hasClass("invalid")) $("#oldPassword").removeClass("invalid");
+}
+
 function givenNameOnChange(){
 	$("#user_givenNameLabel").attr("data-error","Given Name can not be blank!");
 	$("#user_givenNameLabel").html("Given Name: ");
@@ -33,7 +39,7 @@ function updateProfile(url){
 		if(!($("#user_givenName").hasClass("invalid"))) $("#user_givenName").addClass("invalid");
 	}
 
-	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test($("#user_givenName").val()))){
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s\u00F1]*$/).test($("#user_givenName").val()))){
 		$("#user_givenNameLabel").attr("data-error","Invalid characters detected");
 		$("#user_givenNameLabel").html(
 			"Given Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
@@ -53,7 +59,7 @@ function updateProfile(url){
 		if(!($("#user_lastName").hasClass("invalid"))) $("#user_lastName").addClass("invalid");
 	}
 
-	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test($("#user_lastName").val()))){
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s\u00F1]*$/).test($("#user_lastName").val()))){
 		$("#user_lastNameLabel").attr("data-error","Invalid characters detected");
 		$("#user_lastNameLabel").html(
 			"Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
