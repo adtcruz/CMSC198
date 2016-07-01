@@ -15,7 +15,9 @@ class Get_update_job_request_contents_controller extends CI_Controller
 
         $jobDesc = $this->db->query("SELECT jobDescription FROM job WHERE jobID=".$_POST["jobID"]."")->result_array()[0]["jobDescription"];
 
-        $this->load->view('Update_job_request_content', array('jobDesc'=>$jobDesc));
+        $priority = $this->db->query("SELECT priority FROM schedule WHERE jobID=".$_POST["jobID"]."")->result_array()[0]["priority"];
+
+        $this->load->view('Update_job_request_content', array('jobDesc'=>$jobDesc, 'priority'=>$priority));
       }
     }
   }

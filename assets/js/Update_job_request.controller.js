@@ -24,3 +24,8 @@ function markThisJobDone(url){
     }
   );
 }
+
+function openChangePriorityModal(){
+  $("#changePriorityModal").openModal({dismissible:false});
+  $("#newPriority").material_select();
+}
