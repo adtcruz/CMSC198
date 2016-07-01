@@ -141,7 +141,7 @@ function addAdmin(url){
 
 	if(err) return;
 
-	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test(givenName))){
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s\u00F1]*$/).test(givenName))){
 		$("#adminGivenNameLabel").attr("data-error","Invalid characters detected");
 		$("#adminGivenNameLabel").html(
 			"Given Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
@@ -152,7 +152,7 @@ function addAdmin(url){
 		err = true;
 	}
 
-	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test(lastName))){
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s\u00F1]*$/).test(lastName))){
 		$("#adminLastNameLabel").attr("data-error","Invalid characters detected");
 		$("#adminLastNameLabel").html(
 			"Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
@@ -368,7 +368,7 @@ function addClient(url){
 
 	if(err) return;
 
-	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test(givenName))){
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s\u00F1]*$/).test(givenName))){
 		$("#clientGivenNameLabel").attr("data-error","Invalid characters detected");
 		$("#clientGivenNameLabel").html(
 			"Given Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
@@ -379,7 +379,7 @@ function addClient(url){
 		err = true;
 	}
 
-	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test(lastName))){
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s\u00F1]*$/).test(lastName))){
 		$("#clientLastNameLabel").attr("data-error","Invalid characters detected");
 		$("#clientLastNameLabel").html(
 			"Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
@@ -588,7 +588,7 @@ function addSuper(url){
 
 	if(err) return;
 
-	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test(givenName))){
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s\u00F1]*$/).test(givenName))){
 		$("#superadminGivenNameLabel").attr("data-error","Invalid characters detected");
 		$("#superadminGivenNameLabel").html(
 			"Given Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
@@ -599,7 +599,7 @@ function addSuper(url){
 		err = true;
 	}
 
-	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test(lastName))){
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s\u00F1]*$/).test(lastName))){
 		$("#superadminLastNameLabel").attr("data-error","Invalid characters detected");
 		$("#superadminLastNameLabel").html(
 			"Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
@@ -795,7 +795,7 @@ function addTechnician(url){
 
 	if(err) return;
 
-	iif(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test(givenName))){
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s\u00F1]*$/).test(givenName))){
 		$("#technGivenNameLabel").attr("data-error","Invalid characters detected");
 		$("#technGivenNameLabel").html(
 			"Given Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
@@ -806,7 +806,7 @@ function addTechnician(url){
 		err = true;
 	}
 
-	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s]*$/).test(lastName))){
+	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s\u00F1]*$/).test(lastName))){
 		$("#technLastNameLabel").attr("data-error","Invalid characters detected");
 		$("#technLastNameLabel").html(
 			"Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
