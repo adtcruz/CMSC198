@@ -10,6 +10,8 @@ function getJobRequestContents(url,jobID){
     {jobID:job_ID},
     function (data){
       $("#mainAppArea").html(data);
+
+      $('.tooltipped').tooltip({delay: 50});
     }
   );
 }
