@@ -128,6 +128,8 @@ function lastNameOnChange(){
 
 function updateProfile(url){
 
+	err = false;
+
 	if($("#user_givenName").val()===""){
 		$("#user_givenNameLabel").attr("data-error","Given Name can not be blank!");
 		$("#user_givenNameLabel").html(
@@ -136,6 +138,7 @@ function updateProfile(url){
 			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 		);
 		if(!($("#user_givenName").hasClass("invalid"))) $("#user_givenName").addClass("invalid");
+		err = true;
 	}
 
 	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s\u00F1]*$/).test($("#user_givenName").val()))){
@@ -146,6 +149,7 @@ function updateProfile(url){
 			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 		);
 		if(!($("#user_givenName").hasClass("invalid"))) $("#user_givenName").addClass("invalid");
+		err = true;
 	}
 
 	if($("#user_lastName").val()===""){
@@ -156,6 +160,7 @@ function updateProfile(url){
 			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 		);
 		if(!($("#user_lastName").hasClass("invalid"))) $("#user_lastName").addClass("invalid");
+		err = true;
 	}
 
 	if(!(new RegExp(/^[A-Z-a-z][A-Z-a-z\s\u00F1]*$/).test($("#user_lastName").val()))){
@@ -166,7 +171,10 @@ function updateProfile(url){
 			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 		);
 		if(!($("#user_lastName").hasClass("invalid"))) $("#user_lastName").addClass("invalid");
+		err = true;
 	}
+
+	if (err) return;
 
 	if((user_givenName_old!==$("#user_givenName").val())||
 		(user_lastName_old!==$("#user_lastName").val())){
