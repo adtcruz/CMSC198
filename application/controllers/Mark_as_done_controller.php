@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Update_job_request_controller extends CI_Controller
+class Mark_as_done_controller extends CI_Controller
 {
   public function index(){
 
