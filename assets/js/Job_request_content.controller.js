@@ -2,11 +2,11 @@ job_ID = "";
 
 n_priority = 0;
 
-function getUpdateJobContents(url,jobID){
+function getJobRequestContents(url,jobID){
   job_ID = jobID;
   $('.tooltipped').tooltip('remove');
   $.post(
-    url+"get_update_job_request_contents",
+    url+"get_job_request_contents",
     {jobID:job_ID},
     function (data){
       $("#mainAppArea").html(data);
@@ -16,7 +16,7 @@ function getUpdateJobContents(url,jobID){
 
 function markThisJobDone(url){
   $.post(
-    url+"update_job_request",
+    url+"mark_as_done",
     {isDone:"yes",jobID:job_ID},
     function (data){
       if(data==="Marked as done"){

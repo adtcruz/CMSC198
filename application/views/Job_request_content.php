@@ -1,6 +1,6 @@
 <div class="row">
 	<br/>
-	<h3 class="center-align">Update Job</h3>
+	<h3 class="center-align">Job Request</h3>
 	<br/>
 	<br/>
 	<div class="col s1 m1 l1">&nbsp;</div>
@@ -11,18 +11,16 @@
 			</div>
 			<br/>
 			<div class="center-align">
-				<a class="waves-effect waves-light btn btn-small green darken-4 center-align white-text">List of work done…</a>
+				<a class="waves-effect waves-light btn btn-small green darken-4 center-align white-text">Work done…</a>
 				&nbsp;&nbsp;&nbsp;&nbsp;
-				<a class="waves-effect waves-light btn btn-small green darken-4 center-align white-text">List of materials used…</a>
+				<a class="waves-effect waves-light btn btn-small green darken-4 center-align white-text">Materials used…</a>
 			</div>
 		</div>
 		<br/><br/>
 		<div class="center-align">
-			<a class="waves-effect waves-light btn btn-large yellow darken-4 center-align white-text" onclick="openChangePriorityModal();">Change the Priority of this Job Request</a>
-		</div>
-		<br/><br/>
-		<div class="center-align">
-			<a class="waves-effect waves-light btn btn-large red darken-4 center-align white-text" onclick="$('#confirmMarkingAsDoneModal').openModal({dismissible:false});">Mark this Job Request as Done</a>
+			<a class="waves-effect waves-light btn yellow darken-4 center-align white-text" onclick="openChangePriorityModal();">Change Priority</a>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<a class="waves-effect waves-light btn red darken-4 center-align white-text" onclick="$('#confirmMarkingAsDoneModal').openModal({dismissible:false});">Mark as Done</a>
 		</div>
 		<br/><br/>
 		<div class="center-align">
@@ -54,7 +52,7 @@
 <div id="changePriorityModal" class="modal">
 	<div class="row">
     <br/>
-    <h5 class="center-align">Change Job Priority.</h5>
+    <h5 class="center-align">Change Job Priority</h5>
 		<br/><br/>
 		<div class="row">
 			<div class="col s3 m3 l3">&nbsp;</div>
