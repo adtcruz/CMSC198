@@ -10,9 +10,108 @@ $('document').ready(
 );
 
 function oldPasswordOnChange(){
-	$("#oldPasswordLabel").attr("data-error","Given Name can not be blank!");
-	$("#oldPasswordLabel").html("Given Name: ");
+	$("#oldPasswordLabel").attr("data-error","Please re-enter old password.");
+	$("#oldPasswordLabel").html("Re-enter old password");
 	if($("#oldPassword").hasClass("invalid")) $("#oldPassword").removeClass("invalid");
+}
+
+function newPasswordOnChange(){
+	$("#newPasswordLabel").attr("data-error","Please enter a password.");
+	$("#confirmPasswordLabel").attr("data-error","Please enter a password.");
+	$("#newPasswordLabel").html("Enter new password");
+	$("#confirmPasswordLabel").html("Confirm new password");
+	if($("#newPassword").hasClass("invalid")) $("#newPassword").removeClass("invalid");
+	if($("#confirmPassword").hasClass("invalid")) $("#confirmPassword").removeClass("invalid");
+	if($("#newPassword").val().length < 6) $("#confirmPassword").attr("disabled","disabled");
+	else $("#confirmPassword").removeAttr("disabled");
+	$("#confirmPassword").val("");
+}
+
+function confirmPasswordOnChange(){
+	$("#newPasswordLabel").attr("data-error","Please enter a password.");
+	$("#confirmPasswordLabel").attr("data-error","Please enter a password.");
+	$("#newPasswordLabel").html("Enter new password");
+	$("#confirmPasswordLabel").html("Confirm new password");
+	if($("#newPassword").hasClass("invalid")) $("#newPassword").removeClass("invalid");
+	if($("#confirmPassword").hasClass("invalid")) $("#confirmPassword").removeClass("invalid");
+}
+
+function updatePassword(url){
+
+	err = false;
+
+	if($("#oldPassword").val()===""){
+		$("#oldPasswordLabel").attr("data-error","Please re-enter old password.");
+		$("#oldPasswordLabel").html(
+			"Re-enter old password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		if(!($("#oldPassword").hasClass("invalid"))) $("#oldPassword").addClass("invalid");
+		err = true;
+	}
+
+	if($("#newPassword").val()===""){
+		$("#newPasswordLabel").attr("data-error","Please enter a password.");
+		$("#newPasswordLabel").html(
+			"Enter new password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		if(!($("#newPassword").hasClass("invalid"))) $("#newPassword").addClass("invalid");
+		err = true;
+	}
+
+	if($("#confirmPassword").val()===""){
+		$("#confirmPasswordLabel").attr("data-error","Please confirm new password.");
+		$("#confirmPasswordLabel").html(
+			"Confirm new password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		if(!($("#confirmPassword").hasClass("invalid"))) $("#confirmPassword").addClass("invalid");
+		err = true;
+	}
+
+	if(err) return;
+
+	if($("#newPassword").val()===$("#confirmPassword").val()){
+		$.post(
+			url+"update_password",
+			{
+				passwordOld:$("#oldPassword").val(),
+				passwordNew:$("#newPassword").val()
+			},
+			function(data){
+				if(data==="Password updated"){
+					$("#changePasswordModal").closeModal();
+					$("#passwordUpdatedModal").openModal({dismissible:false});
+					$("#oldPassword").val("");
+					$("#newPassword").val("");
+					$("#confirmPassword").val("");
+					$("#confirmPassword").attr("disabled","disabled");
+				}
+			}
+		);
+	}
+
+	if($("#newPassword").val()!==$("#confirmPassword").val()){
+		$("#newPasswordLabel").attr("data-error","Passwords do not match!");
+		$("#confirmPasswordLabel").attr("data-error","Passwords do not match!");
+		$("#newPasswordLabel").html(
+			"Enter new password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		$("#confirmPasswordLabel").html(
+			"Confirm new password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		if(!($("#newPassword").hasClass("invalid"))) $("#newPassword").addClass("invalid");
+		if(!($("#confirmPassword").hasClass("invalid"))) $("#confirmPassword").addClass("invalid");
+	}
+
 }
 
 function givenNameOnChange(){

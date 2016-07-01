@@ -59,15 +59,15 @@
 				<div class="col s3 m3 l3">&nbsp;</div>
 				<div class="col s6 m6 l6">
 					<div class="input-field">
-						<input id="oldPassword" name="oldPassword" type="password"/>
+						<input id="oldPassword" name="oldPassword" type="password" onkeyup="oldPasswordOnChange();" onchange="oldPasswordOnChange();"/>
 						<label id="oldPasswordLabel" for="oldPassword">Re-enter old password</label>
 					</div>
 					<div class="input-field">
-						<input id="newPassword" name="newPassword" type="password"/>
+						<input id="newPassword" name="newPassword" type="password" onkeyup="newPasswordOnChange();" onchange="newPasswordOnChange();"/>
 						<label id="newPasswordLabel" for="newPassword">Enter new password</label>
 					</div>
 					<div class="input-field">
-						<input id="confirmPassword" name="confirmPassword" type="password"/>
+						<input id="confirmPassword" name="confirmPassword" type="password" onkeyup="confirmPasswordOnChange();" onchange="confirmPasswordOnChange();"/>
 						<label id="confirmPasswordLabel" for="confirmPassword">Confirm new password</label>
 					</div>
 				</div>
@@ -75,9 +75,18 @@
 			</div>
 	  </div>
 	  <div class="row center-align">
-			<a class="waves-effect waves-light btn btn-large red darken-4">Change Password</a>
+			<a class="waves-effect waves-light btn btn-large red darken-4" onclick="updatePassword('<?php echo base_url();?>')">Change Password</a>
 			&nbsp;&nbsp;&nbsp;&nbsp;
 	    <a class="waves-effect waves-light btn btn-large blue darken-4" onclick="$('#changePasswordModal').closeModal();">Cancel</a>
+	  </div>
+	</div>
+	<div id="passwordUpdatedModal" class="modal">
+		<div class="row">
+	    <br/>
+	    <h5 class="center-align">Password updated!</h5>
+	  </div>
+	  <div class="row center-align">
+	    <a class="waves-effect waves-light btn btn-large blue darken-4" onclick="$('#passwordUpdatedModal').closeModal();">OK</a>
 	  </div>
 	</div>
 </div>
