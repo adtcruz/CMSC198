@@ -6,6 +6,7 @@ class Update_job_priority_controller extends CI_Controller
     {
         parent::__construct ();
         $this->load->database ();
+        session_start();
     }
 
     public function index ()
