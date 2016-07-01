@@ -1,5 +1,7 @@
 job_ID = "";
 
+n_priority = 0;
+
 function getUpdateJobContents(url,jobID){
   job_ID = jobID;
   $('.tooltipped').tooltip('remove');
@@ -28,4 +30,24 @@ function markThisJobDone(url){
 function openChangePriorityModal(){
   $("#changePriorityModal").openModal({dismissible:false});
   $("#newPriority").material_select();
+}
+
+function confirmUpdatePriority(){
+  n_priority = $("#newPriority").val();
+  $("#changePriorityModal").closeModal();
+  $("#confirmUpdatePriorityModal").openModal({dismissible:false});
+}
+
+function updatePriority(url){
+  $.post(
+    url+"update_priority",
+    {jobID:job_ID,priority:n_priority},
+    function (data){
+      if(data==="Priority updated"){
+        $("#confirmUpdatePriorityModal").closeModal();
+        $("#priorityUpdatedModal").openModal({dismissible:false});
+      }
+    }
+  );
+
 }

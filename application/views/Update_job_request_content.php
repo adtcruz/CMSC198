@@ -89,8 +89,28 @@
   </div>
 	<br/>
   <div class="row center-align">
-    <a class="waves-effect waves-light btn btn-large yellow darken-4">Update Priority</a>
+    <a class="waves-effect waves-light btn btn-large yellow darken-4" onclick="confirmUpdatePriority();">Update Priority</a>
 		&nbsp;&nbsp;&nbsp;&nbsp;
 		<a class="waves-effect waves-light btn btn-large blue darken-4" onclick="$('#changePriorityModal').closeModal();">Close</a>
+  </div>
+</div>
+<div id="confirmUpdatePriorityModal" class="modal">
+  <div class="row">
+    <br/>
+    <h5 class="center-align">Are you really sure you want to update Job Priority?<br/><br/>This process is NOT reversible.</h5>
+  </div>
+  <div class="row center-align">
+    <a class="waves-effect waves-light btn btn-large red darken-4" onclick="updatePriority('<?php echo base_url();?>');">YES</a>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<a class="waves-effect waves-light btn btn-large blue darken-4" onclick="$('#confirmUpdatePriorityModal').closeModal();">NO</a>
+  </div>
+</div>
+<div id="priorityUpdatedModal" class="modal">
+  <div class="row">
+    <br/>
+    <h5 class="center-align">Priority updated.</h5>
+  </div>
+  <div class="row center-align">
+    <a class="waves-effect waves-light btn btn-large blue darken-4" onclick="reloadPage('<?php echo base_url();?>');">OK</a>
   </div>
 </div>
