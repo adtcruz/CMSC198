@@ -56,15 +56,18 @@ $route['create_account'] = 'Create_account_controller';
 $route['edit_job'] = 'Edit_job_description_controller';
 $route['get_office_users'] = 'Get_office_users_controller';
 $route['get_job_description'] = 'Get_job_description_controller';
+$route['get_logs'] = 'Get_logs_controller';
 $route['get_schedule_job_form'] = 'Get_schedule_job_form_controller';
 $route['get_technicians'] = 'Get_technicians_controller';
-$route['get_logs'] = 'Get_logs_controller';
+$route['get_update_job_request_contents'] = 'Get_update_job_request_contents_controller';
 $route['get_user_type'] = 'Get_user_type_controller';
 $route['login'] = 'Login_controller';
 $route['logout'] = 'Logout_controller';
 $route['schedule_job'] = 'Schedule_job_controller';
 $route['submit_request'] = 'Submit_job_request_controller';
 $route['update_job_request'] = 'Update_job_request_controller';
+$route['update_password'] = 'Update_password_controller';
+$route['update_profile'] = 'Update_profile_controller';
 
 //routes for page loads
 $route['new_account'] = 'New_account_controller';

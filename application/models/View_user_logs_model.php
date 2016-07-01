@@ -71,7 +71,7 @@ class View_user_logs_model extends CI_Model
 
 	public function getJobActionsEntries(){
 		$query = $this->db->query(
-			"SELECT logText, logTimestamp FROM userLogs WHERE logText LIKE '%scheduled%' OR logText LIKE '%filed%' OR logText LIKE '%canceled%' ORDER BY logTimestamp DESC"
+			"SELECT logText, logTimestamp FROM userLogs WHERE logText LIKE '%scheduled%' OR logText LIKE '%filed%' OR logText LIKE '%canceled%' OR logText LIKE '%marked%'ORDER BY logTimestamp DESC"
 		);
 
 		$row = $query->result_array();
