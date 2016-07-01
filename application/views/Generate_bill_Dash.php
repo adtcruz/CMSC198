@@ -21,14 +21,14 @@
 						return;
 					}
 
-					$button = array(
-							'data' => '<a href="topdf_bfp" class="waves-effect waves-light btn"><i class="material-icons left">credit_card</i>Generate</a>'
+					foreach ($generateBill_array as $row){
+						$this->table->add_row (
+              $row['jobID'],
+              $row['givenName'].' '.$row['lastName'],
+              array(
+  							'data' => '<a href="topdf_bfp/'.$row['jobID'].'" target = "_blank" class="waves-effect waves-light btn"><i class="material-icons left">credit_card</i>Generate</a>'
+  						)
 						);
-
-					foreach ($generateBill_array as $row)
-					{
-						$this->table->add_row ($row['jobID'], $row['givenName'].' '.$row['lastName'], $button);
-
 					}
 
 					echo $this->table->generate ();
