@@ -2,11 +2,29 @@
 
 class Job_requests_model extends CI_Model
 {
-
+	public $db_data;
 	public function __construct ()
 	{
 		parent::__construct ();
 		$this->load->database();
+	}
+
+	public function processOffices($officeID, $space){
+		$query = $this->db->query('SELECT office.officeID, office.officeName, office.parentUnit, office.officeAbbr FROM office WHERE (office.parentUnit = '.$officeID.') ORDER BY office.officeName');
+    global $db_data;
+    $db_data['parent'.$officeID.''] = $query->result_array ();
+    if (!empty ($db_data['parent'.$officeID.'']))
+    {
+        $space++;
+        foreach ($db_data['parent'.$officeID.''] as $row)
+        {
+            $cell = array (
+                'data' => '<option value = "'.$row['officeID'].'">'.str_repeat ('-&nbsp;', $space).$row['officeName'].'</option>'
+            );
+            $this->table->add_row ($cell);
+            $this->processOffices($row['officeID'], $space);
+        }
+    }
 	}
 
   public function getOffices($type){
@@ -14,18 +32,24 @@ class Job_requests_model extends CI_Model
 		$options = "";
 
     if(($type==="technician")||($type==="admin")||($type==="superadmin")){
+			$this->processOffices(0, 0);
 
-      //queries the database for officeIDs and officeNames
-      $query = $this->db->query("SELECT officeID, officeName FROM office ORDER BY officeName");
-
-      //gets the results in easy-to-use array form
-      $rows = $query->result_array();
-
-      $options = "<option value=\"\" selected=\"selected\" disabled=\"disabled\">Select office…</option>";
-
-      for($i = 0; $i < count($rows); $i++){
-        $options = $options."<option value=\"".$rows[$i]["officeID"]."\">".$rows[$i]["officeName"]."</option>";
-      }
+			$template = array (
+        'table_open' => '',
+        'tbody_open' => '',
+        'tbody_close' => '',
+        'row_start' => '',
+        'row_end' => '',
+        'cell_start' => '',
+        'cell_end' => '',
+        'row_alt_start' => '',
+        'row_alt_end' => '',
+        'cell_alt_start' => '',
+        'cell_alt_end' => '',
+        'table_close' => ''
+	    );
+	    $this->table->set_template($template);
+	    $options = $this->table->generate();
     }
 
 		return $options;
