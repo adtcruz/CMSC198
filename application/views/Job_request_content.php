@@ -155,7 +155,7 @@
 					</select>
 				</div>
 				<div class="input-field">
-					<input id="materialUnits" type="number"/>
+					<input id="materialUnits" value="0" type="number"/>
 					<label for="materialUnits">Total Number of Units</label>
 				</div>
 			</div>
@@ -177,7 +177,7 @@
 			<div class="col s3 m3 l3">&nbsp;</div>
 			<div class="col s6 m6 l6">
 				<div class="input-field">
-					<input id="newMaterialUnits" type="number"/>
+					<input id="newMaterialUnits" value="0" type="number"/>
 					<label for="newMaterialUnits">Total Number of Units</label>
 				</div>
 			</div>
@@ -185,8 +185,17 @@
 		</div>
 	</div>
 	<div class="row center-align">
-		<a class="waves-effect waves-light btn btn-large green darken-4">Change Quantity/Units</a>
+		<a class="waves-effect waves-light btn btn-large green darken-4" onclick="updateMaterialsUsed('<?php echo base_url();?>');">Change Quantity/Units</a>
 		&nbsp;&nbsp;&nbsp;&nbsp;
 		<a class="waves-effect waves-light btn btn-large blue darken-4" onclick="$('#changeMaterialQuantityUnitModal').closeModal();">Close</a>
 	</div>
+</div>
+<div id="quantityUnitsCantBeNoughtModal" class="modal">
+	<div class="row">
+    <br/>
+    <h5 class="center-align">Quantity/Units can not be less than 1!</h5>
+  </div>
+  <div class="row center-align">
+    <a class="waves-effect waves-light btn btn-large blue darken-4" onclick="$('#quantityUnitsCantBeNoughtModal').closeModal();">OK</a>
+  </div>
 </div>

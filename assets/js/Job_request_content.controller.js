@@ -1,5 +1,7 @@
 job_ID = "";
 
+materialsUsed_ID = "";
+
 n_priority = 0;
 
 function getJobRequestContents(url,jobID){
@@ -75,6 +77,10 @@ function openAddMaterialsUsedModal(url){
 }
 
 function addMaterialsUsed(url){
+  if($("#materialUnits").val()<1){
+    $("#quantityUnitsCantBeNoughtModal").openModal({dismissible:false});
+    return;
+  }
   $.post(
     url+"add_materials_used",
     {
@@ -95,6 +101,43 @@ function addMaterialsUsed(url){
             $("#addMaterialsUsedModal").closeModal();
 
             $("#materialUnits").val("");
+          }
+        );
+      }
+    }
+  );
+}
+
+function openUpdateMaterialsModal(materialsUsedID){
+  materialsUsed_ID = materialsUsedID;
+  $("#changeMaterialQuantityUnitModal").openModal({dismissible:false});
+}
+
+function updateMaterialsUsed(url){
+  if($("#newMaterialUnits").val()<1){
+    $("#quantityUnitsCantBeNoughtModal").openModal({dismissible:false});
+    return;
+  }
+  $.post(
+    url+"update_materials_used",
+    {
+      jobID:job_ID,
+      materialsUsedID:materialsUsed_ID,
+      materialUnits:$("#newMaterialUnits").val()
+    },
+    function (data){
+      if(data==="Updated material"){
+        $.post(
+          url+"get_materials_used",
+          {jobID:job_ID},
+          function(data){
+            $("#materialsUsedTable").html(data);
+
+            $('.tooltipped').tooltip({delay: 50});
+
+            $("#changeMaterialQuantityUnitModal").closeModal();
+
+            $("#newMaterialUnits").val("");
           }
         );
       }
