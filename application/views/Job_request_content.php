@@ -168,3 +168,25 @@
 		<a class="waves-effect waves-light btn btn-large blue darken-4" onclick="$('#addMaterialsUsedModal').closeModal();">Close</a>
   </div>
 </div>
+<div id="changeMaterialQuantityUnitModal" class="modal">
+	<div class="row">
+		<br/>
+		<h5 class="center-align">Change material(s) quantity/units.</h5>
+		<br/><br/>
+		<div class="row">
+			<div class="col s3 m3 l3">&nbsp;</div>
+			<div class="col s6 m6 l6">
+				<div class="input-field">
+					<input id="newMaterialUnits" type="number"/>
+					<label for="newMaterialUnits">Total Number of Units</label>
+				</div>
+			</div>
+			<div class="col s3 m3 l3">&nbsp;</div>
+		</div>
+	</div>
+	<div class="row center-align">
+		<a class="waves-effect waves-light btn btn-large green darken-4">Change Quantity/Units</a>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<a class="waves-effect waves-light btn btn-large blue darken-4" onclick="$('#changeMaterialQuantityUnitModal').closeModal();">Close</a>
+	</div>
+</div>
