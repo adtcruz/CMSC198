@@ -2,7 +2,7 @@
 USE cmsc198db;
 
 -- Insert some materials for some job
-INSERT INTO materials (materialName, materialDescription, materialCost, materialUnit, materialUnitMeasurement, dateCreated, createdBy) VALUES ('LAN Cable', 'Cable used for network connections', 100 ,10.0, 'Meters', CURDATE(), 1);
-INSERT INTO materials (materialName, materialDescription, materialCost, materialUnit, materialUnitMeasurement, dateCreated, createdBy) VALUES ('Network Switch', 'Hardware that handles network connections', 100, 1, 'Piece/s', CURDATE(), 1);
-INSERT INTO materials (materialName, materialDescription, materialCost, materialUnit, materialUnitMeasurement, dateCreated, createdBy) VALUES ('VoIP Phone', 'Hardware interface for Voice over IP', 100, 3, 'Piece/s', CURDATE(), 1);
-INSERT INTO materials (materialName, materialDescription, materialCost, materialUnit, materialUnitMeasurement, dateCreated, createdBy) VALUES ('UPS', 'Uninterrupted Power Supply', 100, 1, 'Piece/s', CURDATE(), 1);
+INSERT INTO materials (materialName, materialDescription, materialCost, materialUnitMeasurement, dateCreated, createdBy, createdByType) VALUES ('LAN Cable', 'Cable used for network connections', 100, 'metre', CURDATE(), 1, 'superadmin');
+INSERT INTO materials (materialName, materialDescription, materialCost, materialUnitMeasurement, dateCreated, createdBy, createdByType) VALUES ('Network Switch', 'Hardware that handles network connections', 100, 'piece', CURDATE(), 1, 'superadmin');
+INSERT INTO materials (materialName, materialDescription, materialCost, materialUnitMeasurement, dateCreated, createdBy, createdByType) VALUES ('VoIP Phone', 'Hardware interface for Voice over IP', 100, 'piece', CURDATE(), 1, 'superadmin');
+INSERT INTO materials (materialName, materialDescription, materialCost, materialUnitMeasurement, dateCreated, createdBy, createdByType) VALUES ('UPS', 'Uninterrupted Power Supply', 100, 'piece', CURDATE(), 1, 'superadmin');
