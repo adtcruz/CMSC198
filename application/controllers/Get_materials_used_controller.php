@@ -23,7 +23,7 @@ class Get_materials_used_controller extends CI_Controller
 						return;
 					}
 
-					$this->table->set_heading("Material Name","Units","Cost per unit","Total Cost","Actions");
+				$this->table->set_heading("Material Name","Quantity/Units","Cost per unit","Total Cost","Actions");
 					$this->load->model('Get_materials_used_model','gmum');
 
 			    foreach($rows as $row){
