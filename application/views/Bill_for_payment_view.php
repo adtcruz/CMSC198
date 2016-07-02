@@ -16,7 +16,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		'rowspan' => '4'
 	);
 
-	$this->table->add_row ($upLogoCell, array ('data' => 'University of the Philippines Los Banos', 'align' => 'center'), $itcLogoCell);
+	$this->table->add_row ($upLogoCell, array ('data' => 'University of the Philippines Los Baños', 'align' => 'center'), $itcLogoCell);
 	$this->table->add_row (array('data' => '<b>Information Technology Center</b>', 'align' => 'center'));
 	$this->table->add_row (array('data' => 'Office of the Vice Chancellor for Planning and Development', 'align' => 'center'));
 	$this->table->add_row (array('data' => 'Rm 206 Abelardo Samonte Hall, UPLB, College, Laguna', 'align' => 'center'));
@@ -66,7 +66,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	$this->table->add_row ('');
 	$this->table->add_row ('');
 	$this->table->add_row ('');
-	
+
 	$this->table->add_row ('<b>'.$head.'</b>');
 	$this->table->add_row ('Director');
 	echo $this->table->generate ();
