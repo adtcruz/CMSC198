@@ -68,8 +68,59 @@ function openAddMaterialsUsedModal(url){
     url+"get_materials_options",
     function(data){
       $("#addMaterialsUsedModal").openModal({dismissible:false});
-      $("#materialsUsed").html(data);
-      $("#materialsUsed").material_select();
+      $("#materialID").html(data);
+      $("#materialID").material_select();
+    }
+  );
+}
+
+function addMaterialsUsed(url){
+  $.post(
+    url+"add_materials_used",
+    {
+      jobID:job_ID,
+      materialID:$("#materialID").val(),
+      materialUnits:$("#materialUnits").val()
+    },
+    function (data){
+      if(data==="Added new material"){
+        $.post(
+          url+"get_materials_used",
+          {jobID:job_ID},
+          function(data){
+            $("#materialsUsedTable").html(data);
+
+            $('.tooltipped').tooltip({delay: 50});
+
+            $("#addMaterialsUsedModal").closeModal();
+
+            $("#materialUnits").val("");
+          }
+        );
+      }
+    }
+  );
+}
+
+function deleteMaterialUsed(url,materialsUsedID){
+
+  $('.tooltipped').tooltip('remove');
+
+  $.post(
+    url+"delete_materials_used",
+    {materialsUsedID:materialsUsedID},
+    function(data){
+      if(data==="Deleted material"){
+        $.post(
+          url+"get_materials_used",
+          {jobID:job_ID},
+          function(data){
+            $("#materialsUsedTable").html("");
+            $("#materialsUsedTable").html(data);
+            $('.tooltipped').tooltip({delay: 50});
+          }
+        );
+      }
     }
   );
 }

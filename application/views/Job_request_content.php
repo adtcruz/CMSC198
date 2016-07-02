@@ -47,7 +47,6 @@
 			</div>
 			<br/>
 		</div>
-		<br/><br/>
 		<div class="center-align">
 			<a class="waves-effect waves-light btn yellow darken-4 center-align white-text" onclick="openChangePriorityModal();">Change Priority</a>
 			&nbsp;&nbsp;&nbsp;&nbsp;
@@ -152,19 +151,19 @@
 			<div class="col s3 m3 l3">&nbsp;</div>
 			<div class="col s6 m6 l6">
 				<div class="input-field">
-					<select id="materialsUsed">
+					<select id="materialID">
 					</select>
 				</div>
 				<div class="input-field">
-					<input id="totalUnits" type="text"/>
-					<label for="totalUnits">Total Number of Units</label>
+					<input id="materialUnits" type="text"/>
+					<label for="materialUnits">Total Number of Units</label>
 				</div>
 			</div>
 			<div class="col s3 m3 l3">&nbsp;</div>
 		</div>
   </div>
   <div class="row center-align">
-    <a class="waves-effect waves-light btn btn-large green darken-4">Add Material</a>
+    <a class="waves-effect waves-light btn btn-large green darken-4" onclick="addMaterialsUsed('<?php echo base_url();?>')">Add Material</a>
 		&nbsp;&nbsp;&nbsp;&nbsp;
 		<a class="waves-effect waves-light btn btn-large blue darken-4" onclick="$('#addMaterialsUsedModal').closeModal();">Close</a>
   </div>
