@@ -9,7 +9,7 @@ class Get_materials_used_model extends CI_Model
 
   public function processActions($materialsUsedID){
 		$editOpen = '<a class="btn-floating btn tooltipped waves-effect waves-light cyan" data-position="left" data-delay="50" data-tooltip="Change material quantity/unit"';
-		$editFunctionCall = ' onclick="updateMaterialsUsed(\''.base_url().'\','.$materialsUsedID.')"';
+		$editFunctionCall = ' onclick="openUpdateMaterialsModal('.$materialsUsedID.')"';
 		$editClose = '><i class="material-icons">mode_edit</i></a>';
 		$space = '&nbsp;&nbsp;&nbsp;&nbsp;';
 		$deleteOpen = '<a class="btn-floating btn tooltipped waves-effect waves-light red" data-position="left" data-delay="50" data-tooltip="Delete material used"';
