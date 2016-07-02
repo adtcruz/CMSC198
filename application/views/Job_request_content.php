@@ -155,7 +155,7 @@
 					</select>
 				</div>
 				<div class="input-field">
-					<input id="materialUnits" type="text"/>
+					<input id="materialUnits" type="number"/>
 					<label for="materialUnits">Total Number of Units</label>
 				</div>
 			</div>
