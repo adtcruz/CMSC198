@@ -70,6 +70,7 @@ $route['logout'] = 'Logout_controller';
 $route['mark_as_done'] = 'Mark_as_done_controller';
 $route['schedule_job'] = 'Schedule_job_controller';
 $route['submit_request'] = 'Submit_job_request_controller';
+$route['update_materials_used'] = 'Update_materials_used_controller';
 $route['update_password'] = 'Update_password_controller';
 $route['update_priority'] = 'Update_job_priority_controller';
 $route['update_profile'] = 'Update_profile_controller';
