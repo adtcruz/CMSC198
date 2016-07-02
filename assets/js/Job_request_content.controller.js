@@ -11,6 +11,16 @@ function getJobRequestContents(url,jobID){
     function (data){
       $("#mainAppArea").html(data);
 
+      $.post(
+        url+"get_materials_used",
+        {jobID:job_ID},
+        function(data){
+          $("#materialsUsedTable").html(data);
+
+          $('.tooltipped').tooltip({delay: 50});
+        }
+      );
+
       $('.tooltipped').tooltip({delay: 50});
     }
   );
@@ -51,5 +61,15 @@ function updatePriority(url){
       }
     }
   );
+}
 
+function openAddMaterialsUsedModal(url){
+  $.get(
+    url+"get_materials_options",
+    function(data){
+      $("#addMaterialsUsedModal").openModal({dismissible:false});
+      $("#materialsUsed").html(data);
+      $("#materialsUsed").material_select();
+    }
+  );
 }
