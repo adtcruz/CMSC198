@@ -12,13 +12,13 @@ class Update_materials_used_controller extends CI_Controller
 
 			if(($_SESSION["type"]==="superadmin")||($_SESSION["type"]==="technician")){
 
-				if(array_key_exists("materialUsedID",$_POST)){
+				if(array_key_exists("materialsUsedID",$_POST)){
 
 					if(array_key_exists("materialUnits",$_POST)){
 
 						$this->load->database();
 
-						$this->db->query("UPDATE materialsUsed SET materialUnits=".$_POST["materialUnits"]." WHERE materialsUsedID=".$_POST["materialUsedID"]."");
+						$this->db->query("UPDATE materialsUsed SET materialUnits=".$_POST["materialUnits"]." WHERE materialsUsedID=".$_POST["materialsUsedID"]."");
 
 						$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES ('".$_SESSION["username"]." updated a material for use in jobID #".$_POST["jobID"]."',CURRENT_TIMESTAMP)");
 
