@@ -22,7 +22,7 @@ class Add_materials_used_controller extends CI_Controller
 
 							$this->load->model('Job_requests_model','jrm');
 
-							$this->db->query("INSERT INTO materialsUsed(materialID,jobID,materialUnits,createdBy,createdByType) VALUES (".$_POST["materialID"].",".$_POST["jobID"].",".$_POST["materialUnits"].",".$this->jrm->getUserID().",'".$_SESSION["type"]."')");
+							$this->db->query("INSERT INTO materialsUsed(materialID,jobID,materialUnits,dateCreated,createdBy,createdByType) VALUES (".$_POST["materialID"].",".$_POST["jobID"].",".$_POST["materialUnits"].",CURDATE(),".$this->jrm->getUserID().",'".$_SESSION["type"]."')");
 
 							$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES ('".$_SESSION["username"]." added a material for jobID #".$_POST["jobID"]."',CURRENT_TIMESTAMP)");
 

@@ -22,7 +22,7 @@ class Add_work_done_controller extends CI_Controller
 
 							$this->load->model('Job_requests_model','jrm');
 
-							$this->db->query("INSERT INTO workDone(workID,jobID,workDuration,createdBy,createdByType) VALUES (".$_POST["workID"].",".$_POST["jobID"].",".$_POST["workDuration"].",".$this->jrm->getUserID().",'".$_SESSION["type"]."')");
+							$this->db->query("INSERT INTO workDone(workID,jobID,workDuration,dateCreated,createdBy,createdByType) VALUES (".$_POST["workID"].",".$_POST["jobID"].",CURDATE(),".$_POST["workDuration"].",".$this->jrm->getUserID().",'".$_SESSION["type"]."')");
 
 							$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES ('".$_SESSION["username"]." added a work done for jobID #".$_POST["jobID"]."',CURRENT_TIMESTAMP)");
 
