@@ -2,6 +2,8 @@ job_ID = "";
 
 materialsUsed_ID = "";
 
+workDone_ID = "";
+
 n_priority = 0;
 
 function getJobRequestContents(url,jobID){
@@ -87,7 +89,7 @@ function openAddMaterialsUsedModal(url){
 }
 
 function addMaterialsUsed(url){
-  if($("#materialUnits").val()<1) return;
+  if($("#materialUnits").val()==0) return;
   $.post(
     url+"add_materials_used",
     {
@@ -121,7 +123,7 @@ function openUpdateMaterialsModal(materialsUsedID){
 }
 
 function updateMaterialsUsed(url){
-  if($("#newMaterialUnits").val()<1) return;
+  if($("#newMaterialUnits").val()==0) return;
   $.post(
     url+"update_materials_used",
     {
@@ -184,7 +186,7 @@ function openAddWorkDoneModal(url){
 }
 
 function addWorkDone(url){
-  if($("#workDuration").val()<1) return;
+  if($("#workDuration").val()==0) return;
   $.post(
     url+"add_work_done",
     {
@@ -205,6 +207,40 @@ function addWorkDone(url){
             $("#addWorkDoneModal").closeModal();
 
             $("#workDuration").val("");
+          }
+        );
+      }
+    }
+  );
+}
+
+function openChangeWorkDurationModal(workDoneID){
+  workDone_ID = workDoneID;
+  $("#changeWorkDurationModal").openModal({dismissible:false});
+}
+
+function updateWorkDoneDuration(url){
+  if($("#newWorkDuration").val()==0) return;
+  $.post(
+    url+"update_work_done",
+    {
+      jobID:job_ID,
+      workDoneID:workDone_ID,
+      workDuration:$("#newWorkDuration").val()
+    },
+    function (data){
+      if(data==="Updated work done"){
+        $.post(
+          url+"get_work_done",
+          {jobID:job_ID},
+          function(data){
+            $("#workDoneTable").html(data);
+
+            $('.tooltipped').tooltip({delay: 50});
+
+            $("#changeWorkDurationModal").closeModal();
+
+            $("#newWorkDuration").val("");
           }
         );
       }
