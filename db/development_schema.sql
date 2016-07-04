@@ -1,6 +1,6 @@
 -- DB user
--- DROP USER IF EXISTS 'cmsc198user';
--- CREATE USER 'cmsc198user' IDENTIFIED BY 'ZNBhSKChnoTds';
+DROP USER IF EXISTS 'cmsc198user';
+CREATE USER 'cmsc198user' IDENTIFIED BY 'ZNBhSKChnoTds';
 
 -- APPLICATION DATABASE
 DROP DATABASE IF EXISTS cmsc198db;
@@ -103,15 +103,14 @@ DROP TABLE IF EXISTS work;
 CREATE TABLE work(
 	workID INT NOT NULL AUTO_INCREMENT,
 	workDescription VARCHAR(1024) NOT NULL,
-    workCost DOUBLE NOT NULL,
+    	workCost DOUBLE NOT NULL,
 	dateCreated DATE NOT NULL,
-    createdBy INT DEFAULT NULL,
+    	createdBy INT DEFAULT NULL,
 	active INT NOT NULL DEFAULT '1',
-	FOREIGN KEY(jobID) REFERENCES job(jobID),
 	PRIMARY KEY(workID)
 );
 
--- 'WORK _DONE' Table
+-- 'WORKDONE' Table
 DROP TABLE IF EXISTS workDone;
 CREATE TABLE workDone(
     workDoneID INT NOT NULL AUTO_INCREMENT,
@@ -120,6 +119,7 @@ CREATE TABLE workDone(
     jobID INT NOT NULL,
     dateCreated DATE NOT NULL,
     createdBy INT DEFAULT NULL,
+    FOREIGN KEY(jobID) REFERENCES job(jobID),
     PRIMARY KEY(workDoneID)
 );
 
