@@ -196,8 +196,30 @@
 		</div>
   </div>
   <div class="row center-align">
-    <a class="waves-effect waves-light btn btn-large green darken-4" onclick="addMaterialsUsed('<?php echo base_url();?>');">Add Work Done</a>
+    <a class="waves-effect waves-light btn btn-large green darken-4" onclick="addWorkDone('<?php echo base_url();?>');">Add Work Done</a>
 		&nbsp;&nbsp;&nbsp;&nbsp;
 		<a class="waves-effect waves-light btn btn-large blue darken-4" onclick="$('#addWorkDoneModal').closeModal();">Close</a>
   </div>
+</div>
+<div id="changeWorkDurationModal" class="modal">
+	<div class="row">
+		<br/>
+		<h5 class="center-align">Change material(s) quantity/units.</h5>
+		<br/><br/>
+		<div class="row">
+			<div class="col s3 m3 l3">&nbsp;</div>
+			<div class="col s6 m6 l6">
+				<div class="input-field">
+					<input id="newWorkDone" value="0" type="number" min="0"/>
+					<label for="newWorkDone">Total Number of Units</label>
+				</div>
+			</div>
+			<div class="col s3 m3 l3">&nbsp;</div>
+		</div>
+	</div>
+	<div class="row center-align">
+		<a class="waves-effect waves-light btn btn-large green darken-4" onclick="updateWorkDuration('<?php echo base_url();?>');">Update Work Duration</a>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<a class="waves-effect waves-light btn btn-large blue darken-4" onclick="$('#changeWorkDurationModal').closeModal();">Close</a>
+	</div>
 </div>
