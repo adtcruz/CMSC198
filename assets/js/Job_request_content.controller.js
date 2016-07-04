@@ -23,6 +23,16 @@ function getJobRequestContents(url,jobID){
         }
       );
 
+      $.post(
+        url+"Get_work_done_controller",
+        {jobID:job_ID},
+        function(data){
+          $("#workDoneTable").html(data);
+
+          $('.tooltipped').tooltip({delay: 50});
+        }
+      );
+
       $('.tooltipped').tooltip({delay: 50});
     }
   );
