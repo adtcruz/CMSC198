@@ -140,7 +140,7 @@
 					</select>
 				</div>
 				<div class="input-field">
-					<input id="materialUnits" value="0" type="number"/>
+					<input id="materialUnits" value="0" type="number" min="0"/>
 					<label for="materialUnits">Total Number of Units</label>
 				</div>
 			</div>
@@ -162,7 +162,7 @@
 			<div class="col s3 m3 l3">&nbsp;</div>
 			<div class="col s6 m6 l6">
 				<div class="input-field">
-					<input id="newMaterialUnits" value="0" type="number"/>
+					<input id="newMaterialUnits" value="0" type="number" min="0"/>
 					<label for="newMaterialUnits">Total Number of Units</label>
 				</div>
 			</div>
@@ -174,15 +174,6 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;
 		<a class="waves-effect waves-light btn btn-large blue darken-4" onclick="$('#changeMaterialQuantityUnitModal').closeModal();">Close</a>
 	</div>
-</div>
-<div id="quantityUnitsCantBeNoughtModal" class="modal">
-	<div class="row">
-    <br/>
-    <h5 class="center-align">Quantity/Units can not be less than 1!</h5>
-  </div>
-  <div class="row center-align">
-    <a class="waves-effect waves-light btn btn-large blue darken-4" onclick="$('#quantityUnitsCantBeNoughtModal').closeModal();">OK</a>
-  </div>
 </div>
 <div id="addWorkDoneModal" class="modal">
 	<div class="row">
@@ -197,7 +188,7 @@
 					</select>
 				</div>
 				<div class="input-field">
-					<input id="workDuration" value="0" type="number"/>
+					<input id="workDuration" value="0" type="number" min="0"/>
 					<label for="workDuration">Duration of Work</label>
 				</div>
 			</div>
