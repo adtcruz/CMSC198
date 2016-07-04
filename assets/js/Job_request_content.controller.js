@@ -183,7 +183,7 @@ function openAddWorkDoneModal(url){
   );
 }
 
-function addMaterialsUsed(url){
+function addWorkDone(url){
   if($("#workDuration").val()<1) return;
   $.post(
     url+"add_work_done",
