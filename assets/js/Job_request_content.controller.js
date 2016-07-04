@@ -87,10 +87,7 @@ function openAddMaterialsUsedModal(url){
 }
 
 function addMaterialsUsed(url){
-  if($("#materialUnits").val()<1){
-    $("#quantityUnitsCantBeNoughtModal").openModal({dismissible:false});
-    return;
-  }
+  if($("#materialUnits").val()<1) return;
   $.post(
     url+"add_materials_used",
     {
@@ -124,10 +121,7 @@ function openUpdateMaterialsModal(materialsUsedID){
 }
 
 function updateMaterialsUsed(url){
-  if($("#newMaterialUnits").val()<1){
-    $("#quantityUnitsCantBeNoughtModal").openModal({dismissible:false});
-    return;
-  }
+  if($("#newMaterialUnits").val()<1) return;
   $.post(
     url+"update_materials_used",
     {
@@ -190,10 +184,7 @@ function openAddWorkDoneModal(url){
 }
 
 function addMaterialsUsed(url){
-  if($("#workDuration").val()<1){
-    $("#quantityUnitsCantBeNoughtModal").openModal({dismissible:false});
-    return;
-  }
+  if($("#workDuration").val()<1) return;
   $.post(
     url+"add_work_done",
     {
