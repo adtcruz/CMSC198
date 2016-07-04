@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
 M_pdf
 This class uses the third party PHP library called MPDF. MPDF is used to convert from HTML to PDF. This is a convenience class used in CodeIgniter to easily make use of MPDF.
@@ -24,6 +24,6 @@ class M_pdf
 
 			refer to the documentation @ mpdf.github.io/reference/mpdf-functions/mpdf.html
         */
-        $this->pdf = new mPDF("c", "letter", 10, "Sans-serif", 10, 10, 10, 10, 10, 10, "p");
+        $this->pdf = new mPDF("c", "letter", 12, "Sans-serif", 20, 20, 20, 20, 10, 10, "p");
     }
 }
