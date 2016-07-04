@@ -26,7 +26,7 @@ class Add_work_done_controller extends CI_Controller
 
 							$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES ('".$_SESSION["username"]." added a work done for jobID #".$_POST["jobID"]."',CURRENT_TIMESTAMP)");
 
-							echo "Added new material";
+							echo "Added work done";
 
 							return;
 						}
