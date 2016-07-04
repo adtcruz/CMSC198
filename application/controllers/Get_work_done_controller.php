@@ -24,11 +24,13 @@ class Get_work_done_controller extends CI_Controller
 					}
 
 					$this->table->set_heading("Work Description","Rate","Total Cost","Actions");
-					//$this->load->model('Get_materials_used_model','gmum');
+					$this->load->model('Get_work_done_model','gwdm');
 
 			    foreach($rows as $row){
-							//$actions = $this->gmum->processActions($row["materialsUsedID"]);
-							$this->table->add_row($row["workDescription"],$row["workCost"]." per hour",($row["workDuration"]*$row["workCost"]),"actions");
+							$actions = $this->gwdm->processActions($row["workDoneID"]);
+							$rate = $this->gwdm->processRate($row["workCost"]);
+							$cost = $this->gwdm->processCost($row["workCost"],$row["workDuration"]);
+							$this->table->add_row($row["workDescription"],$rate,$cost,$actions);
 			    }
 			    echo $this->table->generate();
 				}
