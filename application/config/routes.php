@@ -50,19 +50,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 //routes for API
 $route['add_materials_used'] = 'Add_materials_used_controller';
+$route['add_work_done'] = 'Add_work_done_controller';
 $route['cancel_job'] = 'Cancel_job_controller';
 $route['create_account'] = 'Create_account_controller';
 $route['delete_materials_used'] = 'Delete_materials_used_controller';
+$route['delete_work_done'] = 'Delete_work_done_controller';
 $route['edit_job'] = 'Edit_job_description_controller';
 $route['get_office_users'] = 'Get_office_users_controller';
 $route['get_job_description'] = 'Get_job_description_controller';
+$route['get_job_request_contents'] = 'Get_job_request_contents_controller';
 $route['get_logs'] = 'Get_logs_controller';
 $route['get_materials_options'] = 'Get_materials_options_controller';
 $route['get_materials_used'] = 'Get_materials_used_controller';
 $route['get_schedule_job_form'] = 'Get_schedule_job_form_controller';
 $route['get_technicians'] = 'Get_technicians_controller';
-$route['get_job_request_contents'] = 'Get_job_request_contents_controller';
 $route['get_user_type'] = 'Get_user_type_controller';
+$route['get_work_done'] = 'Get_work_done_controller';
+$route['get_work_options'] = 'Get_work_options_controller';
 $route['login'] = 'Login_controller';
 $route['logout'] = 'Logout_controller';
 $route['mark_as_done'] = 'Mark_as_done_controller';

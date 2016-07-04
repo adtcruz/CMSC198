@@ -24,7 +24,7 @@ function getJobRequestContents(url,jobID){
       );
 
       $.post(
-        url+"Get_work_done_controller",
+        url+"get_work_done",
         {jobID:job_ID},
         function(data){
           $("#workDoneTable").html(data);
@@ -87,10 +87,7 @@ function openAddMaterialsUsedModal(url){
 }
 
 function addMaterialsUsed(url){
-  if($("#materialUnits").val()<1){
-    $("#quantityUnitsCantBeNoughtModal").openModal({dismissible:false});
-    return;
-  }
+  if($("#materialUnits").val()<1) return;
   $.post(
     url+"add_materials_used",
     {
@@ -124,10 +121,7 @@ function openUpdateMaterialsModal(materialsUsedID){
 }
 
 function updateMaterialsUsed(url){
-  if($("#newMaterialUnits").val()<1){
-    $("#quantityUnitsCantBeNoughtModal").openModal({dismissible:false});
-    return;
-  }
+  if($("#newMaterialUnits").val()<1) return;
   $.post(
     url+"update_materials_used",
     {
@@ -170,6 +164,69 @@ function deleteMaterialUsed(url,materialsUsedID){
           function(data){
             $("#materialsUsedTable").html("");
             $("#materialsUsedTable").html(data);
+            $('.tooltipped').tooltip({delay: 50});
+          }
+        );
+      }
+    }
+  );
+}
+
+function openAddWorkDoneModal(url){
+  $.get(
+    url+"get_work_options",
+    function(data){
+      $("#addWorkDoneModal").openModal({dismissible:false});
+      $("#workID").html(data);
+      $("#workID").material_select();
+    }
+  );
+}
+
+function addMaterialsUsed(url){
+  if($("#workDuration").val()<1) return;
+  $.post(
+    url+"add_work_done",
+    {
+      jobID:job_ID,
+      workID:$("#workID").val(),
+      workDuration:$("#workDuration").val()
+    },
+    function (data){
+      if(data==="Added work done"){
+        $.post(
+          url+"get_work_done",
+          {jobID:job_ID},
+          function(data){
+            $("#workDoneTable").html(data);
+
+            $('.tooltipped').tooltip({delay: 50});
+
+            $("#addWorkDoneModal").closeModal();
+
+            $("#workDuration").val("");
+          }
+        );
+      }
+    }
+  );
+}
+
+function deleteWorkDone(url,workDoneID){
+
+  $('.tooltipped').tooltip('remove');
+
+  $.post(
+    url+"delete_work_done",
+    {workDoneID:workDoneID},
+    function(data){
+      if(data==="Deleted work done"){
+        $.post(
+          url+"get_work_done",
+          {jobID:job_ID},
+          function(data){
+            $("#workDoneTable").html("");
+            $("#workDoneTable").html(data);
             $('.tooltipped').tooltip({delay: 50});
           }
         );
