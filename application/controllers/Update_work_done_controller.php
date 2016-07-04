@@ -19,7 +19,7 @@ class Update_work_done_controller extends CI_Controller
 						if(array_key_exists("jobID",$_POST)){
 							$this->load->database();
 
-							$this->db->query("UPDATE materialsUsed SET materialUnits=".$_POST["workDuration"]." WHERE workDoneID=".$_POST["workDoneID"]."");
+							$this->db->query("UPDATE workDone SET workDuration=".$_POST["workDuration"]." WHERE workDoneID=".$_POST["workDoneID"]."");
 
 							$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES ('".$_SESSION["username"]." updated a work done for jobID #".$_POST["jobID"]."',CURRENT_TIMESTAMP)");
 
