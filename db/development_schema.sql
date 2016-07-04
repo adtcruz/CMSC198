@@ -119,6 +119,7 @@ CREATE TABLE workDone(
     jobID INT NOT NULL,
     dateCreated DATE NOT NULL,
     createdBy INT DEFAULT NULL,
+		FOREIGN KEY(workID) REFERENCES work(workID),
     FOREIGN KEY(jobID) REFERENCES job(jobID),
     PRIMARY KEY(workDoneID)
 );
