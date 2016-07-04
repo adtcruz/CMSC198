@@ -148,6 +148,7 @@ CREATE TABLE materialsUsed (
 	materialID INT NOT NULL,
 	jobID INT NOT NULL,
 	materialUnits DOUBLE NOT NULL,
+	dateCreated DATE DEFAULT NULL,
 	createdBy INT DEFAULT NULL,
 	createdByType VARCHAR(10) NOT NULL,
 	active INT NOT NULL DEFAULT '1',
