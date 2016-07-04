@@ -16,7 +16,7 @@ class Get_work_done_controller extends CI_Controller
 
 					$this->table->set_template(array('table_open' =>'<table class="bordered centered highlight responsive-table">'));
 
-					$rows = $this->db->query('SELECT workDone.workDoneID,work.workDescription,work.workDuration,work.workCost FROM workDone,work WHERE workDone.jobID='.$_POST["jobID"].' AND workDone.workID = work.workID')->result_array();
+					$rows = $this->db->query('SELECT workDone.workDoneID,work.workDescription,workDone.workDuration,work.workCost FROM workDone,work WHERE workDone.jobID='.$_POST["jobID"].' AND workDone.workID = work.workID')->result_array();
 
 					if(count($rows)==0){
 						echo "<h5 class='center-align'>There are no work done for this job yet.</h5>";
