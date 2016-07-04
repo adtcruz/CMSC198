@@ -76,6 +76,7 @@ $route['update_materials_used'] = 'Update_materials_used_controller';
 $route['update_password'] = 'Update_password_controller';
 $route['update_priority'] = 'Update_job_priority_controller';
 $route['update_profile'] = 'Update_profile_controller';
+$route['update_work_done'] = 'Update_work_done_controller';
 //routes for page loads
 $route['new_account'] = 'New_account_controller';
 $route['job_requests'] = 'Job_requests_controller';
