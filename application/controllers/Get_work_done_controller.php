@@ -16,19 +16,19 @@ class Get_work_done_controller extends CI_Controller
 
 					$this->table->set_template(array('table_open' =>'<table class="bordered centered highlight responsive-table">'));
 
-					$rows = $this->db->query('SELECT workDone.workDoneID,work.workDone,work.workDuration,work.workCost FROM workDone,work WHERE workDone.jobID='.$_POST["jobID"].' AND workDone.workID = work.workID')->result_array();
+					$rows = $this->db->query('SELECT workDone.workDoneID,work.workDescription,work.workDuration,work.workCost FROM workDone,work WHERE workDone.jobID='.$_POST["jobID"].' AND workDone.workID = work.workID')->result_array();
 
 					if(count($rows)==0){
-						echo "<h5 class='center-align'>There are no materials used for job yet.</h5>";
+						echo "<h5 class='center-align'>There are no work done for this job yet.</h5>";
 						return;
 					}
 
-					$this->table->set_heading("Material Name","Quantity/Units","Cost per unit","Total Cost","Actions");
-					$this->load->model('Get_materials_used_model','gmum');
+					$this->table->set_heading("Work Description","Rate","Total Cost","Actions");
+					//$this->load->model('Get_materials_used_model','gmum');
 
 			    foreach($rows as $row){
-							$actions = $this->gmum->processActions($row["materialsUsedID"]);
-							$this->table->add_row($row["materialName"],$row["materialUnits"],$row["materialCost"]." per ".$row["materialUnitMeasurement"],($row["materialUnits"]*$row["materialCost"]),$actions);
+							//$actions = $this->gmum->processActions($row["materialsUsedID"]);
+							$this->table->add_row($row["workDescription"],$row["workCost"]." per hour",($row["workDuration"]*$row["workCost"]),"actions");
 			    }
 			    echo $this->table->generate();
 				}
