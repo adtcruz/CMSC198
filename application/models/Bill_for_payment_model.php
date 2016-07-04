@@ -37,8 +37,38 @@ class Bill_for_payment_model extends CI_Model
 		$db_data['officeAbbr'] = $rows[0]['officeAbbr'];
 		$db_data['officeName'] = $rows[0]['officeName'];
 		$db_data['jobDescription'] = $rows[0]['jobDescription'];
+
         // computes the total cost
-		$db_data['totalCost'] = '';
+        // get total cost of all materials
+        $query = $this->db->query ('SELECT (materialsUsed.materialUnits*materials.materialCost) AS totalCost FROM materialsUsed, materials WHERE (materialsUsed.jobID = '.$jobID.') AND (materialsUsed.materialID = materials.materialID)');
+        $db_data['materialTotalCost'] = $query->result_array();
+
+        // get total cost of all work done
+        $query = $this->db->query ('SELECT (workDone.workDuration*work.workCost) AS totalCost FROM work, workDone WHERE (workDone.jobID = '.$jobID.') AND (workDone.workID = work.workID)');
+        $db_data['workTotalCost'] = $query->result_array ();
+
+        $db_data['totalCost'] = 0;
+
+        foreach ($db_data['materialTotalCost'] as $row)
+        {
+            $db_data['totalCost'] += $row['totalCost'];
+        }
+
+        foreach ($db_data['workTotalCost'] as $row)
+        {
+            $db_data['totalCost'] += $row['totalCost'];
+        }
+
+        /*
+        // get total cost of all materials
+        $query = $this->db->query ('SELECT materials.materialName, materials.materialCost, materialsUsed.materialUnits, (materials.materialCost*materialsUsed.materialUnits) AS totalCost FROM materials, materialsUsed, job WHERE (materialsUsed.jobID = '.$jobID.') AND (materialsUsed.materialID = materials.materialID)');
+		$db_data['materialsUsed'] = $query->result_array ();
+
+        // get total cost of all work done
+        $query = $this->db->query ('SELECT work.workDescription, work.workCost, workDone.workDuration, (work.workCost*workDone.workDuration) AS totalCost FROM work, workDone, job WHERE (workDone.jobID = '.$jobID.') AND (workDone.workID = work.workID)');
+        $db_data['workDetails'] = $query->result_array ();
+        */
+
 		return $db_data;
 	}
 }
