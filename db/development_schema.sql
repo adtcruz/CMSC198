@@ -103,9 +103,9 @@ DROP TABLE IF EXISTS work;
 CREATE TABLE work(
 	workID INT NOT NULL AUTO_INCREMENT,
 	workDescription VARCHAR(1024) NOT NULL,
-    	workCost DOUBLE NOT NULL,
+    workCost DOUBLE NOT NULL,
 	dateCreated DATE NOT NULL,
-    	createdBy INT DEFAULT NULL,
+    createdBy INT DEFAULT NULL,
 	active INT NOT NULL DEFAULT '1',
 	PRIMARY KEY(workID)
 );
