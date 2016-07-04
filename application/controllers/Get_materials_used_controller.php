@@ -19,11 +19,11 @@ class Get_materials_used_controller extends CI_Controller
 					$rows = $this->db->query('SELECT materialsUsed.materialsUsedID,materials.materialName,materialsUsed.materialUnits,materials.materialUnitMeasurement,materials.materialCost FROM materialsUsed,materials WHERE materialsUsed.jobID='.$_POST["jobID"].' AND materialsUsed.materialID = materials.materialID')->result_array();
 
 					if(count($rows)==0){
-						echo "<h6 class='center-align'>There are no materials used for job yet.</h6>";
+						echo "<h5 class='center-align'>There are no materials used for this job yet.</h5>";
 						return;
 					}
 
-				$this->table->set_heading("Material Name","Quantity/Units","Cost per unit","Total Cost","Actions");
+					$this->table->set_heading("Material Name","Quantity/Units","Cost per unit","Total Cost","Actions");
 					$this->load->model('Get_materials_used_model','gmum');
 
 			    foreach($rows as $row){

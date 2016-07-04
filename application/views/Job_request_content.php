@@ -13,23 +13,8 @@
 			<br/>
 			<div class="row">
 				<h5><i class="material-icons">work</i> Work(s) Done:</h5>
-				<table class="bordered centered highlight">
-					<thead>
-						<tr><th>Work Description</th><th>Rate</th><th>Cost</th><th>Actions</th></tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Sample description and remarks</td>
-							<td>Rate</td>
-							<td>Cost</td>
-							<td>
-								<a class="btn-floating btn tooltipped waves-effect waves-light cyan" data-position="left" data-delay="50" data-tooltip="Edit work done"><i class="material-icons">mode_edit</i></a>
-								&nbsp;&nbsp;
-								<a class="btn-floating btn tooltipped waves-effect waves-light red" data-position="left" data-delay="50" data-tooltip="Delete work done"><i class="material-icons">not_interested</i></a>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+				<div id="workDoneTable" class="row">
+				</div>
 				<br/>
 				<div class="right-align">
 					<a class="btn-floating btn tooltipped waves-effect waves-light green darken-4" data-position="left" data-delay="50" data-tooltip="Add work done"><i class="material-icons">add</i></a>
