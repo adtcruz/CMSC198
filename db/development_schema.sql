@@ -117,7 +117,6 @@ CREATE TABLE materials(
 	materialName VARCHAR(32) NOT NULL,
 	materialDescription VARCHAR(256) NOT NULL,
 	materialCost DOUBLE NOT NULL,
-	materialUnit DOUBLE NOT NULL,
 	materialUnitMeasurement VARCHAR(64) NOT NULL,
 	dateCreated DATE DEFAULT NULL,
 	createdBy INT DEFAULT NULL,
@@ -126,16 +125,19 @@ CREATE TABLE materials(
 	PRIMARY KEY(materialID)
 );
 
--- 'MATERIALS_USED' Table
-DROP TABLE IF EXISTS materials_used;
-CREATE TABLE materials_used (
+-- 'MATERIALSUSED' Table
+DROP TABLE IF EXISTS materialsUsed;
+CREATE TABLE materialsUsed (
+	materialsUsedID INT NOT NULL AUTO_INCREMENT,
 	materialID INT NOT NULL,
 	jobID INT NOT NULL,
+	materialUnits DOUBLE NOT NULL,
 	createdBy INT DEFAULT NULL,
 	createdByType VARCHAR(10) NOT NULL,
 	active INT NOT NULL DEFAULT '1',
 	FOREIGN KEY(materialID) REFERENCES materials(materialID),
-	FOREIGN KEY(jobID) REFERENCES job(jobID)
+	FOREIGN KEY(jobID) REFERENCES job(jobID),
+	PRIMARY KEY(materialsUsedID)
 );
 
 -- 'SCHEDULE' Table

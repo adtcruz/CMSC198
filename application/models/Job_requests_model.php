@@ -2,11 +2,29 @@
 
 class Job_requests_model extends CI_Model
 {
-
+	public $db_data;
 	public function __construct ()
 	{
 		parent::__construct ();
 		$this->load->database();
+	}
+
+	public function processOffices($officeID, $space){
+		$query = $this->db->query('SELECT office.officeID, office.officeName, office.parentUnit, office.officeAbbr FROM office WHERE (office.parentUnit = '.$officeID.') ORDER BY office.officeName');
+    global $db_data;
+    $db_data['parent'.$officeID.''] = $query->result_array ();
+    if (!empty ($db_data['parent'.$officeID.'']))
+    {
+        $space++;
+        foreach ($db_data['parent'.$officeID.''] as $row)
+        {
+            $cell = array (
+                'data' => '<option value = "'.$row['officeID'].'">'.str_repeat ('-&nbsp;', $space).$row['officeName'].'</option>'
+            );
+            $this->table->add_row ($cell);
+            $this->processOffices($row['officeID'], $space);
+        }
+    }
 	}
 
   public function getOffices($type){
@@ -14,18 +32,24 @@ class Job_requests_model extends CI_Model
 		$options = "";
 
     if(($type==="technician")||($type==="admin")||($type==="superadmin")){
+			$this->processOffices(0, 0);
 
-      //queries the database for officeIDs and officeNames
-      $query = $this->db->query("SELECT officeID, officeName FROM office ORDER BY officeName");
-
-      //gets the results in easy-to-use array form
-      $rows = $query->result_array();
-
-      $options = "<option value=\"\" selected=\"selected\" disabled=\"disabled\">Select office…</option>";
-
-      for($i = 0; $i < count($rows); $i++){
-        $options = $options."<option value=\"".$rows[$i]["officeID"]."\">".$rows[$i]["officeName"]."</option>";
-      }
+			$template = array (
+        'table_open' => '',
+        'tbody_open' => '',
+        'tbody_close' => '',
+        'row_start' => '',
+        'row_end' => '',
+        'cell_start' => '',
+        'cell_end' => '',
+        'row_alt_start' => '',
+        'row_alt_end' => '',
+        'cell_alt_start' => '',
+        'cell_alt_end' => '',
+        'table_close' => ''
+	    );
+	    $this->table->set_template($template);
+	    $options = $this->table->generate();
     }
 
 		return $options;
@@ -135,7 +159,7 @@ class Job_requests_model extends CI_Model
 			//superadmins may schedule, edit, or cancel job requests
 			if($_SESSION["type"]==="superadmin"){
 				$actions = "<a class=\"btn-floating btn tooltipped waves-effect waves-light green\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Schedule job\" onclick=\"openScheduleJob('".base_url()."',".$jobID.");\"><i class=\"material-icons\">query_builder</i></a>&nbsp;&nbsp;";
-				$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Request Details\" onclick=\"openEditModal('".base_url()."',".$jobID.");\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
+				$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Description\" onclick=\"openEditModal('".base_url()."',".$jobID.");\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
 				return $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light red\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Cancel Job Request\" onclick=\"confirmCancel(".$jobID.");\"><i class=\"material-icons\">not_interested</i></a>";
 			}
 
@@ -147,7 +171,7 @@ class Job_requests_model extends CI_Model
 			//users can only edit or cancel job requests that they filed
 			if($_SESSION["type"]===$createdByType){
 				if($userID == $createdBy){
-					$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Request Details\" onclick=\"openEditModal('".base_url()."',".$jobID.");\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
+					$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Description\" onclick=\"openEditModal('".base_url()."',".$jobID.");\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
 					$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light red\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Cancel Job Request\" onclick=\"confirmCancel(".$jobID.");\"><i class=\"material-icons\">not_interested</i></a>";
 				}
 			}
@@ -160,14 +184,14 @@ class Job_requests_model extends CI_Model
 			//superadmins may edit or cancel job requests that are processing
 			//they may also update job requests (i.e. add work done and materials used)
 			if($_SESSION["type"]==="superadmin"){
-				$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light yellow darken-3\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Update Job Request\" onclick=\"getUpdateJobContents('".base_url()."',".$jobID.");\"><i class=\"material-icons\">assignment</i></a>&nbsp;&nbsp;";
-				$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Request Details\" onclick=\"openEditModal('".base_url()."',".$jobID.");\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
+				$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light yellow darken-3\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"View Job Request\" onclick=\"getJobRequestContents('".base_url()."',".$jobID.");\"><i class=\"material-icons\">assignment</i></a>&nbsp;&nbsp;";
+				$actions = $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light cyan\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Edit Job Description\" onclick=\"openEditModal('".base_url()."',".$jobID.");\"><i class=\"material-icons\">mode_edit</i></a>&nbsp;&nbsp;";
 				return $actions . "<a class=\"btn-floating btn tooltipped waves-effect waves-light red\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Cancel Job Request\" onclick=\"confirmCancel(".$jobID.");\"><i class=\"material-icons\">not_interested</i></a>";
 			}
 
 			//technicians may update job requests (i.e. add work done and materials used)
 			if ($_SESSION["type"]==="technician"){
-				return "<a class=\"btn-floating btn tooltipped waves-effect waves-light yellow darken-3\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Update Job Request\" onclick=\"getUpdateJobContents('".base_url()."',".$jobID.");\"><i class=\"material-icons\">assignment</i></a>&nbsp;&nbsp;";
+				return "<a class=\"btn-floating btn tooltipped waves-effect waves-light yellow darken-3\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"View Job Request\" onclick=\"getJobRequestContents('".base_url()."',".$jobID.");\"><i class=\"material-icons\">assignment</i></a>&nbsp;&nbsp;";
 			}
 		}
 		//no actions can be made if job request was already processed or cancelled
