@@ -15,7 +15,6 @@ function getLogInLogs(url){
 }
 
 function getLogOutLogs(url){
-	console.log("Got it mate");
 	$.post(url+"get_logs",{filter:"logout"},function(data) {
 		$("#logOutLogs").html(
 			"<div class=\"col s1 m1 l1\">&nbsp;</div><div class=\"col s10 m10 l10\">"+data+

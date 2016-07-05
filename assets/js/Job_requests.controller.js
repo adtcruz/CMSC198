@@ -134,10 +134,8 @@ function getUsers(url){
 //php passes the base url via onclick value/function call in the document
 //javascript function handling the login
 function fileJobRequest(url){
-	console.log("Called");
 	//gets the jobDescription/problemsEncountered field value
 	jobDesc = $("#problemsEncountered").val();
-	console.log("Capture "+jobDesc);
 	//do not proceed to AJAX if the jobDescription is blank or empty
 	if (jobDesc==="") return;
 
