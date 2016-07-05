@@ -1,6 +1,7 @@
 $('document').ready(
 	function(){
 		$("#mngeApButton").addClass("black");
+		$('ul.tabs').tabs();
 	}
 );
 
