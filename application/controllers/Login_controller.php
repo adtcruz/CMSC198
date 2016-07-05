@@ -23,7 +23,7 @@ class Login_controller extends CI_Controller {
 		$this->load->database();
 
 		//queries the database if such a username entered exists in the technician table
-		$query = $this->db->query("SELECT username FROM superAdmin WHERE BINARY username='".$_POST["username"]."'");
+		$query = $this->db->query("SELECT username FROM superAdmin WHERE active=1 AND BINARY username='".$_POST["username"]."'");
 		//sets rows from the db query result array
 		$rows = $query->result_array();
 		if(count($rows) == 1){
@@ -60,7 +60,7 @@ class Login_controller extends CI_Controller {
 
 		else{
 			//queries the database if such a username entered exists in the technician table
-			$query = $this->db->query("SELECT username FROM adminAcc WHERE BINARY username='".$_POST["username"]."'");
+			$query = $this->db->query("SELECT username FROM adminAcc WHERE active=1 AND BINARY username='".$_POST["username"]."'");
 			//sets rows from the db query result array
 			$rows = $query->result_array();
 
@@ -98,7 +98,7 @@ class Login_controller extends CI_Controller {
 			}
 			else {
 				//queries the database if such a username entered exists in the client tables
-				$query = $this->db->query("SELECT username FROM client WHERE BINARY username='".$_POST["username"]."'");
+				$query = $this->db->query("SELECT username FROM client WHERE active=1 AND BINARY username='".$_POST["username"]."'");
 				//sets rows from the db query result array
 				$rows = $query->result_array();
 
