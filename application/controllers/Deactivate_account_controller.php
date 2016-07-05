@@ -38,7 +38,7 @@ class Deactivate_account_controller extends CI_Controller
 							if($this->db->query("SELECT COUNT(clientID) FROM client WHERE BINARY username='".$_POST["username"]."'")->row_array()["COUNT(clientID)"]==1)
 							{
 								$this->db->query("UPDATE client SET active=0 WHERE BINARY username='".$_POST["username"]."'");
-								$this->db->query("INSERT INTO userLogs(logText, logTimestamp) VALUES ('".$_SESSION["username"]." disabled ".$_POST["username"]."\'s account ',CURRENT_TIMESTAMP)");
+								$this->db->query("INSERT INTO userLogs(logText, logTimestamp) VALUES ('".$_SESSION["username"]." deactivated ".$_POST["username"]."\'s account ',CURRENT_TIMESTAMP)");
 								echo "Deactivated account";
 								return;
 							}
