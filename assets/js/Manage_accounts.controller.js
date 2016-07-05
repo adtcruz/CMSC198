@@ -1,3 +1,5 @@
+uname = "";
+
 $('document').ready(
 	function(){
 		$("#mngeApButton").addClass("black");
@@ -12,6 +14,7 @@ function randomPassword() {
 		var rnum = Math.floor(Math.random() * chars.length);
 		password += chars.substring(rnum,rnum+1);
 	}
+	return password;
 }
 
 function deactivateAccount(url,username){
@@ -33,6 +36,30 @@ function activateAccount(url,username){
 		function(data){
 			if(data==="Activated account"){
 				window.location.href=url+"manage_accounts";
+			}
+		}
+	);
+}
+
+function confirmPasswordReset(username){
+	uname = username;
+	$("#confirmResetPasswordModal").openModal({dismissible:false});
+
+}
+
+function resetPassword(url){
+	newUserPassword = randomPassword();
+	$.post(
+		url+"reset_password",
+		{
+			username:uname,
+			password:newUserPassword
+		},
+		function(data){
+			if(data==="Account password reset"){
+				$("#confirmResetPasswordModal").closeModal();
+				$("#passwordResetModal").openModal({dismissible:false});
+				$("#newPasswordArea").html(newUserPassword+"");
 			}
 		}
 	);
