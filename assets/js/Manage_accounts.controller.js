@@ -50,7 +50,7 @@ function confirmPasswordReset(username){
 function resetPassword(url){
 	newUserPassword = randomPassword();
 	$.post(
-		url+"reset_password",
+		url+"reset_account_password",
 		{
 			username:uname,
 			password:newUserPassword
