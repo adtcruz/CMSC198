@@ -10,7 +10,11 @@ class Manage_accounts_controller extends CI_Controller
       $this->load->model('Manage_accounts_model','macm');
       if($_SESSION["type"]==="superadmin"){
         $allUsers = $this->macm->getAllUsersTable();
-        $this->load->view('Manage_accounts_view', array('allUsers'=>$allUsers));
+        $adminUsers = $this->macm->getAdminsTable();
+        $clientUsers = $this->macm->getClientsTable();
+        $technicianUsers = $this->macm->getTechniciansTable();
+        $superAdmins = $this->macm->getSuperadminsTable();
+        $this->load->view('Manage_accounts_view', array('allUsers'=>$allUsers,'adminUsers'=>$adminUsers,'clientUsers'=>$clientUsers,'technicianUsers'=>$technicianUsers,'superAdmins'=>$superAdmins));
       }
       if(($_SESSION["type"]==="admin")||($_SESSION["type"]==="technician")){
         $clientUsers = $this->macm->getClientsTable();
