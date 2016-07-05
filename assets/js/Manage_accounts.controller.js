@@ -13,3 +13,15 @@ function randomPassword() {
 		password += chars.substring(rnum,rnum+1);
 	}
 }
+
+function disableAccount(url,username){
+	$.post(
+		url+"disable_account",
+		{username:username},
+		function(data){
+			if(data==="Deactivated account"){
+				window.location.href=url+"manage_accounts";
+			}
+		}
+	);
+}
