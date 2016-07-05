@@ -16,7 +16,7 @@ function randomPassword() {
 
 function disableAccount(url,username){
 	$.post(
-		url+"disable_account",
+		url+"deactivate_account",
 		{username:username},
 		function(data){
 			if(data==="Deactivated account"){
