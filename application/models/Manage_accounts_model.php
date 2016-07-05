@@ -17,6 +17,10 @@ class Manage_accounts_model extends CI_Model
 
 	public function processActions($row)
 	{
+		if($row["username"]==$_SESSION["username"])
+		{
+				return "";
+		}
 		$space = '&nbsp;&nbsp;&nbsp;&nbsp;';
 		$resetPassOpen = '<a class="btn-floating btn tooltipped waves-effect waves-light blue" data-position="left" data-delay="50" data-tooltip="Reset User Password"';
 		$resetPassClose = '><i class="material-icons">replay</i></a>';
@@ -52,7 +56,7 @@ class Manage_accounts_model extends CI_Model
 	public function getClientsTable()
 	{
 		$this->table->set_template(array('table_open' =>'<table class="bordered centered highlight responsive-table">'));
-		$this->table->set_heading("Username","Given Name", "Last Name","Active?");
+		$this->table->set_heading("Username","Given Name", "Last Name","Active?","Actions");
 		$query = $this->db->query("SELECT username,givenName,lastName,active FROM client");
 		$rows = $query->result_array();
 
@@ -60,7 +64,8 @@ class Manage_accounts_model extends CI_Model
 
 		foreach ($rows as $row) {
 			$activeStatus = $this->processActive($row);
-			$this->table->add_row($row["username"],$row["givenName"],$row["lastName"],$activeStatus);
+			$actions = $this->processActions($row);
+			$this->table->add_row($row["username"],$row["givenName"],$row["lastName"],$activeStatus,$actions);
 		}
 		return $this->table->generate();
 	}
@@ -68,7 +73,7 @@ class Manage_accounts_model extends CI_Model
 	public function getAdminsTable()
 	{
 		$this->table->set_template(array('table_open' =>'<table class="bordered centered highlight responsive-table">'));
-		$this->table->set_heading("Username","Given Name", "Last Name","Active?");
+		$this->table->set_heading("Username","Given Name", "Last Name","Active?","Actions");
 		$query = $this->db->query("SELECT username,givenName,lastName,active FROM adminAcc WHERE isTechnician=0");
 		$rows = $query->result_array();
 
@@ -76,7 +81,8 @@ class Manage_accounts_model extends CI_Model
 
 		foreach ($rows as $row) {
 			$activeStatus = $this->processActive($row);
-			$this->table->add_row($row["username"],$row["givenName"],$row["lastName"],$activeStatus);
+			$actions = $this->processActions($row);
+			$this->table->add_row($row["username"],$row["givenName"],$row["lastName"],$activeStatus,$actions);
 		}
 		return $this->table->generate();
 	}
@@ -84,7 +90,7 @@ class Manage_accounts_model extends CI_Model
 	public function getTechniciansTable()
 	{
 		$this->table->set_template(array('table_open' =>'<table class="bordered centered highlight responsive-table">'));
-		$this->table->set_heading("Username","Given Name", "Last Name", "Active?");
+		$this->table->set_heading("Username","Given Name", "Last Name", "Active?","Actions");
 		$query = $this->db->query("SELECT username,givenName,lastName,active FROM adminAcc WHERE isTechnician=1");
 		$rows = $query->result_array();
 
@@ -92,7 +98,8 @@ class Manage_accounts_model extends CI_Model
 
 		foreach ($rows as $row) {
 			$activeStatus = $this->processActive($row);
-			$this->table->add_row($row["username"],$row["givenName"],$row["lastName"],$activeStatus);
+			$actions = $this->processActions($row);
+			$this->table->add_row($row["username"],$row["givenName"],$row["lastName"],$activeStatus,$actions);
 		}
 		return $this->table->generate();
 	}
@@ -100,7 +107,7 @@ class Manage_accounts_model extends CI_Model
 	public function getSuperadminsTable()
 	{
 		$this->table->set_template(array('table_open' =>'<table class="bordered centered highlight responsive-table">'));
-		$this->table->set_heading("Username","Given Name", "Last Name","Active?");
+		$this->table->set_heading("Username","Given Name", "Last Name","Active?","Actions");
 		$query = $this->db->query("SELECT username,givenName,lastName,active FROM superAdmin");
 		$rows = $query->result_array();
 
@@ -108,7 +115,8 @@ class Manage_accounts_model extends CI_Model
 
 		foreach ($rows as $row) {
 			$activeStatus = $this->processActive($row);
-			$this->table->add_row($row["username"],$row["givenName"],$row["lastName"],$activeStatus);
+			$actions = $this->processActions($row);
+			$this->table->add_row($row["username"],$row["givenName"],$row["lastName"],$activeStatus,$actions);
 		}
 		return $this->table->generate();
 	}
