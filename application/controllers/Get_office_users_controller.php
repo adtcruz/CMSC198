@@ -16,7 +16,7 @@ class Get_office_users_controller extends CI_Controller
 					$this->load->database();
 
 					//queries the database for officeIDs and officeNames
-					$query = $this->db->query("SELECT username, givenName, lastName FROM client WHERE officeID=".$_POST["officeID"]);
+					$query = $this->db->query("SELECT username, givenName, lastName FROM client WHERE officeID=".$_POST["officeID"]." AND active=1");
 
 					//gets the results in easy-to-use array form
 					$rows = $query->result_array();
