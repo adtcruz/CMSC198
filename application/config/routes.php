@@ -73,6 +73,7 @@ $route['get_work_options'] = 'Get_work_options_controller';
 $route['login'] = 'Login_controller';
 $route['logout'] = 'Logout_controller';
 $route['mark_as_done'] = 'Mark_as_done_controller';
+$route['reset_account_password'] = 'Reset_account_password_controller';
 $route['schedule_job'] = 'Schedule_job_controller';
 $route['submit_request'] = 'Submit_job_request_controller';
 $route['update_materials_used'] = 'Update_materials_used_controller';
