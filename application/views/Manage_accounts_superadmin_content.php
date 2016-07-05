@@ -9,16 +9,7 @@
       <li class="tab"><a href="#" onclick="window.location.href = '<?php echo base_url();?>new_account'"><i class="tiny material-icons">add</i> Create account</a></li>
     </ul>
   </div>
-  <div id="allAccounts" class="row">
-    <div class="col s1 m1 l1">&nbsp;</div>
-    <div class="col s10 m10 l10">
-      <br/>
-      <?php
-        echo $allUsers;
-      ?>
-    </div>
-    <div class="col s1 m1 l1">&nbsp;</div>
-  </div>
+  <div id="allAccounts" class="row"><?php echo $allUsers;?></div>
   <div id="clientAccounts" class="row"><?php echo $clientUsers;?></div>
   <div id="adminAccounts" class="row"><?php echo $adminUsers;?></div>
   <div id="technicianAccounts" class="row"><?php echo $technicianUsers;?></div>
