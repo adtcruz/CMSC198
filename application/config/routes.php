@@ -48,6 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+
 //routes for API
 $route['add_materials_used'] = 'Add_materials_used_controller';
 $route['add_work_done'] = 'Add_work_done_controller';
@@ -77,6 +78,7 @@ $route['update_password'] = 'Update_password_controller';
 $route['update_priority'] = 'Update_job_priority_controller';
 $route['update_profile'] = 'Update_profile_controller';
 $route['update_work_done'] = 'Update_work_done_controller';
+
 //routes for page loads
 $route['new_account'] = 'New_account_controller';
 $route['job_requests'] = 'Job_requests_controller';
