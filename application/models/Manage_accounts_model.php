@@ -27,15 +27,16 @@ class Manage_accounts_model extends CI_Model
 		if($row["active"]==1)
 		{
 			$deactivateOpen = '<a class="btn-floating btn tooltipped waves-effect waves-light red" data-position="left" data-delay="50" data-tooltip="Deactivate Account"';
-			$deactivateFuncCall = ' onclick="disableAccount(\''.base_url().'\',\''.$row["username"].'\')"';
+			$deactivateFuncCall = ' onclick="deactivateAccount(\''.base_url().'\',\''.$row["username"].'\')"';
 			$deactivateClose = '><i class="material-icons">not_interested</i></a>';
 			return $deactivateOpen . $deactivateFuncCall . $deactivateClose . $space . $resetPassOpen . $resetPassClose;
 		}
 		else
 		{
 			$activateOpen = '<a class="btn-floating btn tooltipped waves-effect waves-light green" data-position="left" data-delay="50" data-tooltip="Activate Account"';
+			$activateFuncCall = ' onclick="activateAccount(\''.base_url().'\',\''.$row["username"].'\')"';
 			$activateClose = '><i class="material-icons">launch</i></a>';
-			return $activateOpen . $activateClose . $space . $resetPassOpen . $resetPassClose;
+			return $activateOpen . $activateFuncCall . $activateClose . $space . $resetPassOpen . $resetPassClose;
 		}
 	}
 

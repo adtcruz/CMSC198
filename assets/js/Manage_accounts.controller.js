@@ -14,12 +14,24 @@ function randomPassword() {
 	}
 }
 
-function disableAccount(url,username){
+function deactivateAccount(url,username){
 	$.post(
 		url+"deactivate_account",
 		{username:username},
 		function(data){
 			if(data==="Deactivated account"){
+				window.location.href=url+"manage_accounts";
+			}
+		}
+	);
+}
+
+function activateAccount(url,username){
+	$.post(
+		url+"activate_account",
+		{username:username},
+		function(data){
+			if(data==="Activated account"){
 				window.location.href=url+"manage_accounts";
 			}
 		}
