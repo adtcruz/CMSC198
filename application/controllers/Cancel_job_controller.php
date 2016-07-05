@@ -32,6 +32,11 @@ class Cancel_job_controller extends CI_Controller
 
       $this->db->query("UPDATE job SET jobStatus='CANCELED' WHERE jobID=".$_POST["jobID"]."");
 
+			if($this->db->query("SELECT COUNT(jobID) FROM schedule WHERE jobID=".$_POST["jobID"]."")->row_array()["COUNT(jobID)"]==1)
+			{
+				$this->db->query("DELETE FROM schedule WHERE jobID=".$_POST["jobID"]."");
+			}
+
       if($this->db->query("SELECT jobStatus FROM job WHERE jobID=".$_POST["jobID"]."")->result_array()[0]["jobStatus"] == "CANCELED"){
 				//log this action into USERLOGS
 				$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES('".$_SESSION["username"]." canceled jobID #".$_POST["jobID"]."',CURRENT_TIMESTAMP)");
