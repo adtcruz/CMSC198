@@ -11,8 +11,8 @@ class Manage_accounts_model extends CI_Model
 
 	public function processActive($row)
 	{
-		if($row["active"]==1) return "YES";
-		else return "NO";
+		if($row["active"]==1) return "<span class='green-text'>YES</span>";
+		else return "<span class='red-text'>NO</span>";
 	}
 
 	public function processActions($row)
