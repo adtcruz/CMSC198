@@ -72,7 +72,7 @@
 	    <h5 class="center-align">Account created!</h5>
 	  </div>
 	  <div class="row center-align">
-	    <a class="waves-effect waves-light btn btn-large blue darken-4" onclick="$('#accountCreatedModal').closeModal();">OK</a>
+	    <a class="waves-effect waves-light btn btn-large blue darken-4" href="<?php echo base_url();?>manage_accounts">OK</a>
 	  </div>
 	</div>
 </div>
