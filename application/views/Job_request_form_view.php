@@ -61,16 +61,12 @@ This will make full use of CodeIgniter's table class.
 	$this->table->add_row ('Description', 'Rate', 'Duration' ,'Total Cost');
 
     $totalCost = 0;
-
     foreach ($workDone as $row)
     {
         $this->table->add_row ($row['description'], $row['rate'], $row['duration'], $row['rate']*$row['duration']);
         $totalCost += ($row['rate']*$row['duration']);
     }
-
     $this->table->add_row ('', '', 'Total Cost', $totalCost);
-
-    
 
 	echo $this->table->generate ();
 	$this->table->clear ();
@@ -84,12 +80,21 @@ This will make full use of CodeIgniter's table class.
 		);
 	$cell = array (
 			'data' => 'Bill of Materials',
-			'colspan' => '4'
+			'colspan' => '3'
 		);
 	$this->table->set_heading ($cell);
-	$this->table->add_row ('Description', 'Remarks', 'Quantity/Unit', 'Cost per Unit');
-	$this->table->add_row ('Materials Used', '','','');
-	$this->table->add_row ('Materials Harvested', '','','');
+	$this->table->add_row ('Description', 'Quantity/Unit', 'Cost per Unit');
+	$this->table->add_row (array ('data' => 'Materials Used', 'colspan' => '3', 'align' => 'center'));
+
+    $totalCost = 0;
+    foreach ($materialsUsed as $row)
+    {
+        $this->table->add_row ($row['description'], $row['units'], $row['cost']);
+        $totalCost += ($row['units']*$row['cost']);
+    }
+    $this->table->add_row ('', 'Total Cost', $totalCost);
+
+	$this->table->add_row (array ('data' => 'Materials Harvested', 'colspan' => '3', 'align' => 'center'));
 	echo $this->table->generate ();
 	$this->table->clear ();
 	/* end bill of materials table render */

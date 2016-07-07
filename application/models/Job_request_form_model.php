@@ -26,6 +26,9 @@ class Job_request_form_model extends CI_Model
         $query = $this->db->query ('SELECT work.workDescription AS description, work.workCost AS rate, workDone.workDuration AS duration FROM work, workDone WHERE (workDone.jobID = '.$jobID.') AND (workDone.workID = work.workID)');
         $db_data['workDone'] = $query->result_array ();
 
+        $query = $this->db->query ('SELECT materials.materialName AS description, materials.materialCost AS cost, materialsUsed.materialUnits AS units FROM materials, materialsUsed WHERE (materialsUsed.jobID = '.$jobID.') AND (materialsUsed.materialID = materials.materialID)');
+        $db_data['materialsUsed'] = $query->result_array ();
+
 		return $db_data;
 	}
 }
