@@ -1,6 +1,6 @@
 $('document').ready(
 	function(){
-		$("#viewMatButton").addClass("black");
+		$("#mngeApButton").addClass("black");
 		$('select').material_select();
 	}
 );
