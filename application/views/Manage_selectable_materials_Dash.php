@@ -35,7 +35,7 @@
 					<div autocomplete="off" class="col s10 m10 l10">
 						<div class="row">
 							<div class="input-field">
-								<input id="materialName" name="materialName" type="text"/>
+								<input id="materialName" name="materialName" type="text" onkeyup="materialNameOnChange();" onchange="materialNameOnChange();"/>
 								<label id="materialNameLabel" for="materialName">Material Name</label>
 							</div>
 						</div>
@@ -50,21 +50,21 @@
 								<div class="input-field">
 									<select id="materialUnitMeasurement" name="materialUnitMeasurement">
 										<option value="" disabled="disabled" selected="selected">Select Unit Measurement…</option>
-										<option value="metres">metres</option>
-										<option value="pieces">pieces</option>
-										<option value="units">units</option>
+										<option value="metre">metre</option>
+										<option value="piece">piece</option>
+										<option value="unit">unit</option>
 									</select>
 								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="input-field">
-								<textarea id="materialDescription" class="materialize-textarea"></textarea>
+								<textarea id="materialDescription" class="materialize-textarea" onchange="materialDescriptionOnChange();" onkeyup="materialDescriptionOnChange();"></textarea>
 								<label id="materialDescriptionLabel">Material Description</label>
 							</div>
 						</div>
     				<div class="row" align="right">
-    					<a class="btn waves-effect waves-light red">
+    					<a class="btn waves-effect waves-light red" onclick="addNewSelectableMaterial('<?php echo base_url();?>');">
     						Add New Material<i class="material-icons right">send</i>
     					</a>
     				</div>
@@ -75,4 +75,6 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div id="newSelectableMaterialAddedModal" class="modal">
 </div>
