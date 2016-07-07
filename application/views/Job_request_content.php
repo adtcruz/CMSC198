@@ -33,7 +33,9 @@
 			<br/>
 		</div>
 		<div class="center-align">
-			<a class="waves-effect waves-light btn yellow darken-4 center-align white-text" onclick="openChangePriorityModal();">Change Priority</a>
+            <a id="generateFormButton" class="waves-effect waves-light btn red darken-4 center-align white-text" href="<?php echo base_url();?>topdf_jrf/" target="_blank">Generate Form</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="waves-effect waves-light btn yellow darken-4 center-align white-text" onclick="openChangePriorityModal();">Change Priority</a>
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<a class="waves-effect waves-light btn red darken-4 center-align white-text" onclick="$('#confirmMarkingAsDoneModal').openModal({dismissible:false});">Mark as Done</a>
 		</div>

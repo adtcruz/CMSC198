@@ -36,6 +36,8 @@ function getJobRequestContents(url,jobID){
       );
 
       $('.tooltipped').tooltip({delay: 50});
+      btnhref = $("#generateFormButton").attr("href");
+      $("#generateFormButton").attr("href",btnhref+""+job_ID);
     }
   );
 }

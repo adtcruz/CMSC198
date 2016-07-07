@@ -1,18 +1,18 @@
 <?php
 /*
 This will make full use of CodeIgniter's table class.
-*/	
+*/
 	/* start header table render */
 	$cell = array (
-		'data' => '<img src = "assets/images/itc_logo.jpg" width = "100" height = "100">', 
+		'data' => '<img src = "assets/images/itc_logo.jpg" width = "100" height = "100">',
 		'rowspan' => "5"
 		); // similar to <td rowspan = 5> <img> </td>
-	
+
 	$this->table->add_row ($cell, '<b> UPLB Information Technology Center', '(Accomplish in Duplicate)');
 	$this->table->add_row ('University of the Philippines Los Banos', 'Job Request No.');
 	$this->table->add_row ('Job Request Form', 'Date: '.date ('M d, Y')); // outputs current date in Month Date Year
-	$this->table->add_row ('Tel.No.: (049) 501-4591, 536-2886 VoIP: #100', 'Time Finished');
-	$this->table->add_row ('Email: itc@uplb.edu.ph', 'Time Started');
+	$this->table->add_row ('Tel.No.: (049) 501-4591, 536-2886 VoIP: #100', 'Job Start Date: ');
+	$this->table->add_row ('Email: itc@uplb.edu.ph', 'Job Finish Date: ');
 	echo $this->table->generate (); // generates the table
 	$this->table->clear(); // clears the previously entered table data
 	/* end header table render */
@@ -29,17 +29,17 @@ This will make full use of CodeIgniter's table class.
 		); // <td colspan = "2"> text </td>
 
 	$this->table->set_heading ($cell); //<<th> data </th>
-	$this->table->add_row ('Printed Name: '.$givenName.' '.$lastName.'', 'Designation: '.$designation.'');
-	$this->table->add_row ('Office/Unit:', 'Tel.No.:');
+	$this->table->add_row ('Printed Name: '.$name.'', 'Designation: '.$designation.'');
+	$this->table->add_row ('Office/Unit: '.$officeAbbr.'', 'Tel.No.: '.$telNo.'');
 
 	$cell = array (
-			'data' => 'Location of Work:',
+			'data' => 'Location of Work: '.$officeName.'',
 			'colspan' => '2'
 		);
 	$this->table->add_row ($cell);
 
 	$cell = array (
-			'data' => 'Work to be Done/Problems encountered: ',
+			'data' => 'Work to be Done/Problem encountered: '.$problem.'',
 			'colspan' => '2'
 		);
 	$this->table->add_row ($cell);
@@ -58,7 +58,20 @@ This will make full use of CodeIgniter's table class.
 			'colspan' => '4'
 		);
 	$this->table->set_heading ($cell);
-	$this->table->add_row ('Description', 'Quantity', 'Cost per Unit', 'Total Cost');
+	$this->table->add_row ('Description', 'Rate', 'Duration' ,'Total Cost');
+
+    $totalCost = 0;
+
+    foreach ($workDone as $row)
+    {
+        $this->table->add_row ($row['description'], $row['rate'], $row['duration'], $row['rate']*$row['duration']);
+        $totalCost += ($row['rate']*$row['duration']);
+    }
+
+    $this->table->add_row ('', '', 'Total Cost', $totalCost);
+
+    
+
 	echo $this->table->generate ();
 	$this->table->clear ();
 	/* end services info table render */

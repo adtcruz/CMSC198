@@ -1,6 +1,6 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class JobRequestForm_model extends CI_Model
+class Job_request_form_model extends CI_Model
 {
 	public $db_data;
 
@@ -10,12 +10,22 @@ class JobRequestForm_model extends CI_Model
 		$this->load->database ();
 	}
 
-	public function getData ()
+	public function getData ($jobID)
 	{
 		session_start();
-		$username = '\''.$_SESSION['username'].'\'';
-		$db_data['givenName'] = $this->db->query ('SELECT givenName FROM technician WHERE username = '.$username.'')->row()->givenName;
-		$db_data['lastName'] = $this->db->query ('SELECT lastName FROM technician WHERE username = '.$username.'')->row()->lastName;
+        $query = $this->db->query ('SELECT client.givenName, client.lastName, client.designation, office.officeAbbr, office.officeName, office.telephoneNumber, job.jobDescription FROM client, job, office WHERE (job.jobID = '.$jobID.') AND (job.clientID = client.clientID) AND (client.officeID = office.officeID)');
+        $result = $query->result_array ();
+
+        $db_data['name'] = $result[0]['givenName'].' '.$result[0]['lastName'];
+        $db_data['designation'] = $result[0]['designation'];
+        $db_data['officeAbbr'] = $result[0]['officeAbbr'];
+        $db_data['officeName'] = $result[0]['officeName'];
+        $db_data['telNo'] = $result[0]['telephoneNumber'];
+        $db_data['problem'] = $result[0]['jobDescription'];
+
+        $query = $this->db->query ('SELECT work.workDescription AS description, work.workCost AS rate, workDone.workDuration AS duration FROM work, workDone WHERE (workDone.jobID = '.$jobID.') AND (workDone.workID = work.workID)');
+        $db_data['workDone'] = $query->result_array ();
+
 		return $db_data;
 	}
 }

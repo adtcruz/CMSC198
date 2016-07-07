@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class JobRequestForm_controller extends CI_Controller
+class Job_request_form_controller extends CI_Controller
 {
 
 	// constructor
@@ -23,7 +23,9 @@ class JobRequestForm_controller extends CI_Controller
 		{
 			// load mpdf library
 			$this->load->library('m_pdf');
-			$db_data = $this->jrf->getData ();
+
+            // get data from database
+			$db_data = $this->jrf->getData ($this->uri->segment(2));
 
 			// initialize the page to be converted to pdf
 			$html = $this->load->view ("Job_request_form_view", $db_data, true);
@@ -32,7 +34,7 @@ class JobRequestForm_controller extends CI_Controller
 			$pdfFilePath = "JobRequestForm.pdf";
 
 			// use mpdf function to write pdf
-			$this->m_pdf->pdf->WriteHTML($html);
+		    $this->m_pdf->pdf->WriteHTML($html);
 
 			// output the pdf then download
 			$this->m_pdf->pdf->Output(); // add $pdfFilePath and "D" as parameters download automatically
