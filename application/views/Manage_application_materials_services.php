@@ -16,7 +16,7 @@
         <br/>
       </div>
       <div class="card-action center-align">
-        <a class="blue-text">Manage Selectable Materials</a>
+        <a class="blue-text" href="<?php echo base_url();?>manage_selectable_materials">Manage Selectable Materials</a>
       </div>
     </div>
   </div>
