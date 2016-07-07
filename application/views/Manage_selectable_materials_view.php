@@ -8,7 +8,7 @@ $this->load->view('Manage_selectable_materials_Dash');
 
 $this->load->view('Common_scripts');
 
-//$this->load->view('View_schedule_script');
+$this->load->view('Manage_selectable_materials_script');
 
 $this->load->view('Logout_script');
 
