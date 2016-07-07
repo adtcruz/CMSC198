@@ -96,7 +96,7 @@ class Job_requests_controller extends CI_Controller
 			}
 
 			$tabl = $this->table->generate();
-      $options = $this->jrm->getOffices($_SESSION["type"]);
+            $options = $this->jrm->getOffices($_SESSION["type"]);
 			$this->load->view('Job_requests_view', array('table' => $tabl, 'options' => $options));
 		}
 

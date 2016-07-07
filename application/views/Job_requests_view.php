@@ -6,7 +6,7 @@ $this->load->view('Header');
 
 $this->load->view('Job_requests_Dash');
 
-$this->load->view('Common_scripts');
+$this->load->view ('Select2_JS_include.php');
 
 $this->load->view('Job_requests_script');
 
