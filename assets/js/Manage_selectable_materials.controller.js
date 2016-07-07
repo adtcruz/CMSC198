@@ -164,3 +164,27 @@ function updateSelectableMaterial(url){
 		}
 	);
 }
+
+function hideSelectableMaterial(url,materialID){
+	$.post(
+		url+"hide_selectable_material",
+		{materialID:materialID},
+		function(data){
+			if(data==="Selectable material hidden"){
+				reloadPage(url);
+			}
+		}
+	);
+}
+
+function makeSelectableMaterialModalVisible(url,materialID){
+	$.post(
+		url+"make_selectable_material_visible",
+		{materialID:materialID},
+		function(data){
+			if(data==="Selectable material made visible"){
+				reloadPage(url);
+			}
+		}
+	);
+}

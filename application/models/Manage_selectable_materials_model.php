@@ -20,7 +20,16 @@ class Manage_selectable_materials_model extends CI_Model
     public function processActions($row)
     {
       $actions = '<a class="btn-floating btn tooltipped waves-effect waves-light cyan" data-position="left" data-delay="50"';
-      return $actions . 'data-tooltip="Edit Selectable Material Details" onclick="openUpdateSelectableMaterialModal(\''.base_url().'\','.$row["materialID"].');"><i class="material-icons">mode_edit</i></a>';
+      $actions = $actions . 'data-tooltip="Edit Selectable Material Details" onclick="openUpdateSelectableMaterialModal(\''.base_url().'\','.$row["materialID"].');"><i class="material-icons">mode_edit</i></a>&nbsp;&nbsp;';
+      if($row["active"]==1){
+        $actions = $actions . '<a class="btn-floating btn tooltipped waves-effect waves-light red" data-position="left" data-delay="50"';
+        return $actions . 'data-tooltip="Make Selectable Material hidden" onclick="hideSelectableMaterial(\''.base_url().'\','.$row["materialID"].');"><i class="material-icons">not_interested</i></a>';
+      }
+      else{
+        return $actions . '<a class="btn-floating btn tooltipped waves-effect waves-light green" data-position="left" data-delay="50" data-tooltip="Make Selectable Material hidden" onclick="makeSelectableMaterialModalVisible(\''.base_url().'\','.$row["materialID"].');"><i class="material-icons">launch</i></a>';
+
+      }
+
     }
 
     public function getTable()
