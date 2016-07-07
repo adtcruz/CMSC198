@@ -14,7 +14,7 @@
 							'table_open' => '<table class="bordered centered highlight">'
 						);
 					$this->table->set_template ($template);
-					$this->table->set_heading ('Job ID', 'Client Name', 'Generate Bill');
+					$this->table->set_heading ('Job ID', 'Client Name', '');
 					if(count($generateBill_array) == 0){
 						echo "<h5 class=\"center-align\">Sorry, there are no finished jobs at the moment.</h5>";
 						return;
@@ -24,7 +24,7 @@
               $row['jobID'],
               $row['givenName'].' '.$row['lastName'],
               array(
-  							'data' => '<a href="topdf_bfp/'.$row['jobID'].'" target = "_blank" class="waves-effect waves-light btn"><i class="material-icons left">credit_card</i>Generate</a>'
+  							'data' => '<a href="topdf_bfp/'.$row['jobID'].'" target = "_blank" class="waves-effect waves-light btn blue-grey">Generate Bill</a>'
   						)
 						);
 					}
