@@ -64,6 +64,7 @@ $route['get_office_users'] = 'Get_office_users_controller';
 $route['get_job_description'] = 'Get_job_description_controller';
 $route['get_job_request_contents'] = 'Get_job_request_contents_controller';
 $route['get_logs'] = 'Get_logs_controller';
+$route['get_material_details'] = 'Get_material_details_controller';
 $route['get_materials_options'] = 'Get_materials_options_controller';
 $route['get_materials_used'] = 'Get_materials_used_controller';
 $route['get_schedule_job_form'] = 'Get_schedule_job_form_controller';
@@ -81,6 +82,7 @@ $route['update_materials_used'] = 'Update_materials_used_controller';
 $route['update_password'] = 'Update_password_controller';
 $route['update_priority'] = 'Update_job_priority_controller';
 $route['update_profile'] = 'Update_profile_controller';
+$route['update_selectable_material'] = 'Update_selectable_material_controller';
 $route['update_work_done'] = 'Update_work_done_controller';
 
 //routes for page loads

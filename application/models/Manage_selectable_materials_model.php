@@ -17,17 +17,23 @@ class Manage_selectable_materials_model extends CI_Model
       else return "<span class='red-text'>NO</span>";
     }
 
+    public function processActions($row)
+    {
+      $actions = '<a class="btn-floating btn tooltipped waves-effect waves-light cyan" data-position="left" data-delay="50"';
+      return $actions . 'data-tooltip="Edit Selectable Material Details" onclick="openUpdateSelectableMaterialModal(\''.base_url().'\','.$row["materialID"].');"><i class="material-icons">mode_edit</i></a>';
+    }
+
     public function getTable()
     {
         $query = $this->db->query ('SELECT materialID, materialName, materialDescription, materialCost, materialUnitMeasurement, active FROM materials');
 
         $this->table->set_template(array('table_open' =>'<table class="bordered centered highlight responsive-table">'));
 
-        $this->table->set_heading ('Name', 'Description', 'Cost Per Unit', 'Unit of Measurement','Selectable?');
+        $this->table->set_heading ('Name', 'Description', 'Cost Per Unit', 'Unit of Measurement','Selectable?','Actions');
 
         foreach ($query->result_array() as $row)
         {
-          $this->table->add_row ($row['materialName'],$row['materialDescription'],$row['materialCost'],$row['materialUnitMeasurement'],$this->isSelectable($row));
+          $this->table->add_row ($row['materialName'],$row['materialDescription'],$row['materialCost'],$row['materialUnitMeasurement'],$this->isSelectable($row),$this->processActions($row));
         }
         return $this->table->generate();
     }

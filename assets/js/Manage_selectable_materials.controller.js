@@ -1,3 +1,5 @@
+material_ID = "";
+
 $('document').ready(
 	function(){
 		$("#mngeApButton").addClass("black");
@@ -67,6 +69,97 @@ function addNewSelectableMaterial(url){
 			console.log(data);
 			if(data==="Added new material option"){
 				$("#selectableMaterialAddedModal").openModal({dismissible:false});
+			}
+		}
+	);
+}
+
+function openUpdateSelectableMaterialModal(url,materialID){
+	material_ID = materialID;
+
+	$.post(
+		url+"get_material_details",
+		{materialID:materialID},
+		function(data){
+			data = $.parseJSON(data);
+			$("#newMaterialName").val(data.materialName);
+			$("#newMaterialCost").val(data.materialCost);
+			$("#newMaterialDescription").val(data.materialDescription);
+			if(data.materialUnitMeasurement==="metre"){
+				$("#newMaterialUnitMeasurement").html('<option id="nullOption" value="" disabled="disabled">Select Unit Measurement…</option><option id="metreOption" value="metre" selected="selected">metre</option><option id="pieceOption" value="piece">piece</option><option id="unitOption" value="unit">unit</option>');
+			}
+			if(data.materialUnitMeasurement==="piece"){
+				$("#newMaterialUnitMeasurement").html('<option id="nullOption" value="" disabled="disabled">Select Unit Measurement…</option><option id="metreOption" value="metre">metre</option><option id="pieceOption" value="piece" selected="selected">piece</option><option id="unitOption" value="unit">unit</option>');
+			}
+			if(data.materialUnitMeasurement==="unit"){
+				$("#newMaterialUnitMeasurement").html('<option id="nullOption" value="" disabled="disabled">Select Unit Measurement…</option><option id="metreOption" value="metre">metre</option><option id="pieceOption" value="piece">piece</option><option id="unitOption" value="unit" selected="selected">unit</option>');
+			}
+			$("#updateSelectableMaterialModal").openModal({dismissible:false});
+			$("#newMaterialUnitMeasurement").material_select();
+		}
+	);
+}
+
+function newMaterialNameOnChange(){
+	$("#newMaterialNameLabel").removeAttr("data-error");
+	$("#newMaterialNameLabel").html("New Material Name");
+	if($("#newMaterialName").hasClass("invalid")) $("#newMaterialName").removeClass("invalid");
+}
+
+function newMaterialDescriptionOnChange(){
+	$("#newMaterialDescriptionLabel").removeAttr("data-error");
+	$("#newMaterialDescriptionLabel").html("New Material Description");
+	if($("#newMaterialDescription").hasClass("invalid")) $("#newMaterialDescription").removeClass("invalid");
+}
+
+function updateSelectableMaterial(url){
+
+	err = false;
+
+	if($("#newMaterialName").val()===""){
+		$("#newMaterialNameLabel").attr("data-error","This is a required field");
+		$("#newMaterialNameLabel").html(
+			"newMaterial Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		$("#newMaterialName").addClass("invalid");
+		err = true;
+	}
+
+	if($("#newMaterialDescription").val()===""){
+		$("#newMaterialDescriptionLabel").attr("data-error","This is a required field");
+		$("#newMaterialDescriptionLabel").html(
+			"newMaterial Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+		);
+		$("#newMaterialDescription").addClass("invalid");
+		err = true;
+	}
+
+	if($("#newMaterialUnitMeasurement").val()===null){
+		err = true;
+	}
+
+	if(err) return;
+
+	$.post(
+		url+"update_selectable_material",
+		{
+      materialID:material_ID,
+			materialName:$("#newMaterialName").val(),
+			materialCost:$("#newMaterialCost").val(),
+			materialDescription:$("#newMaterialDescription").val(),
+			materialUnitMeasurement:$("#newMaterialUnitMeasurement").val()
+		},
+		function(data){
+			console.log(data);
+			if(data==="Selectable material updated"){
+				$("#updateSelectableMaterialModal").closeModal();
+				$("#selectableMaterialUpdatedModal").openModal({dismissible:false});
 			}
 		}
 	);
