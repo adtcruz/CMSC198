@@ -21,6 +21,8 @@ class Manage_selectable_materials_model extends CI_Model
     {
         $query = $this->db->query ('SELECT materialID, materialName, materialDescription, materialCost, materialUnitMeasurement, active FROM materials');
 
+        $this->table->set_template(array('table_open' =>'<table class="bordered centered highlight responsive-table">'));
+
         $this->table->set_heading ('Name', 'Description', 'Cost Per Unit', 'Unit of Measurement','Selectable?');
 
         foreach ($query->result_array() as $row)
