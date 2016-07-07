@@ -5,6 +5,9 @@ $('document').ready(
 	}
 );
 
+function reloadPage(url){
+	window.location.href = url+'manage_selectable_materials';
+}
 
 function materialNameOnChange(){
 	$("#materialNameLabel").removeAttr("data-error");
@@ -60,8 +63,11 @@ function addNewSelectableMaterial(url){
 			materialDescription:$("#materialDescription").val(),
 			materialUnitMeasurement:$("#materialUnitMeasurement").val()
 		},
-		function (data){
+		function(data){
 			console.log(data);
+			if(data==="Added new material option"){
+				$("#selectableMaterialAddedModal").openModal({dismissible:false});
+			}
 		}
 	);
 }
