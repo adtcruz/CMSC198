@@ -9,7 +9,7 @@
       <div class="col s12">
         <ul class="tabs">
           <li class="tab col s3"><a class="active" href="#jobRequestsTable"><i class="tiny material-icons">comment</i> <?php if($_SESSION["type"]==="client") echo "My ";?>Job Requests</a></li>
-          <li class="tab col s3"><a href="#newJobRequestForm" onclick="$('select').material_select();"><i class="tiny material-icons">email</i> File a Job Request</a></li>
+          <li class="tab col s3"><a href="#newJobRequestForm" onclick="$('#clients-selector').material_select();"><i class="tiny material-icons">email</i> File a Job Request</a></li>
         </ul>
         <br/>
       </div>
