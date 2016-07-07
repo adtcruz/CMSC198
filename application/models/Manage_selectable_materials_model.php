@@ -12,9 +12,9 @@ class Manage_selectable_materials_model extends CI_Model
     public function isSelectable($row)
     {
 
-      if($row["active"]==1) return "YES";
-      
-      else return "NO";
+      if($row["active"]==1) return "<span class='green-text'>YES</span>";
+
+      else return "<span class='red-text'>NO</span>";
     }
 
     public function getTable()
@@ -25,7 +25,7 @@ class Manage_selectable_materials_model extends CI_Model
 
         foreach ($query->result_array() as $row)
         {
-          $this->table->add_row ($row['materialName'], $row['materialDescription'], $row['materialCost'], $row['materialUnitMeasurement'],$this->isSelectable($row));
+          $this->table->add_row ($row['materialName'],$row['materialDescription'],$row['materialCost'],$row['materialUnitMeasurement'],$this->isSelectable($row));
         }
         return $this->table->generate();
     }
