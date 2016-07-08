@@ -33,15 +33,16 @@
 			          <div class="card blue-grey darken-1">
 			            <div class="card-content white-text">
 			              <br/>
-							<h5 class="center-align">Job Request Status</h5>
+							<h5 class="center-align">Scheduled Job request</h5>
 						  <br/>
 						  <div>
 							<h6><b>Job Request #1</b><h6>
 			              	<p class="flow-text" align="justify">
 			              	<p>Job Request ID:<p>
 			              	<p>Job Description:</p?>
-							<p>Status:</p>
 							<p>Schedule:</p>
+							<p>Location:</p>
+							<p>Assigned Technician:</p>
 						  	</p>
 						  </div>
 						  <div>
@@ -49,14 +50,15 @@
 			              	<p class="flow-text" align="justify">
 			              	<p>Job Request ID:<p>
 			              	<p>Job Description:</p?>
-							<p>Status:</p>
 							<p>Schedule:</p>
+							<p>Location:</p>
+							<p>Assigned Technician:</p>
 						  	</p>
 						  </div>
 						  <br/><br/>
 						  <div>
 						  	<p class="flow-text" align="justify">
-							<h6><a hre=""><b>Click here to file a new Job Request</a></b><h6>
+							<h6><a hre=""><b>Click here to view all scheduled jobs</a></b><h6>
 			              	
 						  	</p>
 						  </div>
@@ -67,13 +69,22 @@
 			          <div class="card blue-grey darken-1">
 			            <div class="card-content white-text">
 			              <br/>
-							<h5 class="center-align">Announcements</h5>
+							<h5 class="center-align">Pending Job Request</h5>
 						  <br/>
 						  <div>
-							<h7><b>Announcement 1</b><h7>
+							<h6><b>Job Request #1</b><h6>
 			              	<p class="flow-text" align="justify">
-			              	<p>blah blah blah</b>
+			              	<p>Client:</p>
+			              	<p>Job Request ID:<p>
+			              	<p>Job Description:</p?>
 							
+						  	</p>
+						  </div>
+						  <br/><br/>
+						  <div>
+						  	<p class="flow-text" align="justify">
+							<h6><a hre=""><b>Click here to view all pending jobs</a></b><h6>
+			              	
 						  	</p>
 						  </div>
 			            </div>
