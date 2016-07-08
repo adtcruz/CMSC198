@@ -12,67 +12,170 @@
 			          <div class="card blue-grey darken-1">
 			            <div class="card-content white-text">
 			              <br/>
-							<h3 class="center-align">Welcome to ITCBS Billing System!</h3>
+							<h5 class="center-align">Recent Job Requests</h5>
 						  <br/>
-			              <p class="flow-text" align="justify">
-			              	<div>
-							The ITC Billing System (ITCBS) integrates the billing system for UPLB ITC’s System Administration, Network Administration and Technical Support sections.  
-							It caters to the need of the ITC team of a common system in managing job requests. 
-							The system uses CodeIgniter framework and MariaDB for faster job transactions and record management. 
-							The system provides an online version of the job request form and saves the input data to a database that can be manipulated using the system. 
-							The main functionalities are already operational and ready for deployment but the system is still under further development. 
-							The ITCBS is accessible via the internet and is hosted via a local server.	
-							</div>
-						   </p>
+			              <table class="bordered">
+					        <thead>
+					          <tr>
+					              <th data-field="id">Job Description</th>
+					              <th data-field="name">Date Submitted</th>
+					              <th data-field="price">Status</th>
+					          </tr>
+					        </thead>
+
+					        <tbody>
+					          <tr>
+					            <td></td>
+					            <td></td>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					            <td></td>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					            <td></td>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					            <td></td>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					            <td></td>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					            <td></td>
+					            <td></td>
+					          </tr>
+					        </tbody>
+					      </table>
 			            </div>
 			          </div>
 			        </div>
 			    
 			    <br/><br/>
-			    	<div class="col s12 m6 l6">
+			    	<div class="col s12 m4 l4">
 			          <div class="card blue-grey darken-1">
 			            <div class="card-content white-text">
 			              <br/>
-							<h5 class="center-align">Job Request Status</h5>
+							<h5 class="center-align">Common Problems Encountered</h5>
 						  <br/>
-						  <div>
-							<h6><b>Job Request #1</b><h6>
-			              	<p class="flow-text" align="justify">
-			              	<p>Job Request ID:<p>
-			              	<p>Job Description:</p?>
-							<p>Status:</p>
-							<p>Schedule:</p>
-						  	</p>
-						  </div>
-						  <div>
-							<h6><b>Job Request #2</b><h6>
-			              	<p class="flow-text" align="justify">
-			              	<p>Job Request ID:<p>
-			              	<p>Job Description:</p?>
-							<p>Status:</p>
-							<p>Schedule:</p>
-						  	</p>
-						  </div>
-						  <br/><br/>
-						  <div>
-						  	<p class="flow-text" align="justify">
-							<h6><a hre=""><b>Click here to file a new Job Request</a></b><h6>
-			              	
-						  	</p>
-						  </div>
+						  <table class="bordered centered">
+					        <thead>
+					          <tr>
+					              <th data-field="id">Problems</th>
+					          </tr>
+					        </thead>
+
+					        <tbody>
+					          <tr>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					          </tr>
+					        </tbody>
+					      </table>
 			            </div>
 			          </div>
 			        </div>
-				   <div class="col s12 m6 l6">
+				   <div class="col s12 m4 l4">
 			          <div class="card blue-grey darken-1">
 			            <div class="card-content white-text">
 			              <br/>
-							<h5 class="center-align">Announcements</h5>
+							<h5 class="center-align">Common Services Required</h5>
 						  <br/>
-						  <div>
-							<h7><b>Announcement 1</b><h7>
-			              	<p class="flow-text" align="justify">
-			              	<p>blah blah blah</b>
+						  <table class="bordered centered">
+					        <thead>
+					          <tr>
+					              <th data-field="id">Services</th> 
+					          </tr>
+					        </thead>
+
+					        <tbody>
+					          <tr>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					          </tr>
+					        </tbody>
+					      </table>
+			            </div>
+			          </div>
+			        </div>
+			        <div class="col s12 m64 l4">
+			          <div class="card blue-grey darken-1">
+			            <div class="card-content white-text">
+			              <br/>
+							<h5 class="center-align">Work Rates</h5>
+						  <br/>
+			              <table class="bordered centered">
+					        <thead>
+					          <tr>
+					              <th data-field="id">Work</th>
+					              <th data-field="name">Rate</th> 
+					          </tr>
+					        </thead>
+
+					        <tbody>
+					          <tr>
+					            <td></td>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					            <td></td>
+					          </tr>
+					          <tr>
+					            <td></td>
+					            <td></td>
+					          </tr>
+					        </tbody>
+					      </table>
 							
 						  	</p>
 						  </div>
