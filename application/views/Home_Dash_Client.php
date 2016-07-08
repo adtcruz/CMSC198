@@ -34,10 +34,11 @@
                         <div class="card blue-grey darken-1">
                             <div class="card-content white-text">
                                 <br/>
-                                <h5 class="center-align">Common Problems Encountered</h5>
+                                <h5 class="center-align">Common Problems</h5>
                                 <?php
                                     $template = array ('table_open' => '<table class = "bordered centered">');
                                     $this->table->set_template ($template);
+                                    $this->table->set_heading ('Description');
                                     foreach ($mostCommonProblems as $row)
                                     {
                                         $this->table->add_row ($row['description'].' ('.$row['count'].')');

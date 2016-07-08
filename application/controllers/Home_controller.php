@@ -22,14 +22,12 @@ class Home_controller extends CI_Controller
                     $this->load->view ('Home_Dash_Client', $db_data);
                 break;
                 case 'admin':
-                    $this->load->view ('Home_Dash_Admin');
-                break;
                 case 'technician':
                     $db_data = $this->hdm->getAdminData ($_SESSION['username']);
-                    $this->load->view ('Home_Dash_Technician');
+                    $this->load->view ('Home_Dash_Admin');
                 break;
                 case 'superadmin':
-                    $db_data = $this->hdm->getSAData ($_SESSION['username']);
+                    //$db_data = $this->hdm->getSAData ($_SESSION['username']);
                     $this->load->view ('Home_Dash_SuperAdmin');
                 break;
                 default:

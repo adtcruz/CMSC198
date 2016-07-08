@@ -29,5 +29,10 @@ class Home_dash_model extends CI_Model
 
         return $db_data;
     }
+
+    public function getAdminData ()
+    {
+        
+    }
 }
 ?>
