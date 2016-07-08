@@ -6,7 +6,6 @@
 	<div class="col s9 m9 l9">
 		<br/>
 		<br/>
-        <a class="waves-effect waves-light btn" href="<?php echo base_url();?>manage_application"><i class ="material-icons left">fast_rewind</i>Back to previous page</a>
 		<h3 class="center-align">User Logs</h3>
 		<br/>
 		<div class="row">
