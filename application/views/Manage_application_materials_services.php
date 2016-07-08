@@ -12,7 +12,7 @@
                 <span class = "card-title"><i class = "material-icons">settings</i> Selectable Services</span>
             </div>
             <div class = "card-action center-align">
-                <a class = "blue-text">Manage Selectable Services</a>
+                <a class = "blue-text" href="<?php echo base_url();?>manage_selectable_work">Manage Selectable Services</a>
             </div>
         </div>
         <!-- end of card definition -->
