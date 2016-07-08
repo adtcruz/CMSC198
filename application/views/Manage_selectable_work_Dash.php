@@ -77,23 +77,15 @@
 		  <div autocomplete="off" class="col s10 m10 l10">
 		    <div class="row">
 		      <div class="input-field">
-		        <input id="newWorkName" name="newWorkName" type="text" onkeyup="newWorkNameOnChange();" onchange="newWorkNameOnChange();"/>
-		        <label id="newWorkNameLabel" for="newWorkName">New Work Description</label>
+		        <input id="newWorkDescription" name="newWorkDescription" type="text" onkeyup="newWorkDescriptionOnChange();" onchange="newWorkDescriptionOnChange();"/>
+		        <label id="newWorkDescriptionLabel" for="newWorkDescription">New Work Description</label>
 		      </div>
 		    </div>
 		    <div class="row">
-		      <div class="col s6 m6 l6">
-		        <div class="input-field">
-		          <input id="newWorkCost" name="newWorkCost" type="number" min="0" value="0"/>
-		          <label id="newWorkCostLabel" for="newWorkCost">Cost per Unit</label>
-		        </div>
-		      </div>
-		      <div class="col s6 m6 l6">
-		        <div class="input-field">
-		          <select id="newWorkUnitMeasurement" name="newWorkUnitMeasurement">
-		          </select>
-		        </div>
-		      </div>
+	        <div class="input-field">
+	          <input id="newWorkCost" name="newWorkCost" type="number" min="0" value="0"/>
+	          <label id="newWorkCostLabel" for="newWorkCost">Cost per Unit</label>
+	        </div>
 		    </div>
 		  </div>
 		  <div class="col s1 m1 l1">&nbsp;</div>

@@ -38,8 +38,8 @@ function addNewSelectableWork(url){
 	$.post(
 		url+"add_new_work",
 		{
-			workCost:$("#workCost").val(),
-			workDescription:$("#workDescription").val()
+			workCost:$("#workCost").val().toLowerCase(),
+			workDescription:$("#workDescription").val().toLowerCase()
 		},
 		function(data){
 			console.log(data);
@@ -93,11 +93,10 @@ function updateSelectableWork(url){
 		url+"update_selectable_work",
 		{
       workID:work_ID,
-			workCost:$("#newWorkCost").val(),
-			workDescription:$("#newWorkDescription").val()
+			workCost:$("#newWorkCost").val().toLowerCase(),
+			workDescription:$("#newWorkDescription").val().toLowerCase()
 		},
 		function(data){
-			console.log(data);
 			if(data==="Selectable work updated"){
 				$("#updateSelectableWorkModal").closeModal();
 				$("#selectableWorkUpdatedModal").openModal({dismissible:false});
@@ -118,7 +117,7 @@ function hideSelectableWork(url,workID){
 	);
 }
 
-function makeSelectableWorkModalVisible(url,workID){
+function makeSelectableWorkVisible(url,workID){
 	$.post(
 		url+"make_selectable_work_visible",
 		{workID:workID},
