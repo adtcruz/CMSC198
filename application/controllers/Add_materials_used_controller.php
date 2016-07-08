@@ -1,14 +1,14 @@
 <?php
 /*
 * file: Add_materials_used_controller.php
+*       This is the AJAX controller for adding materials used in the 'View Job Requests' function of the 'Job Requests' module
 */
-defined('BASEPATH') OR exit('No direct script access allowed');
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Add_materials_used_controller extends CI_Controller
 {
 	public function index ()
 	{
-
 		session_start();
 
 		if(array_key_exists("type",$_SESSION)){

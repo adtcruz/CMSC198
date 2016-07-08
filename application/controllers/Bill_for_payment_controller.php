@@ -1,4 +1,5 @@
-<?php if ( !defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+if ( !defined('BASEPATH')) exit('No direct script access allowed');
 class Bill_for_payment_controller extends CI_Controller
 {
 	// constructor
