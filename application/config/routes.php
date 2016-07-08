@@ -53,6 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['activate_account'] = 'Activate_account_controller';
 $route['add_materials_used'] = 'Add_materials_used_controller';
 $route['add_new_material'] = 'Add_new_material_controller';
+$route['add_new_work'] = 'Add_new_work_controller';
 $route['add_work_done'] = 'Add_work_done_controller';
 $route['cancel_job'] = 'Cancel_job_controller';
 $route['create_account'] = 'Create_account_controller';
