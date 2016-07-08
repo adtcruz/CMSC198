@@ -14,11 +14,12 @@ class Home_controller extends CI_Controller
 	{
 		if(array_key_exists("type",$_SESSION))
         {
-            /*
+            $this->load->view ('Header');
             switch ($_SESSION['type'])
             {
                 case 'client':
                     $db_data = $this->hdm->getClientData ($_SESSION['username']);
+                    $this->load->view ('Home_Dash_Client', $db_data);
                 break;
                 case 'admin':
                     $db_data = $this->hdm->getAdminData ($_SESSION['username']);
@@ -28,8 +29,11 @@ class Home_controller extends CI_Controller
                 break;
                 default:
                     $this->load->view ('Login_view');
-            }*/
-            $this->load->view ('Home_view');
+                return;
+            }
+            $this->load->view ('Common_scripts');
+            $this->load->view ('Home_script');
+            $this->load->view ('Logout_script');
 		}
 		else
         {
