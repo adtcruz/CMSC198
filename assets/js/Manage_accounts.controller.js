@@ -49,6 +49,7 @@ function confirmPasswordReset(username){
 
 function resetPassword(url){
 	newUserPassword = randomPassword();
+	console.log("Pasok");
 	$.post(
 		url+"reset_account_password",
 		{
