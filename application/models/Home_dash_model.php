@@ -23,6 +23,10 @@ class Home_dash_model extends CI_Model
         $query = $this->db->query ('SELECT job.jobDescription AS description, COUNT(job.jobDescription) AS count FROM job WHERE (job.clientID = '.$clientID.') GROUP BY job.jobDescription ORDER BY COUNT(job.jobDescription) DESC LIMIT 5');
         $db_data['mostCommonProblems'] = $query->result_array ();
 
+        // get some rates
+        $query = $this->db->query ('SELECT work.workDescription AS serviceName, work.workCost AS serviceRate FROM work LIMIT 5');
+        $db_data['services'] = $query->result_array ();
+
         return $db_data;
     }
 }
