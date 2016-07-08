@@ -30,7 +30,7 @@
                     <!-- Lastest Jobs end -->
 
                     <!-- Top 5 Common Problems -->
-                    <div class="col s12 m4 l4">
+                    <div class="col s12 m6 l6">
                         <div class="card blue-grey darken-1">
                             <div class="card-content white-text">
                                 <br/>
@@ -50,7 +50,7 @@
                     </div>
 
                     <!-- Some Work Rates -->
-                    <div class="col s12 m64 l4">
+                    <div class="col s12 m6 l6">
                         <div class="card blue-grey darken-1">
                             <div class="card-content white-text">
                                 <br/>
