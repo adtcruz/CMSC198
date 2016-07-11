@@ -181,7 +181,7 @@ CREATE TABLE userLogs(
 	PRIMARY KEY(logID)
 );
 
--- 'NOTIFICATIONS table'
+-- 'NOTIFICATIONS' table
 DROP TABLE IF EXISTS notifications;
 CREATE TABLE notifications(
     notifID INT NOT NULL AUTO_INCREMENT,
@@ -190,15 +190,35 @@ CREATE TABLE notifications(
     jobID INT NOT NULL,
     dateCreated DATE DEFAULT NULL,
     createdBy INT DEFAULT NULL,
+    createByType VARCHAR(10) NOT NULL,
     active INT NOT NULL DEFAULT '1',
     PRIMARY KEY(notifID),
     FOREIGN KEY(clientID) REFERENCES(client.clientID),
     FOREIGN KEY(jobIDID) REFERENCES (job.jobID)
 );
 
--- 'NOTIFS_READ table'
+-- 'NOTIFS_READ' table
 DROP TABLE IF EXISTS notifsRead;
 CREATE TABLE notifsRead(
     notifID INT NOT NULL,
-    adminID INT NOT NULL
+    adminID INT NOT NULL,
+    dateCreated DATE DEFAULT NULL,
+    createdBy INT DEFAULT NULL,
+    createByType VARCHAR(10) NOT NULL,
+    active INT NOT NULL DEFAULT '1'
+    PRIMARY KEY(notifID),
+    FOREIGN KEY(adminID) REFERENCES(admin.adminID);
+);
+
+-- 'ANNOUNCEMENTS' table
+DROP TABLE IF EXISTS announcements;
+CREATE TABLE announcements(
+    announcementID INT NOT NULL AUTO_INCREMENT,
+    announcementText VARCHAR(1024) NOT NULL,
+    announcementTitle VARCHAR(128) NOT NULL,
+    dateCreated DATE DEFAULT NULL,
+    createdBy INT DEFAULT NULL,
+    createByType VARCHAR(10) NOT NULL,
+    active INT NOT NULL DEFAULT '1'
+    PRIMARY KEY(announcementID),
 );
