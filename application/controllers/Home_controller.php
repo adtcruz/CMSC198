@@ -8,17 +8,20 @@ class Home_controller extends CI_Controller
         parent::__construct ();
         session_start();
         $this->load->model ('Home_dash_model', 'hdm');
+        $this->load->model ('Announcements_model', 'am');
     }
 
     public function index ()
 	{
 		if(array_key_exists("type",$_SESSION))
         {
+            // start of Home_Dash
             $this->load->view ('Header');
             switch ($_SESSION['type'])
             {
                 case 'client':
-                    $db_data = $this->hdm->getClientData ($_SESSION['username']);
+                    $db_data['clientData'] = $this->hdm->getClientData ($_SESSION['username']);
+                    $db_data['announcements'] = $this->am->getDashAnnouncements ();
                     $this->load->view ('Home_Dash_Client', $db_data);
                 break;
                 case 'admin':
@@ -37,6 +40,7 @@ class Home_controller extends CI_Controller
             $this->load->view ('Common_scripts');
             $this->load->view ('Home_script');
             $this->load->view ('Logout_script');
+            // end of Home_Dash
 		}
 		else
         {

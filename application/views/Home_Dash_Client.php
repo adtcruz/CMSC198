@@ -10,36 +10,36 @@
                 <div class="col s12 m12">
 
                     <!-- Lastest Jobs start -->
-                    <div class="card blue-grey darken-1">
+                    <div class="card grey">
                         <div class="card-content white-text">
                             <br/>
-                            <h5 class="center-align">Announcements</h5>
-                            <?php
-                                $template = array ('table_open' => '<table class = "bordered">');
-                                $this->table->set_template ($template);
-                                $this->table->set_heading ('Job Description', 'Date Submitted', 'Status');
-                                foreach ($latestJobs as $row)
-                                {
-                                    $this->table->add_row ($row['description'], $row['dateCreated'], $row['status']);
-                                }
-                                echo $this->table->generate ();
-                                $this->table->clear ();
-                            ?>
+                            <div class = "slider">
+                                <?php
+                                    $tiles = array ();
+                                    foreach ($announcements['announcements'] as $row)
+                                    {
+                                        $tile = '<div class = "caption black-text" style = "text-align: justify; text-justify: inter-word"><h4>'.$row['title'].'</h4><h6 class = "truncate">'.$row['details'].'</h6></div>';
+                                        $tiles[] = $tile;
+                                    }
+                                    $attributes = array ('class' => 'slides');
+                                    echo ul ($tiles, $attributes);
+                                ?>
+                            </div>
                         </div>
                     </div>
                     <!-- Lastest Jobs end -->
 
                     <!-- Some Work Rates -->
                     <div class="col s12 m6 l6">
-                        <div class="card blue-grey darken-1">
-                            <div class="card-content white-text">
+                        <div class="card grey lighten-2">
+                            <div class="card-content black9-text">
                                 <br/>
                                 <h5 class="center-align">Work Rate</h5>
                                 <?php
                                     $template = array ('table_open' => '<table class = "bordered centered">');
                                     $this->table->set_template ($template);
                                     $this->table->set_heading ('Work', 'Rate');
-                                    foreach ($services as $row)
+                                    foreach ($clientData['services'] as $row)
                                     {
                                         $serviceRate = $row['serviceRate'];
                                         if ($serviceRate === '0')
@@ -58,15 +58,15 @@
 
                     <!-- Latest Job Requests -->
                     <div class="col s12 m6 l6">
-                        <div class="card blue-grey darken-1">
-                            <div class="card-content white-text">
+                        <div class="card grey lighten-2">
+                            <div class="card-content black-text">
                                 <br/>
                                 <h5 class="center-align">Latest Job Requests</h5>
                                 <?php
                                     $template = array ('table_open' => '<table class = "bordered">');
                                     $this->table->set_template ($template);
                                     $this->table->set_heading ('Job Description', 'Date Submitted', 'Status');
-                                    foreach ($latestJobs as $row)
+                                    foreach ($clientData['latestJobs'] as $row)
                                     {
                                         $this->table->add_row ($row['description'], $row['dateCreated'], $row['status']);
                                     }
