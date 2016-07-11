@@ -68,7 +68,22 @@
                                     $this->table->set_heading ('Job Description', 'Date Submitted', 'Status');
                                     foreach ($clientData['latestJobs'] as $row)
                                     {
-                                        $this->table->add_row ($row['description'], $row['dateCreated'], $row['status']);
+                                        switch ($row['status'])
+                                        {
+                                            case 'PENDING':
+                                                $text = '<span class = "blue-text">'.$row['status'].'</span>';
+                                            break;
+                                            case 'PROCESSING':
+                                                $text = '<span class = "orange-text">'.$row['status'].'</span>';
+                                            break;
+                                            case 'CANCELLED':
+                                                $text = '<span class = "red-text">'.$row['status'].'</span>';
+                                            break;
+                                            case 'PROCESSED':
+                                                $text = '<span class = "green-text">'.$row['status'].'</span>';
+                                            break;
+                                        }
+                                        $this->table->add_row ($row['description'], $row['dateCreated'], $text);
                                     }
                                     echo $this->table->generate ();
                                     $this->table->clear ();
