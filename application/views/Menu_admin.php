@@ -8,11 +8,14 @@
   <a id="mngeApItem" class='dropdown-button waves-effect waves-light white-text' href='#' data-activates='dropdown1'>Manage Application</a>
 </div>
   <!-- Dropdown Structure -->
-  <ul id='dropdown1' class='dropdown-content'>
+  <ul id='dropdown1' class='dropdown-content '>
   	<!--<li id="mngeApButton"><a id="mngeApItem" class="waves-effect waves-light white-text" href="<?php base_url();?>manage_application">User Logs</a></li>
    	-->
-    <li><a  href="<?php base_url();?>view_logs">User Logs</a></li>
-    <li><a href="<?php base_url();?>manage_accounts">Manage Accounts</a></li>
-    <li><a href="<?php base_url();?>manage_selectable_work">Manage Work</a></li>
-    <li><a href="<?php base_url();?>manage_selectable_materials">Manage Materials</a></li>
+    <li><a  class="center-align" href="<?php base_url();?>view_logs">User Logs</a></li>
+    <li class="divider"></li>
+    <li><a  class="center-align" href="<?php base_url();?>manage_accounts">Manage Accounts</a></li>
+    <li class="divider"></li>
+    <li><a  class="center-align" href="<?php base_url();?>manage_selectable_work">Manage Work</a></li>
+    <li class="divider"></li>
+    <li><a  class="center-align" href="<?php base_url();?>manage_selectable_materials">Manage Materials</a></li>
   </ul>
