@@ -1,6 +1,6 @@
 -- DB user
---DROP USER IF EXISTS 'cmsc198user';
---CREATE USER 'cmsc198user' IDENTIFIED BY 'ZNBhSKChnoTds';
+DROP USER IF EXISTS 'cmsc198user';
+CREATE USER 'cmsc198user' IDENTIFIED BY 'ZNBhSKChnoTds';
 
 -- APPLICATION DATABASE
 DROP DATABASE IF EXISTS cmsc198db;
@@ -179,4 +179,45 @@ CREATE TABLE userLogs(
 	logText VARCHAR(512) NOT NULL,
 	logTimestamp TIMESTAMP NOT NULL,
 	PRIMARY KEY(logID)
+);
+
+-- 'NOTIFICATIONS' table
+DROP TABLE IF EXISTS notifications;
+CREATE TABLE notifications(
+    notifID INT NOT NULL AUTO_INCREMENT,
+    notifText VARCHAR(128) NOT NULL,
+    clientID INT NOT NULL,
+    jobID INT NOT NULL,
+    dateCreated DATE DEFAULT NULL,
+    createdBy INT DEFAULT NULL,
+    createByType VARCHAR(10) NOT NULL,
+    active INT NOT NULL DEFAULT '1',
+    PRIMARY KEY(notifID),
+    FOREIGN KEY(clientID) REFERENCES(client.clientID),
+    FOREIGN KEY(jobIDID) REFERENCES (job.jobID)
+);
+
+-- 'NOTIFS_READ' table
+DROP TABLE IF EXISTS notifsRead;
+CREATE TABLE notifsRead(
+    notifID INT NOT NULL,
+    userID INT NOT NULL,
+    userType VARCHAR(10) NOT NULL,
+    dateCreated DATE DEFAULT NULL,
+    active INT NOT NULL DEFAULT '1'
+    PRIMARY KEY(notifID),
+    FOREIGN KEY(adminID) REFERENCES(admin.adminID);
+);
+
+-- 'ANNOUNCEMENTS' table
+DROP TABLE IF EXISTS announcements;
+CREATE TABLE announcements(
+    announcementID INT NOT NULL AUTO_INCREMENT,
+    announcementText VARCHAR(1024) NOT NULL,
+    announcementTitle VARCHAR(128) NOT NULL,
+    dateCreated DATE DEFAULT NULL,
+    createdBy INT DEFAULT NULL,
+    createByType VARCHAR(10) NOT NULL,
+    active INT NOT NULL DEFAULT '1'
+    PRIMARY KEY(announcementID),
 );
