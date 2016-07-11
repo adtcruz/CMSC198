@@ -10,7 +10,8 @@ class Announcements_controller extends CI_Controller
 
     public function index ()
     {
-        //$db_data = $this->am->getAnnouncements ();
+        $db_data = $this->am->getAnnouncements ();
+        $this->load->view ('Announcements_view', $db_data);
     }
 
     public function add ()
