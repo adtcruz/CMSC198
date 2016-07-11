@@ -20,7 +20,7 @@
                                 $this->table->set_heading ('Job Description', 'Date Submitted', 'Status');
                                 foreach ($latestJobs as $row)
                                 {
-                                $this->table->add_row ($row['description'], $row['dateCreated'], $row['status']);
+                                    $this->table->add_row ($row['description'], $row['dateCreated'], $row['status']);
                                 }
                                 echo $this->table->generate ();
                                 $this->table->clear ();
