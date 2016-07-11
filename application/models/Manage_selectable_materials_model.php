@@ -26,7 +26,7 @@ class Manage_selectable_materials_model extends CI_Model
         return $actions . 'data-tooltip="Make Selectable Material hidden" onclick="hideSelectableMaterial(\''.base_url().'\','.$row["materialID"].');"><i class="material-icons">not_interested</i></a>';
       }
       else{
-        return $actions . '<a class="btn-floating btn tooltipped waves-effect waves-light green" data-position="left" data-delay="50" data-tooltip="Make Selectable Material hidden" onclick="makeSelectableMaterialModalVisible(\''.base_url().'\','.$row["materialID"].');"><i class="material-icons">launch</i></a>';
+        return $actions . '<a class="btn-floating btn tooltipped waves-effect waves-light green" data-position="left" data-delay="50" data-tooltip="Make Selectable Material visible" onclick="makeSelectableMaterialModalVisible(\''.base_url().'\','.$row["materialID"].');"><i class="material-icons">launch</i></a>';
 
       }
 
