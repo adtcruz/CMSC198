@@ -9,11 +9,12 @@
             <div class="col s12 m12 l12">
                 <br>
                 <div class="col s12 m12">
+
                     <!-- Lastest Jobs start -->
                     <div class="card blue-grey darken-1">
                         <div class="card-content white-text">
                             <br/>
-                            <h5 class="center-align">Recent Job Requests</h5>
+                            <h5 class="center-align">Announcements</h5>
                             <?php
                                 $template = array ('table_open' => '<table class = "bordered">');
                                 $this->table->set_template ($template);
@@ -29,33 +30,12 @@
                     </div>
                     <!-- Lastest Jobs end -->
 
-                    <!-- Top 5 Common Problems -->
-                    <div class="col s12 m6 l6">
-                        <div class="card blue-grey darken-1">
-                            <div class="card-content white-text">
-                                <br/>
-                                <h5 class="center-align">Common Problems</h5>
-                                <?php
-                                    $template = array ('table_open' => '<table class = "bordered centered">');
-                                    $this->table->set_template ($template);
-                                    $this->table->set_heading ('Description');
-                                    foreach ($mostCommonProblems as $row)
-                                    {
-                                        $this->table->add_row ($row['description'].' ('.$row['count'].')');
-                                    }
-                                    echo $this->table->generate ();
-                                    $this->table->clear ();
-                                ?>
-                            </div>
-			            </div>
-                    </div>
-
                     <!-- Some Work Rates -->
                     <div class="col s12 m6 l6">
                         <div class="card blue-grey darken-1">
                             <div class="card-content white-text">
                                 <br/>
-                                <h5 class="center-align">Work Rates</h5>
+                                <h5 class="center-align">Work Rate</h5>
                                 <?php
                                     $template = array ('table_open' => '<table class = "bordered centered">');
                                     $this->table->set_template ($template);
@@ -75,7 +55,29 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Some Work Rates -->
+                    <!-- Some Work Rates end -->
+
+                    <!-- Latest Job Requests -->
+                    <div class="col s12 m6 l6">
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <br/>
+                                <h5 class="center-align">Latest Job Requests</h5>
+                                <?php
+                                    $template = array ('table_open' => '<table class = "bordered">');
+                                    $this->table->set_template ($template);
+                                    $this->table->set_heading ('Job Description', 'Date Submitted', 'Status');
+                                    foreach ($latestJobs as $row)
+                                    {
+                                        $this->table->add_row ($row['description'], $row['dateCreated'], $row['status']);
+                                    }
+                                    echo $this->table->generate ();
+                                    $this->table->clear ();
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Latest Jobs end -->
                 </div>
             </div>
             <div class="col s1 m1 l1">&nbsp;</div>
