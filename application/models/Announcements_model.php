@@ -11,9 +11,14 @@ class Announcements_model extends CI_Model
 
     public function getAnnouncements ()
     {
-        $query = $this->db->query ('SELECT announcements.announcementText AS details, announcements.announcementTitle AS title, announcements.dateCreated FROM annoucements ORDER BY announcements.dateCreated DESC LIMIT 3');
+        $query = $this->db->query ('SELECT announcements.announcementText AS details, announcements.announcementTitle AS title, announcements.dateCreated FROM annoucements ORDER BY announcements.dateCreated DESC');
         $db_data['announcements'] = $query->result_array();
         return $db_data;
+    }
+
+    public function getDashAnnouncements ()
+    {
+        
     }
 
     public function addAnnouncement ($db_data)
