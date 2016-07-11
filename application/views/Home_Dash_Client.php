@@ -7,7 +7,6 @@
         <div class="row">
             <div class="col s1 m1 l1">&nbsp;</div>
             <div class="col s12 m12 l12">
-                <br>
                 <div class="col s12 m12">
 
                     <!-- Lastest Jobs start -->
