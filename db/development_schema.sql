@@ -180,3 +180,25 @@ CREATE TABLE userLogs(
 	logTimestamp TIMESTAMP NOT NULL,
 	PRIMARY KEY(logID)
 );
+
+-- 'NOTIFICATIONS table'
+DROP TABLE IF EXISTS notifications;
+CREATE TABLE notifications(
+    notifID INT NOT NULL AUTO_INCREMENT,
+    notifText VARCHAR(128) NOT NULL,
+    clientID INT NOT NULL,
+    jobID INT NOT NULL,
+    dateCreated DATE DEFAULT NULL,
+    createdBy INT DEFAULT NULL,
+    active INT NOT NULL DEFAULT '1',
+    PRIMARY KEY(notifID),
+    FOREIGN KEY(clientID) REFERENCES(client.clientID),
+    FOREIGN KEY(jobIDID) REFERENCES (job.jobID)
+);
+
+-- 'NOTIFS_READ table'
+DROP TABLE IF EXISTS notifsRead;
+CREATE TABLE notifsRead(
+    notifID INT NOT NULL,
+    adminID INT NOT NULL
+);
