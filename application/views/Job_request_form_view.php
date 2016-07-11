@@ -53,10 +53,12 @@ This will make full use of CodeIgniter's table class.
 			'table_open' => '<table border = "1" width = "100%">'
 			)
 		);
+
 	$cell = array (
 			'data' => 'Services Info',
 			'colspan' => '4'
 		);
+        
 	$this->table->set_heading ($cell);
 	$this->table->add_row ('Description', 'Rate', 'Duration' ,'Total Cost');
 
