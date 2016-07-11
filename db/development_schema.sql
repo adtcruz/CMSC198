@@ -1,6 +1,6 @@
 -- DB user
---DROP USER IF EXISTS 'cmsc198user';
---CREATE USER 'cmsc198user' IDENTIFIED BY 'ZNBhSKChnoTds';
+DROP USER IF EXISTS 'cmsc198user';
+CREATE USER 'cmsc198user' IDENTIFIED BY 'ZNBhSKChnoTds';
 
 -- APPLICATION DATABASE
 DROP DATABASE IF EXISTS cmsc198db;
@@ -201,10 +201,9 @@ CREATE TABLE notifications(
 DROP TABLE IF EXISTS notifsRead;
 CREATE TABLE notifsRead(
     notifID INT NOT NULL,
-    adminID INT NOT NULL,
+    userID INT NOT NULL,
+    userType VARCHAR(10) NOT NULL,
     dateCreated DATE DEFAULT NULL,
-    createdBy INT DEFAULT NULL,
-    createByType VARCHAR(10) NOT NULL,
     active INT NOT NULL DEFAULT '1'
     PRIMARY KEY(notifID),
     FOREIGN KEY(adminID) REFERENCES(admin.adminID);
