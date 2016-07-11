@@ -6,7 +6,7 @@
     <div class="col s9 m9 l9">
         <div class="row">
             <div class="col s1 m1 l1">&nbsp;</div>
-            <div class="col s10 m10 l10">
+            <div class="col s12 m12 l12">
                 <br/><br/>
 
                 <div class="col s12 m12">
