@@ -18,11 +18,7 @@ class Home_dash_model extends CI_Model
         // get 5 most recent job requests
         $query = $this->db->query ('SELECT job.jobDescription AS description, job.jobStatus AS status, job.dateCreated FROM job, client WHERE (client.clientID = '.$clientID.') AND (job.clientID = client.clientID) ORDER BY job.dateCreated ASC LIMIT 5');
         $db_data['latestJobs'] = $query->result_array ();
-
-        // get the 5 most frequent job requests
-        $query = $this->db->query ('SELECT job.jobDescription AS description, COUNT(job.jobDescription) AS count FROM job WHERE (job.clientID = '.$clientID.') GROUP BY job.jobDescription ORDER BY COUNT(job.jobDescription) DESC LIMIT 5');
-        $db_data['mostCommonProblems'] = $query->result_array ();
-
+        
         // get some rates
         $query = $this->db->query ('SELECT work.workDescription AS serviceName, work.workCost AS serviceRate FROM work LIMIT 5');
         $db_data['services'] = $query->result_array ();
@@ -32,7 +28,7 @@ class Home_dash_model extends CI_Model
 
     public function getAdminData ()
     {
-        
+
     }
 }
 ?>
