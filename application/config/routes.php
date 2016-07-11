@@ -107,8 +107,6 @@ $route['topdf_bfp/(:any)'] = 'Bill_for_payment_controller';
 $route['generate_bill'] = 'Generate_bill_controller';
 $route['topdf_jrf/(:any)'] = 'Job_request_form_controller';
 $route['default_controller'] = 'Home_controller';
-$route['add_materials'] = 'Add_materials_controller'; // add materials by ellis
-$route['view_materials'] = 'View_material_list_controller'; // view materials by ellis
 $route['announcements(.*)'] = 'Announcements_controller$1';
 
 $route['404_override'] = '';
