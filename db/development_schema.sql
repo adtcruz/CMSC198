@@ -216,7 +216,7 @@ CREATE TABLE announcements(
     announcementTitle VARCHAR(128) NOT NULL,
     dateCreated DATE DEFAULT NULL,
     createdBy INT DEFAULT NULL,
-    createByType VARCHAR(10) NOT NULL,
+    createdByType VARCHAR(10) NOT NULL,
     active INT NOT NULL DEFAULT '1',
     PRIMARY KEY(announcementID)
 );
