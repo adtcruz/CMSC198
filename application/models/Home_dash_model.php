@@ -28,14 +28,9 @@ class Home_dash_model extends CI_Model
 
     public function getSchedule ()
     {
-        $query = $this->db->query ('SELECT schedule.priority, job.jobDescription, client.givenName, client.lastName, office.officeName FROM schedule, job, client, office WHERE (schedule.dateScheduled = CURDATE()) AND (schedule.jobID = job.jobID) AND (job.clientID = client.clientID) AND (client.officeID = office.officeID) ORDER BY schedule.priority DESC');
+        $query = $this->db->query ('SELECT schedule.priority, job.jobDescription, client.givenName, client.lastName, office.officeName FROM schedule, job, client, office WHERE (schedule.dateScheduled = CURDATE()) AND (schedule.jobID = job.jobID) AND (job.clientID = client.clientID) AND (client.officeID = office.officeID) ORDER BY schedule.priority DESC LIMIT 5');
         $db_data['schedule'] = $query->result_array();
         return $db_data;
-    }
-
-    public function getAdminData ()
-    {
-
     }
 }
 ?>
