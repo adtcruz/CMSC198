@@ -6,13 +6,22 @@ class Announcements_controller extends CI_Controller
     {
         parent::__construct ();
         $this->load->model ('Announcements_model', 'am');
+        $this->load->helper ('form');
+        $this->load->library ('form_validation');
         session_start();
     }
 
     public function index ()
     {
-        $db_data = $this->am->getAnnouncements ();
-        $this->load->view ('Announcements_view', $db_data);
+        if ($this->form_validation->run() == FALSE)
+        {
+            $db_data = $this->am->getAnnouncements ();
+            $this->load->view ('Announcements_view', $db_data);
+        }
+        else
+        {
+            // target toggle modal or something
+        }
     }
 
     public function addAnnouncements ()
@@ -21,8 +30,8 @@ class Announcements_controller extends CI_Controller
         {
             if ($_SESSION['type'] != 'client')
             {
-                $db_data['title'] = $this->input->post ('annTitle');
-                $db_data['text'] = $this->input->post ('annText');
+                $db_data['title'] = $this->input->post ('title');
+                $db_data['text'] = $this->input->post ('content');
                 $db_data['createdBy'] = $_SESSION['username'];
                 $db_data['createdByType'] = $_SESSION['type'];
                 $this->am->addAnnouncement ($db_data);
