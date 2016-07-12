@@ -21,17 +21,16 @@
     			<br/>
 					<div class="row center-align">
 						<a class="waves-effect waves-light btn brown darken-4" onclick="getAllJobRequests('<?php echo base_url();?>');">All Jobs</a>
-						&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;
 						<a class="waves-effect waves-light btn blue" onclick="getPendingJobRequests('<?php echo base_url();?>');">Pending</a>
-						&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;
 						<a class="waves-effect waves-light btn red" onclick="getCanceledJobRequests('<?php echo base_url();?>');">Canceled</a>
-						&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;
 						<a class="waves-effect waves-light btn orange" onclick="getProcessingJobRequests('<?php echo base_url();?>');">Processing</a>
-						&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;
 						<a class="waves-effect waves-light btn green" onclick="getProcessedJobRequests('<?php echo base_url();?>');">Processed</a>
-						&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;
 						<a class="waves-effect waves-light btn cyan darken-4">Search Jobs…</a>
-						&nbsp;&nbsp;&nbsp;&nbsp;
 					</div>
     			<br/>
     			<br/>
