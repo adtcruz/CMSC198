@@ -41,6 +41,8 @@ class Announcements_model extends CI_Model
         }
         echo $db_data['createdBy'];
         echo $createdBy;
+        echo $db_data['title'];
+        echo $db_data['text'];
     }
 }
 ?>
