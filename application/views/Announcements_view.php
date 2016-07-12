@@ -18,12 +18,7 @@
             <div id="annAddTab" class="col s12 m12 l12">
                 <!-- Announcements Add -->
                 <?php
-                    $this->load->helper ('form');
-                    echo form_open ('', 'id="addAnnForm"');
-                    echo form_hidden ('userDetails', array (
-                        'username' => $_SESSION['username'],
-                        'type' => $_SESSION['type']
-                    ));
+                    echo form_open (base_url().'addAnnouncements', 'id="addAnnForm"');
                     echo form_label ('Title', 'title');
                     $param = array (
                         'name' => 'title',
