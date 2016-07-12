@@ -16,7 +16,7 @@ $this->load->view ('Header');
         <div class="row">
             <div class="col s1 m1 l1">&nbsp;</div>
             <div class="col s9 m9 l9 center-align">
-               
+
                         <?php
                             $lines = array ();
                             foreach ($announcements as $row)
@@ -27,7 +27,7 @@ $this->load->view ('Header');
                             $attributes = array ('class' => 'collapsible', 'data-collapsible' => 'accordion');
                             echo ul ($lines, $attributes);
                         ?>
-                  
+
             </div>
             <div class="col s1 m1 l1">&nbsp;</div>
             <div class="row"></div>
