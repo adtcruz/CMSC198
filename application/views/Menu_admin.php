@@ -33,9 +33,9 @@
         <li>
             <div class="collapsible-header">Manage Application</div>
             <div class="collapsible-body">
-                    <a class = "waves-effect waves-light grey darken-4 white-text" href = "<?php base_url();?>manage_accounts">Manage Accounts</a>
-                    <a class = "waves-effect waves-light grey darken-4 white-text" href = "<?php base_url();?>manage_selectable_work">Manage Work</a>
-                    <a class = "waves-effect waves-light grey darken-4 white-text" href = "<?php base_url();?>manage_selectable_materials">Manage Materials</a>
+                    <a class = "waves-effect waves-light grey darken-3 white-text" href = "<?php base_url();?>manage_accounts">Manage Accounts</a>
+                    <a class = "waves-effect waves-light grey darken-3 white-text" href = "<?php base_url();?>manage_selectable_work">Manage Work</a>
+                    <a class = "waves-effect waves-light grey darken-3 white-text" href = "<?php base_url();?>manage_selectable_materials">Manage Materials</a>
             </div>
         </li>
     </ul>
