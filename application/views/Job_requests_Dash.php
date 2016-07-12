@@ -19,7 +19,25 @@
     			<h3 class="center-align"><?php if($_SESSION["type"]==="client") echo "My ";?>Job Requests</h3>
     			<br/>
     			<br/>
-    			<?php echo $table;?>
+					<div class="row center-align">
+						<a class="waves-effect waves-light btn brown darken-4">All Jobs</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<a class="waves-effect waves-light btn blue">Pending</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<a class="waves-effect waves-light btn red">Canceled</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<a class="waves-effect waves-light btn orange">Processing</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<a class="waves-effect waves-light btn green">Processed</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<a class="waves-effect waves-light btn cyan darken-4">Search Jobs…</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+					</div>
+    			<br/>
+    			<br/>
+					<div id="jobRequestsTable">
+	    			<?php echo $table;?>
+					</div>
     		</div>
       </div>
       <div id="newJobRequestForm">
