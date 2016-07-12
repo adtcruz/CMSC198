@@ -15,9 +15,11 @@ class Home_controller extends CI_Controller
 	{
 		if(array_key_exists("type",$_SESSION))
         {
-            // start of Home_Dash
+            // load header
             $this->load->view ('Header');
+            // initialize current announcements
             $db_data['announcements'] = $this->am->getDashAnnouncements ();
+
             switch ($_SESSION['type'])
             {
                 case 'client':
@@ -26,22 +28,18 @@ class Home_controller extends CI_Controller
                 break;
                 case 'admin':
                 case 'technician':
-                    $db_data['schedule'] = $this->hdm->getSchedule ();
                     $this->load->view ('Home_Dash_Admin', $db_data);
                 break;
                 case 'superadmin':
-                    //$db_data = $this->hdm->getSAData ($_SESSION['username']);
                     $this->load->view ('Home_Dash_SuperAdmin');
                 break;
                 default:
                     $this->load->view ('Login_view');
-
                 return;
             }
             $this->load->view ('Common_scripts');
             $this->load->view ('Home_script');
             $this->load->view ('Logout_script');
-            // end of Home_Dash
 		}
 		else
         {
