@@ -7,6 +7,7 @@
 	</div>
 	<ul class="center-align">
 		<li id="homeButton"><a id="homeItem" class="waves-effect waves-light white-text" href="<?php echo base_url();?>">HOME</a></li>
+        <li id="annButton"><a id="homeItem" class="waves-effect waves-light white-text" href="<?php echo base_url().'announcements';?>">Announcements</a></li>
 		<?php
         if (array_key_exists ('type', $_SESSION))
         {
