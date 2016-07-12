@@ -214,3 +214,30 @@ function getPendingJobRequests(url){
 		}
 	);
 }
+
+function getCanceledJobRequests(url){
+	$.get(
+		url+"get_canceled_job_requests",
+		function(data){
+			$("#jobRequestsTableContent").html(data);
+		}
+	);
+}
+
+function getProcessingJobRequests(url){
+	$.get(
+		url+"get_processing_job_requests",
+		function(data){
+			$("#jobRequestsTableContent").html(data);
+		}
+	);
+}
+
+function getProcessedJobRequests(url){
+	$.get(
+		url+"get_processed_job_requests",
+		function(data){
+			$("#jobRequestsTableContent").html(data);
+		}
+	);
+}
