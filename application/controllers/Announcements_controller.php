@@ -6,6 +6,7 @@ class Announcements_controller extends CI_Controller
     {
         parent::__construct ();
         $this->load->model ('Announcements_model', 'am');
+        session_start();
     }
 
     public function index ()
@@ -16,7 +17,6 @@ class Announcements_controller extends CI_Controller
 
     public function addAnnouncements ()
     {
-        session_start ();
         if (array_key_exists ("type", $_SESSION))
         {
             if ($_SESSION['type'] != 'client')
@@ -27,14 +27,6 @@ class Announcements_controller extends CI_Controller
                 $db_data['createdByType'] = $_SESSION['type'];
                 $this->am->addAnnouncement ($db_data);
             }
-            else
-            {
-                redirect (base_url(), 'refresh');
-            }
-        }
-        else
-        {
-            redirect (base_url(), 'refresh');
         }
     }
 }
