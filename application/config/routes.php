@@ -114,6 +114,7 @@ $route['generate_report'] = 'GenerateReport_controller';
 $route['topdf_jrf/(:any)'] = 'Job_request_form_controller';
 $route['default_controller'] = 'Home_controller';
 $route['announcements(.*)'] = 'Announcements_controller$1';
+$route['addAnnouncements'] = 'Announcements_controller/addAnnouncements';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
