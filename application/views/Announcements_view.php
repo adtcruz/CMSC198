@@ -16,18 +16,16 @@ $this->load->view ('Header');
         <div class="row">
             <div class="col s1 m1 l1">&nbsp;</div>
             <div class="col s9 m9 l9 center-align">
-
-                        <?php
-                            $lines = array ();
-                            foreach ($announcements as $row)
-                            {
-                                $line = '<div class = "collapsible-header blue-grey darken-1 white-text">'.$row['title'].'</div><div class = "collapsible-body">'.$row['details'].'</div>';
-                                $lines[] = $line;
-                            }
-                            $attributes = array ('class' => 'collapsible', 'data-collapsible' => 'accordion');
-                            echo ul ($lines, $attributes);
-                        ?>
-
+                <?php
+                    $lines = array ();
+                    foreach ($announcements as $row)
+                    {
+                        $line = '<div class = "collapsible-header blue-grey darken-1 white-text">'.$row['title'].'</div><div class = "collapsible-body">'.$row['details'].'</div>';
+                        $lines[] = $line;
+                    }
+                    $attributes = array ('class' => 'collapsible', 'data-collapsible' => 'accordion');
+                    echo ul ($lines, $attributes);
+                ?>
             </div>
             <div class="col s1 m1 l1">&nbsp;</div>
             <div class="row"></div>
@@ -40,5 +38,13 @@ $this->load->view ('Header');
 $this->load->view ('Common_scripts');
 $this->load->view ('Logout_script');
 ?>
+<script type="text/javascript">
+    $('document').ready(
+        function ()
+        {
+            $('#annButton').addClass("black");
+        }
+    );
+</script>
 </body>
 </html>
