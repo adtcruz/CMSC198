@@ -196,3 +196,21 @@ function fileJobRequest(url){
 		}
 	});
 }
+
+function getAllJobRequests(url){
+	$.get(
+		url+"get_all_job_requests",
+		function(data){
+			$("#jobRequestsTableContent").html(data);
+		}
+	);
+}
+
+function getPendingJobRequests(url){
+	$.get(
+		url+"get_pending_job_requests",
+		function(data){
+			$("#jobRequestsTableContent").html(data);
+		}
+	);
+}

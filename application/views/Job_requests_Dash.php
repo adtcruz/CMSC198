@@ -20,9 +20,9 @@
     			<br/>
     			<br/>
 					<div class="row center-align">
-						<a class="waves-effect waves-light btn brown darken-4">All Jobs</a>
+						<a class="waves-effect waves-light btn brown darken-4" onclick="getAllJobRequests('<?php echo base_url();?>');">All Jobs</a>
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<a class="waves-effect waves-light btn blue">Pending</a>
+						<a class="waves-effect waves-light btn blue" onclick="getPendingJobRequests('<?php echo base_url();?>');">Pending</a>
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<a class="waves-effect waves-light btn red">Canceled</a>
 						&nbsp;&nbsp;&nbsp;&nbsp;
@@ -35,7 +35,7 @@
 					</div>
     			<br/>
     			<br/>
-					<div id="jobRequestsTable">
+					<div id="jobRequestsTableContent">
 	    			<?php echo $table;?>
 					</div>
     		</div>

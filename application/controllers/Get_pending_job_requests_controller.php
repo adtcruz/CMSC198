@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Get_all_job_requests_controller extends CI_Controller
+class Get_pending_job_requests_controller extends CI_Controller
 {
   public function __construct() {
       parent:: __construct();
@@ -23,12 +23,12 @@ class Get_all_job_requests_controller extends CI_Controller
 				$clientID = $this->jrm->getUserID();
 
 				//queries the DB
-				$rows1 = $this->jrm->getJobRequestsArray(" WHERE clientID=".$clientID." ");
+				$rows1 = $this->jrm->getJobRequestsArray(" WHERE jobStatus='PENDING' AND clientID=".$clientID." ");
 
 				$nRows1 = count($rows1);
 
 				if($nRows1 == 0){
-					echo "<h5 class=\"center-align\">Sorry, there are no job requests filed under your name at the moment.</h5>";
+					echo "<h5 class=\"center-align\">Sorry, there are no pending job requests filed under your name at the moment.</h5>";
 					return;
 				}
 
@@ -58,11 +58,11 @@ class Get_all_job_requests_controller extends CI_Controller
 				//loads Code Igniter database module
 				$this->load->database();
 
-				$rows1 = $this->jrm->getJobRequestsArray(" ");
+				$rows1 = $this->jrm->getJobRequestsArray(" WHERE jobStatus='PENDING'");
 				$nRows1 = count($rows1);
 
 				if($nRows1 == 0){
-					echo "<h5 class=\"center-align\">Sorry, there are no job requests at the moment.</h5>";
+					echo "<h5 class=\"center-align\">Sorry, there are no pending job requests at the moment.</h5>";
 					return;
 				}
 
