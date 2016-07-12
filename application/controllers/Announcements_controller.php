@@ -32,6 +32,10 @@ class Announcements_controller extends CI_Controller
                 redirect (base_url(), 'refresh');
             }
         }
+        else
+        {
+            redirect (base_url(), 'refresh');
+        }
     }
 }
 ?>
