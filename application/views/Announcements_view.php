@@ -16,13 +16,33 @@
         <!-- Announcements Add -->
         <?php
             $this->load->helper ('form');
-            echo form_open ();
+            echo form_open ('', 'id="addAnnForm"');
+            echo form_hidden ('userDetails', array (
+                'username' => $_SESSION['username'],
+                'type' => $_SESSION['type']
+            ));
             echo form_label ('Title', 'title');
-            echo form_input ('title', 'title');
+            $param = array (
+                'name' => 'title',
+                'id' => 'title',
+                'placeholder' => 'Enter Announcement Title',
+                'maxlength' => '128',
+                'size' => '20'
+            );
+            echo form_input ($param);
             echo form_label ('Text', 'text');
-            echo form_textarea ('text', 'text');
-            echo form_submit ();
-            echo form_reset ();
+            $param = array (
+                'name' => 'content',
+                'id' => 'content',
+                'placeholder' => 'Enter Announcement Content',
+                'maxlength' => '1024',
+                'rows' => '20',
+                'cols' => '100',
+                'style' => 'resize: none'
+            );
+            echo form_textarea ($param);
+            echo form_submit ('Add Announcement');
+            echo form_reset ('Reset Form');
             echo form_close ();
         ?>
     </div>
