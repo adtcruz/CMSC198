@@ -9,39 +9,40 @@
             <div class="col s12 m12 l12">
                 <div class="col s12 m12">
 
-                    <!-- Lastest Jobs start -->
-                    <div class="card blue-grey darken-1">
+                    <!-- Announcements start -->
+                    <div class="card grey">
                         <div class="card-content white-text">
                             <br/>
-                            <h5 class="center-align">Announcements</h5>
-                            
-                        </div>
-                    </div>
-                    <!-- Lastest Jobs end -->
-
-                    <!-- Some Work Rates -->
-                    <div class="col s12 m6 l6">
-                        <div class="card blue-grey darken-1">
-                            <div class="card-content white-text">
-                                <br/>
-                                <h5 class="center-align">Work Rate</h5>
-
+                            <div class = "slider">
+                                <?php
+                                    $tiles = array ();
+                                    foreach ($announcements['announcements'] as $row)
+                                    {
+                                        $tile = '<img/><div class = "caption black-text" style = "text-align: justify; text-justify: inter-word"><h4>'.$row['title'].'</h4><h6 class = "truncate">'.$row['details'].'</h6></div>';
+                                        $tiles[] = $tile;
+                                    }
+                                    $attributes = array ('class' => 'slides');
+                                    echo ul ($tiles, $attributes);
+                                ?>
                             </div>
                         </div>
                     </div>
-                    <!-- Some Work Rates end -->
-
-                    <!-- Latest Job Requests -->
-                    <div class="col s12 m6 l6">
-                        <div class="card blue-grey darken-1">
-                            <div class="card-content white-text">
-                                <br/>
-                                <h5 class="center-align">Latest Job Requests</h5>
-
-                            </div>
+                    <!-- Announcements end -->
+                    <div class="card grey">
+                        <div class="card-content white-text">
+                            <?php
+                                $this->table->set_template (array ('class' => 'bordered'));
+                                $this->table->set_heading ('Priority', 'Job Description', 'Client Name', 'Office');
+                                foreach ($schedule['schedule'] as $row)
+                                {
+                                    $this->table->add_row ($row['priority'], $row['jobDescription'], $row['givenName'].' '.$row['lastName'], $row['officeName']);
+                                }
+                                echo $this->table->generate ();
+                            ?>
                         </div>
                     </div>
-                    <!-- Latest Jobs end -->
+
+
                 </div>
             </div>
             <div class="col s1 m1 l1">&nbsp;</div>
