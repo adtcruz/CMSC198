@@ -3,6 +3,15 @@ work_ID = "";
 $('document').ready(
 	function(){
 		$("#mngeApButton").addClass("black");
+        $('#manage_work').removeClass("grey");
+        $('#manage_work').removeClass("darken-4");
+        $('#manage_work').addClass('black');
+        $('#menuBody').addClass('active');
+        $('.collapsible').collapsible(
+            {
+                accordion: false
+            }
+        );
 		$('ul.tabs').tabs('select_tab', 'tab_id');
 	}
 );

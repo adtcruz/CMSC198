@@ -3,7 +3,16 @@ uname = "";
 $('document').ready(
 	function(){
 		$("#mngeApButton").addClass("black");
-		$('ul.tabs').tabs();
+        $('#manage_accounts').removeClass("grey");
+        $('#manage_accounts').removeClass("darken-4");
+        $('#manage_accounts').addClass('black');
+        $('#menuBody').addClass('active');
+        $('.collapsible').collapsible(
+            {
+                accordion: false
+            }
+        );
+        $('ul.tabs').tabs();
 	}
 );
 

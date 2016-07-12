@@ -3,6 +3,15 @@ material_ID = "";
 $('document').ready(
 	function(){
 		$("#mngeApButton").addClass("black");
+        $('#manage_materials').removeClass("grey");
+        $('#manage_materials').removeClass("darken-4");
+        $('#manage_materials').addClass('black');
+        $('#menuBody').addClass('active');
+        $('.collapsible').collapsible(
+            {
+                accordion: false
+            }
+        );
 		$('ul.tabs').tabs('select_tab', 'tab_id');
 	}
 );
