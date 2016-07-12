@@ -61,6 +61,7 @@ $route['deactivate_account'] = 'Deactivate_account_controller';
 $route['delete_materials_used'] = 'Delete_materials_used_controller';
 $route['delete_work_done'] = 'Delete_work_done_controller';
 $route['edit_job'] = 'Edit_job_description_controller';
+$route['get_all_job_requests'] = 'Get_all_job_requests_controller';
 $route['get_office_users'] = 'Get_office_users_controller';
 $route['get_job_description'] = 'Get_job_description_controller';
 $route['get_job_request_contents'] = 'Get_job_request_contents_controller';
