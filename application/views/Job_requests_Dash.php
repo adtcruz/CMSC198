@@ -19,7 +19,7 @@
     			<h3 class="center-align"><?php if($_SESSION["type"]==="client") echo "My ";?>Job Requests</h3>
     			<br/>
     			<br/>
-					<div class="row">
+					<div class="row center-align">
 						<a class="waves-effect waves-light btn brown darken-4" onclick="getAllJobRequests('<?php echo base_url();?>');">All Jobs</a>
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<a class="waves-effect waves-light btn blue" onclick="getPendingJobRequests('<?php echo base_url();?>');">Pending</a>
