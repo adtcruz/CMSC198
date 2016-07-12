@@ -105,6 +105,7 @@ $route['view_logs'] = 'View_user_logs_controller';
 $route['my_account'] = 'My_account_controller';
 $route['topdf_bfp/(:any)'] = 'Bill_for_payment_controller';
 $route['generate_bill'] = 'Generate_bill_controller';
+$route['generate_report'] = 'GenerateReport_controller';
 $route['topdf_jrf/(:any)'] = 'Job_request_form_controller';
 $route['default_controller'] = 'Home_controller';
 $route['announcements(.*)'] = 'Announcements_controller$1';
