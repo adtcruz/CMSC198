@@ -14,7 +14,6 @@
                     <!-- Lastest Jobs start -->
                     <div class="card grey">
                         <div class="card-content white-text">
-                            <br/>
                             <div class = "slider">
                                 <?php
                                     $tiles = array ();
