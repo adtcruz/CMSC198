@@ -4,6 +4,7 @@ $('document').ready(
 		$('select').material_select();
 });
 
+//removes visible error messages
 function adminPasswordChange(){
 
 	$("#adminPasswordLabel").removeAttr("data-error");
@@ -27,6 +28,7 @@ function adminPasswordChange(){
 	}
 }
 
+//removes visible error messages
 function adminConfirmPasswordChange(){
 
 	$("#adminPasswordLabel").removeAttr("data-error");
@@ -42,6 +44,7 @@ function adminConfirmPasswordChange(){
 	if($("#adminConfirmPassword").hasClass("invalid")) $("#adminConfirmPassword").removeClass("invalid");
 }
 
+//removes visible error messages
 function adminGivenNameChange(){
 
 	$("#adminGivenNameLabel").removeAttr("data-error");
@@ -51,6 +54,7 @@ function adminGivenNameChange(){
 	if($("#adminGivenName").hasClass("invalid")) $("#adminGivenName").removeClass("invalid");
 }
 
+//removes visible error messages
 function adminLastNameChange(){
 
 	$("#adminLastNameLabel").removeAttr("data-error");
@@ -60,6 +64,7 @@ function adminLastNameChange(){
 	if($("#adminLastName").hasClass("invalid")) $("#adminLastName").removeClass("invalid");
 }
 
+//removes visible error messages
 function adminUsernameChange(){
 
 	$("#adminUsernameLabel").removeAttr("data-error");
@@ -69,6 +74,8 @@ function adminUsernameChange(){
 	if($("#adminUsername").hasClass("invalid")) $("#adminUsername").removeClass("invalid");
 }
 
+//checks for input errors before calling API to create a new admin account
+//if there are errors, the function execution is preterminated
 function addAdmin(url){
 
 	username = $("#adminUsername").val();
@@ -209,6 +216,7 @@ function addAdmin(url){
 
 }
 
+//removes visible error messages
 function clientPasswordChange(){
 
 	$("#clientPasswordLabel").removeAttr("data-error");
@@ -232,6 +240,7 @@ function clientPasswordChange(){
 	}
 }
 
+//removes visible error messages
 function clientConfirmPasswordChange(){
 
 	$("#clientPasswordLabel").removeAttr("data-error");
@@ -247,6 +256,7 @@ function clientConfirmPasswordChange(){
 	if($("#clientConfirmPassword").hasClass("invalid")) $("#clientConfirmPassword").removeClass("invalid");
 }
 
+//removes visible error messages
 function clientGivenNameChange(){
 
 	$("#clientGivenNameLabel").removeAttr("data-error");
@@ -256,6 +266,7 @@ function clientGivenNameChange(){
 	if($("#clientGivenName").hasClass("invalid")) $("#clientGivenName").removeClass("invalid");
 }
 
+//removes visible error messages
 function clientLastNameChange(){
 
 	$("#clientLastNameLabel").removeAttr("data-error");
@@ -265,6 +276,7 @@ function clientLastNameChange(){
 	if($("#clientLastName").hasClass("invalid")) $("#clientLastName").removeClass("invalid");
 }
 
+//removes visible error messages
 function clientUsernameChange(){
 
 	$("#clientUsernameLabel").removeAttr("data-error");
@@ -274,6 +286,7 @@ function clientUsernameChange(){
 	if($("#clientUsername").hasClass("invalid")) $("#clientUsername").removeClass("invalid");
 }
 
+//removes visible error messages
 function designationChange(){
 
 	$("#designationLabel").removeAttr("data-error");
@@ -283,6 +296,8 @@ function designationChange(){
 	if($("#designation").hasClass("invalid")) $("#designation").removeClass("invalid");
 }
 
+//checks for input errors before calling API to create a new client account
+//if there are errors, the function execution is preterminated
 function addClient(url){
 
 	username = $("#clientUsername").val();
@@ -451,6 +466,7 @@ function addClient(url){
 	);
 }
 
+//removes visible error messages
 function superadminPasswordChange(){
 
 	$("#superadminPasswordLabel").removeAttr("data-error");
@@ -474,6 +490,7 @@ function superadminPasswordChange(){
 	}
 }
 
+//removes visible error messages
 function superadminConfirmPasswordChange(){
 
 	$("#superadminPasswordLabel").removeAttr("data-error");
@@ -489,6 +506,7 @@ function superadminConfirmPasswordChange(){
 	if($("#superadminConfirmPassword").hasClass("invalid")) $("#superadminConfirmPassword").removeClass("invalid");
 }
 
+//removes visible error messages
 function superadminGivenNameChange(){
 
 	$("#superadminGivenNameLabel").removeAttr("data-error");
@@ -498,6 +516,7 @@ function superadminGivenNameChange(){
 	if($("#superadminGivenName").hasClass("invalid")) $("#superadminGivenName").removeClass("invalid");
 }
 
+//removes visible error messages
 function superadminLastNameChange(){
 
 	$("#superadminLastNameLabel").removeAttr("data-error");
@@ -507,6 +526,7 @@ function superadminLastNameChange(){
 	if($("#superadminLastName").hasClass("invalid")) $("#superadminLastName").removeClass("invalid");
 }
 
+//removes visible error messages
 function superadminUsernameChange(){
 
 	$("#superadminUsernameLabel").removeAttr("data-error");
@@ -516,6 +536,8 @@ function superadminUsernameChange(){
 	if($("#superadminUsername").hasClass("invalid")) $("#superadminUsername").removeClass("invalid");
 }
 
+//checks for input errors before calling API to create a new superadmin account
+//if there are errors, the function execution is preterminated
 function addSuper(url){
 
 	username = $("#superadminUsername").val();
@@ -656,6 +678,7 @@ function addSuper(url){
 
 }
 
+//removes visible error messages
 function technPasswordChange(){
 
 	$("#technPasswordLabel").removeAttr("data-error");
@@ -679,6 +702,7 @@ function technPasswordChange(){
 	}
 }
 
+//removes visible error messages
 function technConfirmPasswordChange(){
 
 	$("#technPasswordLabel").removeAttr("data-error");
@@ -694,6 +718,7 @@ function technConfirmPasswordChange(){
 	if($("#technConfirmPassword").hasClass("invalid")) $("#technConfirmPassword").removeClass("invalid");
 }
 
+//removes visible error messages
 function technGivenNameChange(){
 
 	$("#technGivenNameLabel").removeAttr("data-error");
@@ -703,6 +728,7 @@ function technGivenNameChange(){
 	if($("#technGivenName").hasClass("invalid")) $("#technGivenName").removeClass("invalid");
 }
 
+//removes visible error messages
 function technLastNameChange(){
 
 	$("#technLastNameLabel").removeAttr("data-error");
@@ -712,6 +738,7 @@ function technLastNameChange(){
 	if($("#technLastName").hasClass("invalid")) $("#technLastName").removeClass("invalid");
 }
 
+//removes visible error messages
 function technUsernameChange(){
 
 	$("#technUsernameLabel").removeAttr("data-error");
@@ -721,6 +748,8 @@ function technUsernameChange(){
 	if($("#technUsername").hasClass("invalid")) $("#technUsername").removeClass("invalid");
 }
 
+//checks for input errors before calling API to create a new technician account
+//if there are errors, the function execution is preterminated
 function addTechnician(url){
 
 	username = $("#technUsername").val();
