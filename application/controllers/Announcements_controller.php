@@ -24,10 +24,11 @@ class Announcements_controller extends CI_Controller
                 case 'admin':
                 case 'technician':
                 case 'superadmin':
+
                     $this->form_validation->set_rules ('title', 'Title', 'trim|required|min_length[10]', array(
                         'required' => 'Title is required', 'min_length' => 'Title is too short'
                     ));
-                    $this->form_validation->set_rules ('text', 'Text', 'trim|required|min_length[10]', array(
+                    $this->form_validation->set_rules ('content', 'Content', 'trim|required|min_length[10]', array(
                         'required' => 'Text is required', 'min_length' => 'Content is too short'
                     ));
 
@@ -39,6 +40,7 @@ class Announcements_controller extends CI_Controller
                     else
                     {
                         // target toggle modal or something
+                        $this->addAnnouncements ();
                     }
                 break;
                 default: // redirect
@@ -54,7 +56,7 @@ class Announcements_controller extends CI_Controller
             {
                 echo 'yay!';
                 $db_data['title'] = $this->input->post ('title');
-                $db_data['text'] = $this->input->post ('text');
+                $db_data['text'] = $this->input->post ('content');
                 $db_data['createdBy'] = $_SESSION['username'];
                 $db_data['createdByType'] = $_SESSION['type'];
                 $status = $this->am->addAnnouncement ($db_data);
