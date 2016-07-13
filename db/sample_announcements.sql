@@ -9,3 +9,5 @@ INSERT INTO announcements (announcementText, announcementTitle, createdBy, creat
 INSERT INTO announcements (announcementText, announcementTitle, createdBy, createdByType, dateCreated) VALUES ("This is the announcement for Announcement 4", 'Announcement 4', 1, 'superadmin', CURDATE());
 
 INSERT INTO announcements (announcementText, announcementTitle, createdBy, createdByType, dateCreated) VALUES ("This is the announcement for Announcement 5", 'Announcement 5', 1, 'superadmin', CURDATE());
+
+INSERT INTO announcements (announcementText, announcementTitle, createdBy, createdByType, dateCreated) VALUES ("This is the announcement for Announcement 5", 'Announcement 69', 1, 'superadmin', '20160101');
