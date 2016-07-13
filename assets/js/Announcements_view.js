@@ -4,7 +4,7 @@ $('document').ready(
         $('#annButton').addClass("black");
         $('ul.tabs').tabs();
         $('#charCount').text('1024 characters left');
-        $('#content').keyup(
+        $('#text').keyup(
             function ()
             {
                 var max = 1024;
