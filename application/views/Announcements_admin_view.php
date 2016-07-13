@@ -4,52 +4,90 @@
         $this->load->view('Header');
         $this->load->view('Sidenav');
     ?>
+    <br>
     <div id="navarea" class="col s3 m3 l3 section"><br/><br/></div>
     <div class="col s9 m9 l9">
         <ul class="tabs">
-            <li class="tab col s12"><a href="#annAddTab"> Add Announcement </a></li>
             <li class="tab col s12"><a href="#annViewTab"> View Announcements </a></li>
+            <li class="tab col s12"><a href="#annAddTab"> Add Announcements </a></li>
         </ul>
     </div>
     <div id="mainAppArea" class="col s9 m9 l9 section">
+        <br/>
+        <br/>
         <div class="row">
-            <br/>
             <div id="annAddTab" class="col s12 m12 l12">
                 <!-- Announcements Add -->
                 <?php
                     echo validation_errors ();
-                    $attributes = array (
-                        'id' => 'addAnnouncement',
-                        'name' => 'addAnnouncement',
+
+                    // <form> + attributes
+                    $params = array (
+                        'id' => 'addAnnouncements',
+                        'name' => 'addAnnouncements',
                         'method' => 'POST'
+
                     );
-                    echo form_open ('add_announcements', $attributes);
-                    echo form_label ('Title', 'title');
-                    $param = array (
+                    echo form_open ('announcements', $params);
+
+                    // input box for title
+                    echo '<div class = "row"> <div class = "input-field col s12 m12 l12">';
+                    $params = array (
                         'name' => 'title',
                         'id' => 'title',
                         'placeholder' => 'Enter Announcement Title',
                         'maxlength' => '128',
                         'size' => '20'
                     );
-                    echo form_input ($param);
-                    echo form_label ('Text', 'text');
+                    echo form_input ($params);
+                    echo form_label ('Announcement Title', 'title');
+                    echo '</div> </div>';
+
+                    // text area for content
+                    echo '<div class = "row"> <div class = "row"> <div class = "input-field col s12 m12 l12">';
                     $param = array (
-                        'name' => 'text',
-                        'id' => 'text',
+                        'name' => 'content',
+                        'id' => 'content',
                         'placeholder' => 'Enter Announcement Content',
                         'maxlength' => '1024',
-                        'style' => 'resize: none; height: 200px'
+                        'style' => 'resize: none;',
+                        'class' => 'materialize-textarea'
                     );
                     echo form_textarea ($param);
+                    echo form_label ('Announcement Content', 'content');
                     echo '<div id="charCount"></div>';
-                    echo form_submit ('addAnn','Add Announcement');
-                    echo form_reset ('reset','Reset Form');
-                    echo form_close ();
+                    echo '</div> </div> </div>';
+
+                    // submit button
+                    echo '<div class = "input-field col s10 m10 l10"> <div class = "mdl-textfield mdl-js-textfield" align = "right">';
+                    $params = array (
+                        'name' => 'annAdd',
+                        'id' => 'annAdd',
+                        'type' => 'submit',
+                        'class' => 'btn waves-effect waves-light red',
+                        'content' => 'Add Announcements'
+                    );
+                    echo form_button ($params);
+                    echo '</div> </div>';
+
+                    // reset button
+                    echo '<div class = "input-field col s2 m2 l2"> <div class = "mdl-textfield mdl-js-textfield" align = "right">';
+                    $params = array (
+                        'name' => 'annRes',
+                        'id' => 'annRes',
+                        'type' => 'reset',
+                        'class' => 'btn waves-effect waves-light red',
+                        'content' => 'Reset Form'
+                    );
+                    echo form_button ($params);
+                    echo '</div> </div>';
+
+                    echo form_close ()
                 ?>
             </div>
         </div>
     </div>
+
     <div id="mainAppArea" class="col s9 m9 l9 section">
         <div class="row">
             <div id="annViewTab" class="col s12 m12 l12">
@@ -69,6 +107,7 @@
         </div>
     </div>
 </div>
+
 <?php
     $this->load->view ('Common_scripts');
     $this->load->view ('Logout_script');
