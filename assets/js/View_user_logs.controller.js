@@ -5,6 +5,8 @@ $('document').ready(
 	}
 );
 
+//function that gets login logs table from the API
+//displays the table in the div with the id logInLogs
 function getLogInLogs(url){
 	$.post(url+"get_logs",{filter:"login"},function(data) {
 		$("#logInLogs").html(
@@ -14,6 +16,8 @@ function getLogInLogs(url){
 	});
 }
 
+//function that gets logout logs table from the API
+//displays the table in the div with the id logInLogs
 function getLogOutLogs(url){
 	$.post(url+"get_logs",{filter:"logout"},function(data) {
 		$("#logOutLogs").html(
@@ -23,6 +27,8 @@ function getLogOutLogs(url){
 	});
 }
 
+//function that gets jobActions logs table from the API
+//displays the table in the div with the id logInLogs
 function getJobActionsLogs(url){
 	$.post(url+"get_logs",{filter:"jobActions"},function(data) {
 		$("#jobActionsLogs").html(
@@ -32,6 +38,10 @@ function getJobActionsLogs(url){
 	});
 }
 
+//function that gets user logs table from the API
+//displays the table in the div with the id logInLogs
+//resets the username input
+//closes the enter username modal
 function getUsersLogs(url){
 	usernameVal = $("#usernameInput").val();
 	$.post(url+"get_logs",{filter:"byUser",username:usernameVal},function(data) {
@@ -44,6 +54,7 @@ function getUsersLogs(url){
 	$("#enterUsernameModal").closeModal();
 }
 
+//selects the all logs tab
 function goBackToAll(){
 	$('ul.tabs').tabs('select_tab', 'allLogs');
 	$("#enterUsernameModal").closeModal();
