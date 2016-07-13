@@ -1,10 +1,12 @@
 <?php
+//this is the controller for the API that gets the clients in an office
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Get_office_users_controller extends CI_Controller
 {
 	public function index ()
 	{
+		//session start to access session variables
 		session_start();
 		if(array_key_exists("type",$_SESSION)){
 			if(($_SESSION["type"]==="technician")||($_SESSION["type"]==="admin")||($_SESSION["type"]==="superadmin")){

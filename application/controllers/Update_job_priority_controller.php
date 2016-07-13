@@ -1,11 +1,17 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+//this is the controller for the API that updates the job priority
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Update_job_priority_controller extends CI_Controller
 {
     public function __construct ()
     {
         parent::__construct ();
+
+        //loads code igniter database module
         $this->load->database ();
+
+        //session start to access session variables
         session_start();
     }
 
@@ -22,10 +28,12 @@ class Update_job_priority_controller extends CI_Controller
                 {
                     if (array_key_exists ("jobID", $_POST))
                     {
-                        $this->db->query ('UPDATE schedule SET schedule.priority='.$_POST['priority'].' WHERE schedule.jobID='.$_POST['jobID'].'');
+                      //updates the priority of the job in the schedule table
+                      $this->db->query ('UPDATE schedule SET schedule.priority='.$_POST['priority'].' WHERE schedule.jobID='.$_POST['jobID'].'');
 
-                        echo 'Priority updated';
-                        return;
+                      //returns a message that the priority was updated
+                      echo 'Priority updated';
+                      return;
                     }
                 }
             }
