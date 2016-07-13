@@ -105,7 +105,6 @@ $route['manage_accounts'] = 'Manage_accounts_controller';
 $route['manage_selectable_materials'] = 'Manage_selectable_materials_controller';
 $route['manage_selectable_work'] = 'Manage_selectable_work_controller';
 $route['view_schedule'] = 'View_schedule_controller';
-$route['add_client'] = 'Add_client_controller';
 $route['view_logs'] = 'View_user_logs_controller';
 $route['my_account'] = 'My_account_controller';
 $route['topdf_bfp/(:any)'] = 'Bill_for_payment_controller';
