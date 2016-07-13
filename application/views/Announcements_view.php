@@ -4,6 +4,7 @@
         $this->load->view('Header');
         $this->load->view('Sidenav');
     ?>
+    <br>
     <div id="navarea" class="col s3 m3 l3 section"><br/><br/></div>
     <div class="col s9 m9 l9">
         <ul class="tabs">
@@ -18,31 +19,41 @@
             <div id="annAddTab" class="col s12 m12 l12">
                 <!-- Announcements Add -->
                 <?php
-                    echo form_open (base_url().'addAnnouncements', 'id="addAnnForm"');
-                    echo form_label ('Title', 'title');
-                    $param = array (
-                        'name' => 'title',
-                        'id' => 'title',
-                        'placeholder' => 'Enter Announcement Title',
-                        'maxlength' => '128',
-                        'size' => '20'
-                    );
-                    echo form_input ($param);
-                    echo form_label ('Text', 'text');
-                    $param = array (
-                        'name' => 'content',
-                        'id' => 'content',
-                        'placeholder' => 'Enter Announcement Content',
-                        'maxlength' => '1024',
-                        'style' => 'resize: none; height: 200px',
-                        'onkeyup' => 'countChar(this)'
-                    );
-                    echo form_textarea ($param);
-                    echo '<div id="charCount"></div>';
-                    echo form_submit ('addAnn','Add Announcement');
-                    echo form_reset ('reset','Reset Form');
-                    echo form_close ();
+                    echo form_open (base_url().'addAnnouncements', 'id="addAnnForm"');  
                 ?>
+
+             <div class="row">
+                <div class="input-field col s12">
+                  <input placeholder="Enter Announcement Title" name="title" id="title" type="text" class="validate"maxlength="128" size="20" >
+                  <label for="">Announcement Title</label>
+                </div>
+              </div>
+              <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <textarea placeholder="Enter Announcement Content" name="content" id="content" class="materialize-textarea" maxlength="1024" onkeyup="countChar(this)"></textarea>
+                      <label for="">Announcement Content</label>
+                      <?php echo '<div id="charCount"></div>'; ?>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+        
+            <div class="input-field col s10">  
+                <div class="mdl-textfield mdl-js-textfield" align="right" >
+                  <button class="btn waves-effect waves-light red" type="addAnn">Add Announcements
+                  </button>
+                </div>
+            </div>
+            <div class="input-field col s2">  
+                <div class="mdl-textfield mdl-js-textfield" align="right" >
+                  <button class="btn waves-effect waves-light red" type="reset">Reset Form
+                  </button>
+                </div>
+            </div>
+                <?php echo form_close (); ?>
             </div>
             <br/>
             <br/>
