@@ -25,7 +25,7 @@ class Get_work_details_controller extends CI_Controller
 					//queries the database
   				$rows = $this->db->query("SELECT workDescription, workCost FROM work WHERE workID=".$_POST["workID"]."")->result_array();
 
-					//sends a JSON object containing the material details
+					//sends a JSON object containing the work details
   		    if(count($rows)==1){
             echo (json_encode(
 	                  array(
