@@ -16,16 +16,20 @@ $('document').ready(
 	}
 );
 
+//functions that reloads the page
 function reloadPage(url){
 	window.location.href = url+'manage_selectable_work';
 }
 
+//removes visible errors
 function workDescriptionOnChange(){
 	$("#workDescriptionLabel").removeAttr("data-error");
 	$("#workDescriptionLabel").html("Work Description");
 	if($("#workDescription").hasClass("invalid")) $("#workDescription").removeClass("invalid");
 }
 
+//checks the input fields for errors before calling the API to add new selectable work
+//if there are errors, the appropriate errors shall be displayed
 function addNewSelectableWork(url){
 
 	err = false;
