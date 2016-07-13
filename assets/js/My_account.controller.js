@@ -9,12 +9,14 @@ $('document').ready(
 	}
 );
 
+//removes visible error messages
 function oldPasswordOnChange(){
 	$("#oldPasswordLabel").attr("data-error","Please re-enter old password.");
 	$("#oldPasswordLabel").html("Re-enter old password");
 	if($("#oldPassword").hasClass("invalid")) $("#oldPassword").removeClass("invalid");
 }
 
+//removes visible error messages
 function newPasswordOnChange(){
 	$("#newPasswordLabel").attr("data-error","Please enter a password.");
 	$("#confirmPasswordLabel").attr("data-error","Please enter a password.");
@@ -27,6 +29,7 @@ function newPasswordOnChange(){
 	$("#confirmPassword").val("");
 }
 
+//removes visible error messages
 function confirmPasswordOnChange(){
 	$("#newPasswordLabel").attr("data-error","Please enter a password.");
 	$("#confirmPasswordLabel").attr("data-error","Please enter a password.");
@@ -36,6 +39,8 @@ function confirmPasswordOnChange(){
 	if($("#confirmPassword").hasClass("invalid")) $("#confirmPassword").removeClass("invalid");
 }
 
+//checks for input errors before calling API to update the password
+//if there are errors, the function execution is preterminated
 function updatePassword(url){
 
 	err = false;
@@ -114,18 +119,22 @@ function updatePassword(url){
 
 }
 
+//removes visible error messages
 function givenNameOnChange(){
 	$("#user_givenNameLabel").attr("data-error","Given Name can not be blank!");
 	$("#user_givenNameLabel").html("Given Name: ");
 	if($("#user_givenName").hasClass("invalid")) $("#user_givenName").removeClass("invalid");
 }
 
+//removes visible error messages
 function lastNameOnChange(){
 	$("#user_lastNameLabel").attr("data-error","Given Name can not be blank!");
 	$("#user_lastNameLabel").html("Last Name: ");
 	if($("#user_lastName").hasClass("invalid")) $("#user_lastName").removeClass("invalid");
 }
 
+//checks for input errors before calling API to update the password
+//if there are errors, the function execution is preterminated
 function updateProfile(url){
 
 	err = false;
