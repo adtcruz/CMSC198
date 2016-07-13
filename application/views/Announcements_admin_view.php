@@ -99,12 +99,16 @@
                         // please align button and text
                         $line = '
                         <div class = "collapsible-header blue-grey darken-1 white-text">
+                         <div>
                             <div class = "col s10 m10 l10">
                                 <span> '.$row['title'].' </span>
                             </div>
-                            <div class = "col s2 m2 l2">
-                                <a class = "waves-effect btn-flat"> Delete </a>
+                            <div class = "centerButton">
+                                <button class = "waves-effect blue accent-1 btn-flat"> Delete
+                                </button>
                             </div>
+                         </div>
+
                         </div>
                         <div class = "collapsible-body">'.$row['details'].'</div>
                         ';
