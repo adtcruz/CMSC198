@@ -11,14 +11,14 @@ class Announcements_model extends CI_Model
 
     public function getAnnouncements ()
     {
-        $query = $this->db->query ('SELECT announcements.announcementText AS details, announcements.announcementTitle AS title, announcements.dateCreated FROM announcements ORDER BY announcements.dateCreated DESC');
+        $query = $this->db->query ('SELECT announcements.announcementText AS details, announcements.announcementTitle AS title, announcements.dateCreated FROM announcements ORDER BY announcements.announcementID DESC');
         $db_data['announcements'] = $query->result_array();
         return $db_data;
     }
 
     public function getDashAnnouncements ()
     {
-        $query = $this->db->query ('SELECT announcements.announcementText AS details, announcements.announcementTitle AS title, announcements.dateCreated FROM announcements ORDER BY announcements.dateCreated DESC LIMIT 3');
+        $query = $this->db->query ('SELECT announcements.announcementText AS details, announcements.announcementTitle AS title, announcements.dateCreated FROM announcements ORDER BY announcements.announcementID DESC LIMIT 3');
         $db_data['announcements'] = $query->result_array();
         return $db_data;
     }
@@ -27,6 +27,7 @@ class Announcements_model extends CI_Model
     {
         //echo $db_data['createdBy'];
         // extract user ID using user type and username
+        $createdBy = '';
         switch ($db_data['createdByType'])
         {
             case 'admin':
@@ -39,10 +40,15 @@ class Announcements_model extends CI_Model
                 $createdBy = $query->result_array ()[0]['adminID'];
             break;
         }
-        echo $db_data['createdBy'];
-        echo $createdBy;
-        echo $db_data['title'];
-        echo $db_data['text'];
+
+
+
+        $title = $db_data['title'];
+        $text = $db_data['text'];
+        $createdByType = $db_data['createdByType'];
+
+        $query = $this->db->query ('INSERT INTO announcements (announcementText, announcementTitle, dateCreated, createdBy, createdByType) VALUES ("'.$text.'", "'.$title.'", CURDATE(), '.$createdBy.', "'.$createdByType.'")');
+        return ($this->db->affected_rows () != 1) ? FALSE : TRUE;
     }
 }
 ?>
