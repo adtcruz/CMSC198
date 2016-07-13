@@ -18,7 +18,8 @@
             <div id="annAddTab" class="col s12 m12 l12">
                 <!-- Announcements Add -->
                 <?php
-                    echo form_open (base_url().'addAnnouncements', 'id="addAnnForm"');
+                    echo validation_errors ();
+                    echo form_open (base_url().'announcements', 'id="addAnnForm"');
                     echo form_label ('Title', 'title');
                     $param = array (
                         'name' => 'title',
@@ -30,8 +31,8 @@
                     echo form_input ($param);
                     echo form_label ('Text', 'text');
                     $param = array (
-                        'name' => 'content',
-                        'id' => 'content',
+                        'name' => 'text',
+                        'id' => 'text',
                         'placeholder' => 'Enter Announcement Content',
                         'maxlength' => '1024',
                         'style' => 'resize: none; height: 200px',
