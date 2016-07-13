@@ -11,7 +11,7 @@ class Announcements_model extends CI_Model
 
     public function getAnnouncements ()
     {
-        $query = $this->db->query ('SELECT announcements.announcementText AS details, announcements.announcementTitle AS title, announcements.dateCreated FROM announcements ORDER BY announcements.announcementID DESC');
+        $query = $this->db->query ('SELECT announcements.announcementID AS ID, announcements.announcementText AS details, announcements.announcementTitle AS title, announcements.dateCreated FROM announcements ORDER BY announcements.announcementID DESC');
         $db_data['announcements'] = $query->result_array();
         return $db_data;
     }
@@ -40,8 +40,6 @@ class Announcements_model extends CI_Model
                 $createdBy = $query->result_array ()[0]['adminID'];
             break;
         }
-
-
 
         $title = $db_data['title'];
         $text = $db_data['text'];
