@@ -13,6 +13,13 @@ class Announcements_controller extends CI_Controller
 
     public function index ()
     {
+        $this->form_validation->set_rules ('title', 'Title', 'trim|required|min_length[10]|max_length[128]', array(
+            'required' => 'Title is required', 'min_length' => 'Input is too short', 'max_length' => 'Input is too long'
+        ));
+        $this->form_validation->set_rules ('text', 'Text', 'trim|required|min_length[10]|max_length[1024]', array(
+            'required' => 'Text is required', 'min_length' => 'Input is too short', 'max_length' => 'Input is too long'
+        ));
+
         if ($this->form_validation->run() == FALSE)
         {
             $db_data = $this->am->getAnnouncements ();
