@@ -1,4 +1,6 @@
 <?php
+//this adds a work in the work done table for a job
+
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Add_work_done_controller extends CI_Controller
