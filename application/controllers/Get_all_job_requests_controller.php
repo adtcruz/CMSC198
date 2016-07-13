@@ -43,72 +43,93 @@ class Get_all_job_requests_controller extends CI_Controller
 				$nRows1 = count($rows1);
 
         //if the number of rows is zero, it means that there are no job requests filed under the client's name
-        //returns a message instead of a table 
+        //returns a message instead of a table
 				if($nRows1 == 0){
 					echo "<h5 class=\"center-align\">Sorry, there are no job requests filed under your name at the moment.</h5>";
 					return;
 				}
 
-				//table heading
+				//sets the table heading
 				$this->table->set_heading("Description","Start Date","Finish Date","Status","Date Filed","Actions");
 
 				for ($i = 0; $i < $nRows1; $i++){
 
+          //processes the start date entry
 					$startDate = $this->jrm->processDate($rows1[$i]["startDate"]);
 
+          //processes the finish date entry
 					$finishDate = $this->jrm->processDate($rows1[$i]["finishDate"]);
 
+          //processes the job status entry
 					$jobStatus = $this->jrm->processJobStatus($rows1[$i]["jobStatus"]);
 
+          //processes the actions buttons
 					$actions = $this->jrm->getJobActions($rows1[$i],$clientID);
 
 					//date filed column entry
 					$dateFiled = $this->jrm->processDate($rows1[$i]["dateCreated"]);
 
+          //adds a row to the table
 					$this->table->add_row($rows1[$i]["jobDescription"],$startDate,$finishDate,$jobStatus,$dateFiled,$actions);
 				}
 
 			}
 
+      //if the user in session is an admin, technician, or superadmin
 			else if(($_SESSION["type"]==="technician")||($_SESSION["type"]==="admin")||($_SESSION["type"]==="superadmin")){
 
 				//loads Code Igniter database module
 				$this->load->database();
 
+        //queries the DB
 				$rows1 = $this->jrm->getJobRequestsArray(" ");
-				$nRows1 = count($rows1);
 
+        //gets the number of rows
+        $nRows1 = count($rows1);
+
+        //if the number of rows is zero, it means that there are no job requests filed under the client's name
+        //returns a message instead of a table
 				if($nRows1 == 0){
 					echo "<h5 class=\"center-align\">Sorry, there are no job requests at the moment.</h5>";
 					return;
 				}
 
+				//sets the table heading
 				$this->table->set_heading('Description','Client','Start Date','Finish Date','Status','Date Filed','Filed By','Actions');
 
 				for ($i = 0; $i < $nRows1; $i++){
 
+          //gets the userID of the user in session
 					$userID = $this->jrm->getUserID();
 
+          //gets the client name
 					$clientName = $this->jrm->getClientName($rows1[$i]["clientID"]);
 
+          //processes the start date
 					$startDate = $this->jrm->processDate($rows1[$i]["startDate"]);
 
+          //processes the finish date
 					$finishDate = $this->jrm->processDate($rows1[$i]["finishDate"]);
 
+          //processes the job status
 					$jobStatus = $this->jrm->processJobStatus($rows1[$i]["jobStatus"]);
 
+          //processes the actions buttons
 					$actions = $this->jrm->getJobActions($rows1[$i],$userID);
 
 					//date filed column entry
 					$dateFiled = $this->jrm->processDate($rows1[$i]["dateCreated"]);
 
+          //processes the filedBy column entry
 					$filedBy = $this->jrm->getFiledBy($rows1[$i]);
 
+          //adds a row to the table
 					$this->table->add_row($rows1[$i]["jobDescription"],$clientName,$startDate,$finishDate,$jobStatus,$dateFiled,$filedBy,$actions);
 
 				}
 			}
 
+      //returns the table generated
 			echo $this->table->generate();
       return;
 		}
