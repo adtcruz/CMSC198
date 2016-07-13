@@ -6,10 +6,22 @@
         <li>
             <div id="menuBody" class="collapsible-header">Manage Application</div>
             <div class="collapsible-body">
-                    <a class = "waves-effect waves-light grey darken-3 white-text" href = "<?php base_url();?>view_logs">User Logs</a>
-                    <a class = "waves-effect waves-light grey darken-3 white-text" href = "<?php base_url();?>manage_accounts">Manage Accounts</a>
-                    <a class = "waves-effect waves-light grey darken-3 white-text" href = "<?php base_url();?>manage_selectable_work">Manage Work</a>
-                    <a class = "waves-effect waves-light grey darken-3 white-text" href = "<?php base_url();?>manage_selectable_materials">Manage Materials</a>
+                <?php
+                if (array_key_exists ('type', $_SESSION))
+                {
+                    if($_SESSION["type"] === "superadmin")
+                    {
+                        $this->load->view('superadmin_userlogs');
+                    }
+                }
+                else
+                {
+                    redirect (base_url(), 'refresh');
+                }
+                ?>
+                <a class = "waves-effect waves-light grey darken-3 white-text" href = "<?php base_url();?>manage_accounts">Manage Accounts</a>
+                <a class = "waves-effect waves-light grey darken-3 white-text" href = "<?php base_url();?>manage_selectable_work">Manage Work</a>
+                <a class = "waves-effect waves-light grey darken-3 white-text" href = "<?php base_url();?>manage_selectable_materials">Manage Materials</a>
 
                   
             </div>
