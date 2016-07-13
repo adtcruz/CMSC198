@@ -48,6 +48,11 @@ class Announcements_controller extends CI_Controller
         }
     }
 
+    public function deleteAnnouncement ()
+    {
+        
+    }
+
     public function addAnnouncements ()
     {
         if (array_key_exists ("type", $_SESSION))
