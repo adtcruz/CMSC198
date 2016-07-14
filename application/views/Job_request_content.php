@@ -15,7 +15,6 @@
 				<h5><i class="material-icons">work</i> Work(s) Done:</h5>
 				<div id="workDoneTable" class="row">
 				</div>
-				<br/>
 				<div class="right-align">
 					<a class="btn-floating btn tooltipped waves-effect waves-light green darken-4" data-position="left" data-delay="50" data-tooltip="Add work done" onclick="openAddWorkDoneModal('<?php echo base_url();?>');"><i class="material-icons">add</i></a>
 				</div>
