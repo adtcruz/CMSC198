@@ -100,22 +100,23 @@ $route['update_work_done'] = 'Update_work_done_controller';
 
 
 //routes for page loads
-$route['new_account'] = 'New_account_controller';
+$route['announcements'] = 'Announcements_controller';
+$route['add_announcements'] = 'Announcements_controller/addAnnouncements';
+$route['generate_bill'] = 'Generate_bill_controller';
+$route['generate_report'] = 'Generate_report_controller';
 $route['job_requests'] = 'Job_requests_controller';
 $route['manage_application'] = 'Manage_application_controller';
 $route['manage_accounts'] = 'Manage_accounts_controller';
 $route['manage_selectable_materials'] = 'Manage_selectable_materials_controller';
 $route['manage_selectable_work'] = 'Manage_selectable_work_controller';
+$route['my_account'] = 'My_account_controller';
+$route['new_account'] = 'New_account_controller';
+$route['topdf_bfp/(:any)'] = 'Bill_for_payment_controller';
+$route['topdf_jrf/(:any)'] = 'Job_request_form_controller';
 $route['view_schedule'] = 'View_schedule_controller';
 $route['view_logs'] = 'View_user_logs_controller';
-$route['my_account'] = 'My_account_controller';
-$route['topdf_bfp/(:any)'] = 'Bill_for_payment_controller';
-$route['generate_bill'] = 'Generate_bill_controller';
-$route['generate_report'] = 'GenerateReport_controller';
-$route['topdf_jrf/(:any)'] = 'Job_request_form_controller';
-$route['default_controller'] = 'Home_controller';
-$route['announcements'] = 'Announcements_controller';
-$route['add_announcements'] = 'Announcements_controller/addAnnouncements';
 
+// CodeIgniter default routes
+$route['default_controller'] = 'Home_controller';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
