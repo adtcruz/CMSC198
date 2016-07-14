@@ -7,7 +7,6 @@
 			<br/>
 			<div class="col s12">
 				<ul class="tabs">
-					<li class="tab col s3"><a onclick="window.location.href='<?php echo base_url();?>'+'manage_application';" href="#">Back to Manage Application</a></li>
 					<li class="tab col s3"><a class="active" href="#manageWork">Manage Selectable Work</a></li>
 					<li class="tab col s3"><a href="#addWork">Add New Work</a></li>
 				</ul>

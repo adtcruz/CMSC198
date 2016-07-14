@@ -7,7 +7,6 @@
 			<br/>
 			<div class="col s12">
 				<ul class="tabs">
-					<li class="tab col s3"><a onclick="window.location.href='<?php echo base_url();?>'+'manage_application';" href="#">Back to Manage Application</a></li>
 					<li class="tab col s3"><a class="active" href="#manageMaterials">Manage Selectable Materials</a></li>
 					<li class="tab col s3"><a href="#addMaterial" onclick="$('#materialUnitMeasurement').material_select();">Add New Material</a></li>
 				</ul>

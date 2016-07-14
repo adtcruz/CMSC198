@@ -1,7 +1,6 @@
 <div class="row">
     <div class="col s12">
         <ul class="tabs">
-            <li class="tab"><a onclick="window.location.href='<?php echo base_url();?>'+'manage_application';" href="#">Go Back</a></li>
             <li class="tab"><a class="active" href="#allAccounts">All Accounts</a></li>
             <li class="tab"><a href="#clientAccounts">Clients</a></li>
             <li class="tab"><a href="#adminAccounts">Admins</a></li>

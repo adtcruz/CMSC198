@@ -1,6 +1,16 @@
 $('document').ready(
 	function(){
 		$("#mngeApButton").addClass("black");
+		$('#mngAccButton').removeClass("grey");
+		$('#mngAccButton').removeClass("darken-4");
+		$('#mngAccButton').addClass('black');
+		$('#menuBody').addClass('active');
+		$('.collapsible').collapsible(
+				{
+						accordion: false
+				}
+		);
+		$('ul.tabs').tabs();
 		$('select').material_select();
 });
 

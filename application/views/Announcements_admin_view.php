@@ -1,17 +1,21 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <div class="row">
+    <!-- Includes the Header and Sidenav Viewa -->
     <?php
         $this->load->view('Header');
         $this->load->view('Sidenav');
     ?>
     <br>
     <div id="navarea" class="col s3 m3 l3 section"><br/><br/></div>
+    <!-- Shows the Add Announcements and View Announcements tabs -->
     <div class="col s9 m9 l9">
         <ul class="tabs">
             <li class="tab col s12"><a href="#annAddTab"> Add Announcements </a></li>
             <li class="tab col s12"><a href="#annViewTab"> View Announcements </a></li>
         </ul>
     </div>
+
+    <!-- Add Announcement Form -->
     <div id="mainAppArea" class="col s9 m9 l9 section">
         <br/>
         <br/>
@@ -60,8 +64,8 @@
                         'name' => 'annAdd',
                         'id' => 'annAdd',
                         'type' => 'submit',
-                        'class' => 'btn waves-effect waves-light red',
-                        'content' => 'Add Announcements'
+                        'class' => 'btn waves-effect waves-light green darken-4',
+                        'content' => 'Add Announcement'
                     );
                     echo form_button ($params);
                     echo '</div> </div>';
@@ -71,7 +75,7 @@
                         'name' => 'annRes',
                         'id' => 'annRes',
                         'type' => 'reset',
-                        'class' => 'btn waves-effect waves-light red',
+                        'class' => 'btn waves-effect waves-light red darken-4',
                         'content' => 'Reset Form'
                     );
                     echo form_button ($params);
@@ -81,7 +85,7 @@
             </div>
         </div>
     </div>
-
+    <!-- View Announcements -->
     <div id="mainAppArea" class="col s9 m9 l9 section">
         <div class="row">
             <div id="annViewTab" class="col s12 m12 l12">
@@ -92,7 +96,7 @@
                     {
                         // please align button and text
                         $line = '
-                        <div class = "collapsible-header blue-grey darken-1 white-text">
+                        <div class = "collapsible-header grey black-text">
                         <div>
                             <div class = "col s12 m12 l12">
                                 <span> '.$row['title'].' </span>
@@ -124,11 +128,15 @@
     </div>
 </div>
 
+<!-- Modal for confirmin the deletion of the announcement -->
 <div id = "deleteModal" class = "modal">
     <div class = "modal-content">
-        <h4> Delete this announcement? </h4>
-        <a class = "btn" onclick = "deleteAnnouncement('<?= base_url();?>')">Yes</a>
-        <a class = "btn" onclick = "$('#deleteModal').closeModal()">No</a>
+        <h4 class="center-align">Delete this announcement?</h4>
+        <div class="center-align">
+          <a class = "waves-effect waves-light btn btn-large red darken-4" onclick = "deleteAnnouncement('<?= base_url();?>')">Yes</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a class = "waves-effect waves-light btn btn-large blue darken-4" onclick = "$('#deleteModal').closeModal()">No</a>
+        </div>
     </div>
 </div>
 

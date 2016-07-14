@@ -241,3 +241,21 @@ function getProcessedJobRequests(url){
 		}
 	);
 }
+
+function searchJobRequests(url){
+	if($("#searchKeys").val()===""){
+		Materialize.toast("Search strings can not be blank!",3000);
+		return;
+	}
+	$.post(
+	  url+"get_search_results",
+	  {
+	    searchKeys:$("#searchKeys").val()
+	  },
+	  function(data){
+			$("#searchModal").closeModal();
+	    $("#jobRequestsTableContent").html(data);
+			$("#searchKeys").val("");
+	  }
+	);
+}

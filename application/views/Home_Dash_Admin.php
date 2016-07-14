@@ -29,8 +29,8 @@
                     <!-- Announcements end -->
 
                     <!-- Schedule start -->
-                    <div class="card grey">
-                        <div class="card-content white-text">
+                    <div class="card grey lighten-2">
+                        <div class="card-content black-text">
                             <span class="card-title"><h4> Today's Schedule </h4></span>
                             <?php
                                 $this->table->set_template (array ('class' => 'bordered'));
