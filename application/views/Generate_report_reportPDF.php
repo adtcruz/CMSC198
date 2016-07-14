@@ -30,12 +30,14 @@
 	$template = array (
 			'table_open' => '<table width = "800" border = "1" style = "text-align: center;">'
 		);
-	// Table
+	// Table Header
 	$this->table->set_template ($template);
 	$this->table->set_heading ('Date', 'Office / Unit', 'Job Description', 'Finish Date', 'Response Period');
 	$this->table->set_empty ('&nbsp;');
 	
+	// Table Contents, data retrieved from database
 	foreach ($result_array as $row)
+		
 	{
 		$this->table->add_row ($row['dateCreated'], $row['officeAbbr'], $row['jobDescription'], $row['finishDate'], '');
 	}
