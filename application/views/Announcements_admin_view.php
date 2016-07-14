@@ -33,7 +33,7 @@
                         'name' => 'title',
                         'id' => 'title',
                         'placeholder' => 'Enter Announcement Title',
-                        'maxlength' => '128',
+                        'maxlength' => '100',
                         'size' => '20'
                     );
                     echo form_input ($params);
@@ -94,19 +94,21 @@
                         $line = '
                         <div class = "collapsible-header blue-grey darken-1 white-text">
                         <div>
-                            <div class = "col s10 m10 l10">
+                            <div class = "col s12 m12 l12">
                                 <span> '.$row['title'].' </span>
                             </div>
                         </div>
                         </div>
                         <div class = "collapsible-body row">
-                            <div class = "col s8 m8 l8" style = "padding: 6px">
-                                '.$row['details'].'
-                            </div>
-                            <div class = "centerButton col s4 m4 l4">
+                            <div class = "centerButton right-align">
                                 <a class = "waves-effect btn-flat modal-trigger right-align" onclick="confirmDelete('.$row['ID'].')">
                                     Delete Announcement
                                 </a>
+                            </div>
+                            <div class = "col s12 m12 l12" style = "padding: 6px;">
+                                <pre style = "white-space: pre-line;">
+                                '.$row['details'].'
+                                </pre>
                             </div>
                             <br/>
                         </div>
