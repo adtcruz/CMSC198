@@ -1,17 +1,21 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <div class="row">
+    <!-- Includes the Header and Sidenav Viewa -->
     <?php
         $this->load->view('Header');
         $this->load->view('Sidenav');
     ?>
     <br>
     <div id="navarea" class="col s3 m3 l3 section"><br/><br/></div>
+    <!-- Shows the Add Announcements and View Announcements tabs -->
     <div class="col s9 m9 l9">
         <ul class="tabs">
             <li class="tab col s12"><a href="#annAddTab"> Add Announcements </a></li>
             <li class="tab col s12"><a href="#annViewTab"> View Announcements </a></li>
         </ul>
     </div>
+
+    <!-- Add Announcement Form -->
     <div id="mainAppArea" class="col s9 m9 l9 section">
         <br/>
         <br/>
@@ -81,7 +85,7 @@
             </div>
         </div>
     </div>
-
+    <!-- View Announcements -->
     <div id="mainAppArea" class="col s9 m9 l9 section">
         <div class="row">
             <div id="annViewTab" class="col s12 m12 l12">
@@ -122,6 +126,7 @@
     </div>
 </div>
 
+<!-- Modal for confirmin the deletion of the announcement -->
 <div id = "deleteModal" class = "modal">
     <div class = "modal-content">
         <h4> Delete this announcement? </h4>
