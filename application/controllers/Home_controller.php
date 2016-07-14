@@ -28,10 +28,8 @@ class Home_controller extends CI_Controller
                 break;
                 case 'admin':
                 case 'technician':
-                    $this->load->view ('Home_Dash_Admin', $db_data);
-                break;
                 case 'superadmin':
-                    $this->load->view ('Home_Dash_SuperAdmin');
+                    $this->load->view ('Home_Dash_Admin', $db_data);
                 break;
                 default:
                     $this->load->view ('Login_view');
