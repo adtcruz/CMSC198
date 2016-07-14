@@ -45,6 +45,8 @@ class Announcements_controller extends CI_Controller
                     {
                         // target toggle modal or something
                         $this->addAnnouncements ();
+                        $db_data = $this->am->getAnnouncements ();
+                        $this->load->view ('Announcements_admin_view', $db_data);
                     }
                 break;
                 default: // redirect
@@ -54,7 +56,22 @@ class Announcements_controller extends CI_Controller
 
     public function deleteAnnouncement ()
     {
-
+        if (array_key_exists ("type", $_SESSION))
+        {
+            if ($_SESSION['type'] != 'client')
+            {
+                if (array_key_exists ("announcementID", $_POST))
+                {
+                    $this->load->database ();
+                    $this->db->query ('DELETE FROM announcements WHERE announcementID = '.$_POST['announcementID'].'');
+                    if ($this->db->affected_rows () == 1)
+                    {
+                        echo 'Announcement Deleted';
+                        return;
+                    }
+                }
+            }
+        }
     }
 
     public function addAnnouncements ()
@@ -69,8 +86,6 @@ class Announcements_controller extends CI_Controller
                 $db_data['createdBy'] = $_SESSION['username'];
                 $db_data['createdByType'] = $_SESSION['type'];
                 $status = $this->am->addAnnouncement ($db_data);
-                echo '<br/>'.$db_data['title'].' '.$db_data['text'].' '.$db_data['createdBy'].' '.$db_data['createdByType'];
-                echo '<br/>current status'.$status;
             }
         }
     }
