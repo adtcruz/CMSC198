@@ -12,7 +12,7 @@
                 {
                     if($_SESSION["type"] === "superadmin")
                     {
-                        $this->load->view('superadmin_userlogs');
+                        echo '<a id = "usrLogsButton" class = "waves-effect waves-light grey darken-3 white-text" href = "'.base_url().'view_logs">User Logs</a>';
                     }
                 }
                 else
@@ -20,10 +20,10 @@
                     redirect (base_url(), 'refresh');
                 }
                 ?>
-                <a class = "waves-effect waves-light grey darken-3 white-text" href = "<?php base_url();?>manage_accounts">Manage Accounts</a>
-                <a class = "waves-effect waves-light grey darken-3 white-text" href = "<?php base_url();?>manage_selectable_work">Manage Work</a>
-                <a class = "waves-effect waves-light grey darken-3 white-text" href = "<?php base_url();?>manage_selectable_materials">Manage Materials</a>
-                <a class="waves-effect waves-light grey darken-3 white-text" href="<?php base_url();?>generate_report">Generate Report</a>
+                <a id = "mngAccButton" class = "waves-effect waves-light grey darken-3 white-text" href = "<?php base_url();?>manage_accounts">Manage Accounts</a>
+                <a id = "mngWrkButton" class = "waves-effect waves-light grey darken-3 white-text" href = "<?php base_url();?>manage_selectable_work">Manage Work</a>
+                <a id = "mngMatButton" class = "waves-effect waves-light grey darken-3 white-text" href = "<?php base_url();?>manage_selectable_materials">Manage Materials</a>
+                <a id = "genRepButton" class="waves-effect waves-light grey darken-3 white-text" href="<?php base_url();?>generate_report">Generate Report</a>
             </div>
         </li>
     </ul>
