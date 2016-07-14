@@ -9,22 +9,32 @@ class Job_requests_model extends CI_Model
 		$this->load->database();
 	}
 
-	public function processOffices($officeID, $space){
-		$query = $this->db->query('SELECT office.officeID, office.officeName, office.parentUnit, office.officeAbbr FROM office WHERE (office.parentUnit = '.$officeID.') ORDER BY office.officeName');
-    global $db_data;
-    $db_data['parent'.$officeID.''] = $query->result_array ();
-    if (!empty ($db_data['parent'.$officeID.'']))
+	public function processOffices($officeID, $space)
     {
-        $space++;
-        foreach ($db_data['parent'.$officeID.''] as $row)
+		$query = $this->db->query('SELECT office.officeID, office.officeName, office.parentUnit, office.officeAbbr FROM office WHERE (office.parentUnit = '.$officeID.') ORDER BY office.officeName');
+        global $db_data;
+        $db_data['parent'.$officeID.''] = $query->result_array ();
+        if (!empty ($db_data['parent'.$officeID.'']))
         {
-            $cell = array (
-                'data' => '<option value = "'.$row['officeID'].'">'.str_repeat ('-&nbsp;', $space).$row['officeName'].'</option>'
-            );
-            $this->table->add_row ($cell);
-            $this->processOffices($row['officeID'], $space);
+            $space++;
+            foreach ($db_data['parent'.$officeID.''] as $row)
+            {
+                if ($space == 1)
+                {
+                    $cell = array (
+                        'data' => '<option value = "'.$row['officeID'].'">'.str_repeat ('&nbsp;', $space).$row['officeName'].'</option>'
+                    );
+                }
+                else
+                {
+                    $cell = array (
+                        'data' => '<option value = "'.$row['officeID'].'">'.str_repeat ('-&nbsp;', $space).$row['officeName'].'</option>'
+                    );
+                }
+                $this->table->add_row ($cell);
+                $this->processOffices($row['officeID'], $space);
+            }
         }
-    }
 	}
 
   public function getOffices($type){
