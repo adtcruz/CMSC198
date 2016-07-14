@@ -30,7 +30,7 @@
 						&nbsp;&nbsp;
 						<a class="waves-effect waves-light btn green" onclick="getProcessedJobRequests('<?php echo base_url();?>');">Processed</a>
 						&nbsp;&nbsp;
-						<a class="waves-effect waves-light btn cyan darken-4">Search Jobs…</a>
+						<a class="waves-effect waves-light btn cyan darken-4" onclick="$('#searchModal').openModal({dimissible:false});">Search Jobs…</a>
 					</div>
     			<br/>
     			<br/>
@@ -139,6 +139,24 @@
       <a class="waves-effect waves-light btn btn-large blue darken-4" onclick="reloadPage('<?php echo base_url();?>')">OK</a>
     </div>
   </div>
+	<div id="searchModal" class="modal">
+		<div class="row">
+			<br/>
+			<h5 class="center-align">Search Job Requests</h5>
+			<h6 class="center-align">Please input search terms separated by spaces</h6>
+			<div class="col s1 m1 l1">&nbsp;</div>
+			<div class="input-field col s10 m10 l10">
+				<i class="material-icons large prefix">search</i>
+				<input id="searchKeys" type="text"/>
+			</div>
+			<div class="col s1 m1 l1">&nbsp;</div>
+			<div class="col s12 m12 l12 center-align">
+				<a class="waves-effect waves-light btn btn-large red darken-4" onclick="searchJobRequests('<?php echo base_url();?>');">Search</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="waves-effect waves-light btn btn-large blue" onclick="$('#searchModal').closeModal();">Cancel</a>
+			</div>
+		</div>
+	</div>
 	<!-- schedule job modals -->
 	<?php if(($_SESSION["type"]=="technician")||($_SESSION["type"]=="admin")||($_SESSION["type"]=="superadmin")) $this->load->view('Job_requests_schedule_job_modal'); ?>
 	<!-- update job request modals -->
