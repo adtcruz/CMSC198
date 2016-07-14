@@ -60,7 +60,7 @@ class Job_requests_model extends CI_Model
 			$searchString = "";
 			$keys = preg_split("/[\s]/",$key);
 			foreach ($keys as $key){
-				if ($searchString!=="") $searchString = $searchString . " OR";
+				if ($searchString!=="") $searchString = $searchString . " AND";
 				$searchString = $searchString . " jobDescription LIKE '%".$key."%'";
 			}
 			return $searchString;
