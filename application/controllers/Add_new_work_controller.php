@@ -1,6 +1,9 @@
 <?php
-//this controller is for the API that adds new work or services
-defined('BASEPATH') OR exit('No direct script access allowed');
+/*
+*   file: Add_new_work_controller.php
+*       this controller is for the API that adds new work or services
+*/
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Add_new_work_controller extends CI_Controller
 {

@@ -1,5 +1,5 @@
 <?php
-
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Get_work_done_model extends CI_Model
 {
 	public function __construct ()

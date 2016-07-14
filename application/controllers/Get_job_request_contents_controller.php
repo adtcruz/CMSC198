@@ -1,6 +1,6 @@
 <?php
 //this is the controller for the API that gets the job request contents
-defined('BASEPATH') OR exit('No direct script access allowed');
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Get_job_request_contents_controller extends CI_Controller
 {

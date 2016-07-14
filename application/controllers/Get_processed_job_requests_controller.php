@@ -1,6 +1,6 @@
 <?php
 //this is the controller for the API that gets the processed job requests table
-defined('BASEPATH') OR exit('No direct script access allowed');
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Get_processed_job_requests_controller extends CI_Controller
 {

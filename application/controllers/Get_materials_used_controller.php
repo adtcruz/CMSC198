@@ -1,6 +1,6 @@
 <?php
 //this is the controller for the API that gets the table of materials used in a job
-defined('BASEPATH') OR exit('No direct script access allowed');
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Get_materials_used_controller extends CI_Controller
 {

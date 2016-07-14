@@ -1,6 +1,6 @@
 <?php
 //this is the controller for the API that gets the clients in an office
-defined('BASEPATH') OR exit('No direct script access allowed');
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Get_office_users_controller extends CI_Controller
 {

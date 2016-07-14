@@ -1,4 +1,8 @@
 <?php
+/*
+*   file:  Bill_for_payment_controller.php
+*       this controller will create a PDF of the bill that should be paid by the client
+*/
 if ( !defined('BASEPATH')) exit('No direct script access allowed');
 class Bill_for_payment_controller extends CI_Controller
 {

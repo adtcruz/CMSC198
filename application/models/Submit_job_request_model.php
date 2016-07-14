@@ -1,5 +1,5 @@
 <?php
-
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Submit_job_request_model extends CI_Model
 {
 	// constructor

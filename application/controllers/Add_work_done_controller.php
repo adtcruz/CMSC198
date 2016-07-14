@@ -1,5 +1,8 @@
 <?php
-//this adds a work in the work done table for a job
+/*
+*   file: Add_work_done_controller.php
+*       this adds a work in the work done table for a job
+*/
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 

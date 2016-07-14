@@ -1,7 +1,7 @@
 <?php
 //this is the controller for the API that makes a material visible
 //to the 'select material' options
-defined('BASEPATH') OR exit('No direct script access allowed');
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Make_selectable_work_visible_controller extends CI_Controller
 {

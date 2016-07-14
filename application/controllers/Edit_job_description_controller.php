@@ -1,6 +1,6 @@
 <?php
 //this is the controller for the API that edits the job description of a job
-defined('BASEPATH') OR exit('No direct script access allowed');
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Edit_job_description_controller extends CI_Controller
 {

@@ -103,7 +103,7 @@
                                 <span> '.$row['title'].' </span>
                             </div>
                             <div class = "col s2 m2 l2">
-                                <a class = "waves-effect btn-flat"> Delete </a>
+                                <a class = "waves-effect btn-flat modal-trigger" onclick="$(\'#deleteModal\').openModal({dismissible: false});"> Delete </a>
                             </div>
                         </div>
                         <div class = "collapsible-body">'.$row['details'].'</div>
@@ -116,6 +116,13 @@
             </div>
             <br/>
         </div>
+    </div>
+</div>
+
+<div id = "deleteModal" class = "modal">
+    <div class = "modal-content">
+        <h4> Modal Content </h4>
+        <a class = "btn" onclick = "$('#deleteModal').closeModal()">Close</a>
     </div>
 </div>
 

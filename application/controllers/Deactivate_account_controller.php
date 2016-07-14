@@ -1,6 +1,6 @@
 <?php
 //this is the controller for the API that disables accounts
-defined('BASEPATH') OR exit('No direct script access allowed');
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Deactivate_account_controller extends CI_Controller
 {

@@ -1,6 +1,6 @@
 <?php
 //this is the controller for the API to get the job description of a job request
-defined('BASEPATH') OR exit('No direct script access allowed');
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Get_job_description_controller extends CI_Controller
 {

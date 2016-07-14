@@ -1,6 +1,6 @@
 <?php
 //this is the controller for the API that marks a job request as done/processed
-defined('BASEPATH') OR exit('No direct script access allowed');
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Mark_as_done_controller extends CI_Controller
 {

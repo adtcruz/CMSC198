@@ -1,5 +1,5 @@
 <?php
-
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class View_schedule_model extends CI_Model
 {
 	// constructor

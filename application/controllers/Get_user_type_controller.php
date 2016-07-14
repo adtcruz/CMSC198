@@ -1,6 +1,6 @@
 <?php
 //this is the controller for the API that returns the type of the user in session
-defined('BASEPATH') OR exit('No direct script access allowed');
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Get_user_type_controller extends CI_Controller
 {

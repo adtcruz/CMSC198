@@ -1,6 +1,6 @@
 <?php
 //this is the controller for the API that resets the password of an account
-defined('BASEPATH') OR exit('No direct script access allowed');
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Reset_account_password_controller extends CI_Controller
 {

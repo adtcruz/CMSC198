@@ -1,5 +1,8 @@
 <?php
-//this API adds a new material to the materials table
+/*
+*   file: Add_new_material_controller.php
+*       this API adds a new material to the materials table
+*/
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 

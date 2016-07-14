@@ -1,5 +1,5 @@
 <?php
-
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Job_requests_model extends CI_Model
 {
 	public $db_data;

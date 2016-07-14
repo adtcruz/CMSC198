@@ -1,4 +1,8 @@
 <?php
+/*
+*   file: Announcements_controller.php
+*       this file serves as the main controller for all announcements related tasks
+*/
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Announcements_controller extends CI_Controller
 {
@@ -50,7 +54,7 @@ class Announcements_controller extends CI_Controller
 
     public function deleteAnnouncement ()
     {
-        
+
     }
 
     public function addAnnouncements ()

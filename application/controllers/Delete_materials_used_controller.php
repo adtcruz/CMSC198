@@ -1,7 +1,7 @@
 <?php
 //this is the controller for the API that deletes materials used for a job
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Delete_materials_used_controller extends CI_Controller
 {
