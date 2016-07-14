@@ -20,16 +20,13 @@
                 <!-- Announcements Add -->
                 <?php
                     echo validation_errors ();
-
                     // <form> + attributes
                     $params = array (
                         'id' => 'addAnnouncements',
                         'name' => 'addAnnouncements',
                         'method' => 'POST'
-
                     );
                     echo form_open ('announcements', $params);
-
                     // input box for title
                     echo '<div class = "row"> <div class = "input-field col s12 m12 l12">';
                     $params = array (
@@ -42,7 +39,6 @@
                     echo form_input ($params);
                     echo form_label ('Announcement Title', 'title');
                     echo '</div> </div>';
-
                     // text area for content
                     echo '<div class = "row"> <div class = "row"> <div class = "input-field col s12 m12 l12">';
                     $param = array (
@@ -57,7 +53,6 @@
                     echo form_label ('Announcement Content', 'content');
                     echo '<div id="charCount"></div>';
                     echo '</div> </div> </div>';
-
                     // submit button
                     echo '<div class = "input-field col s10 m10 l10"> <div class = "mdl-textfield mdl-js-textfield" align = "right">';
                     $params = array (
@@ -69,7 +64,6 @@
                     );
                     echo form_button ($params);
                     echo '</div> </div>';
-
                     // reset button
                     echo '<div class = "input-field col s2 m2 l2"> <div class = "mdl-textfield mdl-js-textfield" align = "right">';
                     $params = array (
@@ -81,7 +75,6 @@
                     );
                     echo form_button ($params);
                     echo '</div> </div>';
-
                     echo form_close ()
                 ?>
             </div>
@@ -99,12 +92,14 @@
                         // please align button and text
                         $line = '
                         <div class = "collapsible-header blue-grey darken-1 white-text">
+                         <div>
                             <div class = "col s10 m10 l10">
                                 <span> '.$row['title'].' </span>
                             </div>
-                            <div class = "col s2 m2 l2">
-                                <a class = "waves-effect btn-flat modal-trigger" onclick="$(\'#deleteModal\').openModal({dismissible: false});"> Delete </a>
+                            <div class = "centerButton">
+                                <button class = "waves-effect btn-flat modal-trigger" onclick="$(\'#deleteModal\').openModal({dismissible: false});"> Delete </button>
                             </div>
+                         </div>
                         </div>
                         <div class = "collapsible-body">'.$row['details'].'</div>
                         ';
@@ -132,5 +127,4 @@
     $this->load->view ('Announcements_script');
 ?>
 </body>
-
 </html>
