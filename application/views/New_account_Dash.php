@@ -44,12 +44,12 @@
             </div>
             <div class="row">
               <div class="input-field col s6">
-                <i class="material-icons prefix">supervisor_account</i>
+                <i class="material-icons prefix">business</i>
                 <input type="text" id="designation" name="designation" onkeyup="designationChange();" onchange="designationChange();"/>
                 <label id="designationLabel" for="designation">Designation</label>
               </div>
               <div class="input-field col s6">
-                <i class="material-icons prefix">business</i>
+
                 <select id="office-selector" class="dropSelect" name="office-selector">
                     <option disabled selected> </option>
                     <?php echo $options;?>

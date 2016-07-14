@@ -11,7 +11,10 @@ $('document').ready(
 				}
 		);
 		$('ul.tabs').tabs();
-		$('select').material_select();
+        $("#office-selector").select2({
+            placeholder: "Select an office",
+            allowClear: true
+        });
 });
 
 //removes visible error messages
