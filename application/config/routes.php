@@ -58,6 +58,7 @@ $route['add_work_done'] = 'Add_work_done_controller';
 $route['cancel_job'] = 'Cancel_job_controller';
 $route['create_account'] = 'Create_account_controller';
 $route['deactivate_account'] = 'Deactivate_account_controller';
+$route['delete_announcement'] = 'Announcements_controller/deleteAnnouncement';
 $route['delete_materials_used'] = 'Delete_materials_used_controller';
 $route['delete_work_done'] = 'Delete_work_done_controller';
 $route['edit_job'] = 'Edit_job_description_controller';
@@ -97,6 +98,7 @@ $route['update_selectable_material'] = 'Update_selectable_material_controller';
 $route['update_selectable_work'] = 'Update_selectable_work_controller';
 $route['update_work_done'] = 'Update_work_done_controller';
 
+
 //routes for page loads
 $route['new_account'] = 'New_account_controller';
 $route['job_requests'] = 'Job_requests_controller';
@@ -112,7 +114,7 @@ $route['generate_bill'] = 'Generate_bill_controller';
 $route['generate_report'] = 'GenerateReport_controller';
 $route['topdf_jrf/(:any)'] = 'Job_request_form_controller';
 $route['default_controller'] = 'Home_controller';
-$route['announcements(.*)'] = 'Announcements_controller$1';
+$route['announcements'] = 'Announcements_controller';
 $route['add_announcements'] = 'Announcements_controller/addAnnouncements';
 
 $route['404_override'] = '';
