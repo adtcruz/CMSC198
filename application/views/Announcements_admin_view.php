@@ -64,8 +64,8 @@
                         'name' => 'annAdd',
                         'id' => 'annAdd',
                         'type' => 'submit',
-                        'class' => 'btn waves-effect waves-light red',
-                        'content' => 'Add Announcements'
+                        'class' => 'btn waves-effect waves-light green darken-4',
+                        'content' => 'Add Announcement'
                     );
                     echo form_button ($params);
                     echo '</div> </div>';
@@ -75,7 +75,7 @@
                         'name' => 'annRes',
                         'id' => 'annRes',
                         'type' => 'reset',
-                        'class' => 'btn waves-effect waves-light red',
+                        'class' => 'btn waves-effect waves-light red darken-4',
                         'content' => 'Reset Form'
                     );
                     echo form_button ($params);
@@ -129,9 +129,12 @@
 <!-- Modal for confirmin the deletion of the announcement -->
 <div id = "deleteModal" class = "modal">
     <div class = "modal-content">
-        <h4> Delete this announcement? </h4>
-        <a class = "btn" onclick = "deleteAnnouncement('<?= base_url();?>')">Yes</a>
-        <a class = "btn" onclick = "$('#deleteModal').closeModal()">No</a>
+        <h4 class="center-align">Delete this announcement?</h4>
+        <div class="center-align">
+          <a class = "waves-effect waves-light btn btn-large red darken-4" onclick = "deleteAnnouncement('<?= base_url();?>')">Yes</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a class = "waves-effect waves-light btn btn-large blue darken-4" onclick = "$('#deleteModal').closeModal()">No</a>
+        </div>
     </div>
 </div>
 
