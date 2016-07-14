@@ -1,3 +1,10 @@
+pre
+{
+    display: block;
+    font-family: sans-serif;
+    white-space: pre;
+}
+
 #navarea, #mainc {
 	height: 100%;
 }
