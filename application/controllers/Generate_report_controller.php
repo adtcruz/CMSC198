@@ -61,7 +61,7 @@ class Generate_report_controller extends CI_Controller
 			$date['date2'] = $date1;
 		}
 		$db_data = $this->grm->generateReport ($date);
-		$html = $this->load->view ('GenerateReport_reportPDF', $db_data, TRUE);
+		$html = $this->load->view ('Generate_report_reportPDF', $db_data, TRUE);
 		$this->load->library ('m_pdf');
 		$pdfFileName = 'Activity Report from '.$date['date1'].' to '.$date['date2'];
 		$this->m_pdf->pdf->WriteHTML ($html);
