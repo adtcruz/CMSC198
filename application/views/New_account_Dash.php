@@ -50,9 +50,10 @@
               </div>
               <div class="input-field col s6">
                 <i class="material-icons prefix">business</i>
-                <select id="officeId">
-                  <?php echo $options;?>
-                </select>
+                <select id="office-selector" class="dropSelect" name="office-selector">
+                    <option disabled selected> </option>
+                    <?php echo $options;?>
+            	</select>
               </div>
             </div>
           </div>
