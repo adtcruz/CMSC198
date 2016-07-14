@@ -1,6 +1,8 @@
 <li id="viewJRButton"><a id="viewJRItem" class="waves-effect waves-light white-text" href="<?php base_url();?>job_requests">Job Requests</a></li>
 <li id="viewSchedButton"><a id="viewSchedItem" class="waves-effect waves-light white-text" href="<?php base_url();?>view_schedule">View Schedule</a></li>
 <li id="genBillButton"><a id="gnrtBlItem" class="waves-effect waves-light white-text" href="<?php base_url();?>generate_bill">Generate Bill</a></li>
+<li id="genBillButton"><a id="gnrtBlItem" class="waves-effect waves-light white-text" href="<?php base_url();?>generate_report">Generate Report</a></li>
+
 <li id="mngeApButton">
     <ul class="collapsible" data-collapsible="accordion">
         <li>

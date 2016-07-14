@@ -92,14 +92,14 @@
                         // please align button and text
                         $line = '
                         <div class = "collapsible-header blue-grey darken-1 white-text">
-                         <div>
+                        <div>
                             <div class = "col s10 m10 l10">
                                 <span> '.$row['title'].' </span>
                             </div>
                             <div class = "centerButton">
                                 <button class = "waves-effect btn-flat modal-trigger" onclick="$(\'#deleteModal\').openModal({dismissible: false});"> Delete </button>
                             </div>
-                         </div>
+                        </div>
                         </div>
                         <div class = "collapsible-body">'.$row['details'].'</div>
                         ';
