@@ -6,15 +6,15 @@ $('document').ready(
         $('#annButton').addClass("black");
         $('ul.tabs').tabs();
 
-        $('#titleCount').text('128 characters left');
-        var maxTitle = 128;
+        $('#titleCount').text('100 characters left');
+        var maxTitle = 100;
         $('#title').keyup(
             function()
             {
                 var lenTitle = $(this).val().length;
                 if (lenTitle >= maxTitle)
                 {
-                    $('#contentCount').text(' you have reached the limit');
+                    $('#titleCount').text(' you have reached the limit');
                 }
                 else
                 {
