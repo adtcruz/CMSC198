@@ -62,6 +62,7 @@ $route['delete_announcement'] = 'Announcements_controller/deleteAnnouncement';
 $route['delete_materials_used'] = 'Delete_materials_used_controller';
 $route['delete_work_done'] = 'Delete_work_done_controller';
 $route['edit_job'] = 'Edit_job_description_controller';
+$route['get_date'] = 'Get_date_controller';
 $route['get_all_job_requests'] = 'Get_all_job_requests_controller';
 $route['get_canceled_job_requests'] = 'Get_canceled_job_requests_controller';
 $route['get_pending_job_requests'] = 'Get_pending_job_requests_controller';
