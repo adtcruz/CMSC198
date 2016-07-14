@@ -3,9 +3,9 @@ work_ID = "";
 $('document').ready(
 	function(){
 		$("#mngeApButton").addClass("black");
-        $('#manage_work').removeClass("grey");
-        $('#manage_work').removeClass("darken-4");
-        $('#manage_work').addClass('black');
+        $('#mngWrkButton').removeClass("grey");
+        $('#mngWrkButton').removeClass("darken-4");
+        $('#mngWrkButton').addClass('black');
         $('#menuBody').addClass('active');
         $('.collapsible').collapsible(
             {

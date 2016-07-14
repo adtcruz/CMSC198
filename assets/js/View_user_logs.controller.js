@@ -1,6 +1,15 @@
 $('document').ready(
 	function(){
 		$("#mngeApButton").addClass("black");
+        $('#usrLogsButton').removeClass("grey");
+        $('#usrLogsButton').removeClass("darken-4");
+        $('#usrLogsButton').addClass('black');
+        $('#menuBody').addClass('active');
+        $('.collapsible').collapsible(
+            {
+                accordion: false
+            }
+        );
 		$('ul.tabs').tabs();
 	}
 );

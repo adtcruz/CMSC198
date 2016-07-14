@@ -3,9 +3,9 @@ material_ID = "";
 $('document').ready(
 	function(){
 		$("#mngeApButton").addClass("black");
-        $('#manage_materials').removeClass("grey");
-        $('#manage_materials').removeClass("darken-4");
-        $('#manage_materials').addClass('black');
+        $('#mngMatButton').removeClass("grey");
+        $('#mngMatButton').removeClass("darken-4");
+        $('#mngMatButton').addClass('black');
         $('#menuBody').addClass('active');
         $('.collapsible').collapsible(
             {
