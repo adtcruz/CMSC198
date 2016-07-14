@@ -1,24 +1,73 @@
+var ann_ID="";
+
 $('document').ready(
-    function ()
+    function()
     {
         $('#annButton').addClass("black");
         $('ul.tabs').tabs();
-        $('#charCount').text('1024 characters left');
-        $('#content').keyup(
-            function ()
+
+        $('#titleCount').text('128 characters left');
+        var maxTitle = 128;
+        $('#title').keyup(
+            function()
             {
-                var max = 1024;
-                var len = $(this).val().length;
-                if (len >= max)
+                var lenTitle = $(this).val().length;
+                if (lenTitle >= maxTitle)
                 {
-                    $('#charCount').text(' you have reached the limit');
+                    $('#contentCount').text(' you have reached the limit');
                 }
                 else
                 {
-                    var char = max - len;
-                    $('#charCount').text(char + ' characters left');
+                    var charTitle = maxTitle - lenTitle;
+                    $('#titleCount').text(charTitle + ' characters left');
+                }
+            }
+        );
+
+        $('#contentCount').text('1024 characters left');
+        var maxContent = 1024;
+        $('#content').keyup(
+            function()
+            {
+                var lenContent = $(this).val().length;
+                if (lenContent >= maxContent)
+                {
+                    $('#contentCount').text(' you have reached the limit');
+                }
+                else
+                {
+                    var charContent = maxContent - lenContent;
+                    $('#contentCount').text(charContent + ' characters left');
                 }
             }
         );
     }
 );
+
+function confirmDelete(annID)
+{
+    ann_ID = annID;
+
+    $('#deleteModal').openModal(
+        {dismissible: false}
+    );
+}
+
+function deleteAnnouncement(url)
+{
+    //jquery post (path_to_api, values sent in JSON format, callback function)
+    $.post(
+        url+"delete_announcement",
+        {
+            announcementID:ann_ID
+        },
+        function(data)
+        {
+            if (data === 'Announcement Deleted')
+            {
+                $('#deleteModal').closeModal();
+                window.location.href = url+"announcements";
+            }
+        }
+    );
+}
