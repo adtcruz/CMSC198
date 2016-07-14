@@ -107,7 +107,6 @@ $route['add_announcements'] = 'Announcements_controller/addAnnouncements';
 $route['generate_bill'] = 'Generate_bill_controller';
 $route['generate_report'] = 'Generate_report_controller';
 $route['job_requests'] = 'Job_requests_controller';
-$route['manage_application'] = 'Manage_application_controller';
 $route['manage_accounts'] = 'Manage_accounts_controller';
 $route['manage_selectable_materials'] = 'Manage_selectable_materials_controller';
 $route['manage_selectable_work'] = 'Manage_selectable_work_controller';
