@@ -76,6 +76,7 @@ $route['get_material_details'] = 'Get_material_details_controller';
 $route['get_materials_options'] = 'Get_materials_options_controller';
 $route['get_materials_used'] = 'Get_materials_used_controller';
 $route['get_schedule_job_form'] = 'Get_schedule_job_form_controller';
+$route['get_search_results'] = 'Get_search_results_controller';
 $route['get_technicians'] = 'Get_technicians_controller';
 $route['get_user_type'] = 'Get_user_type_controller';
 $route['get_work_done'] = 'Get_work_done_controller';
