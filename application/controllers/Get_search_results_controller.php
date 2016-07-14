@@ -49,7 +49,7 @@ class Get_search_results_controller extends CI_Controller
           //if the number of rows is zero, it means that there are no job requests filed under the client's name
           //returns a message instead of a table
   				if($nRows1 == 0){
-  					echo "<h5 class=\"center-align\">Sorry, there are no pending job requests filed under your name at the moment.</h5>";
+  					echo "<h5 class=\"center-align\">Sorry, there are no results for your search.</h5>";
   					return;
   				}
 
@@ -96,7 +96,7 @@ class Get_search_results_controller extends CI_Controller
           //if the number of rows is zero, it means that there are no job requests filed under the client's name
           //returns a message instead of a table
   				if($nRows1 == 0){
-  					echo "<h5 class=\"center-align\">Sorry, there are no pending job requests at the moment.</h5>";
+  					echo "<h5 class=\"center-align\">Sorry, there are no results for your search.</h5>";
   					return;
   				}
 
