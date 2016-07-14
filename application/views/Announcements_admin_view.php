@@ -96,7 +96,7 @@
                     {
                         // please align button and text
                         $line = '
-                        <div class = "collapsible-header blue-grey darken-1 white-text">
+                        <div class = "collapsible-header grey black-text">
                         <div>
                             <div class = "col s10 m10 l10">
                                 <span> '.$row['title'].' </span>
