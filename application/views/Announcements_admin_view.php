@@ -8,8 +8,8 @@
     <div id="navarea" class="col s3 m3 l3 section"><br/><br/></div>
     <div class="col s9 m9 l9">
         <ul class="tabs">
-            <li class="tab col s12"><a href="#annViewTab"> View Announcements </a></li>
             <li class="tab col s12"><a href="#annAddTab"> Add Announcements </a></li>
+            <li class="tab col s12"><a href="#annViewTab"> View Announcements </a></li>
         </ul>
     </div>
     <div id="mainAppArea" class="col s9 m9 l9 section">
@@ -38,6 +38,7 @@
                     );
                     echo form_input ($params);
                     echo form_label ('Announcement Title', 'title');
+                    echo '<div id="titleCount"></div>';
                     echo '</div> </div>';
                     // text area for content
                     echo '<div class = "row"> <div class = "row"> <div class = "input-field col s12 m12 l12">';
@@ -51,7 +52,7 @@
                     );
                     echo form_textarea ($param);
                     echo form_label ('Announcement Content', 'content');
-                    echo '<div id="charCount"></div>';
+                    echo '<div id="contentCount"></div>';
                     echo '</div> </div> </div>';
                     // submit button
                     echo '<div class = "input-field col s10 m10 l10"> <div class = "mdl-textfield mdl-js-textfield" align = "right">';
@@ -96,12 +97,19 @@
                             <div class = "col s10 m10 l10">
                                 <span> '.$row['title'].' </span>
                             </div>
-                            <div class = "centerButton">
-                                <button class = "waves-effect btn-flat modal-trigger" onclick="$(\'#deleteModal\').openModal({dismissible: false});"> Delete </button>
+                        </div>
+                        </div>
+                        <div class = "collapsible-body row">
+                            <div class = "col s8 m8 l8" style = "padding: 6px">
+                                '.$row['details'].'
                             </div>
+                            <div class = "centerButton col s4 m4 l4">
+                                <a class = "waves-effect btn-flat modal-trigger right-align" onclick="confirmDelete('.$row['ID'].')">
+                                    Delete Announcement
+                                </a>
+                            </div>
+                            <br/>
                         </div>
-                        </div>
-                        <div class = "collapsible-body">'.$row['details'].'</div>
                         ';
                         $lines[] = $line;
                     }
@@ -116,8 +124,9 @@
 
 <div id = "deleteModal" class = "modal">
     <div class = "modal-content">
-        <h4> Modal Content </h4>
-        <a class = "btn" onclick = "$('#deleteModal').closeModal()">Close</a>
+        <h4> Delete this announcement? </h4>
+        <a class = "btn" onclick = "deleteAnnouncement('<?= base_url();?>')">Yes</a>
+        <a class = "btn" onclick = "$('#deleteModal').closeModal()">No</a>
     </div>
 </div>
 
