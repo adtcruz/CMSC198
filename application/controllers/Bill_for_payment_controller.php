@@ -11,7 +11,8 @@ class Bill_for_payment_controller extends CI_Controller
 	{
 		parent::__construct ();
 		session_start ();
-    $this->load->model ('Bill_for_payment_model', 'bfp');
+        $this->load->model ('Bill_for_payment_model', 'bfp');
+        $this->load->model ('Notification_model', 'nm');
 	}
 	// index function
 	public function index()
@@ -23,7 +24,9 @@ class Bill_for_payment_controller extends CI_Controller
 		}
 		else
 		{
-			// load mpdf library
+            // add call to insert notifications
+            $db_insert = $this->nm->getData ($this->uri->segment(2));
+            // load mpdf library
 			$this->load->library('m_pdf');
             // get data from database
             $db_data = $this->bfp->getData ($this->uri->segment(2));
