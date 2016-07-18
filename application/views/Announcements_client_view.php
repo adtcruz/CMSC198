@@ -12,7 +12,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
                 <!-- Announcements View -->
                 <?php
                     $lines = array ();
-                    foreach ($announcements as $row)
+                    foreach ($announcements['announcements'] as $row)
                     {
                         $line = '<div class = "collapsible-header blue-grey darken-1 white-text">'.$row['title'].'</div><div class = "collapsible-body">'.$row['details'].'</div>';
                         $lines[] = $line;
