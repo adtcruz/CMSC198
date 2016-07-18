@@ -190,7 +190,7 @@ CREATE TABLE notifications(
     jobID INT NOT NULL,
     dateCreated DATE DEFAULT NULL,
     createdBy INT DEFAULT NULL,
-    createByType VARCHAR(10) NOT NULL,
+    createdByType VARCHAR(10) NOT NULL,
     active INT NOT NULL DEFAULT '1',
     PRIMARY KEY(notifID),
     FOREIGN KEY(clientID) REFERENCES client(clientID),
