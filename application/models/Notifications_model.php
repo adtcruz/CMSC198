@@ -27,6 +27,25 @@
                 $query = $this->db->query ('INSERT INTO notifications(notifText, dateCreated, createdBy, createdByType, clientID,jobID) VALUES ("Client - '.$username.' of '.$officeAbbr.' generated bill for Job ID - '.$jobID.'", CURDATE(), '.$clientID.', "client",'.$clientID.','.$jobID.')');
             }
         }
+
+        public function clientUnreadNotifs ($username)
+        {
+            $query = $this->db->query ('SELECT notifications.notifID FROM notifications WHERE (notifications.createdByType != 'client')');
+            $notifications = $query->result_array ();
+            $query = $this->db->query ('SELECT client.clientID FROM client WHERE (client.username = "'.$username.'")');
+            $username = $query->result_array ()[0]['clientID'];
+            $unread = 0;
+            foreach ($notifications as $row)
+            {
+                $this->db->query ('SELECT notifsRead.notifID, notifsRead.userID FROM notifsRead WHERE (notifsRead.userType = 'client') AND (notifsRead.notifID = '$row['notifID']') AND (notifsRead.userID = "'.$username.'")');
+                if ($this->db->affected_rows () > 0)
+                {
+                    $unread++;
+                }
+            }
+            return $unread;
+        }
+
         public function getUnreadCount ($username, $type)
         {
             $userID = '';
