@@ -41,30 +41,27 @@ class Mark_as_done_controller extends CI_Controller
               $query = $this->db->query ('SELECT job.jobDescription, job.clientID FROM job WHERE (job.jobID = '.$_POST['jobID'].')');
 
               $jobDescription = $query->result_array ()[0]['jobDescription'];
-              $clientID = $query->result_array ()[0]['clientID'];
+              $clientID = $query->result_array()[0]['clientID'];
               $userID = "";
 
               if ($_SESSION['type'] === 'technician')
               {
-                  $query = $this->db->query ('SELECT adminAcc.adminID FROM adminAcc WHER (adminAcc.username = "'.$_SESSION['username'].'")');
+                  $query = $this->db->query ('SELECT adminID FROM adminAcc WHERE (username = "'.$_SESSION['username'].'")');
                   $userID = $query->result_array ()[0]['adminID'];
               }
-              if ($_SESSION['type'] === 'superadmin')
+              else if ($_SESSION['type'] === 'superadmin')
               {
-                  $query = $this->db->query ('SELECT superAdmin.superAdminID FROM adminAcc WHER (superAdmin.username = "'.$_SESSION['username'].'")');
+                  $query = $this->db->query ('SELECT superAdminID FROM superAdmin WHERE (username = "'.$_SESSION['username'].'")');
                   $userID = $query->result_array ()[0]['superAdminID'];
               }
 
-              $this->db->query ('SELECT notifications.clientID, notifications.jobID, notifications.createdBy, notifications.createdByType FROM notifications WHERE (notifications.clientID = '..$clientID') AND (notifications.jobID = '.$_POST['jobID'].') AND (notifications.createdBy = '.$userID.') AND (notifications.createdByType = '.$_POST['type'].')');
+              $this->db->query ("SELECT clientID, jobID, createdBy, createdByType FROM notifications WHERE (clientID=".$clientID.") AND (jobID=".$_POST["jobID"].") AND (createdBy=".$userID.") AND (createdByType = '".$_SESSION['type']."')");
 
-              if ($this->db->affected_rows () > 0)
+              if ($this->db->affected_rows()==0)
               {
-                  return;
+                  $this->db->query ('INSERT INTO notifications (notifText, clientID, jobID, dateCreated, createdBy, createdByType) VALUES ("Job Request ('.$jobDescription.') is done",'.$clientID.','.$_POST['jobID'].', CURDATE(), '.$userID.',\''.$_SESSION['type'].'\')');
               }
-              else
-              {
-                  $this->db->query ('INSERT INTO notifications (notifText, clientID, jobID, dateCreated, createdBy, createdByType) VALUES ("Job Request ('.$jobDescription.') is done", '.$clientID.', '.$_POST['jobID'].', CURDATE(), '.$userID.')');  
-              }
+
 
               //sends a message that job is marked as done
               echo "Marked as done";
