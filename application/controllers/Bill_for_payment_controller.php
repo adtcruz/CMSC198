@@ -24,12 +24,12 @@ class Bill_for_payment_controller extends CI_Controller
 		}
 		else
 		{
-      // add call to insert notifications
-      $this->nm->notifBillGenerated ($_SESSION['username'], $this->uri->segment(2));
-      // load mpdf library
-			$this->load->library('m_pdf');
-      // get data from database
-      $db_data = $this->bfp->getData ($this->uri->segment(2));
+            // add call to insert notifications
+            $this->nm->notifBillGenerated ($_SESSION['username'], $this->uri->segment(2));
+            // load mpdf library
+	        $this->load->library('m_pdf');
+            // get data from database
+            $db_data = $this->bfp->getData ($this->uri->segment(2));
 			// initialize the page to be converted to pdf
 			$html = $this->load->view ("Bill_for_payment_view", $db_data, true);
 			// set pdf file name
