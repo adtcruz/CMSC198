@@ -7,7 +7,8 @@ class Generate_bill_controller extends CI_Controller
 	{
 		parent::__construct ();
 		session_start();
-        $this->load->model ('Generate_bill_model', 'gbm');
+		$this->load->model ('Generate_bill_model', 'gbm');
+		$this->load->model ('Notifications_model', 'nm');
 	}
 
 	public function index ()
@@ -15,6 +16,7 @@ class Generate_bill_controller extends CI_Controller
     if(array_key_exists("type",$_SESSION))
     {
 	    $db_data = $this->gbm->getData ($_SESSION['username']);
+			$db_data['unread'] = $this->nm->getClientNotifs($_SESSION['username']);
   		$this->load->view ('Generate_bill_view', $db_data);
 		}
 		else

@@ -54,7 +54,7 @@ class Job_requests_controller extends CI_Controller
 
 					$this->table->add_row($rows1[$i]["jobDescription"],$startDate,$finishDate,$jobStatus,$dateFiled,$actions);
 				}
-
+        $unread = $this->nm->getClientNotifs ($_SESSION['username'], $_SESSION['type']);
 			}
 
 			else if(($_SESSION["type"]==="technician")||($_SESSION["type"]==="admin")||($_SESSION["type"]==="superadmin")){
@@ -95,7 +95,7 @@ class Job_requests_controller extends CI_Controller
 					$this->table->add_row($rows1[$i]["jobDescription"],$clientName,$startDate,$finishDate,$jobStatus,$dateFiled,$filedBy,$actions);
 
 				}
-        
+
         $unread = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
 			}
 

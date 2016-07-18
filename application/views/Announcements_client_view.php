@@ -3,7 +3,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <div class="row">
     <?php
         $this->load->view('Header');
-        $this->load->view('Sidenav');
+        $this->load->view('Sidenav', $unread);
     ?>
     <div class="col s3 m3 l3"><br><br></div>
     <div id="mainAppArea" class="col s9 m9 l9 section">

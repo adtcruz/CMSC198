@@ -25,6 +25,7 @@ class Home_controller extends CI_Controller
             {
                 case 'client':
                     $db_data['clientData'] = $this->hdm->getClientData ($_SESSION['username']);
+                    $db_data['unread'] = $this->nm->getClientNotifs($_SESSION['username']);
                     $this->load->view ('Home_Dash_Client', $db_data);
                 break;
                 case 'admin':
