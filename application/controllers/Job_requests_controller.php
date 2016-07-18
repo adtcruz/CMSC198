@@ -16,6 +16,7 @@ class Job_requests_controller extends CI_Controller
     $options = "";
 		if(array_key_exists("type",$_SESSION)){
       $tabl = "";
+      $unread = "";
 
 			$this->table->set_template(array('table_open' =>'<table class="bordered centered highlight responsive-table">'));
 
@@ -94,11 +95,12 @@ class Job_requests_controller extends CI_Controller
 					$this->table->add_row($rows1[$i]["jobDescription"],$clientName,$startDate,$finishDate,$jobStatus,$dateFiled,$filedBy,$actions);
 
 				}
+        
+        $unread = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
 			}
 
 			$tabl = $this->table->generate();
-            $options = $this->jrm->getOffices($_SESSION["type"]);
-            $unread = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
+      $options = $this->jrm->getOffices($_SESSION["type"]);
 			$this->load->view('Job_requests_view', array('table' => $tabl, 'options' => $options, 'unread' => $unread));
 		}
 
