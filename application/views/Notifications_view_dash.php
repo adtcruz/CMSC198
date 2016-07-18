@@ -8,10 +8,6 @@
 			<h3 class="center-align">Notifications</h3>
 			<br/>
             <?php
-                $template = array(
-                    'table_open' => '<table class="bordered centered highlight">'
-                );
-                $this->table->set_template ($template);
                 echo $unreadNotifs;
             ?>
 			<br/>
