@@ -197,7 +197,7 @@ CREATE TABLE notifications(
     FOREIGN KEY(jobID) REFERENCES job(jobID)
 );
 
--- 'NOTIFS_READ' table
+-- 'NOTIFSREAD' table
 DROP TABLE IF EXISTS notifsRead;
 CREATE TABLE notifsRead(
     notifID INT NOT NULL,
@@ -205,7 +205,7 @@ CREATE TABLE notifsRead(
     userType VARCHAR(10) NOT NULL,
     dateCreated DATE DEFAULT NULL,
     active INT NOT NULL DEFAULT '1',
-    PRIMARY KEY(notifID)
+    FOREIGN KEY(notifID) REFERENCES notifications(notifID)
 );
 
 -- 'ANNOUNCEMENTS' table
