@@ -94,7 +94,6 @@
             $notifs = $query->result_array ();
 
             // foreach notifs, select those where userID = $userID and notifReadID = notifID (to get proper notifs)
-
             foreach ($notifs as $row)
             {
                 $query = $this->db->query ('SELECT notifsRead.userID, notifications.notifText FROM notifsRead, notifications WHERE (notifsRead.userID = '.$userID.') AND (notifsRead.notifID = notifications.notifID)');
