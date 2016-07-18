@@ -9,6 +9,7 @@ class Home_controller extends CI_Controller
         session_start();
         $this->load->model ('Home_dash_model', 'hdm');
         $this->load->model ('Announcements_model', 'am');
+        $this->load->model ('Notifications_model', 'nm');
     }
 
     public function index ()
@@ -29,6 +30,7 @@ class Home_controller extends CI_Controller
                 case 'admin':
                 case 'technician':
                 case 'superadmin':
+                    $db_data['unread'] = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
                     $this->load->view ('Home_Dash_Admin', $db_data);
                 break;
                 default:

@@ -1,5 +1,5 @@
 <div class="row">
-    <?php $this->load->view('Sidenav');?>
+    <?php $this->load->view('Sidenav', $unread);?>
     <!-- FILLER TO PUSH MAIN CONTENT TO THE RIGHT -->
     <div class="col s3 m3 l3"><br><br></div>
     <!-- MAIN CONTENT CONTAINER -->

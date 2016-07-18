@@ -13,6 +13,7 @@ class Generate_report_controller extends CI_Controller
         parent::__construct ();
         // loads model
 		$this->load->model ('Generate_report_model', 'grm', TRUE);
+        $this->load->model ('Notifications_model', 'nm');
         // loads form validation library
 		$this->load->library ('form_validation');
 		session_start ();
@@ -20,26 +21,34 @@ class Generate_report_controller extends CI_Controller
 
     public function index ()
     {
-        if ($_SESSION['type'] != 'client' && array_key_exists ("username", $_SESSION))
+        if ( array_key_exists ("type", $_SESSION))
         {
-            // gets the values from GenerateReport_view_form.php sent via post
-            $date_1 = $this->input->post ('date1');
-            $date_2 = $this->input->post ('date2');
-
-            // sets form validation rules
-            $this->form_validation->set_rules ('date1', 'Date 1', 'required|trim');
-            $this->form_validation->set_rules ('date2', 'Date 2', 'required|trim');
-
-            // if the form validation is not run or returns false, reload view.
-            if ($this->form_validation->run () == FALSE)
+            if ($_SESSION['type'] === 'superadmin')
             {
-                $this->load->view ('Generate_report_view');
+                // gets the values from GenerateReport_view_form.php sent via post
+                $date_1 = $this->input->post ('date1');
+                $date_2 = $this->input->post ('date2');
+
+                // sets form validation rules
+                $this->form_validation->set_rules ('date1', 'Date 1', 'required|trim');
+                $this->form_validation->set_rules ('date2', 'Date 2', 'required|trim');
+
+                // if the form validation is not run or returns false, reload view.
+                if ($this->form_validation->run () == FALSE)
+                {
+                    $unread = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
+                    $this->load->view ('Generate_report_view', $unread);
+                }
+                // else publish PDF report
+                else
+                {
+                    $this->reportToPDF ();
+                }
             }
-            // else publish PDF report
-            else
-            {
-                $this->reportToPDF ();
-            }
+        }
+        else
+        {
+            redirect (base_url (), 'refresh');
         }
 	}
 

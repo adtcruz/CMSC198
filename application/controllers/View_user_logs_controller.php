@@ -21,7 +21,7 @@ class View_user_logs_controller extends CI_Controller
 		}
         else
         {
-            // if not logged in
+            redirect (base_url(), 'refresh');
         }
 	}
 }

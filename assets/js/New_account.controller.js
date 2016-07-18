@@ -318,7 +318,7 @@ function addClient(url){
 	givenName = $("#clientGivenName").val();
 	lastName = $("#clientLastName").val();
 	designation = $("#designation").val();
-	officeId = $("#officeId").val();
+	officeId = $("#office-selector").val();
 
 	err = false;
 

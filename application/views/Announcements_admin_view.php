@@ -3,7 +3,7 @@
     <!-- Includes the Header and Sidenav Viewa -->
     <?php
         $this->load->view('Header');
-        $this->load->view('Sidenav');
+        $this->load->view('Sidenav', $unread);
     ?>
     <br>
     <div id="navarea" class="col s3 m3 l3 section"><br/><br/></div>

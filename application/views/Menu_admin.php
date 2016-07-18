@@ -22,7 +22,12 @@
                 <a id = "mngAccButton" class = "waves-effect waves-light grey darken-3 white-text" href = "<?php base_url();?>manage_accounts">Manage Accounts</a>
                 <a id = "mngWrkButton" class = "waves-effect waves-light grey darken-3 white-text" href = "<?php base_url();?>manage_selectable_work">Manage Work</a>
                 <a id = "mngMatButton" class = "waves-effect waves-light grey darken-3 white-text" href = "<?php base_url();?>manage_selectable_materials">Manage Materials</a>
-                <a id = "genRepButton" class="waves-effect waves-light grey darken-3 white-text" href="<?php base_url();?>generate_report">Generate Report</a>
+                <?php
+                    if ($_SESSION['type'] === 'superadmin')
+                    {
+                        echo '<a id = "genRepButton" class="waves-effect waves-light grey darken-3 white-text" href="'.base_url().'generate_report">Generate Report</a>';
+                    }
+                ?>
             </div>
         </li>
     </ul>

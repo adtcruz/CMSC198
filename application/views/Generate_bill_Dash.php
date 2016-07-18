@@ -35,7 +35,7 @@
                         $this->table->add_row (
                             $row['jobID'],
                             $row['givenName'].' '.$row['lastName'],
-                            '<a href = "topdf_bfp/'.$row['jobID'].'" target = "_blank" class= "waves-effect waves-light btn blue-grey">Generate Bill</a>&nbsp;&nbsp;&nbsp;<a href = "topdf_jrf/'.$row['jobID'].'" target = "_blank" class= "waves-effect waves-light btn blue-grey">Job Request Form</a>'
+                            '<a href = "topdf_bfp/'.$row['jobID'].'" target = "_blank" class= "waves-effect waves-light btn blue-grey">Generate Bill</a>'
                         );
     				}
     				echo $this->table->generate ();

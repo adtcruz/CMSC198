@@ -12,20 +12,20 @@ class Bill_for_payment_controller extends CI_Controller
 		parent::__construct ();
 		session_start ();
         $this->load->model ('Bill_for_payment_model', 'bfp');
-        $this->load->model ('Notification_model', 'nm');
+        $this->load->model ('Notifications_model', 'nm');
 	}
 	// index function
 	public function index()
 	{
 		// if $_SESSION['username'] is set, continue. Else, show 404 page.
-		if ($_SESSION['type'] == 'client' || !array_key_exists("username",$_SESSION))
+		if ($_SESSION['type'] != 'client' || !array_key_exists("username",$_SESSION))
 		{
 			show_404();
 		}
 		else
 		{
             // add call to insert notifications
-            $db_insert = $this->nm->getData ($this->uri->segment(2));
+            $this->nm->notifBillGenerated ($_SESSION['username'], $this->uri->segment(2));
             // load mpdf library
 			$this->load->library('m_pdf');
             // get data from database

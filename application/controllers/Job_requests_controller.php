@@ -7,6 +7,7 @@ class Job_requests_controller extends CI_Controller
       parent:: __construct();
       //$this->load->library("pagination");
       $this->load->model('Job_requests_model','jrm');
+      $this->load->model ('Notifications_model', 'nm');
   }
 
 	public function index ()
@@ -97,7 +98,8 @@ class Job_requests_controller extends CI_Controller
 
 			$tabl = $this->table->generate();
             $options = $this->jrm->getOffices($_SESSION["type"]);
-			$this->load->view('Job_requests_view', array('table' => $tabl, 'options' => $options));
+            $unread = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
+			$this->load->view('Job_requests_view', array('table' => $tabl, 'options' => $options, 'unread' => $unread));
 		}
 
     else{

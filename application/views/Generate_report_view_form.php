@@ -1,5 +1,5 @@
 <div class="row">
-    <?php $this->load->view('Sidenav');?>
+    <?php $this->load->view('Sidenav', $unread);?>
     <div id="navarea" class="col s3 m3 l3 section"><br/><br/></div>
         <div id="mainc" class="col s9 m9 l9 section">
             <div class="row">

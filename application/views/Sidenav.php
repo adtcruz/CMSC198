@@ -2,13 +2,26 @@
 <div class="col s3 m3 l3 side-nav fixed grey darken-4 white-text">
 	<div id="logo-container" class="center-align">
 		<p>
-			<h6>Welcome, <span id="sidebar_givenName"><?php echo $_SESSION["givenName"]."</span> <span id=\"sidebar_lastName\">".$_SESSION["lastName"];?></span>! <span id = "notifCounter" class = "new badge green darken-4 white-text">  </span></h6>
+			<h6>Welcome, <span id="sidebar_givenName"><?php echo $_SESSION["givenName"]."</span> <span id=\"sidebar_lastName\">".$_SESSION["lastName"];?></span>!
+                <?php
+                if ($_SESSION['type'] != 'client')
+                {
+                    echo '<span id = "notifCounter" class = "new badge green darken-4 white-text"> '.$unread.' </span>';
+                }
+                ?>
+            </h6>
 		</p>
 	</div>
 	<ul class="center-align">
 		<li id="homeButton"><a id="homeItem" class="waves-effect waves-light white-text" href="<?php echo base_url();?>">HOME</a></li>
         <li id="annButton"><a id="homeItem" class="waves-effect waves-light white-text" href="<?php echo base_url().'announcements';?>">Announcements</a></li>
-		<?php
+        <?php
+
+        if ($_SESSION['type'] != 'client')
+        {
+            echo '<li id="notifButton"><a id="homeItem" class="waves-effect waves-light white-text" href="'.base_url().'notifications">Notifications</a></li>';
+        }
+
         if (array_key_exists ('type', $_SESSION))
         {
             if($_SESSION["type"] === "client")

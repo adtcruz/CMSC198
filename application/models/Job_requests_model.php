@@ -16,9 +16,13 @@ class Job_requests_model extends CI_Model
         $db_data['parent'.$officeID.''] = $query->result_array ();
         if (!empty ($db_data['parent'.$officeID.'']))
         {
-            $space++;
+            //$space++;
             foreach ($db_data['parent'.$officeID.''] as $row)
             {
+                $cell = array (
+                    'data' => '<option value = "'.$row['officeID'].'">'.$row['officeName'].'</option>'
+                );
+                /*
                 if ($space == 1)
                 {
                     $cell = array (
@@ -30,21 +34,23 @@ class Job_requests_model extends CI_Model
                     $cell = array (
                         'data' => '<option value = "'.$row['officeID'].'">'.str_repeat ('-&nbsp;', $space).$row['officeName'].'</option>'
                     );
-                }
+                }*/
                 $this->table->add_row ($cell);
                 $this->processOffices($row['officeID'], $space);
             }
         }
 	}
 
-  public function getOffices($type){
+  public function getOffices($type)
+  {
 
-		$options = "";
+	$options = "";
 
-    if(($type==="technician")||($type==="admin")||($type==="superadmin")){
-			$this->processOffices(0, 0);
+    if($type != 'client')
+    {
+		$this->processOffices(0, 0);
 
-			$template = array (
+		$template = array (
         'table_open' => '',
         'tbody_open' => '',
         'tbody_close' => '',
@@ -61,8 +67,7 @@ class Job_requests_model extends CI_Model
 	    $this->table->set_template($template);
 	    $options = $this->table->generate();
     }
-
-		return $options;
+	return $options;
   }
 
 	public function processSearch($key)

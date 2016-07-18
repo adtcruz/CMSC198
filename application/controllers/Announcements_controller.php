@@ -10,6 +10,7 @@ class Announcements_controller extends CI_Controller
     {
         parent::__construct ();
         $this->load->model ('Announcements_model', 'am');
+        $this->load->model ('Notifications_model', 'nm');
         $this->load->helper ('form');
         $this->load->library ('form_validation');
         session_start();
@@ -22,7 +23,7 @@ class Announcements_controller extends CI_Controller
             switch ($_SESSION['type'])
             {
                 case 'client':
-                    $db_data = $this->am->getAnnouncements ();
+                    $db_data['announcements'] = $this->am->getAnnouncements ();
                     $this->load->view ('Announcements_client_view', $db_data);
                 break;
                 case 'admin':
@@ -38,7 +39,8 @@ class Announcements_controller extends CI_Controller
 
                     if ($this->form_validation->run() == FALSE)
                     {
-                        $db_data = $this->am->getAnnouncements ();
+                        $db_data['announcements'] = $this->am->getAnnouncements ();
+                        $db_data['unread'] = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
                         $this->load->view ('Announcements_admin_view', $db_data);
                     }
                     else

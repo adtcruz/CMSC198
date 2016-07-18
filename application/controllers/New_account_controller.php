@@ -9,9 +9,9 @@ class New_account_controller extends CI_Controller
         $options = "";
         if(array_key_exists("type",$_SESSION))
         {
-            if(($_SESSION["type"]==="technician")||($_SESSION["type"]==="admin")||($_SESSION["type"]==="superadmin"))
+            if($_SESSION['type'] != 'client')
             {
-                $options = $this->jrm->getOffices($_SESSION["type"]);
+                $options = $this->jrm->getOffices($_SESSION['type']);
                 $this->load->view('New_account_view', array('options' => $options));
             }
         }

@@ -8,6 +8,7 @@ class View_schedule_controller extends CI_Controller
 		session_start();
 		if(array_key_exists("type",$_SESSION)){
 			$this->load->model ('View_schedule_model', 'sm');
+            $this->load->model ('Notifications_model', 'nm');
 		}
 
 		else{
@@ -19,8 +20,8 @@ class View_schedule_controller extends CI_Controller
 	public function index ()
 	{
 		$table = $this->sm->processScheduleTable();
-
-		$this->load->view ('View_schedule_view', array('table'=>$table));
+        $unread = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
+		$this->load->view ('View_schedule_view', array('table' => $table, 'unread' => $unread));
 	}
 }
 
