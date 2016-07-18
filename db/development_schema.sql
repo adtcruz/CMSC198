@@ -205,7 +205,7 @@ CREATE TABLE notifsRead(
     userType VARCHAR(10) NOT NULL,
     dateCreated DATE DEFAULT NULL,
     active INT NOT NULL DEFAULT '1',
-    PRIMARY KEY(notifID)
+    FOREIGN KEY(notifID) REFERENCES notifications(notifID)
 );
 
 -- 'ANNOUNCEMENTS' table
