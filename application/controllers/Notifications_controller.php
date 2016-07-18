@@ -36,19 +36,27 @@ class Notifications_controller extends CI_Controller
         {
             if ($_SESSION['type'] != 'client')
             {
-                // use uri segments 3 (notifID), 4 (userID), 5 (userType)
-                $this->load->database ();
-                $query = $this->db->query ('INSERT INTO notifsRead (notifID, userID, userType, dateCreated) VALUES ('.$this->uri->segment (3).', '.$this->uri->segment (4).', \''.$this->uri->segment (5).'\', CURDATE())');
-                if ($this->db->affected_rows () > 0)
+              if(array_key_exists("notifID",$_POST))
+              {
+                if(array_key_exists("userID",$_POST))
                 {
-                    echo "Marked as read";
-                    return;
+                  if(array_key_exists("userType",$_POST))
+                  {
+                    $this->load->database ();
+                    $query = $this->db->query('INSERT INTO notifsRead(notifID, userID, userType, dateCreated) VALUES ('.$_POST["notifID"].','.$_POST["userID"].', \''.$_POST["userType"].'\', CURDATE())');
+                    if ($this->db->affected_rows() > 0)
+                    {
+                        echo "Marked as read";
+                        return;
+                    }
+                    else
+                    {
+                        echo "Error";
+                        return;
+                    }
+                  }
                 }
-                else
-                {
-                    echo "Error";
-                    return;
-                }
+              }
             }
             else
             {
