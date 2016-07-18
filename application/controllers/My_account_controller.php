@@ -19,8 +19,8 @@ class My_account_controller extends CI_Controller
 			$this->load->view('My_account_view', $unread);
 		}
 		else
-        {
-            redirect (base_url (), 'refresh');
+    {
+        redirect (base_url (), 'refresh');
 		}
 	}
 }
