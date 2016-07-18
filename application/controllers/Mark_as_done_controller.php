@@ -37,6 +37,35 @@ class Mark_as_done_controller extends CI_Controller
               //record this action to logs
               $this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES ('".$_SESSION["username"]." marked jobID #".$_POST["jobID"]." as done',CURRENT_TIMESTAMP)");
 
+              //insert to notification
+              $query = $this->db->query ('SELECT job.jobDescription, job.clientID FROM job WHERE (job.jobID = '.$_POST['jobID'].')');
+
+              $jobDescription = $query->result_array ()[0]['jobDescription'];
+              $clientID = $query->result_array ()[0]['clientID'];
+              $userID = "";
+
+              if ($_SESSION['type'] === 'technician')
+              {
+                  $query = $this->db->query ('SELECT adminAcc.adminID FROM adminAcc WHER (adminAcc.username = "'.$_SESSION['username'].'")');
+                  $userID = $query->result_array ()[0]['adminID'];
+              }
+              if ($_SESSION['type'] === 'superadmin')
+              {
+                  $query = $this->db->query ('SELECT superAdmin.superAdminID FROM adminAcc WHER (superAdmin.username = "'.$_SESSION['username'].'")');
+                  $userID = $query->result_array ()[0]['superAdminID'];
+              }
+
+              $this->db->query ('SELECT notifications.clientID, notifications.jobID, notifications.createdBy, notifications.createdByType FROM notifications WHERE (notifications.clientID = '..$clientID') AND (notifications.jobID = '.$_POST['jobID'].') AND (notifications.createdBy = '.$userID.') AND (notifications.createdByType = '.$_POST['type'].')');
+
+              if ($this->db->affected_rows () > 0)
+              {
+                  return;
+              }
+              else
+              {
+                  $this->db->query ('INSERT INTO notifications (notifText, clientID, jobID, dateCreated, createdBy, createdByType) VALUES ("Job Request ('.$jobDescription.') is done", '.$clientID.', '.$_POST['jobID'].', CURDATE(), '.$userID.')');  
+              }
+
               //sends a message that job is marked as done
               echo "Marked as done";
 
