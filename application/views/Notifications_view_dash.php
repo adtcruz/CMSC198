@@ -12,7 +12,7 @@
                     'table_open' => '<table class="bordered centered highlight">'
                 );
                 $this->table->set_template ($template);
-                echo $unreadNotifs->generate ();
+                echo $unreadNotifs;
             ?>
 			<br/>
 			<br/>

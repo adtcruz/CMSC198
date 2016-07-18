@@ -54,23 +54,29 @@
             $query = $this->db->query ('SELECT COUNT(notifications.notifID) AS count FROM notifications');
             $count = $query->result_array ()[0]['count'];
 
+            if($count == 0){
+              $db_data['unread'] = 0;
+              $db_data['unreadNotifs'] = "<h5 class='center-align'>Sorry, there are no notifications to display.</h5>";
+              return $db_data;
+            }
+
             $unread = 0;
             $temp = 0;
             // for each notifID, check if pairing (notifID, userID, userType) exists. if the pairing does not exist, add 1 to unread;
             do
             {
-                $temp++;
-                $query = $this->db->query ('SELECT notifsRead.userID FROM notifsRead WHERE (notifsRead.notifID = '.$temp.') AND (notifsRead.userID = '.$userID.') AND (notifsRead.userType = "'.$type.'")');
-                if ($this->db->affected_rows () == 0)
-                {
-                    $query = $this->db->query ('SELECT notifications.notifText FROM notifications WHERE (notifications.notifID = '.$temp.')');
-                    $this->table->add_row ($query->result_array ()[0]['notifText'], '<a class = "btn blue-grey" href = "'.base_url().'notifications/mark_as_read/'.$temp.'/'.$userID.'/'.$type.'"> Mark as Read </a>');
-                    $unread ++;
-                }
+              $temp++;
+              $query = $this->db->query ('SELECT notifsRead.userID FROM notifsRead WHERE (notifsRead.notifID = '.$temp.') AND (notifsRead.userID = '.$userID.') AND (notifsRead.userType = "'.$type.'")');
+              if ($this->db->affected_rows () == 0)
+              {
+                  $query = $this->db->query('SELECT notifications.notifText FROM notifications WHERE (notifications.notifID = '.$temp.')');
+                  $this->table->add_row($query->result_array()[0]['notifText'], '<a class = "btn blue-grey" href = "'.base_url().'notifications/mark_as_read/'.$temp.'/'.$userID.'/'.$type.'">Mark as Read</a>');
+                  $unread++;
+              }
             } while ($temp != $count);
 
             $db_data['unread'] = $unread;
-            $db_data['unreadNotifs'] = $this->table;
+            $db_data['unreadNotifs'] = $this->table->generate();
             return $db_data;
         }
     }
