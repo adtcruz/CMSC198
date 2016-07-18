@@ -6,7 +6,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
     <div class="row">
         <!-- load side menu -->
-        <?php $this->load->view('Sidenav');?>
+        <?php $this->load->view('Sidenav', $unread);?>
         <!-- start of the table -->
         <div id="navarea" class="col s3 m3 l3 section"><br/><br/></div>
         <div id="mainc" class="col s9 m9 l9 section">
