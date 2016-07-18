@@ -197,7 +197,7 @@ CREATE TABLE notifications(
     FOREIGN KEY(jobID) REFERENCES job(jobID)
 );
 
--- 'NOTIFS_READ' table
+-- 'NOTIFSREAD' table
 DROP TABLE IF EXISTS notifsRead;
 CREATE TABLE notifsRead(
     notifID INT NOT NULL,
