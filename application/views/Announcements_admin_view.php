@@ -92,7 +92,7 @@
                 <!-- Announcements View -->
                 <?php
                     $lines = array ();
-                    foreach ($announcements as $row)
+                    foreach ($announcements['announcements'] as $row)
                     {
                         // please align button and text
                         $line = '
