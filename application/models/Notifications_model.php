@@ -28,22 +28,42 @@
             }
         }
 
-        public function clientUnreadNotifs ($username)
+        public function getClientNotifs ($username)
         {
-            $query = $this->db->query ('SELECT notifications.notifID FROM notifications WHERE (notifications.createdByType != 'client')');
-            $notifications = $query->result_array ();
-            $query = $this->db->query ('SELECT client.clientID FROM client WHERE (client.username = "'.$username.'")');
-            $username = $query->result_array ()[0]['clientID'];
+            $query = $this->db->query ('SELECT clientID FROM client WHERE (username = "'.$username.'")');
+            $userID = $query->result_array ()[0]['clientID'];
             $unread = 0;
-            foreach ($notifications as $row)
+
+            $this->table->set_template(array('table_open' =>'<table class="bordered centered highlight responsive-table">'));
+            $this->table->set_heading("Notification Details","");
+
+            $rows = $this->db->query ('SELECT notifID FROM notifications WHERE (createdByType != \'client\')')->result_array();
+
+            if($this->db->affected_rows() == 0){
+              $db_data['unread'] = 0;
+              $db_data['unreadNotifs'] = "<h5 class='center-align'>Sorry, there are no notifications to display.</h5>";
+              return $db_data;
+            }
+
+            foreach ($rows as $row)
             {
-                $this->db->query ('SELECT notifsRead.notifID, notifsRead.userID FROM notifsRead WHERE (notifsRead.userType = 'client') AND (notifsRead.notifID = '$row['notifID']') AND (notifsRead.userID = "'.$username.'")');
-                if ($this->db->affected_rows () > 0)
+                $this->db->query ('SELECT notifsRead.notifID, notifsRead.userID FROM notifsRead WHERE (notifsRead.userType = \'client\') AND (notifsRead.notifID = '.$row['notifID'].') AND (notifsRead.userID = "'.$userID.'")');
+                if ($this->db->affected_rows () == 0)
                 {
-                    $unread++;
+                  $query2 = $this->db->query('SELECT notifText FROM notifications WHERE (notifID = '.$row['notifID'].')');
+                  $this->table->add_row($query2->result_array()[0]['notifText'], '<a class = "waves-light waves-effect btn blue darken-4" onclick="markAsRead(\''.base_url().'\','.$row['notifID'].','.$userID.',\'client\')">Mark as Read</a>');
+                  $unread++;
                 }
             }
-            return $unread;
+
+            if($unread == 0){
+              $db_data['unread'] = 0;
+              $db_data['unreadNotifs'] = "<h5 class='center-align'>Sorry, there are no notifications to display.</h5>";
+              return $db_data;
+            }
+            $db_data['unread'] = $unread;
+            $db_data['unreadNotifs'] = $this->table->generate();
+            return $db_data;
         }
 
         public function getUnreadCount ($username, $type)
@@ -63,10 +83,9 @@
                 break;
             }
             $unread = 0;
-            $temp = 0;
             $this->table->set_template(array('table_open' =>'<table class="bordered centered highlight responsive-table">'));
             $this->table->set_heading("Notification Details","");
-            $rows = $this->db->query('SELECT notifID FROM notifications')->result_array();
+            $rows = $this->db->query('SELECT notifID FROM notifications WHERE (createdByType = \'client\')')->result_array();
             if($this->db->affected_rows() == 0){
               $db_data['unread'] = 0;
               $db_data['unreadNotifs'] = "<h5 class='center-align'>Sorry, there are no notifications to display.</h5>";
