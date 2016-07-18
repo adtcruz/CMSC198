@@ -4,7 +4,7 @@
 		<p>
 			<h6>Welcome, <span id="sidebar_givenName"><?php echo $_SESSION["givenName"]."</span> <span id=\"sidebar_lastName\">".$_SESSION["lastName"];?></span>!
                 <?php
-                if (($_SESSION['type']=== 'admin')||($_SESSION['type']=== 'superadmin')||($_SESSION['type']=== 'technician'))
+                if (($_SESSION['type'] === 'admin')||($_SESSION['type'] === 'superadmin')||($_SESSION['type'] === 'technician'))
                 {
                     echo '<span id = "notifCounter" class = "new badge green darken-4 white-text"> '.$unread.' </span>';
                 }
