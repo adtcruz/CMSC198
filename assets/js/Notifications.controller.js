@@ -5,11 +5,16 @@ $('document').ready(
 );
 
 function markAsRead(url,notifID,userID,userType){
-  $.get(
-    url+'notifications/mark_as_read/'+notifID+'/'+userID+'/'+userType+'/',
+  $.post(
+    url+'notifications/mark_as_read/',
+    {
+      notifID:notifID,
+      userID:userID,
+      userType:userType
+    },
     function(data){
       if(data==="Marked as read"){
-        Materialize.toast("Notification marked as read",3000);
+        window.location.href = url+"notifications";
       }
     }
   );
