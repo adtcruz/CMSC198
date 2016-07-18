@@ -38,17 +38,17 @@ class Notifications_controller extends CI_Controller
             {
                 // use uri segments 3 (notifID), 4 (userID), 5 (userType)
                 $this->load->database ();
-                $query = $this->db->query ('INSERT INTO notifsRead (notifID, userID, userType, dateCreated) VALUES ('.$this->uri->segment (3).', '.$this->uri->segment (4).', '.$this->uri->segment (5).', CURDATE())');
+                $query = $this->db->query ('INSERT INTO notifsRead (notifID, userID, userType, dateCreated) VALUES ('.$this->uri->segment (3).', '.$this->uri->segment (4).', \''.$this->uri->segment (5).'\', CURDATE())');
                 if ($this->db->affected_rows () > 0)
                 {
-                    $data = array ('marked');
+                    echo "Marked as read";
+                    return;
                 }
                 else
                 {
-                    $data = array ('error');
+                    echo "Error";
+                    return;
                 }
-                echo json_encode ($data);
-                return;
             }
             else
             {

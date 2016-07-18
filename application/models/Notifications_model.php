@@ -82,10 +82,14 @@
             $rows = $this->db->query('SELECT notifID FROM notifications')->result_array();
 
             foreach($rows as $row){
-              $notifsQuery = $this->db->query ('SELECT notifsRead.userID FROM notifsRead WHERE (notifsRead.notifID = '.$row['notifID'].') AND (notifsRead.userID = '.$userID.') AND (notifsRead.userType = "'.$type.'")');
-              foreach($notifsQuery->result_array() as $notifsRow){
-                $query2 = $this->db->query('SELECT notifications.notifText FROM notifications WHERE (notifications.notifID = '.$temp.')');
-                $this->table->add_row($query2->result_array()[0]['notifText'], '<a class = "btn blue-grey" href = "'.base_url().'notifications/mark_as_read/'.$temp.'/'.$userID.'/'.$type.'">Mark as Read</a>');
+              $notifsQuery = $this->db->query('SELECT notifsRead.userID FROM notifsRead WHERE (notifsRead.notifID = '.$row['notifID'].') AND (notifsRead.userID = '.$userID.') AND (notifsRead.userType = "'.$type.'")');
+
+              if($this->db->affected_rows() == 0){
+
+                $query2 = $this->db->query('SELECT notifications.notifText FROM notifications WHERE (notifications.notifID = '.$row['notifID'].')');
+
+                $this->table->add_row($query2->result_array()[0]['notifText'], '<a class = "btn blue-grey" onclick="markAsRead(\''.base_url().'\','.$row['notifID'].','.$userID.',\''.$type.'\')">Mark as Read</a>');
+
                 $unread++;
               }
             }
