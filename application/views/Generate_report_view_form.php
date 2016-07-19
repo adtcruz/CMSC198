@@ -32,7 +32,7 @@
                         </div>
                         <div class="input-field col s10">
                             <div class="mdl-textfield mdl-js-textfield" align="right" >
-                                <button class="btn waves-effect waves-light red" type="submit">Generate Report</button>
+                                <button class="btn waves-effect waves-light red" type="submit" target="_blank">Generate Report</button>
                             </div>
                         </div>
                         <div class="input-field col s2">

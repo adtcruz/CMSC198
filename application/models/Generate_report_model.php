@@ -20,14 +20,7 @@ class Generate_report_model extends CI_Model
 	public function generateReport ($date)
 	{
 		$query = $this->db->query ('SELECT job.jobDescription, job.dateCreated, job.finishDate, office.officeAbbr FROM client, job, office WHERE (job.dateCreated BETWEEN '.$date['date1'].' AND '.$date['date2'].') AND (job.clientID = client.clientID) AND (client.officeID = office.officeID) ORDER BY job.dateCreated ASC');
-		$db_data['result_array'] = $query->result_array ();
-
-		$query = $this->db->query ('SELECT COUNT(office.officeAbbr) AS count, office.officeAbbr FROM job, office, client WHERE (job.clientID = client.clientID) AND (client.officeID = office.officeID) AND (job.dateCreated BETWEEN '.$date['date1'].' AND '.$date['date2'].') GROUP BY office.officeAbbr LIMIT 1');
-		$row = $query->result_array ();
-
-		$db_data['officeCount'] = $row[0]['count'];
-		$db_data['officeHighest'] = $row[0]['officeAbbr'];
-
+        $db_data['result_array'] = $query->result_array ();
         return $db_data;
 	}
 }

@@ -30,17 +30,24 @@
 	$template = array (
 			'table_open' => '<table width = "800" border = "1" style = "text-align: center;">'
 		);
-	// Table Header
 	$this->table->set_template ($template);
-	$this->table->set_heading ('Date', 'Office / Unit', 'Job Description', 'Finish Date');
-	$this->table->set_empty ('&nbsp;');
 
-	// Table Contents, data retrieved from database
-	foreach ($result_array as $row)
+    if (empty ($result_array))
+    {
+        $this->table->add_row ("There are no tasks found");
+    }
+    else
+    {
+        // Table Header
+        $this->table->set_heading ('Date', 'Office / Unit', 'Job Description', 'Finish Date');
+    	$this->table->set_empty ('&nbsp;');
 
-	{
-		$this->table->add_row ($row['dateCreated'], $row['officeAbbr'], $row['jobDescription'], $row['finishDate']);
-	}
+    	// Table Contents, data retrieved from database
+    	foreach ($result_array as $row)
+    	{
+    		$this->table->add_row ($row['dateCreated'], $row['officeAbbr'], $row['jobDescription'], $row['finishDate']);
+    	}
+    }
 
 	echo $this->table->generate ();
 	$this->table->clear ();

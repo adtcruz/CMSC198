@@ -59,7 +59,8 @@ class Generate_report_controller extends CI_Controller
 		$date2 = $this->input->post ('date2');
 		$interval = date_diff (date_create ($date1), date_create ($date2));
 		$interval = $interval->format ('%R%a');
-		if ($interval > 0)
+
+        if ($interval > 0)
 		{
 			$date['date1'] = $date1;
 			$date['date2'] = $date2;
@@ -69,6 +70,7 @@ class Generate_report_controller extends CI_Controller
 			$date['date1'] = $date2;
 			$date['date2'] = $date1;
 		}
+
 		$db_data = $this->grm->generateReport ($date);
 		$html = $this->load->view ('Generate_report_reportPDF', $db_data, TRUE);
 		$this->load->library ('m_pdf');
