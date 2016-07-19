@@ -23,7 +23,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+
+//development base_url
 $config['base_url'] = 'http://localhost/CMSC198/';
+
+//production base_url
+//$config['base_url'] = '<IP address of deployment server here>/billing_system/';
 
 /*
 |--------------------------------------------------------------------------
