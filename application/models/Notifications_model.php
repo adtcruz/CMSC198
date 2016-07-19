@@ -119,7 +119,7 @@
 
         public function getReadNotifs ($username, $type)
         {
-            // get user ID
+            // get user ID. use type to easily determine where to get said id
             $userID = "";
             switch ($type)
             {
@@ -149,6 +149,7 @@
             $query = $this->db->query ('SELECT notifsRead.notifID, notifsRead.userID, notifsRead.userType FROM notifsRead WHERE (notifsRead.userID = '.$userID.') AND (notifsRead.userType = "'.$type.'")');
             $notifs = $query->result_array ();
 
+            // if the result of the query is not empty, proceed in retrieving the needed notifications
             if (!empty ($notifs))
             {
                 // foreach notifs, select those where userID = $userID and notifReadID = notifID (to get proper notifs)
