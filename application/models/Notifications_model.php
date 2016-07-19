@@ -133,7 +133,7 @@
                     $userID = $query->result_array ()[0]['adminID'];
                 break;
                 case 'superadmin':
-                    $query = $this->db->query ('SELECT superAdmin.superAdminID FROM adminAcc WHERE (superAdmin.username = "'.$username.'")');
+                    $query = $this->db->query ('SELECT superAdmin.superAdminID FROM superAdmin WHERE (superAdmin.username = "'.$username.'")');
                     $userID = $query->result_array ()[0]['superAdminID'];
                 break;
                 default:
@@ -143,22 +143,30 @@
             // set table template
             $this->table->set_template(array('table_open' =>'<table class="bordered centered highlight responsive-table">'));
             $this->table->set_heading("Notification Details");
+            $notifs = array ();
 
-            // get all notifs read where usertype is $type
-            $query = $this->db->query ('SELECT notifsRead.notifID, notifsRead.userID FROM notifsRead WHERE (notifsRead.userType = "'.$type.'")');
+            // get all notifs read
+            $query = $this->db->query ('SELECT notifsRead.notifID, notifsRead.userID, notifsRead.userType FROM notifsRead WHERE (notifsRead.userID = '.$userID.') AND (notifsRead.userType = "'.$type.'")');
             $notifs = $query->result_array ();
 
-            // foreach notifs, select those where userID = $userID and notifReadID = notifID (to get proper notifs)
-            foreach ($notifs as $row)
+            if (!empty ($notifs))
             {
-                $query = $this->db->query ('SELECT notifsRead.userID, notifications.notifText FROM notifsRead, notifications WHERE (notifsRead.userID = '.$userID.') AND (notifsRead.notifID = notifications.notifID)');
-                if ($this->db->affected_rows () > 0)
+                // foreach notifs, select those where userID = $userID and notifReadID = notifID (to get proper notifs)
+                foreach ($notifs as $row)
                 {
-                    $this->table->add_row ($query->result_array ()[0]['notifText']);
+                    $query = $this->db->query ('SELECT notifications.notifText FROM notifications, notifsRead WHERE (notifsRead.userID = '.$userID.') AND (notifications.notifID = '.$row['notifID'].')');
+                    if ($this->db->affected_rows () > 0 && isset ($query->result_array ()[0]['notifText']))
+                    {
+                        $this->table->add_row ($query->result_array ()[0]['notifText']);
+                    }
                 }
-            }
 
-            $db_data['table'] = $this->table->generate ();
+                $db_data['table'] = $this->table->generate ();
+            }
+            else
+            {
+                $db_data['table'] = '<h5 class="center-align">Sorry, there are no notifications to display.</h5>';
+            }
             return $db_data;
         }
     }
