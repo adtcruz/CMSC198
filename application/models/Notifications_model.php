@@ -48,7 +48,7 @@
             $unread = 0;
             $this->table->set_template(array('table_open' =>'<table class="bordered centered highlight responsive-table">'));
             $this->table->set_heading("Notification Details","");
-            $rows = $this->db->query ('SELECT notifID FROM notifications WHERE (createdByType != \'client\')')->result_array();
+            $rows = $this->db->query ('SELECT notifID FROM notifications WHERE (createdByType != \'client\') AND (clientID = '.$userID.')')->result_array();
             if($this->db->affected_rows() == 0){
               $db_data['unread'] = 0;
               $db_data['unreadNotifs'] = "<h5 class='center-align'>Sorry, there are no notifications to display.</h5>";
