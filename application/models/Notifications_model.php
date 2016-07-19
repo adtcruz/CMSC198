@@ -158,8 +158,8 @@
                 }
             }
 
-            $table = $this->table->generate ();
-            return $table;
+            $db_data['table'] = $this->table->generate ();
+            return $db_data;
         }
     }
 ?>

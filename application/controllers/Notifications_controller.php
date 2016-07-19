@@ -22,6 +22,7 @@ class Notifications_controller extends CI_Controller
           else if ($_SESSION['type']=== 'client')
           {
             $db_data = $this->nm->getClientNotifs ($_SESSION['username']);
+            $db_data['readNotifs'] = $this->nm->getReadNotifs ($_SESSION['username'], $_SESSION['type']);
             $this->load->view ('Notifications_view', $db_data);
       		}
         }
