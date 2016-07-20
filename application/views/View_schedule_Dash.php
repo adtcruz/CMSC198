@@ -5,7 +5,7 @@
 	<div id="mainAppArea" class="col s9 m9 l9 section">
 		<div class="row">
 			<br/>
-			<h3 class="center-align">Schedule</h3>
+			<h4 class="center-align">Schedule</h4>
 			<br/>
 				<?php
 					echo $table;

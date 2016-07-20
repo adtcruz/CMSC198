@@ -17,7 +17,7 @@
                                     $tiles = array ();
                                     foreach ($announcements['announcements'] as $row)
                                     {
-                                        $tile = '<img/><div class = "caption black-text" style = "text-align: justify; text-justify: inter-word"><h4>'.$row['title'].'</h4><h6 class = "truncate">'.$row['details'].'</h6></div>';
+                                        $tile = '<img/><div class = "caption black-text" style = "text-align: justify; text-justify: inter-word"><h5>'.$row['title'].'</h5><h6 class = "truncate">'.$row['details'].'</h6></div>';
                                         $tiles[] = $tile;
                                     }
                                     $attributes = array ('class' => 'slides');
@@ -31,7 +31,7 @@
                     <!-- Schedule start -->
                     <div class="card grey lighten-2">
                         <div class="card-content black-text">
-                            <span class="card-title"><h4> Today's Schedule </h4></span>
+                            <span class="card-title"><h5> Today's Schedule </h5></span>
                             <?php
                                 $this->table->set_template (array ('class' => 'bordered'));
                                 $this->table->set_heading ('Priority', 'Job Description', 'Client Name', 'Office');

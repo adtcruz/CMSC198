@@ -5,7 +5,7 @@
 	<!-- MAIN CONTENT CONTAINER -->
 	<div class="col s9 m9 l9">
 		<br/>
-		<h3 class="center-align">My Account</h3>
+		<h4 class="center-align">My Account</h4>
 		<br/>
 		<div class="row">
 			<div class="col s1 m1 l1">&nbsp;</div>

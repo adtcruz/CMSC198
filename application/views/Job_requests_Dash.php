@@ -18,8 +18,7 @@
       <div id="jobRequestsTable">
         <div class="row">
     			<br/>
-    			<h3 class="center-align"><?php if($_SESSION["type"]==="client") echo "My ";?>Job Requests</h3>
-    			<br/>
+    			<h4 class="center-align"><?php if($_SESSION["type"]==="client") echo "My ";?>Job Requests</h4>
     			<br/>
     				<!-- Sorting tabs -->
 					<div class="row center-align">
@@ -48,7 +47,7 @@
     			<div class="col s1 m1 l1">&nbsp;</div>
     			<div autocomplete="off" class="col s10 m10 l10">
     				<br/>
-    				<h3 class="center-align">File a Job Request</h3>
+    				<h4 class="center-align">File a Job Request</h4>
     				<br/>
     				<!-- Retrieve list of offices and the clients -->
     				<?php

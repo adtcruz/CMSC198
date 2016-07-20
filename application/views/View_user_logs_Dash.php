@@ -6,7 +6,7 @@
 	<div class="col s9 m9 l9">
 		<br/>
 		<br/>
-		<h3 class="center-align">User Logs</h3>
+		<h4 class="center-align">User Logs</h4>
 		<br/>
 		<div class="row">
 			<div>
