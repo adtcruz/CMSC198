@@ -17,3 +17,17 @@ INSERT INTO schedule (jobID, dateCreated, createdBy, createdByType)
 VALUES (7, '2016-06-19', 2, 'client');
 INSERT INTO schedule (jobID, dateCreated, createdBy, createdByType) 
 VALUES (8, '2016-06-19', 2, 'client');
+INSERT INTO schedule (jobID, dateCreated, createdBy, createdByType) 
+VALUES (9, '2016-06-17', 1, 'technician');
+INSERT INTO schedule (jobID, dateCreated, createdBy, createdByType) 
+VALUES (10, '2016-06-17', 1, 'technician');
+INSERT INTO schedule (jobID, dateCreated, createdBy, createdByType) 
+VALUES (11, '2016-06-17', 1, 'technician');
+INSERT INTO schedule (jobID, dateCreated, createdBy, createdByType) 
+VALUES (12, '2016-06-15', 2, 'admin');
+INSERT INTO schedule (jobID, dateCreated, createdBy, createdByType) 
+VALUES (13, '2016-06-13', 2, 'admin');
+INSERT INTO schedule (jobID, dateCreated, createdBy, createdByType) 
+VALUES (14, '2016-06-13', 2, 'admin');
+INSERT INTO schedule (jobID, dateCreated, createdBy, createdByType) 
+VALUES (15, '2016-06-13', 2, 'superadmin');
