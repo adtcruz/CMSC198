@@ -13,7 +13,7 @@
             <div class="row">
                 <form autocomplete="off">
                 <br/>
-    			<h3 class="center-align">Generate Bill</h3>
+    			<h4 class="center-align">Generate Bill</h4>
     			<br/>
     			<?php
                     $this->load->library ('table');

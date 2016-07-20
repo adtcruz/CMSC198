@@ -1,6 +1,6 @@
 <div class="row">
 	<br/>
-	<h3 class="center-align">Job Request</h3>
+	<h4 class="center-align">Job Request</h4>
 	<br/>
 	<br/>
 	<div class="col s1 m1 l1">&nbsp;</div>

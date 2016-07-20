@@ -15,7 +15,7 @@
 			<div id="manageMaterials">
 				<br/>
 				<br/>
-				<h3 class="center-align">Manage Selectable Materials</h3>
+				<h4 class="center-align">Manage Selectable Materials</h4>
 				<br/>
 				<div class="row">
 					<?php
@@ -28,7 +28,7 @@
 			<div id="addMaterial">
 				<br/>
 				<br/>
-				<h3 class="center-align">Add New Material</h3>
+				<h4 class="center-align">Add New Material</h4>
 				<div class="row">
 					<div class="col s1 m1 l1">&nbsp;</div>
 					<div autocomplete="off" class="col s10 m10 l10">

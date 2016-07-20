@@ -11,7 +11,7 @@
         <div class="col s1 m1 l1">&nbsp;</div>
         <div class="col s10 m10 l10">
           <br/>
-          <h3 class="center-align">New Client account</h3>
+          <h4 class="center-align">New Client account</h4>
           <br/>
           <div class="row">
             <div class="row">
