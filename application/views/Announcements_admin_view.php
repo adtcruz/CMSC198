@@ -132,7 +132,7 @@
 <div id = "deleteModal" class = "modal">
     <div class = "modal-content">
         <h5 class="center-align">Delete this announcement?</h5>
-        <div class="center-align">h
+        <div class="center-align">
           <a class = "waves-effect waves-light btn btn-large red darken-4" onclick = "deleteAnnouncement('<?= base_url();?>')">Yes</a>
           &nbsp;&nbsp;&nbsp;&nbsp;
           <a class = "waves-effect waves-light btn btn-large blue darken-4" onclick = "$('#deleteModal').closeModal()">No</a>
