@@ -11,7 +11,7 @@
       <ul id="user-dropdown" class="dropdown-content">
         <li><a href="<?php echo base_url();?>my_account">My Account</a></li>
         <li class="divider"></li>
-        <li><a href="<?php echo base_url();?>logout">Logout</a></li>
+        <li><a onclick="logOut('<?php echo base_url();?>');">Logout</a></li>
       </ul>
     </div>
   </nav>
