@@ -9,6 +9,9 @@
         <li><a class="waves-effect waves-light btn dropdown-button grey darken-3 center-align white-text" data-activates="user-dropdown"><?php echo $_SESSION["givenName"]." ".$_SESSION["lastName"];?> ▼</a></li>
       </ul>
       <ul id="user-dropdown" class="dropdown-content">
+        <?php
+        if($_SESSION["type"]==="client") echo '<li><a href="'.base_url().'job_requests">My Job Requests</a></li>';
+        ?>
         <li><a href="<?php echo base_url();?>my_account">My Account</a></li>
         <li class="divider"></li>
         <li><a onclick="logOut('<?php echo base_url();?>');">Log Out</a></li>
