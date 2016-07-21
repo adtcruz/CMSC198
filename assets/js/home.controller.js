@@ -118,6 +118,9 @@ $('document').ready(
             verticalAlign: 'middle',
             borderWidth: 0
             },
+            tooltip: {
+                valueSuffix: ' PHP'
+            },
             series: [{
                 name: 'Income',
                 data: incomeArray
