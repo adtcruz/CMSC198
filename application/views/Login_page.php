@@ -3,8 +3,7 @@
 	<div class="container">
 		<br/>
 		<div class="row">
-			<div class="col s1 m3 l3">&nbsp;</div>
-			<div class="white col s10 m6 l6 z-depth-5">
+			<div class="container white z-depth-5">
 				<br/>
 				<div class="row center-align">
 					<h3>ITC Networking Services and Billing System</h3>
@@ -33,8 +32,7 @@
 				</div>
 				<br/>
 			</div>
-			<div class="col s1 m3 l3">&nbsp;</div>
-		</div>
+			</div>
 		<br/>
 	</div>
 </div>
