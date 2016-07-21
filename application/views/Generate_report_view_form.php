@@ -4,7 +4,7 @@
     <div class="row">
         <div autocomplete="off">
             <br/>
-            <h3 class="center-align">Generate Report</h3>
+            <h4 class="center-align">Generate Report</h4>
             <br/>
             <?php
                 $this->load->helper ('form');

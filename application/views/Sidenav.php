@@ -1,15 +1,8 @@
 <!-- SIDENAV -->
-<div id="slide-out" class="col s3 m3 l3 side-nav grey darken-4 white-text">
+<div id="slide-out" class="side-nav grey darken-4 white-text">
 	<div id="logo-container" class="center-align">
 		<p>
-			<h6>Welcome, <span id="sidebar_givenName"><?php echo $_SESSION["givenName"]."</span> <span id=\"sidebar_lastName\">".$_SESSION["lastName"];?></span>!
-                <?php
-                if (array_key_exists("type", $_SESSION))
-                {
-                    echo '<span id = "notifCounter" class = "new badge green darken-4 white-text"> '.$unread.' </span>';
-                }
-                ?>
-            </h6>
+			<h6>Welcome, <span id="sidebar_givenName"><?php echo $_SESSION["givenName"]."</span> <span id=\"sidebar_lastName\">".$_SESSION["lastName"];?></span>!</h6>
 		</p>
 	</div>
 	<ul class="center-align">
@@ -18,22 +11,23 @@
 		<?php
 		  if (array_key_exists("type", $_SESSION))
 		  {
-		      echo '<li id="notifButton"><a id="homeItem" class="waves-effect waves-light white-text" href="'.base_url().'notifications">Notifications</a></li>';
+				if ($unread == 0) echo '<li id="notifButton"><a id="homeItem" class="waves-effect waves-light white-text" href="'.base_url().'notifications">Notifications</a></li>';
+				else echo '<li id="notifButton"><a id="homeItem" class="waves-effect waves-light white-text" href="'.base_url().'notifications">Notifications <span class="badge white-text">'.$unread.'</span></a></li>';
 		  }
 		  if (array_key_exists ('type', $_SESSION))
 		  {
-		      if($_SESSION["type"] === "client")
-		      {
-		          $this->load->view('Menu_client');
-		      }
-		      else
-		      {
-		          $this->load->view('Menu_admin');
-		      }
+	      if($_SESSION["type"] === "client")
+	      {
+	        $this->load->view('Menu_client');
+	      }
+	      else
+	      {
+          $this->load->view('Menu_admin');
+	      }
 		  }
 		  else
 		  {
-		      redirect (base_url(), 'refresh');
+	      redirect (base_url(), 'refresh');
 		  }
 		?>
 	</ul>
