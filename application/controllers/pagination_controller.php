@@ -12,9 +12,9 @@ $this->load->library('pagination');
 }
 
 // Set array for PAGINATION LIBRARY, and show view data according to page.
-public function jobs(){
+public function job(){
 $config = array();
-$config["base_url"] = base_url() . "index.php/pagination_controller/jobs";
+$config["base_url"] = base_url() . "index.php/pagination_controller/job";
 $total_row = $this->pagination_model->record_count();
 $config["total_rows"] = $total_row;
 $config["per_page"] = 1;
