@@ -34,12 +34,12 @@
         <div class="row">
 			<div class="col s1 m1 l1">&nbsp;</div>
 			<div class="col s10 m10 l10">
-                <div id="pieData" class="hide">
+                <div id="incomeData" class="hide">
                     <?php
                         echo json_encode ($income);
                     ?>
                 </div>
-                <div id="totalWork"></div>
+                <div id="monthlyIncome"></div>
             </div>
             <div class="col s1 m1 l1">&nbsp;</div>
 		</div>
