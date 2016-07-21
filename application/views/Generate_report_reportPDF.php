@@ -51,12 +51,4 @@
 
 	echo $this->table->generate ();
 	$this->table->clear ();
-    /*
-	$template = array (
-			'table_open' => '<table width = "800" border = "1" style = "text-align: center;">'
-		);
-	$this->table->set_template ($template);
-	$this->table->add_row ('Office with Most Highest Number of Requests: '.$officeHighest.' ('.$officeCount.')', 'Most Common Request: ', 'Average Response Time: ');
-	echo $this->table->generate ();
-    */
 ?>
