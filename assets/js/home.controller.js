@@ -20,10 +20,11 @@ $('document').ready(
             }
         );
 
-        $('#jobStatusChart').highcharts({
+        var chart = new Highcharts.Chart({
             // define chart type
             chart: {
-                type: 'bar'
+                type: 'bar',
+                renderTo: 'jobStatusChart'
             },
             // define chart title
             title: {
@@ -67,10 +68,10 @@ $('document').ready(
             dataArray.push([v[0], parseFloat(parseInt (v[1])/100)]);
         });
 
-        $('#totalWork').highcharts({
+        chart = new Highcharts.Chart({
             chart: {
+                renderTo: 'totalWork',
                 plotBackgroundColor: null,
-                plotBorderWidth: null,
                 plotShadow: false,
                 type: 'pie'
             },
@@ -82,6 +83,7 @@ $('document').ready(
             },
             plotOptions: {
                 pie: {
+                    size: '100%',
                     allowPointSelect: true,
                     cursor: 'pointer',
                     dataLabels: {
@@ -105,7 +107,10 @@ $('document').ready(
             incomeArray.push(parseInt(v));
         });
 
-        $('#monthlyIncome').highcharts({
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'monthlyIncome'
+            },
             title: {
                 text: 'Monthly Income from Jobs',
                 x: -20 // to center

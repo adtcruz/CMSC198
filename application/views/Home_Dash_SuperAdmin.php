@@ -1,14 +1,6 @@
 <div class="row">
 	<?php $this->load->view('Sidenav', $unread);?>
 	<div class="container">
-		<div>
-			<ul class="tabs">
-				<li class="tab"><a class="active" href="#jobCountChart">Job Requests Count</a></li>
-				<li class="tab"><a href="#totalWorkDoneChart">Total Work Done</a></li>
-				<li class="tab"><a href="#monthlyIncomeChart">Monthly Income</a></li>
-			</ul>
-			<br/>
-		</div>
 		<!-- job status chart start -->
 		<div id="jobCountChart">
 			<div class="col s12 m12 l12">
@@ -25,7 +17,11 @@
 			<div class="col s12 m12 l12">
 				<div class="card grey lighten-2">
 					<div class="card-content white-text">
-						<div id="totalWork"></div>
+                        <div class="row">
+                            <div class="col s1 m1 l1">&nbsp;</div>
+    						<div id="totalWork" class="col s10 m10 l10"></div>
+                            <div class="col s1 m1 l1">&nbsp;</div>
+                        </div>
 					</div>
 				</div>
 			</div>
