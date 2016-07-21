@@ -1,9 +1,7 @@
 <div class="row">
 	<?php $this->load->view('Sidenav', $unread);?>
-	<!-- FILLER TO PUSH MAIN CONTENT TO THE RIGHT -->
-	<div class="col s3 m3 l3"><br/><br/></div>
 	<!-- MAIN CONTENT CONTAINER -->
-	<div id="mainAppArea" class="col s9 m9 l9">
+	<div id="mainAppArea" class="container">
     <br/>
     <div class="row">
       <?php if($_SESSION["type"]==="superadmin") $this->load->view('New_account_superadmin_tabs');?>
