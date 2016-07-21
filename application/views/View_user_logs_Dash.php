@@ -1,9 +1,7 @@
 <div class="row">
 	<?php $this->load->view('Sidenav', $unread);?>
-	<!-- FILLER TO PUSH MAIN CONTENT TO THE RIGHT -->
-	<div class="col s3 m3 l3"><br/><br/></div>
 	<!-- MAIN CONTENT CONTAINER -->
-	<div class="col s9 m9 l9">
+	<div class="container">
 		<br/>
 		<br/>
 		<h4 class="center-align">User Logs</h4>
