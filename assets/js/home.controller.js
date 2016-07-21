@@ -90,6 +90,7 @@ $('document').ready(
                 }
             },
             series: [{
+                name: 'Work Percentage',
                 data: dataArray
             }],
             credits: {
@@ -97,6 +98,33 @@ $('document').ready(
             }
         });
 
-        
+        var jsonincome = jQuery.parseJSON($('#incomeData').html());
+        var incomeArray = new Array();
+        $.each(jsonincome.income, function(k, v){
+            incomeArray.push(parseInt(v));
+        });
+
+        $('#monthlyIncome').highcharts({
+            title: {
+                text: 'Monthly Income from Jobs',
+                x: -20 // to center
+            },
+            xAxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+            },
+            legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+            },
+            series: [{
+                name: 'Income',
+                data: incomeArray
+            }],
+            credits: {
+                enabled: false // remove 'highcharts.com' at the bottom of the chart
+            }
+        });
     }
 );
