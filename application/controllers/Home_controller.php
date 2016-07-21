@@ -39,6 +39,7 @@ class Home_controller extends CI_Controller
                     $db_data['unread'] = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
                     $db_data['total'] = $this->cm->getTotalJobStatus ();
                     $db_data['values'] = $this->cm->getWorkServiced ();
+                    $db_data['income'] = $this->cm->getMonthlyIncome ();
                     $this->load->view ('Home_Dash_SuperAdmin', $db_data);
                 break;
                 default:
