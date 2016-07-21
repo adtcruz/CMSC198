@@ -2,6 +2,7 @@ $('document').ready(
 	function()
     {
         $('#homeButton').addClass("black");
+				$('ul.tabs').tabs();
         // these lines controls the slider present in the home page of the client
         // this line sets some properties of slider. transition and interval is in milliseconds
         $('.slider').slider({full_width: false, height: 100, transition: 300, interval: 4000});
