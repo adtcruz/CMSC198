@@ -33,7 +33,7 @@ class Chart_model extends CI_Model
         $this->table->clear ();
         foreach ($query->result_array () as $row)
         {
-            $query2 = $this->db->query ('SELECT COUNT(workDone.workID) AS count FROM workDone, work WHERE (workDone.workID = work.workID) AND (work.workDescription = "'.$row['workDescription'].'")');
+            $query2 = $this->db->query ('SELECT COUNT(workDone.workID) AS count FROM workDone, work WHERE (workDone.workID = work.workID) AND (work.workDescription = "'.$row['workDescription'].'") ORDER BY COUNT(workDone.workID)');
             $count = $query2->result_array ()[0]['count'];
             array_push ($values, array ($row['workDescription'], $count));
             $this->table->add_row ($row['workDescription'], $count);
