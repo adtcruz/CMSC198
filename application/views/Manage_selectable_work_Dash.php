@@ -1,8 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <div class="row">
 	<?php $this->load->view('Sidenav', $unread);?>
-	<div id="navarea" class="col s3 m3 l3 section"><br/><br/></div>
-	<div id="mainAppArea" class="col s9 m9 l9 section">
+	<div id="mainAppArea" class="container">
 		<div class="row">
 			<br/>
 			<div class="col s12">
@@ -15,7 +14,7 @@
 			<div id="manageWork">
 				<br/>
 				<br/>
-				<h3 class="center-align">Manage Selectable Work</h3>
+				<h4 class="center-align">Manage Selectable Work</h4>
 				<br/>
 				<div class="row">
 					<?php
@@ -28,7 +27,7 @@
 			<div id="addWork">
 				<br/>
 				<br/>
-				<h3 class="center-align">Add New Work</h3>
+				<h4 class="center-align">Add New Work</h4>
 				<div class="row">
 					<div class="col s1 m1 l1">&nbsp;</div>
 					<div autocomplete="off" class="col s10 m10 l10">

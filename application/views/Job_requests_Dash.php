@@ -1,9 +1,7 @@
 <div class="row">
 	<?php $this->load->view('Sidenav', $unread);?>
-	<!-- FILLER TO PUSH MAIN CONTENT TO THE RIGHT -->
-	<div class="col s3 m3 l3"><br/><br/></div>
 	<!-- MAIN CONTENT CONTAINER -->
-	<div id="mainAppArea" class="col s9 m9 l9">
+	<div id="mainAppArea" class="container">
     <br/>
     <div class="row">
     	<!-- List of Job Requests and File Job Request tab -->
@@ -18,8 +16,7 @@
       <div id="jobRequestsTable">
         <div class="row">
     			<br/>
-    			<h3 class="center-align"><?php if($_SESSION["type"]==="client") echo "My ";?>Job Requests</h3>
-    			<br/>
+    			<h4 class="center-align"><?php if($_SESSION["type"]==="client") echo "My ";?>Job Requests</h4>
     			<br/>
     				<!-- Sorting tabs -->
 					<div class="row center-align">
@@ -48,7 +45,7 @@
     			<div class="col s1 m1 l1">&nbsp;</div>
     			<div autocomplete="off" class="col s10 m10 l10">
     				<br/>
-    				<h3 class="center-align">File a Job Request</h3>
+    				<h4 class="center-align">File a Job Request</h4>
     				<br/>
     				<!-- Retrieve list of offices and the clients -->
     				<?php

@@ -1,10 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <div class="row">
 	<?php $this->load->view('Sidenav', $unread);?>
-	<!-- FILLER TO PUSH MAIN CONTENT TO THE RIGHT -->
-	<div class="col s3 m3 l3"><br/><br/></div>
 	<!-- MAIN CONTENT CONTAINER -->
-	<div id="mainAppArea" class="col s9 m9 l9">
+	<div id="mainAppArea" class="container">
     <br/>
     <div class="row">
     	<!-- List of Job Requests and File Job Request tab -->

@@ -9,7 +9,9 @@ INSERT INTO adminAcc (username, password, givenName, lastName, isTechnician, act
 -- insert sample clients
 INSERT INTO client (username, password, givenName, lastName, designation, officeId) VALUES
 ('adtcruz', SHA1('password'), 'Anton', 'Cruz', 'On-the-Job Trainee', 46),
-('clstia', SHA1('clstia'), 'Ellis', 'Eurolfan', 'On-the-Job Trainee', 46);
+('clstia', SHA1('clstia'), 'Ellis', 'Eurolfan', 'On-the-Job Trainee', 46), 
+('joencar', SHA1('joencar'), 'Joanne', 'Encarnacion', 'On-the-Job Trainee', 46), 
+('ashaaa', SHA1('ashaaa'), 'Azha', 'de Belen', 'On-the-Job Trainee', 46);
 
 -- insert sample superadmin account
 INSERT INTO superAdmin (username, password, givenName, lastName) VALUES

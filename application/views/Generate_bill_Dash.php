@@ -7,13 +7,11 @@
     <div class="row">
         <!-- load side menu -->
         <?php $this->load->view('Sidenav', $unread);?>
-        <!-- start of the table -->
-        <div id="navarea" class="col s3 m3 l3 section"><br/><br/></div>
-        <div id="mainc" class="col s9 m9 l9 section">
+        <div id="mainc" class="container">
             <div class="row">
                 <form autocomplete="off">
                 <br/>
-    			<h3 class="center-align">Generate Bill</h3>
+    			<h4 class="center-align">Generate Bill</h4>
     			<br/>
     			<?php
                     $this->load->library ('table');

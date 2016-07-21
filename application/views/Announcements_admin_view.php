@@ -1,22 +1,19 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<?php
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+$this->load->view('Header');
+$this->load->view('Navbar');
+?>
 <div class="row">
     <!-- Includes the Header and Sidenav Viewa -->
-    <?php
-        $this->load->view('Header');
-        $this->load->view('Sidenav', $unread);
-    ?>
-    <br>
-    <div id="navarea" class="col s3 m3 l3 section"><br/><br/></div>
-    <!-- Shows the Add Announcements and View Announcements tabs -->
-    <div class="col s9 m9 l9">
-        <ul class="tabs">
-            <li class="tab col s12"><a href="#annAddTab"> Add Announcements </a></li>
-            <li class="tab col s12"><a href="#annViewTab"> View Announcements </a></li>
-        </ul>
-    </div>
-
-    <!-- Add Announcement Form -->
-    <div id="mainAppArea" class="col s9 m9 l9 section">
+    <?php $this->load->view('Sidenav', $unread);?>
+    <div id="mainAppArea" class="container">
+        <br>
+        <div class="row">
+          <ul class="tabs">
+              <li class="tab col s12"><a href="#annAddTab"> Add Announcements </a></li>
+              <li class="tab col s12"><a href="#annViewTab"> View Announcements </a></li>
+          </ul>
+        </div>
         <br/>
         <br/>
         <div class="row">
@@ -83,11 +80,6 @@
                     echo form_close ()
                 ?>
             </div>
-        </div>
-    </div>
-    <!-- View Announcements -->
-    <div id="mainAppArea" class="col s9 m9 l9 section">
-        <div class="row">
             <div id="annViewTab" class="col s12 m12 l12">
                 <!-- Announcements View -->
                 <?php
@@ -131,7 +123,7 @@
 <!-- Modal for confirmin the deletion of the announcement -->
 <div id = "deleteModal" class = "modal">
     <div class = "modal-content">
-        <h4 class="center-align">Delete this announcement?</h4>
+        <h5 class="center-align">Delete this announcement?</h5>
         <div class="center-align">
           <a class = "waves-effect waves-light btn btn-large red darken-4" onclick = "deleteAnnouncement('<?= base_url();?>')">Yes</a>
           &nbsp;&nbsp;&nbsp;&nbsp;

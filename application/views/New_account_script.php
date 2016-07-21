@@ -3,3 +3,4 @@
 <link rel = "stylesheet" href = "<?= base_url ();?>assets/css/select2-materialize.css">
 <script type = "text/javascript" src = "<?= base_url();?>assets/js/materialize.min.js"></script>
 <script type="text/javascript" src="<?php base_url();?>assets/js/New_account.controller.js"></script>
+<script type="text/javascript" src="<?php base_url();?>assets/js/Navbar.controller.js"></script>

@@ -19,7 +19,7 @@
                                     $tiles = array ();
                                     foreach ($announcements['announcements'] as $row)
                                     {
-                                        $tile = '<img/><div class = "caption black-text" style = "text-align: justify; text-justify: inter-word"><h4 class = "truncate">'.$row['title'].'</h4><h6 class = "truncate">'.$row['details'].'</h6></div>';
+                                        $tile = '<img/><div class = "caption black-text" style = "text-align: justify; text-justify: inter-word"><h5 class = "truncate">'.$row['title'].'</h5><h6 class = "truncate">'.$row['details'].'</h6></div>';
                                         $tiles[] = $tile;
                                     }
                                     $attributes = array ('class' => 'slides');

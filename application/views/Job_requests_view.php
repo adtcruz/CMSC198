@@ -4,6 +4,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 $this->load->view('Header');
 
+$this->load->view('Navbar');
+
 $this->load->view('Job_requests_Dash', $unread);
 
 $this->load->view ('Select2_JS_include.php');
