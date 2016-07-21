@@ -12,7 +12,7 @@ $this->load->view('Navbar');
               $lines = array ();
               foreach ($announcements['announcements'] as $row)
               {
-                  $line = '<div class = "collapsible-header blue-grey darken-1 white-text">'.$row['title'].'</div><div class = "collapsible-body">'.$row['details'].'</div>';
+                  $line = '<div class = "collapsible-header grey white-text">'.$row['title'].'</div><div class = "collapsible-body">'.$row['details'].'</div>';
                   $lines[] = $line;
               }
               $attributes = array ('class' => 'collapsible', 'data-collapsible' => 'accordion');
