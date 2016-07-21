@@ -19,6 +19,7 @@ class Home_controller extends CI_Controller
         {
             // load header
             $this->load->view ('Header');
+            $this->load->view ('Navbar');
             // initialize current announcements
             $db_data['announcements'] = $this->am->getDashAnnouncements ();
 
