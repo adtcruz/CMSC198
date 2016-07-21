@@ -14,30 +14,27 @@
 	</div>
 	<ul class="center-align">
 		<li id="homeButton"><a id="homeItem" class="waves-effect waves-light white-text" href="<?php echo base_url();?>">HOME</a></li>
-        <li id="annButton"><a id="homeItem" class="waves-effect waves-light white-text" href="<?php echo base_url().'announcements';?>">Announcements</a></li>
-        <?php
-
-        if (array_key_exists("type", $_SESSION))
-        {
-            echo '<li id="notifButton"><a id="homeItem" class="waves-effect waves-light white-text" href="'.base_url().'notifications">Notifications</a></li>';
-        }
-
-        if (array_key_exists ('type', $_SESSION))
-        {
-            if($_SESSION["type"] === "client")
-            {
-                $this->load->view('Menu_client');
-            }
-            else
-            {
-                $this->load->view('Menu_admin');
-            }
-        }
-        else
-        {
-            redirect (base_url(), 'refresh');
-        }
+    <li id="annButton"><a id="homeItem" class="waves-effect waves-light white-text" href="<?php echo base_url().'announcements';?>">Announcements</a></li>
+		<?php
+		  if (array_key_exists("type", $_SESSION))
+		  {
+		      echo '<li id="notifButton"><a id="homeItem" class="waves-effect waves-light white-text" href="'.base_url().'notifications">Notifications</a></li>';
+		  }
+		  if (array_key_exists ('type', $_SESSION))
+		  {
+		      if($_SESSION["type"] === "client")
+		      {
+		          $this->load->view('Menu_client');
+		      }
+		      else
+		      {
+		          $this->load->view('Menu_admin');
+		      }
+		  }
+		  else
+		  {
+		      redirect (base_url(), 'refresh');
+		  }
 		?>
-		<li id="myAccountButton"><a id="myAccountItem" class="waves-effect waves-light white-text" href="<?php echo base_url();?>my_account">My Account</a></li>
 	</ul>
 </div>

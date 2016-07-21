@@ -86,7 +86,7 @@ class Job_requests_model extends CI_Model
 		$query = $this->db->query(
 			"SELECT jobID, jobDescription, startDate, finishDate, jobStatus, ".
 			"clientID, adminID, dateCreated, createdBy, createdByType FROM job".
-			$whereClause."ORDER BY dateCreated DESC, jobID DESC"
+			$whereClause."ORDER BY dateCreated ASC, jobID ASC"
 		);
 		return $query->result_array();
 	}
