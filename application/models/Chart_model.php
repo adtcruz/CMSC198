@@ -44,10 +44,20 @@ class Chart_model extends CI_Model
 
     public function getMonthlyIncome ()
     {
-        for ($i = 1; $i < 12; $i++)
+        $income = array ();
+        for ($i = 1; $i <= 12; $i++)
         {
-            $query = $this->db->query ('SELECT * FROM job');
+            $query = $this->db->query ('SELECT (work.workCost*workDone.workDuration) AS cost FROM work, workDone, job WHERE (workDone.jobID = job.jobID) AND (workDone.workID = work.workID) AND (MONTH(job.finishDate) = '.$i.') AND (YEAR(job.finishDate) = YEAR(CURDATE()))');
+            $value = 0;
+            foreach ($query->result_array () as $row)
+            {
+                $value += $row['cost'];
+            }
+            $income["$i"] = $value;
         }
+
+        $db_data['income'] = $income;
+        return $db_data;
     }
 
 
