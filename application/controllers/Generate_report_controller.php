@@ -16,6 +16,7 @@ class Generate_report_controller extends CI_Controller
         $this->load->model ('Notifications_model', 'nm');
         // loads form validation library
 		$this->load->library ('form_validation');
+        $this->load->model ('Chart_model', 'cm');
 		session_start ();
 	}
 
