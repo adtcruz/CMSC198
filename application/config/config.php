@@ -25,7 +25,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 */
 
 //development base_url
-$config['base_url'] = 'http://localhost/ITC-Billing-System/';
+$config['base_url'] = 'http://localhost/ITC-Billing-and-Services-System/';
 
 //production base_url
 //$config['base_url'] = '<IP address of deployment server here>/billing_system/';
