@@ -84,7 +84,7 @@
 	    <h5 class="center-align">Password updated!</h5>
 	  </div>
 	  <div class="row center-align">
-	    <a class="waves-effect waves-light btn btn-large blue darken-4" onclick="$('#passwordUpdatedModal').closeModal();">OK</a>
+	    <a class="waves-effect waves-light btn btn-large blue darken-4" href="<?php echo base_url();?>my_account">OK</a>
 	  </div>
 	</div>
 </div>

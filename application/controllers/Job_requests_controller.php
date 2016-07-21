@@ -36,9 +36,6 @@ class Job_requests_controller extends CI_Controller
 					return;
 				}
 
-				//table heading
-				$this->table->set_heading("Description","Start Date","Finish Date","Status","Date Filed","Actions");
-
 				for ($i = 0; $i < $nRows1; $i++){
 
 					$startDate = $this->jrm->processDate($rows1[$i]["startDate"]);
@@ -55,6 +52,9 @@ class Job_requests_controller extends CI_Controller
 					$this->table->add_row($rows1[$i]["jobDescription"],$startDate,$finishDate,$jobStatus,$dateFiled,$actions);
 				}
         $unread = $this->nm->getClientNotifs ($_SESSION['username'], $_SESSION['type']);
+
+				//table heading
+				$this->table->set_heading("Description","Start Date","Finish Date","Status","Date Filed","Actions");
 			}
 
 			else if(($_SESSION["type"]==="technician")||($_SESSION["type"]==="admin")||($_SESSION["type"]==="superadmin")){
@@ -70,8 +70,6 @@ class Job_requests_controller extends CI_Controller
 					$this->load->view('Job_requests_view', array('table' => $tabl));
 					return;
 				}
-
-				$this->table->set_heading('Description','Client','Start Date','Finish Date','Status','Date Filed','Filed By','Actions');
 
 				for ($i = 0; $i < $nRows1; $i++){
 
@@ -97,6 +95,8 @@ class Job_requests_controller extends CI_Controller
 				}
 
         $unread = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
+
+				$this->table->set_heading('Description','Client','Start Date','Finish Date','Status','Date Filed','Filed By','Actions');
 			}
 
 			$tabl = $this->table->generate();

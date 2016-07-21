@@ -1,10 +1,5 @@
 <!-- SIDENAV -->
 <div id="slide-out" class="side-nav grey darken-4 white-text">
-	<div id="logo-container" class="center-align">
-		<p>
-			<h6>Welcome, <span id="sidebar_givenName"><?php echo $_SESSION["givenName"]."</span> <span id=\"sidebar_lastName\">".$_SESSION["lastName"];?></span>!</h6>
-		</p>
-	</div>
 	<ul class="center-align">
 		<li id="homeButton"><a id="homeItem" class="waves-effect waves-light white-text" href="<?php echo base_url();?>">HOME</a></li>
     <li id="annButton"><a id="homeItem" class="waves-effect waves-light white-text" href="<?php echo base_url().'announcements';?>">Announcements</a></li>
