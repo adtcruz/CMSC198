@@ -18,5 +18,85 @@ $('document').ready(
                 $('.slider').slider ('start');
             }
         );
+
+        $('#jobStatusChart').highcharts({
+            // define chart type
+            chart: {
+                type: 'bar'
+            },
+            // define chart title
+            title: {
+                text: 'Job Status'
+            },
+            // define legends in x-axis (the ones on the left side)
+            xAxis: {
+                categories: ['Pending', 'Processing', 'Proessed', 'Canceled']
+            },
+            // define legends in y-axis (the ones in the )
+            yAxis: {
+                allowDecimals: false, // disregard decimal points
+                title: {
+                    text: 'Jobs' // set title of table
+                }
+            },
+            // the data points. used '0' as filler data
+            series: [{
+                name: 'Pending',
+                data: [parseInt($('#totalPending').html()),0, 0, 0]
+            },{
+                name: 'Processing',
+                data: [0, parseInt($('#totalProcessing').html()), 0, 0]
+            },{
+                name: 'Processed',
+                data: [0, 0, parseInt($('#totalProcessed').html()), 0]
+            },{
+                name: 'Canceled',
+                data: [0, 0, 0, parseInt($('#totalCanceled').html())]
+            }],
+            credits: {
+                enabled: false // remove 'highcharts.com' at the bottom of the chart
+            }
+        });
+
+        // output needed data from db
+        var jsondata = jQuery.parseJSON($('#pieData').html());
+        var dataArray = new Array();
+
+        $.each(jsondata.values, function(k, v){
+            dataArray.push([v[0], parseFloat(parseInt (v[1])/100)]);
+        });
+
+        $('#totalWork').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Total Work'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+                data: dataArray
+            }],
+            credits: {
+                enabled: false // remove 'highcharts.com' at the bottom of the chart
+            }
+        });
+
+        
     }
 );
