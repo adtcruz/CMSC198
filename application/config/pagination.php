@@ -3,7 +3,7 @@
 $config = array();
 
 // Set base_url for every links
-$config["base_url"] = base_url()."index.php/pagination_controller/jobs";
+$config["base_url"] = base_url()."index.php/pagination_controller/";
 
 // Set total rows in the result set you are creating pagination for.
 $config["total_rows"] = $total_row;
