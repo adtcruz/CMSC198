@@ -5,23 +5,19 @@ $this->load->view('Navbar');
 ?>
 <div class="row">
     <?php $this->load->view('Sidenav', $unread);?>
-    <div class="col s3 m3 l3"><br><br></div>
-    <div id="mainAppArea" class="col s9 m9 l9 section">
+    <div id="mainAppArea" class="container">
         <div class="row">
-            <div class="col s12 m12 l12">
-                <!-- Announcements View -->
-                <?php
-                    $lines = array ();
-                    foreach ($announcements['announcements'] as $row)
-                    {
-                        $line = '<div class = "collapsible-header blue-grey darken-1 white-text">'.$row['title'].'</div><div class = "collapsible-body">'.$row['details'].'</div>';
-                        $lines[] = $line;
-                    }
-                    $attributes = array ('class' => 'collapsible', 'data-collapsible' => 'accordion');
-                    echo ul ($lines, $attributes);
-                ?>
-            </div>
-            <br/>
+          <!-- Announcements View -->
+          <?php
+              $lines = array ();
+              foreach ($announcements['announcements'] as $row)
+              {
+                  $line = '<div class = "collapsible-header blue-grey darken-1 white-text">'.$row['title'].'</div><div class = "collapsible-body">'.$row['details'].'</div>';
+                  $lines[] = $line;
+              }
+              $attributes = array ('class' => 'collapsible', 'data-collapsible' => 'accordion');
+              echo ul ($lines, $attributes);
+          ?>
         </div>
     </div>
 </div>
