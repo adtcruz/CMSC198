@@ -1,10 +1,11 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<?php
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+$this->load->view('Header');
+$this->load->view('Navbar');
+?>
 <div class="row">
     <!-- Includes the Header and Sidenav Viewa -->
-    <?php
-        $this->load->view('Header');
-        $this->load->view('Sidenav', $unread);
-    ?>
+    <?php $this->load->view('Sidenav', $unread);?>
     <br>
     <div id="navarea" class="col s3 m3 l3 section"><br/><br/></div>
     <!-- Shows the Add Announcements and View Announcements tabs -->

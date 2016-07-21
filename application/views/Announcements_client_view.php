@@ -1,10 +1,10 @@
 <?php
-if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+$this->load->view('Header');
+$this->load->view('Navbar');
+?>
 <div class="row">
-    <?php
-        $this->load->view('Header');
-        $this->load->view('Sidenav', $unread);
-    ?>
+    <?php $this->load->view('Sidenav', $unread);?>
     <div class="col s3 m3 l3"><br><br></div>
     <div id="mainAppArea" class="col s9 m9 l9 section">
         <div class="row">
