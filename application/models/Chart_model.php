@@ -46,7 +46,7 @@ class Chart_model extends CI_Model
     {
         for ($i = 1; $i < 12; $i++)
         {
-            $query = $this->db->query ('')
+            $query = $this->db->query ('SELECT * FROM job');
         }
     }
 
