@@ -6,18 +6,14 @@ $this->load->view('Navbar');
 <div class="row">
     <!-- Includes the Header and Sidenav Viewa -->
     <?php $this->load->view('Sidenav', $unread);?>
-    <br>
-    <div id="navarea" class="col s3 m3 l3 section"><br/><br/></div>
-    <!-- Shows the Add Announcements and View Announcements tabs -->
-    <div class="col s9 m9 l9">
-        <ul class="tabs">
-            <li class="tab col s12"><a href="#annAddTab"> Add Announcements </a></li>
-            <li class="tab col s12"><a href="#annViewTab"> View Announcements </a></li>
-        </ul>
-    </div>
-
-    <!-- Add Announcement Form -->
-    <div id="mainAppArea" class="col s9 m9 l9 section">
+    <div id="mainAppArea" class="container">
+        <br>
+        <div class="row">
+          <ul class="tabs">
+              <li class="tab col s12"><a href="#annAddTab"> Add Announcements </a></li>
+              <li class="tab col s12"><a href="#annViewTab"> View Announcements </a></li>
+          </ul>
+        </div>
         <br/>
         <br/>
         <div class="row">
@@ -84,11 +80,6 @@ $this->load->view('Navbar');
                     echo form_close ()
                 ?>
             </div>
-        </div>
-    </div>
-    <!-- View Announcements -->
-    <div id="mainAppArea" class="col s9 m9 l9 section">
-        <div class="row">
             <div id="annViewTab" class="col s12 m12 l12">
                 <!-- Announcements View -->
                 <?php
