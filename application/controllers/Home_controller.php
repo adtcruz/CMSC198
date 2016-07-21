@@ -10,6 +10,7 @@ class Home_controller extends CI_Controller
         $this->load->model ('Home_dash_model', 'hdm');
         $this->load->model ('Announcements_model', 'am');
         $this->load->model ('Notifications_model', 'nm');
+        $this->load->model ('Chart_model', 'cm');
     }
 
     public function index ()
@@ -30,15 +31,21 @@ class Home_controller extends CI_Controller
                 break;
                 case 'admin':
                 case 'technician':
-                case 'superadmin':
                     $db_data['unread'] = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
                     $this->load->view ('Home_Dash_Admin', $db_data);
+                break;
+                case 'superadmin':
+                    $db_data['unread'] = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
+                    $db_data['total'] = $this->cm->getTotalJobStatus ();
+                    $db_data['values'] = $this->cm->getWorkServiced ();
+                    $this->load->view ('Home_Dash_SuperAdmin', $db_data);
                 break;
                 default:
                     $this->load->view ('Login_view');
                 return;
             }
             $this->load->view ('Common_scripts');
+            $this->load->view ('Chart_script');
             $this->load->view ('Home_script');
             $this->load->view ('Logout_script');
 		}
