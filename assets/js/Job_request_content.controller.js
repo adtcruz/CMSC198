@@ -47,6 +47,7 @@ function markThisJobDone(url){
     url+"mark_as_done",
     {isDone:"yes",jobID:job_ID},
     function (data){
+      console.log(data);
       if(data==="Marked as done"){
         $("#confirmMarkingAsDoneModal").closeModal();
         $("#jobMarkedAsDoneModal").openModal({dismissible:false});

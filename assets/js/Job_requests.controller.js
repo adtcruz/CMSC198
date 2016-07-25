@@ -66,7 +66,8 @@ function scheduleJob(url){
 	job_priority = $("#jobPrioritySelect").val();
 	if(job_priority===null) return;
 	$.post(url+"schedule_job",{jobID:job_ID,scheduleDate:schedule_date,jobPriority:job_priority},function(data){
-		if(data==="Added"){
+        console.log(data);
+        if(data==="Added"){
 			$("#jobScheduledModal").openModal({dismissible:false});
 		}
 		if(data==="Invalid date"){
