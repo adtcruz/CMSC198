@@ -37,13 +37,14 @@ class Mark_as_done_controller extends CI_Controller
               //record this action to logs
               $this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES ('".$_SESSION["username"]." marked jobID #".$_POST["jobID"]." as done',CURRENT_TIMESTAMP)");
 
-              //insert to notification
+              // insert to notification
+              // get values needed
               $query = $this->db->query ('SELECT job.jobDescription, job.clientID FROM job WHERE (job.jobID = '.$_POST['jobID'].')');
-
               $jobDescription = $query->result_array ()[0]['jobDescription'];
               $clientID = $query->result_array()[0]['clientID'];
               $userID = "";
 
+              // get user id using type
               if ($_SESSION['type'] === 'technician')
               {
                   $query = $this->db->query ('SELECT adminID FROM adminAcc WHERE (username = "'.$_SESSION['username'].'")');
@@ -55,14 +56,14 @@ class Mark_as_done_controller extends CI_Controller
                   $userID = $query->result_array ()[0]['superAdminID'];
               }
 
-              $this->db->query ("SELECT clientID, jobID, createdBy, createdByType FROM notifications WHERE (clientID=".$clientID.") AND (jobID=".$_POST["jobID"].") AND (createdBy=".$userID.") AND (createdByType = '".$_SESSION['type']."')");
+              // check if processing notification for this job already exists
+              $query = $this->db->query ('SELECT clientID, jobID, createdBy, createdByType FROM notifications WHERE (clientID = '.$clientID.') AND (jobID = '.$_POST['jobID'].') AND (createdByType != "client") AND (notifications.notifText LIKE "%is processing%")');
 
-              if ($this->db->affected_rows()==0)
+              // if the said notification already exists, insert marked as done notification
+              if (count($query->result_array()) > 0)
               {
-                  $this->db->query ('INSERT INTO notifications (notifText, clientID, jobID, dateCreated, createdBy, createdByType) VALUES ("Job Request ('.$jobDescription.') is done",'.$clientID.','.$_POST['jobID'].', CURDATE(), '.$userID.',\''.$_SESSION['type'].'\')');
+                  $this->db->query ('INSERT INTO notifications (notifText, clientID, jobID, dateCreated, createdBy, createdByType) VALUES ("Job Request ('.$jobDescription.') is done", '.$clientID.', '.$_POST['jobID'].', CURDATE(), '.$userID.', "'.$_SESSION['type'].'")');
               }
-
-
               //sends a message that job is marked as done
               echo "Marked as done";
 
