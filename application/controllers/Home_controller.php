@@ -41,6 +41,7 @@ class Home_controller extends CI_Controller
                 case 'technician':
                     // load unread notifications counter
                     $db_data['unread'] = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
+                    $db_data['schedule'] = $this->hdm->getSchedule ();
                     // load view
                     $this->load->view ('Home_Dash_Admin', $db_data);
                 break;
