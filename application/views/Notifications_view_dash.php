@@ -20,7 +20,7 @@
             <br/>
             <br/>
             <?php
-                echo $unreadNotifs;
+                echo $unreadNotifs['unreadNotifs'];
             ?>
     		</div>
       </div>
