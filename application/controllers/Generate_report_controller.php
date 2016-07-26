@@ -37,8 +37,8 @@ class Generate_report_controller extends CI_Controller
                 // if the form validation is not run or returns false, reload view.
                 if ($this->form_validation->run () == FALSE)
                 {
-                    $unread = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
-                    $this->load->view ('Generate_report_view', $unread);
+                    $db_data['unread'] = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
+                    $this->load->view ('Generate_report_view', $db_data);
                 }
                 // else publish PDF report
                 else
