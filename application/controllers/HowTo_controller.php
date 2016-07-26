@@ -7,6 +7,7 @@ class HowTo_controller extends CI_Controller
 	{
 		parent::__construct ();
 		session_start();
+		$this->load->model('Notifications_model', 'nm');
 	}
 
 	public function index ()
@@ -15,7 +16,8 @@ class HowTo_controller extends CI_Controller
     {
     	if($_SESSION["type"] == "client"){
 
-	  		$this->load->view ('HowTo_view');
+	  		$db_data['unread'] = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
+	  		$this->load->view ('HowTo_view', $db_data);
 			}
 			else
 	    	{
