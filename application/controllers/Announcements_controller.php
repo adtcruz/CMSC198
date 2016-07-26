@@ -24,7 +24,7 @@ class Announcements_controller extends CI_Controller
             {
                 case 'client':
                     $db_data['announcements'] = $this->am->getAnnouncements ();
-                    $db_data['unread'] = $this->nm->getClientNotifs($_SESSION['username']);
+                    $db_data['unread'] = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
                     $this->load->view ('Announcements_client_view', $db_data);
                 break;
                 case 'admin':

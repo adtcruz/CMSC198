@@ -56,7 +56,7 @@ class Job_requests_controller extends CI_Controller
 					$this->table->add_row($rows1[$i]["jobDescription"],$startDate,$finishDate,$jobStatus,$dateFiled,$actions);
 				}
 
-                $unread = $this->nm->getClientNotifs ($_SESSION['username'], $_SESSION['type']);
+                $unread = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
                 $tabl = $this->table->generate();
 			}
 
