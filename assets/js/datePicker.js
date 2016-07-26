@@ -8,7 +8,7 @@ $('document').ready (function ()
     // start ajax call
     $.ajax({
         // define URL
-        url: window.location.origin+"/CMSC198/get_date",
+        url: window.location.origin+"/ITC-Networking-Services-and-Billing-System/get_date",
         // define data type of return variable
         dataType: 'json',
         // on successful return of said variable
