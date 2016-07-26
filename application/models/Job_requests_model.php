@@ -84,9 +84,8 @@ class Job_requests_model extends CI_Model
 	public function getJobRequestsArray($whereClause)
 	{
 		$query = $this->db->query(
-			"SELECT jobID, jobDescription, startDate, finishDate, jobStatus, ".
-			"clientID, adminID, dateCreated, createdBy, createdByType FROM job".
-			$whereClause."ORDER BY dateCreated ASC, jobID ASC"
+			"SELECT jobID, jobDescription, startDate, finishDate, jobStatus, clientID, adminID, dateCreated, createdBy, createdByType FROM job".
+			$whereClause."GROUP BY jobStatus DESC, dateCreated, jobID"
 		);
 		return $query->result_array();
 	}
