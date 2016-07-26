@@ -113,13 +113,19 @@
 
         public function notifBillGenerated ($username, $jobID)
         {
-            // get client id using username
-            $query = $this->db->query ('SELECT client.clientID FROM client WHERE (client.username = "'.$username.'")');
+            // get client details using username
+            $query = $this->db->query ('SELECT givenName, lastName, clientID FROM client WHERE (client.username = "'.$username.'")');
+            $clientFN = $query->result_array ()[0]['givenName'];
+            $clientLN = $query->result_array ()[0]['lastName'];
             $clientID = $query->result_array ()[0]['clientID'];
 
             // get officeAbbr of client;
-            $query = $this->db->query ('SELECT office.officeAbbr FROM office, client WHERE (client.clientID = '.$clientID.') AND (client.officeID = office.officeID)');
+            $query = $this->db->query ('SELECT office.officeAbbr FROM office, client WHERE (client.username = "'.$username.'") AND (client.officeID = office.officeID)');
             $officeAbbr = $query->result_array ()[0]['officeAbbr'];
+
+            // get date created of job
+            $query = $this->db->query ('SELECT dateCreated FROM job WHERE (jobID = '.$jobID.')');
+            $date = $query->result_array()[0]['dateCreated'];
 
             // check if bill has been already generated
             $this->db->query ('SELECT notifications.clientID, notifications.jobID FROM notifications WHERE (notifications.clientID = '.$clientID.') AND (notifications.jobID = '.$jobID.') AND (notifications.createdByType = "client")');
@@ -132,7 +138,8 @@
             }
             else
             {
-                $this->db->query ('INSERT INTO notifications(notifText, dateCreated, createdBy, createdByType, clientID,jobID) VALUES ("Client - '.$username.' of '.$officeAbbr.' generated bill for Job ID - '.$jobID.'", CURDATE(), '.$clientID.', "client",'.$clientID.','.$jobID.')');
+                $string = "$clientFN $clientLN of $officeAbbr has generated the bill for job dated $date";
+                $this->db->query ('INSERT INTO notifications(notifText, dateCreated, createdBy, createdByType, clientID,jobID) VALUES ("'.$string.'", CURDATE(), '.$clientID.', "client",'.$clientID.','.$jobID.')');
                 if ($this->db->affected_rows () == 1)
                 {
                     echo 'Inserted!';
