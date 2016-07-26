@@ -118,6 +118,8 @@ $route['topdf_bfp/(:any)'] = 'Bill_for_payment_controller';
 $route['topdf_jrf/(:any)'] = 'Job_request_form_controller';
 $route['view_schedule'] = 'View_schedule_controller';
 $route['view_logs'] = 'View_user_logs_controller';
+$route['howto'] = 'HowTo_controller';
+$route['about'] = 'About_controller';
 
 // CodeIgniter default routes
 $route['default_controller'] = 'Home_controller';
