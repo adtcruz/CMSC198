@@ -13,6 +13,9 @@
 						<p>This will show the Side Navigation.</p>
 					<p>
 					 	<img class="materialboxed" width="650" src="assets/images/HowToImages/navigationbar.png">
+					 	<br>
+					 	<img class="materialboxed" width="650" src="assets/images/HowToImages/sidenav.png">
+
 					<p>
 						<b>2. Click the Job Request Tab  in the Side Bar.</b>
 						<p>It will redirect you to the Job Request Page. Click the File Job Request tab to  file a job request.</p>
