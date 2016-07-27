@@ -8,7 +8,7 @@
 				<h4 class="center-align">About The System</h4>
 				<br/>
 				<p class="center-align">
-					The ITC Network Services and Billing System (ITCNSBS) integrates the billing system for UPLB ITC’s System Administration, Network Administration and Technical Support sections.  
+					The ITC Networking Services and Billing System (ITCNSBS) integrates the billing system for UPLB ITC’s System Administration, Network Administration and Technical Support sections.  
 					It caters to the need of the ITC team of a common system in managing job requests. 
 					The system uses CodeIgniter framework and MariaDB for faster job transactions and record management. 
 					The system provides an online version of the job request form and saves the input data to a database that can be manipulated using the system. 
