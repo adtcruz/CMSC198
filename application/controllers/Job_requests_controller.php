@@ -16,7 +16,7 @@ class Job_requests_controller extends CI_Controller
         $options = "";
 		if(array_key_exists("type",$_SESSION)){
             $tabl = "";
-            $unread = "";
+            $unread = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
 
             $this->table->clear ();
         	$this->table->set_template(array('table_open' =>'<table class="bordered centered highlight responsive-table">'));
@@ -33,7 +33,7 @@ class Job_requests_controller extends CI_Controller
 
 				if($nRows1 == 0){
 					$tabl = "<h5 class=\"center-align\">Sorry, there are no job requests filed under your name at the moment.</h5>";
-					$this->load->view('Job_requests_view', array('table' => $tabl));
+					$this->load->view('Job_requests_view', array('table' => $tabl, 'unread' => $unread));
 					return;
 				}
 
@@ -56,7 +56,7 @@ class Job_requests_controller extends CI_Controller
 					$this->table->add_row($rows1[$i]["jobDescription"],$startDate,$finishDate,$jobStatus,$dateFiled,$actions);
 				}
 
-                $unread = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
+                //$unread = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
                 $tabl = $this->table->generate();
 			}
 
@@ -70,7 +70,7 @@ class Job_requests_controller extends CI_Controller
 
 				if($nRows1 == 0){
 					$tabl = "<h5 class=\"center-align\">Sorry, there are no job requests at the moment.</h5>";
-					$this->load->view('Job_requests_view', array('table' => $tabl));
+					$this->load->view('Job_requests_view', array('table' => $tabl, 'unread' => $unread));
 					return;
 				}
 
@@ -99,11 +99,10 @@ class Job_requests_controller extends CI_Controller
 
 				}
 
-                $unread = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
+                //$unread = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
                 $tabl = $this->table->generate();
 			}
 
-            $unread = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
             $options = $this->jrm->getOffices($_SESSION["type"]);
 			$this->load->view('Job_requests_view', array('table' => $tabl, 'options' => $options, 'unread' => $unread));
 		}
