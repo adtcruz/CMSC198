@@ -5,10 +5,12 @@
 */
 $('document').ready (function ()
 {
+    base_url = window.location.href;
     // start ajax call
     $.ajax({
         // define URL
-        url: window.location.origin+"/ITC-Networking-Services-and-Billing-System/get_date",
+        //url: window.location.origin+"/ITC-Networking-Services-and-Billing-System/get_date",
+        url: base_url.replace("generate_report","get_date"),
         // define data type of return variable
         dataType: 'json',
         // on successful return of said variable
