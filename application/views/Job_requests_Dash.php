@@ -125,7 +125,7 @@
 				<h5 class="center-align">Are you sure you want to cancel this Job Request?</h5>
 			</div>
 			<div class="row center-align">
-				<a class="waves-effect waves-light btn btn-large red darken-4" onclick="$('#cancelModal').closeModal();$('#jobCancelReasonModal').openModal();">Yes</a>
+				<a class="waves-effect waves-light btn btn-large red darken-4" onclick="modalKiller()">Yes</a>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a class="waves-effect waves-light btn btn-large blue" onclick="$('#cancelModal').closeModal();">No</a>
 			</div>
@@ -149,7 +149,7 @@
             </div>
         </div>
     </div>
-    
+
 	<!-- Confirmation message -->
 	<div id="jobCanceledModal" class="modal">
 		<div class="row">
