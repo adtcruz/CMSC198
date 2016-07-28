@@ -75,6 +75,12 @@ class Generate_report_controller extends CI_Controller
 		}
 
         //$this->load->view ('Generate_report_reportPDF');
+        $db_data = NULL;
+        $db_data['date'] = $date;
+        $db_data['totalWorkIncome'] = $this->grm->totalWorkIncome ($date);
+        $db_data['totalNumberOfJobs'] = $this->grm->totalNumberOfJobs ($date);
+        $db_data['totalJobsByOffice'] = $this->grm->totalJobsByOffice ($date);
+        $db_data['totalMaterialsUsed'] = $this->grm->totalMaterialsUsed ($date);
         $html = $this->load->view ('Generate_report_reportPDF', $db_data, TRUE);
 		$this->load->library ('m_pdf');
 		$pdfFileName = 'Activity Report from '.$date['date1'].' to '.$date['date2'];
