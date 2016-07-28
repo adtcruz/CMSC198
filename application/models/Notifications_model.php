@@ -40,7 +40,6 @@
                     $query = $this->db->query ('SELECT notifID FROM notifications WHERE (createdByType != "client") AND (clientID = "'.$userID.'")');
                     if ($this->db->affected_rows () == 0)
                     {
-                        $unread = "client";
                         return $unread;
                     }
                     else
