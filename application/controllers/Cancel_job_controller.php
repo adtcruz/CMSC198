@@ -20,7 +20,7 @@ class Cancel_job_controller extends CI_Controller
     //checks if username is defined in session
     //if it's defined, it means there is a user in session and the connection
     //is from the browser
-		if(!array_key_exists("username",$_SESSION)){
+	if(!array_key_exists("username",$_SESSION)){
       die("There is no user in sesssion.");
     }
 
@@ -42,8 +42,10 @@ class Cancel_job_controller extends CI_Controller
 		//log this action into USERLOGS
 		$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES('".$_SESSION["username"]." canceled jobID #".$_POST["jobID"]."',CURRENT_TIMESTAMP)");
 
+        // get user ID for reasons for cancellation
         $userID = $this->db>query('SELECT superAdminID FROM superAdmin WHERE (username = "'.$_SESSION['username'].'")')->result_array ()[0]['superAdminID'];
 
+        // add reasons for cancellation to database
         $this->db->query('INSERT INTO reasonsForCancellation (reasonText, jobID, dateCreated, createdBy, createdByType) VALUES ("'.$_POST['cancelReason'].'", '.$_POST['jobID'].'), CURDATE(), '.$userID.', "superadmin"');
 
         echo "Job canceled";
@@ -72,8 +74,10 @@ class Cancel_job_controller extends CI_Controller
 	        //log this action into USERLOGS
 			$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES('".$_SESSION["username"]." canceled jobID #".$_POST["jobID"]."',CURRENT_TIMESTAMP)");
 
+            // get userID for reason for cancellation
             $userID = $this->db>query('SELECT adminID FROM adminAcc WHERE (username = "'.$_SESSION['username'].'")')->result_array ()[0]['adminID'];
 
+            // add to db reason for cancellation
             $this->db->query('INSERT INTO reasonsForCancellation (reasonText, jobID, dateCreated, createdBy, createdByType) VALUES ("'.$_POST['cancelReason'].'", '.$_POST['jobID'].'), CURDATE(), '.$userID.', "'.$_SESSION['type'].'"');
 
             echo "Job canceled";
@@ -101,8 +105,10 @@ class Cancel_job_controller extends CI_Controller
 				//log this action into USERLOGS
 				$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES('".$_SESSION["username"]." canceled jobID #".$_POST["jobID"]."',CURRENT_TIMESTAMP)");
 
+                // get user ID for reason for cancellation
                 $userID = $this->db>query('SELECT clientID FROM client WHERE (username = "'.$_SESSION['username'].'")')->result_array ()[0]['clientID'];
 
+                // add to db reason for cancellation
                 $this->db->query('INSERT INTO reasonsForCancellation (reasonText, jobID, dateCreated, createdBy, createdByType) VALUES ("'.$_POST['cancelReason'].'", '.$_POST['jobID'].'), CURDATE(), '.$userID.', "client"');
 
         echo "Job canceled";
