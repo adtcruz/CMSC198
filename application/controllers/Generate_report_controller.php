@@ -43,7 +43,9 @@ class Generate_report_controller extends CI_Controller
                 // else publish PDF report
                 else
                 {
-                    $this->reportToPDF ();
+                    $db_data['unread'] = $this->nm->getUnreadCount ($_SESSION['username'], $_SESSION['type']);
+                    $db_data['income'] = $this->cm->getMonthlyIncome ();
+                    $this->reportToPDF ($db_data);
                 }
             }
         }
@@ -54,7 +56,7 @@ class Generate_report_controller extends CI_Controller
 	}
 
     // this function renders a page to PDF form. it gets all the job requests created between the two dates sent via post
-	public function reportToPDF ()
+	public function reportToPDF ($db_data)
 	{
 		$date1 = $this->input->post ('date1');
 		$date2 = $this->input->post ('date2');
@@ -72,8 +74,8 @@ class Generate_report_controller extends CI_Controller
 			$date['date2'] = $date1;
 		}
 
-		$db_data = $this->grm->generateReport ($date);
-		$html = $this->load->view ('Generate_report_reportPDF', $db_data, TRUE);
+        //$this->load->view ('Generate_report_reportPDF');
+        $html = $this->load->view ('Generate_report_reportPDF', $db_data, TRUE);
 		$this->load->library ('m_pdf');
 		$pdfFileName = 'Activity Report from '.$date['date1'].' to '.$date['date2'];
 		$this->m_pdf->pdf->WriteHTML ($html);
