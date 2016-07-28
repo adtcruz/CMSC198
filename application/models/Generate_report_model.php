@@ -16,12 +16,52 @@ class Generate_report_model extends CI_Model
 		$this->load->database ();
 	}
 
-	// generates a report of all job requests. the interval depends on the argument supplied
-	public function generateReport ($date)
+	// generates total work income in a conveniently placed table
+	public function totalWorkIncome ($date)
 	{
-		$query = $this->db->query ('SELECT job.jobDescription, job.dateCreated, job.finishDate, office.officeAbbr FROM client, job, office WHERE (job.dateCreated BETWEEN '.$date['date1'].' AND '.$date['date2'].') AND (job.clientID = client.clientID) AND (client.officeID = office.officeID) ORDER BY job.dateCreated ASC');
-        $db_data['result_array'] = $query->result_array ();
+        $this->table->clear ();
+        $this->table->set_heading ('Service Name', 'Income');
+        // total income between said dates
+        $workList = $this->db->query ('SELECT workID, workCost, workName FROM work')->result_array ();
+        $workDone = $this->db->query ('SELECT workID, workDuration FROM workDone')->result_array ();
+        $total = 0;
+        foreach ($workList as $row)
+        {
+            $cost = 0;
+            foreach ($workDone as $row2)
+            {
+                if ($row['workID'] = $row2['workID'])
+                {
+                    $cost += ($row['workCost']*$row2['workDuration']);
+                }
+            }
+            $total += $cost;
+            $this->table->add_row ($workList['workName'], $cost);
+        }
+        $this->table->add_row ('Total Income', $total);
+        $db_data['totalWorkIncome'] = $this->table->generate ();
         return $db_data;
 	}
+
+    public function totalNumberOfJobs ($date)
+    {
+        // for pending
+        $pending = $this->db->query ('SELECT COUNT(*) AS count FROM job WHERE (job.dateCreated BETWEEN DATE('.$date['date1'].') AND DATE('.$date['date2'].')) AND (job.finishDate IS NULL)')->result_array ()[0]['count'];
+
+        // for processing
+        $processing = $this->db->query ('SELECT COUNT(*) AS count FROM job WHERE (job.dateCreated BETWEEN DATE('.$date['date1'].') AND DATE('.$date['date2'].')) AND (job.startDate IS NOT NULL) AND (job.finishDate IS NULL)')->result_array ()[0]['count'];
+
+        // for processed
+        $processed = $this->db->query ('SELECT COUNT(*) AS count FROM job WHERE (job.dateCreated BETWEEN DATE('.$date['date1'].') AND DATE('.$date['date2'].')) AND (job.startDate IS NOT NULL) AND (job.finishDate IS NOT NULL)');
+
+        // pass to array
+        $db_data['pending'] = $pending;
+        $db_data['processing'] = $processing;
+        $db_data['processed'] = $processed;
+
+        return $db_data;
+    }
+
+    public function 
 }
 ?>
