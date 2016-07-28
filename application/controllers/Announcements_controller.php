@@ -52,8 +52,11 @@ class Announcements_controller extends CI_Controller
                         $this->load->view ('Announcements_admin_view', $db_data);
                     }
                 break;
-                default: // redirect
             }
+        }
+        else
+        {
+            redirect (base_url(), 'refresh');
         }
     }
 
