@@ -31,8 +31,8 @@ function confirmCancel(jobID){
 //in the case it gets a "Job canceled" message from the server
 //the message modal can only be closed by clicking OK
 function cancelJob(url){
-	$("#cancelModal").closeModal();
-	$.post(url+"cancel_job",{jobID:job_ID},function(data){
+	$("#jobCancelReasonModal").closeModal();
+	$.post(url+"cancel_job",{jobID:job_ID, cancelReason:$('#cancel_reason').val()},function(data){
 		if(data==="Job canceled"){
 			$("#jobCanceledModal").openModal({dismissible:false});
 		}

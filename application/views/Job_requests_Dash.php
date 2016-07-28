@@ -92,6 +92,7 @@
 			</div>
 		</div>
 	</div>
+
 	<!-- Prompt modal -->
 	<div id="confirmEditModal" class="modal">
 		<div class="modal-content">
@@ -105,7 +106,8 @@
 			</div>
 		</div>
 	</div>
-	<!-- Cinfirmation Message -->
+
+	<!-- Confirmation Message -->
 	<div id="jobEditedModal" class="modal">
 		<div class="row">
 			<br/>
@@ -115,6 +117,7 @@
 			<a class="waves-effect waves-light btn btn-large blue darken-4" onclick="reloadPage('<?php echo base_url();?>');">OK</a>
 		</div>
 	</div>
+
 	<!-- Prompt Modal -->
 	<div id="cancelModal" class="modal">
 		<div class="modal-content">
@@ -122,12 +125,31 @@
 				<h5 class="center-align">Are you sure you want to cancel this Job Request?</h5>
 			</div>
 			<div class="row center-align">
-				<a class="waves-effect waves-light btn btn-large red darken-4" onclick="cancelJob('<?php echo base_url();?>');">Yes</a>
+				<a class="waves-effect waves-light btn btn-large red darken-4" onclick="$('#cancelModal').closeModal();$('#jobCancelReasonModal').openModal();">Yes</a>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a class="waves-effect waves-light btn btn-large blue" onclick="$('#cancelModal').closeModal();">No</a>
 			</div>
 		</div>
 	</div>
+
+    <!-- Enter reason for cancellation -->
+    <div id="jobCancelReasonModal" class="modal">
+        <div class="row">
+            </br>
+            <div class="input-field col s12 m12 l12">
+                <div class="row">
+                    <input id="cancel_reason" type="text" min="10" max="256" class="validate"/>
+                    <label for="cancel_reason">Enter reason for cancellation</label>
+                </div>
+                <div class="row center-align">
+                    <a class="waves-effect waves-light btn btn-large red darken-4 center-align" onclick="cancelJob('<?php echo base_url();?>');">Proceed</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="waves-effect waves-light btn btn-large blue center-align" onclick="$('#jobCancelReasonModal').closeModal();">Revert Changes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 	<!-- Confirmation message -->
 	<div id="jobCanceledModal" class="modal">
 		<div class="row">
@@ -138,6 +160,7 @@
 			<a class="waves-effect waves-light btn btn-large blue darken-4" onclick="reloadPage('<?php echo base_url();?>');">OK</a>
 		</div>
 	</div>
+
 	<!-- Confirmation -->
 	<div id="submittedMessage" class="modal">
     <div class="row">
