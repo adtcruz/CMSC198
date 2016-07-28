@@ -100,7 +100,6 @@ $route['update_selectable_material'] = 'Update_selectable_material_controller';
 $route['update_selectable_work'] = 'Update_selectable_work_controller';
 $route['update_work_done'] = 'Update_work_done_controller';
 
-
 //routes for page loads
 $route['announcements'] = 'Announcements_controller';
 $route['add_announcements'] = 'Announcements_controller/addAnnouncements';
