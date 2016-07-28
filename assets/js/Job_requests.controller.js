@@ -32,12 +32,19 @@ function confirmCancel(jobID){
 //the message modal can only be closed by clicking OK
 function cancelJob(url){
 	$("#jobCancelReasonModal").closeModal();
-    cancel_Reason = $('#cancel_reason').val();
-	$.post(url+"cancel_job",{jobID:job_ID, cancelReason: cancel_Reason},function(data){
-		if(data==="Job canceled"){
-			$("#jobCanceledModal").openModal({dismissible:false});
+  cancel_Reason = $('#cancel_reason').val();
+	$.post(
+		url+"cancel_job",
+		{
+			jobID:job_ID,
+			cancelReason:cancel_Reason
+		},
+		function(data){
+			if(data==="Job canceled"){
+				$("#jobCanceledModal").openModal({dismissible:false});
+			}
 		}
-	});
+	);
 }
 
 function modalKiller(){

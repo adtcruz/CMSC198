@@ -34,19 +34,19 @@ class Cancel_job_controller extends CI_Controller
 
 			if($this->db->query("SELECT COUNT(jobID) FROM schedule WHERE jobID=".$_POST["jobID"]."")->row_array()["COUNT(jobID)"]==1)
 			{
-				$this->db->query("DELETE FROM schedule WHERE jobID=".$_POST["jobID"]."");
+				$this->db->query("DELETE FROM schedule WHERE (jobID=".$_POST["jobID"].")");
 			}
 
       if($this->db->query("SELECT jobStatus FROM job WHERE jobID=".$_POST["jobID"]."")->result_array()[0]["jobStatus"] == "CANCELED")
       {
-		//log this action into USERLOGS
-		$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES('".$_SESSION["username"]." canceled jobID #".$_POST["jobID"]."',CURRENT_TIMESTAMP)");
+				//log this action into USERLOGS
+				$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES('".$_SESSION["username"]." canceled jobID #".$_POST["jobID"]."',CURRENT_TIMESTAMP)");
 
-        // get user ID for reasons for cancellation
-        $userID = $this->db>query('SELECT superAdminID FROM superAdmin WHERE (username = "'.$_SESSION['username'].'")')->result_array ()[0]['superAdminID'];
+        //get user ID for reasons for cancellation
+        $userID = $this->db->query("SELECT superAdminID FROM superAdmin WHERE (username='".$_SESSION["username"]."')")->result_array()[0]['superAdminID'];
 
-        // add reasons for cancellation to database
-        $this->db->query('INSERT INTO reasonsForCancellation (reasonText, jobID, dateCreated, createdBy, createdByType) VALUES ("'.$_POST['cancelReason'].'", '.$_POST['jobID'].'), CURDATE(), '.$userID.', "superadmin"');
+        //add reasons for cancellation to database
+        $this->db->query('INSERT INTO reasonsForCancellation (reasonText, jobID, dateCreated, createdBy, createdByType) VALUES ("'.$_POST['cancelReason'].'", '.$_POST['jobID'].', CURDATE(), '.$userID.', "superadmin")');
 
         echo "Job canceled";
         return;
@@ -75,7 +75,7 @@ class Cancel_job_controller extends CI_Controller
 			$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES('".$_SESSION["username"]." canceled jobID #".$_POST["jobID"]."',CURRENT_TIMESTAMP)");
 
             // get userID for reason for cancellation
-            $userID = $this->db>query('SELECT adminID FROM adminAcc WHERE (username = "'.$_SESSION['username'].'")')->result_array ()[0]['adminID'];
+            $userID = $this->db->query('SELECT adminID FROM adminAcc WHERE (username = "'.$_SESSION['username'].'")')->result_array ()[0]['adminID'];
 
             // add to db reason for cancellation
             $this->db->query('INSERT INTO reasonsForCancellation (reasonText, jobID, dateCreated, createdBy, createdByType) VALUES ("'.$_POST['cancelReason'].'", '.$_POST['jobID'].'), CURDATE(), '.$userID.', "'.$_SESSION['type'].'"');
@@ -106,7 +106,7 @@ class Cancel_job_controller extends CI_Controller
 				$this->db->query("INSERT INTO userLogs(logText,logTimestamp) VALUES('".$_SESSION["username"]." canceled jobID #".$_POST["jobID"]."',CURRENT_TIMESTAMP)");
 
                 // get user ID for reason for cancellation
-                $userID = $this->db>query('SELECT clientID FROM client WHERE (username = "'.$_SESSION['username'].'")')->result_array ()[0]['clientID'];
+                $userID = $this->db->query('SELECT clientID FROM client WHERE (username = "'.$_SESSION['username'].'")')->result_array ()[0]['clientID'];
 
                 // add to db reason for cancellation
                 $this->db->query('INSERT INTO reasonsForCancellation (reasonText, jobID, dateCreated, createdBy, createdByType) VALUES ("'.$_POST['cancelReason'].'", '.$_POST['jobID'].'), CURDATE(), '.$userID.', "client"');
