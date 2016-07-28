@@ -220,3 +220,17 @@ CREATE TABLE announcements(
     active INT NOT NULL DEFAULT '1',
     PRIMARY KEY(announcementID)
 );
+
+--'CANCELLATION REASONS' table
+DROP TABLE IF EXISTS reasonsForCancellation;
+CREATE TABLE reasonsForCancellation(
+    reasonID INT NOT NULL AUTO_INCREMENT,
+    reasonText VARCHAR(256) NOT NULL,
+    jobID INT NOT NULL,
+    dateCreated DATE DEFAULT NULL,
+    createdBy INT DEFAULT NULL,
+    createdByType VARCHAR(10) NOT NULL,
+    active INT NOT NULL DEFAULT '1',
+    PRIMARY KEY(reasonID),
+    FOREIGN KEY(jobID) REFERENCES job(jobID)
+);
