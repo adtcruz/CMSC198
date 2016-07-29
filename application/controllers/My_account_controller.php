@@ -14,9 +14,8 @@ class My_account_controller extends CI_Controller
 		session_start();
 		if(array_key_exists("type",$_SESSION))
     {
-      if(($_SESSION["type"]==="admin")||($_SESSION["type"]==="technician")||($_SESSION["type"]==="superadmin")) $unread = $this->nm->getUnreadCount($_SESSION['username'], $_SESSION['type']);
-      else $unread = $this->nm->getClientNotifs($_SESSION['username']);
-			$this->load->view('My_account_view', $unread);
+      $unread = $this->nm->getUnreadCount($_SESSION['username'], $_SESSION['type']);
+			$this->load->view('My_account_view', array('unread'=>$unread));
 		}
 		else
     {
