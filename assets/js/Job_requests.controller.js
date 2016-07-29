@@ -49,7 +49,7 @@ function cancelJob(url){
 
 function modalKiller(){
     $('#cancelModal').closeModal();
-    $('#jobCancelReasonModal').openModal();
+    $('#jobCancelReasonModal').openModal({dismissible:false});
 }
 
 //reloads the page

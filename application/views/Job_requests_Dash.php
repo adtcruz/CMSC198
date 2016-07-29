@@ -132,23 +132,25 @@
 		</div>
 	</div>
 
-    <!-- Enter reason for cancellation -->
-    <div id="jobCancelReasonModal" class="modal">
-        <div class="row">
-            </br>
-            <div class="input-field col s12 m12 l12">
-                <div class="row">
-                    <input id="cancel_reason" type="text" min="10" max="256" class="validate"/>
-                    <label for="cancel_reason">Enter reason for cancellation</label>
-                </div>
-                <div class="row center-align">
-                    <a class="waves-effect waves-light btn btn-large red darken-4 center-align" onclick="cancelJob('<?php echo base_url();?>');">Proceed</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a class="waves-effect waves-light btn btn-large blue center-align" onclick="$('#jobCancelReasonModal').closeModal();">Revert Changes</a>
-                </div>
-            </div>
-        </div>
-    </div>
+  <!-- Enter reason for cancellation -->
+  <div id="jobCancelReasonModal" class="modal">
+      <div class="modal-content">
+					<h5 class="center-align">Reason for cancellation of Job Request?</h5>
+          <br/>
+          <div class="row">
+              <div class="input-field">
+                  <input id="cancel_reason" type="text" min="10" max="256" class="validate"/>
+                  <label for="cancel_reason">Enter reason for cancellation</label>
+              </div>
+							<br/>
+              <div class="row center-align">
+                  <a class="waves-effect waves-light btn btn-large red darken-4 center-align" onclick="cancelJob('<?php echo base_url();?>');">Cancel Job Request</a>
+                  &nbsp;&nbsp;
+                  <a class="waves-effect waves-light btn btn-large blue darken-4 center-align" onclick="$('#jobCancelReasonModal').closeModal();">Close</a>
+              </div>
+          </div>
+      </div>
+  </div>
 
 	<!-- Confirmation message -->
 	<div id="jobCanceledModal" class="modal">
