@@ -12,7 +12,7 @@
             }
 			else
             {
-                echo '<li id="notifButton"><a id="homeItem" class="waves-effect waves-light white-text" href="'.base_url().'notifications">Notifications <span class="badge white-text">'.$unread.'</span></a></li>';
+                echo '<li id="notifButton"><a id="homeItem" class="waves-effect waves-light white-text" href="'.base_url().'notifications">Notifications <span class="badge white-text">'.$unread.' new</span></a></li>';
             }
 
             if($_SESSION["type"] === "client")
